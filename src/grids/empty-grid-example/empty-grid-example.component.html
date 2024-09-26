@@ -1,0 +1,15 @@
+<c8y-title>Empty grid example</c8y-title>
+
+<c8y-data-grid
+  [title]="title"
+  [columns]="columns"
+  [actionControls]="actionControls"
+  class="content-fullpage d-flex d-col border-top border-bottom"
+>
+  <c8y-ui-empty-state
+    icon="search"
+    title="No results to display."
+    subtitle="Refine your search terms or check your spelling."
+    [horizontal]="true"
+  ></c8y-ui-empty-state>
+</c8y-data-grid>

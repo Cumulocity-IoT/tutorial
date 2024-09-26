@@ -1,0 +1,28 @@
+<c8y-title>Data grid examples - asynchronous expandable rows</c8y-title>
+
+<c8y-data-grid
+  class="content-fullpage d-flex d-col border-top border-bottom"
+  [title]="title"
+  [columns]="columns"
+  [displayOptions]="displayOptions"
+  [rows]="data"
+  [pagination]="pagination"
+  [selectable]="selectable"
+  [expandableRows]="'ASYNC'"
+  (itemsSelect)="onItemsSelect($event)"
+  [actionControls]="actionControls"
+>
+  <div
+    *c8yExpandableRow="
+      let context;
+      let asyncRenderSuccess = asyncRenderSuccess;
+      let asyncRenderFail = asyncRenderFail
+    "
+  >
+    <c8y-async-expandable-row-example
+      [context]="context"
+      [asyncRenderSuccess]="asyncRenderSuccess"
+      [asyncRenderFail]="asyncRenderFail"
+    ></c8y-async-expandable-row-example>
+  </div>
+</c8y-data-grid>

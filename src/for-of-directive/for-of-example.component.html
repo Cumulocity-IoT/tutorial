@@ -1,0 +1,86 @@
+<c8y-title>For of directive</c8y-title>
+
+<div class="row d-flex-sm">
+  <div class="col-sm-3 p-0">
+    <div class="d-col p-t-8 p-l-16 p-b-16 p-r-16 form-group-sm bg-level-1">
+      <p class="text-medium p-b-16">Config options</p>
+
+      <div class="form-group">
+        <label for="filterInput">Filter pipe</label>
+        <input
+          class="form-control"
+          id="filterInput"
+          placeholder="Enter a known device…"
+          type="text"
+          [(ngModel)]="config.filter"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="pageSizeInput">Page size</label>
+        <input
+          class="form-control"
+          id="pageSizeInput"
+          type="number"
+          [(ngModel)]="config.pageSize"
+          min="1"
+          max="2000"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="maxIterations">Max iterations</label>
+        <input
+          class="form-control"
+          id="maxIterations"
+          type="number"
+          [(ngModel)]="config.maxIterations"
+          min="1"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Load more option:</label>
+        <div class="c8y-select-wrapper">
+          <select
+            class="form-control"
+            type="text"
+            [(ngModel)]="config.loadMore"
+          >
+            <option value="auto">auto - automatically load more items</option>
+            <option value="show">show - show a button to load more items.</option>
+            <option value="hidden">none - hidden and not loading more items</option>
+            <option value="hidden">hidden - hidden but loading more items</option>
+          </select>
+        </div>
+      </div>
+
+      <button
+        class="btn btn-primary"
+        (click)="reload()"
+      >
+        Apply
+      </button>
+    </div>
+  </div>
+  <div class="col-sm-9">
+    <p class="text-medium p-t-8">Preview</p>
+    <div class="card m-t-16">
+      <div class="card-block d-flex d-col p-0">
+        <!-- important -->
+        <div
+          *c8yFor="
+            let device of devices;
+            let i = index;
+            loadMore: config.loadMore;
+            pipe: filterPipe;
+            maxIterations: config.maxIterations;
+          "
+        >
+          {{ i + 1 }}. {{ device.name }}
+        </div>
+        <!-- /important -->
+      </div>
+    </div>
+  </div>
+</div>

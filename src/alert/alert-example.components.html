@@ -1,0 +1,112 @@
+<div class="p-l-16 p-r-16">
+  <c8y-title>Alert</c8y-title>
+  <!-- important -->
+  <p class="text-medium m-b-8 m-t-24">Basic toast</p>
+  <div
+    class="d-flex gap-16"
+    role="group"
+  >
+    <button
+      class="btn btn-default"
+      type="button"
+      (click)="successAlert()"
+    >
+      Success
+    </button>
+
+    <button
+      class="btn btn-default"
+      type="button"
+      (click)="warningAlert()"
+    >
+      Warning
+    </button>
+
+    <button
+      class="btn btn-default"
+      type="button"
+      (click)="dangerAlert()"
+    >
+      Danger
+    </button>
+
+    <button
+      class="btn btn-default"
+      type="button"
+      (click)="infoAlert()"
+    >
+      Info
+    </button>
+
+    <button
+      class="btn btn-default"
+      type="button"
+      (click)="systemAlert()"
+    >
+      System
+    </button>
+  </div>
+
+  <p class="text-medium m-b-8 m-t-24">Advanced toasts</p>
+  <div
+    class="btn-group gap-16 flex-wrap"
+    role="group"
+  >
+    <button
+      class="btn btn-default"
+      type="button"
+      (click)="dangerWithDetails()"
+    >
+      Error toast with details
+    </button>
+
+    <button
+      class="btn btn-default"
+      type="button"
+      (click)="dangerAlertByText()"
+    >
+      Warning toast by text
+    </button>
+
+    <button
+      class="btn btn-default"
+      type="button"
+      (click)="addAlertByAlertObject()"
+    >
+      System toast by Alert object
+    </button>
+
+    <button
+      class="btn btn-default"
+      type="button"
+      (click)="addAlertWithHtml()"
+    >
+      Success toast with html
+    </button>
+
+    <button
+      class="btn btn-default"
+      type="button"
+      (click)="alertWithTemplateRef()"
+    >
+      Info toast with template reference
+    </button>
+
+    <button
+      class="btn btn-default"
+      type="button"
+      (click)="addAlertWithCallbacks()"
+    >
+      Warning toast with callbacks
+    </button>
+  </div>
+
+  <ng-template #templateRef>
+    <h4>This is a template ref</h4>
+    <p class="m-b-8 m-t-8">Add your own content to an alert, you can even include</p>
+    <button class="btn btn-default btn-sm">Buttons</button>
+    <p class="m-t-8">and other interactive elements.</p>
+  </ng-template>
+
+  <!-- /important -->
+</div>

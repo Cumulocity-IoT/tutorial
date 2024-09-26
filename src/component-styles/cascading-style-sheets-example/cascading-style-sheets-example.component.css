@@ -1,0 +1,25 @@
+/* Overwriting globally defined CSS variables only works with ViewEncapsulation.None enabled. See: Codex > Getting Started > Guides > Components styling */
+:root {
+  /* Override globall CSS variable */
+  --c8y-brand-primary: red;
+  /* Local CSS variables */
+  --css-background-color: #e0aaaa;
+  --css-border-color: #ddd;
+  --css-header-color: #333;
+  --css-text-color: #666;
+}
+
+/* Also you can use branding vars. Check Codex > UI guidelines > Foundations > Branding for more info */
+.css-example {
+  background-color: var(--c8y-brand-primary);
+  padding: 15px;
+  border: 1px solid var(--css-border-color);
+}
+
+.css-example h5 {
+  color: var(--css-header-color);
+}
+
+.css-example p {
+  color: var(--css-text-color);
+}

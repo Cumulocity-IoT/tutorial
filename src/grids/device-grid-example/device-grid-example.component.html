@@ -1,0 +1,30 @@
+<c8y-title>Data grid examples</c8y-title>
+
+<div class="form-group">
+  <label for="exampleSelect">Select a preset example</label>
+  <div class="c8y-select-wrapper">
+    <select
+      class="form-control"
+      id="exampleSelect"
+      [ngModel]="selectedExample"
+      (ngModelChange)="selectExample($event)"
+    >
+      <option
+        *ngFor="let example of examples"
+        [ngValue]="example"
+      >
+        {{ example.label }}
+      </option>
+    </select>
+    <span></span>
+  </div>
+</div>
+
+<c8y-device-grid
+  [title]="'Devices'"
+  [columns]="columnsInput"
+  [actionControls]="[]"
+  (onColumnsChange)="onColumnsChange($event)"
+  (onDeviceQueryStringChange)="onDeviceQueryStringChange($event)"
+  class="content-fullpage d-flex d-col border-top border-bottom"
+></c8y-device-grid>

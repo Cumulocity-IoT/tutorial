@@ -1,0 +1,52 @@
+<c8y-title>Realtime</c8y-title>
+
+<c8y-action-bar-item itemClass="navbar-form" placement="right">
+  <div class="form-group">
+    <label for="bufferSizeOptions" translate>Maximum buffer size of notifications</label>
+    <div class="c8y-select-wrapper">
+      <select
+        id="bufferSizeOptions"
+        class="form-control"
+        [(ngModel)]="bufferSize"
+      >
+        <option [ngValue]="option" *ngFor="let option of bufferSizeOptions">{{ option }} Items</option>
+      </select>
+    </div>
+  </div>
+</c8y-action-bar-item>
+
+<div class="card">
+  <div class="card-block">
+    <ul>
+      <li *ngFor="let service of services">
+        <c8y-realtime-btn [service]="service.instance" [title]="'Toggle ' + service.className" [label]="service.className"></c8y-realtime-btn>
+      </li>
+    </ul>
+    <p>
+      Below you can find the latest {{ bufferSize }} notifications received from your tenant.
+    </p>
+  </div>
+</div>
+
+<ng-container *ngIf="(allAPIsRealtime$ | async) as notificationBuffer; else waiting">
+  <ng-container *ngIf="notificationBuffer.length; else waiting">
+    <div class="card" *ngFor="let realtimeItem of notificationBuffer; let i = index">
+      <div class="card-header separator">
+        <h4 class="card-title">{{ i + 1 }}. RealtimeMessage in buffer</h4>
+      </div>
+      <div class="card-block">
+        <pre><code>{{ realtimeItem | json }}</code></pre>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+
+<ng-template #waiting>
+  <div class="card">
+    <div class="card-header separator">
+      <h4 class="card-title"><i c8yIcon="spinner" class="icon-spin"></i> Waiting for the first notification to be received.</h4>
+    </div>
+  </div>
+</ng-template>
+
+

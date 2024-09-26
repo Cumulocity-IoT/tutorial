@@ -1,0 +1,29 @@
+<c8y-title>Hooking via service</c8y-title>
+
+<div class="card">
+  <div class="card-block">
+    <p>This is an example for an Action added via service or factory</p>
+    <p>
+      See the
+      <code>Plus button</code>
+      in the upper right corner to see the actions
+    </p>
+
+    <code>
+      <pre>{{ actionService.items$ | async | json }}</pre>
+    </code>
+
+    <button
+      class="btn btn-primary"
+      (click)="addAction()"
+    >
+      Add a action bar item via service
+    </button>
+    <button
+      class="btn btn-default"
+      (click)="removeAction()"
+    >
+      Remove this action
+    </button>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<c8y-title>Cluster map with root node</c8y-title>
+
+<div class="d-flex p-16">
+  <div class="d-flex d-col j-c-center p-16" style="min-width: 150px;">
+    <c8y-asset-selector
+      [(ngModel)]="rootNode"
+      [config]="{
+        groupsSelectable: true,
+        groupsOnly: false
+      }"
+      (change)="resetConfig()"
+    ></c8y-asset-selector>
+  </div>
+  <!-- important -->
+  <div style="height: 350px; width: 100%; position: relative;">
+    <c8y-map-status
+      [clusterMap]="map"
+      [(config)]="followConfig"
+    ></c8y-map-status>
+    <c8y-cluster-map
+      #map
+      [rootNode]="rootNode"
+      [config]="followConfig"
+    >
+      <div *c8yMapPopup="let context">
+        Hello World from:
+        <br />
+        {{ context.name }}
+        <button
+          class="btn btn-primary btn-small"
+          (click)="startFollow(context)"
+        >
+          Follow
+        </button>
+      </div>
+    </c8y-cluster-map>
+  </div>
+  <!-- /important -->
+  <code
+    class="a-s-stretch p-16"
+    style="width: 200px"
+  >
+    RootNode:
+    <code>
+      <pre style="max-height: 120px">{{ rootNode | json }}  </pre>
+    </code>
+    <br />
+    <br />
+    Config:
+    <code>
+      <pre style="max-height: 120px">{{ followConfig | json }}  </pre>
+    </code>
+  </code>
+</div>

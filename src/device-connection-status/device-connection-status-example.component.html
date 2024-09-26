@@ -1,0 +1,145 @@
+<c8y-title>Device connection status</c8y-title>
+<div class="container-fluid p-t-16">
+  <c8y-list-group class="no-border-last">
+    <c8y-li>
+      <div class="content-flex-50">
+        <div class="col-4 text-medium">Connection status</div>
+        <div class="col-3 text-medium">
+          Size
+          <code>20</code>
+          <small class="text-muted"><em>(default)</em></small>
+        </div>
+        <div class="col-3 text-medium">
+          Size
+          <code>32</code>
+        </div>
+        <div class="col-2 text-medium">
+          Size
+          <code>64</code>
+        </div>
+      </div>
+    </c8y-li>
+    <c8y-li>
+      <div class="content-flex-50">
+        <div class="col-4">
+          <span>Send connection: available</span>
+          <br />
+          <span>Push connection: active</span>
+        </div>
+        <div class="col-3 a-s-center">
+          <!-- important -->
+          <c8y-device-status [mo]="connectedAndAvailableDeviceExample"></c8y-device-status>
+          <!-- /important -->
+        </div>
+        <div class="col-3">
+          <!-- important -->
+          <c8y-device-status
+            [size]="32"
+            [mo]="connectedAndAvailableDeviceExample"
+          ></c8y-device-status>
+          <!-- /important -->
+        </div>
+        <div class="col-2">
+          <!-- important -->
+          <c8y-device-status
+            [size]="64"
+            [mo]="connectedAndAvailableDeviceExample"
+          ></c8y-device-status>
+          <!-- /important -->
+        </div>
+      </div>
+    </c8y-li>
+    <c8y-li>
+      <div class="content-flex-50">
+        <div class="col-4">
+          <span>Send connection: available</span>
+          <br />
+          <span>Push connection: inactive</span>
+        </div>
+        <div class="col-3 a-s-center">
+          <c8y-device-status [mo]="disconnectedAndAvailableExample"></c8y-device-status>
+        </div>
+        <div class="col-3">
+          <c8y-device-status
+            [size]="32"
+            [mo]="disconnectedAndAvailableExample"
+          ></c8y-device-status>
+        </div>
+        <div class="col-2">
+          <c8y-device-status
+            [size]="64"
+            [mo]="disconnectedAndAvailableExample"
+          ></c8y-device-status>
+        </div>
+      </div>
+    </c8y-li>
+    <c8y-li>
+      <div class="content-flex-50">
+        <div class="col-4">
+          <span>Send connection: unavailable</span>
+          <br />
+          <span>Push connection: inactive</span>
+        </div>
+        <div class="col-3 a-s-center">
+          <c8y-device-status [mo]="disconnectedAndUnavailableDeviceExample"></c8y-device-status>
+        </div>
+        <div class="col-3">
+          <c8y-device-status
+            [size]="32"
+            [mo]="disconnectedAndUnavailableDeviceExample"
+          ></c8y-device-status>
+        </div>
+        <div class="col-2">
+          <c8y-device-status
+            [size]="64"
+            [mo]="disconnectedAndUnavailableDeviceExample"
+          ></c8y-device-status>
+        </div>
+      </div>
+    </c8y-li>
+    <c8y-li>
+      <div class="content-flex-50">
+        <div class="col-4">
+          <span>Send connection: not monitored</span>
+          <br />
+          <span>Push connection: inactive</span>
+        </div>
+        <div class="col-3 a-s-center">
+          <c8y-device-status [mo]="notMonitoredDeviceExample"></c8y-device-status>
+        </div>
+        <div class="col-3">
+          <c8y-device-status
+            [size]="32"
+            [mo]="notMonitoredDeviceExample"
+          ></c8y-device-status>
+        </div>
+        <div class="col-2">
+          <c8y-device-status
+            [size]="64"
+            [mo]="notMonitoredDeviceExample"
+          ></c8y-device-status>
+        </div>
+      </div>
+    </c8y-li>
+    <c8y-li>
+      <div class="content-flex-50">
+        <div class="col-4">Maintenance</div>
+        <div class="col-3 a-s-center">
+          <c8y-device-status [mo]="inMaintenanceDeviceExample"></c8y-device-status>
+        </div>
+        <div class="col-3">
+          <c8y-device-status
+            [size]="32"
+            [mo]="inMaintenanceDeviceExample"
+          ></c8y-device-status>
+        </div>
+        <div class="col-2">
+          <c8y-device-status
+            [size]="64"
+            [mo]="inMaintenanceDeviceExample"
+          ></c8y-device-status>
+        </div>
+      </div>
+    </c8y-li>
+  </c8y-list-group>
+</div>

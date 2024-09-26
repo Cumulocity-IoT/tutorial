@@ -1,0 +1,332 @@
+<c8y-title>Asset selector</c8y-title>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-8 col-md-9">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Miller columns</h4>
+      </div>
+      <div class="card-block">
+        <p>
+          Miller columns (also known as cascading lists) are a browsing/visualization technique that
+          can be applied to tree structures. The columns allow multiple levels of the hierarchy to
+          be open at once, and provide a visual representation of the current location.
+        </p>
+      </div>
+    </div>
+    <!-- Single select -->
+    <div class="card">
+      <div class="card-header separator">
+        <h4 class="card-title">Miller view single select child devices</h4>
+      </div>
+      <div class="d-flex d-col" style="height: 300px">
+        <c8y-asset-selector-miller
+          [(ngModel)]="model"
+          (onSelected)="selectionChanged($event)"
+          [config]="{
+            groupsSelectable: true,
+            showChildDevices: true,
+            showUnassignedDevices: true,
+            showFilter: true
+          }"
+        ></c8y-asset-selector-miller>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header separator">
+        <h4 class="card-title">Miller view single select</h4>
+      </div>
+      <div class="d-flex d-col" style="height: 300px">
+        <c8y-asset-selector-miller
+          [(ngModel)]="model"
+          (onSelected)="selectionChanged($event)"
+          [config]="{
+            groupsSelectable: true,
+            showUnassignedDevices: true
+          }"
+        ></c8y-asset-selector-miller>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header separator">
+        <h4 class="card-title">Miller view single select only devices</h4>
+      </div>
+      <div class="d-flex d-col" style="height: 300px">
+        <c8y-asset-selector-miller
+          [(ngModel)]="model"
+          (onSelected)="selectionChanged($event)"
+          [config]="{
+            groupsSelectable: false
+          }"
+        ></c8y-asset-selector-miller>
+      </div>
+    </div>
+
+    <!-- Single select  column headers and filter-->
+    <div class="card">
+      <div class="card-header separator">
+        <h4 class="card-title">Miller view single select with column headers and filter</h4>
+      </div>
+      <div class="d-flex d-col" style="height: 300px">
+        <c8y-asset-selector-miller
+          [(ngModel)]="model"
+          (onSelected)="selectionChanged($event)"
+          [config]="{
+            groupsSelectable: true,
+            columnHeaders: true,
+            showFilter: true
+          }"
+        ></c8y-asset-selector-miller>
+      </div>
+    </div>
+
+    <!-- Single select  column headers, filter and global search-->
+    <div class="card">
+      <div class="card-header separator">
+        <h4 class="card-title">
+          Miller view single select with column headers, filter, global search
+        </h4>
+      </div>
+      <div class="d-flex d-col" style="height: 300px">
+        <c8y-asset-selector-miller
+          [(ngModel)]="model"
+          (onSelected)="selectionChanged($event)"
+          [config]="{
+            groupsSelectable: true,
+            columnHeaders: true,
+            showFilter: true,
+            showUnassignedDevices: true,
+            showChildDevices: true,
+            search: true,
+            showSelected: false
+          }"
+          class="bg-component"
+        ></c8y-asset-selector-miller>
+      </div>
+    </div>
+
+    <!-- Multi select -->
+    <div class="card">
+      <div class="card-header separator">
+        <h4 class="card-title">Miller view multi select</h4>
+      </div>
+      <div class="d-flex d-col" style="height: 300px">
+        <c8y-asset-selector-miller
+          [(ngModel)]="model"
+          (onSelected)="selectionChanged($event)"
+          [config]="{
+            groupsSelectable: true,
+            multi: true,
+            columnHeaders: false,
+            showFilter: false
+          }"
+        ></c8y-asset-selector-miller>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="rootNode$.value !== undefined">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header separator">
+            <h4 class="card-title">Miller view different root {{ (rootNode$ | async)?.id }}</h4>
+          </div>
+          <div class="d-flex d-col" style="height: 300px">
+            <c8y-asset-selector-miller
+              [(ngModel)]="model"
+              (onSelected)="selectionChanged($event)"
+              [asset]="rootNode$ | async"
+              [config]="{
+                groupsSelectable: true,
+                columnHeaders: true,
+                showFilter: true
+              }"
+            ></c8y-asset-selector-miller>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header separator">
+            <h4 class="card-title">
+              Miller view single column different root {{ (rootNode$ | async)?.id }}
+            </h4>
+          </div>
+          <div class="d-flex d-col" style="height: 300px">
+            <c8y-asset-selector-miller
+              [(ngModel)]="model"
+              (onSelected)="selectionChanged($event)"
+              [config]="{
+                groupsSelectable: true,
+                multi: false,
+                columnHeaders: true,
+                singleColumn: true,
+                showFilter: true
+              }"
+              [asset]="rootNode$ | async"
+              class="bg-component"
+            ></c8y-asset-selector-miller>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Single column -->
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header separator">
+            <h4 class="card-title">Miller view single select single column with global search</h4>
+          </div>
+          <div class="d-flex d-col bg-level-1" style="height: 300px">
+            <c8y-asset-selector-miller
+              [(ngModel)]="model"
+              (onSelected)="selectionChanged($event)"
+              [config]="{
+                groupsSelectable: true,
+                singleColumn: true,
+                columnHeaders: true,
+                showFilter: true,
+                search: true
+              }"
+            ></c8y-asset-selector-miller>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header separator">
+            <h4 class="card-title">Miller view multi select single column</h4>
+          </div>
+          <div class="d-flex d-col" style="height: 300px">
+            <c8y-asset-selector-miller
+              [(ngModel)]="model"
+              (onSelected)="selectionChanged($event)"
+              [config]="{
+                groupsSelectable: true,
+                singleColumn: true,
+                columnHeaders: true,
+                showFilter: true,
+                multi: true
+              }"
+            ></c8y-asset-selector-miller>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- tree -->
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Hierarchical tree</h4>
+      </div>
+      <div class="card-block">
+        <p>
+          In computer science, a tree is a widely used abstract data type that simulates a
+          hierarchical tree structure, with a root value and subtrees of children with a parent
+          node, represented as a set of linked nodes.
+        </p>
+      </div>
+    </div>
+    <!-- tree single select -->
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header separator">
+            <h4 class="card-title">Tree view single select child devices</h4>
+          </div>
+          <c8y-asset-selector
+            (onSelected)="selectionChanged($event)"
+            [(ngModel)]="model"
+            [config]="{
+              groupsSelectable: true,
+              showUnassignedDevices: true,
+              showChildDevices: true
+            }"
+          ></c8y-asset-selector>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header separator">
+            <h4 class="card-title">Tree view multi select</h4>
+          </div>
+          <c8y-asset-selector
+            (onSelected)="selectionChanged($event)"
+            [(ngModel)]="model"
+            [config]="{
+              groupsSelectable: true,
+              multi: true
+            }"
+          ></c8y-asset-selector>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Tree view only devices</h4>
+        </div>
+        <c8y-asset-selector
+          [(ngModel)]="model"
+          (onSelected)="selectionChanged($event)"
+        ></c8y-asset-selector>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Tree view only groups</h4>
+        </div>
+        <c8y-asset-selector
+          [(ngModel)]="model"
+          (onSelected)="selectionChanged($event)"
+          [config]="{
+            groupsSelectable: true,
+            groupsOnly: true
+          }"
+        ></c8y-asset-selector>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Tree view with global search and chips</h4>
+        </div>
+        <c8y-asset-selector
+          [(ngModel)]="model"
+          (onSelected)="selectionChanged($event)"
+          [config]="{
+            groupsSelectable: true,
+            multi: true,
+            search: true,
+            showSelected: true
+          }"
+        ></c8y-asset-selector>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Tree view different root {{ (rootNode$ | async)?.id }}</h4>
+        </div>
+        <c8y-asset-selector
+          [(ngModel)]="model"
+          (onSelected)="selectionChanged($event)"
+          [asset]="rootNode$ | async"
+        ></c8y-asset-selector>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-4 col-md-3 sticky-top" style="top: 72px; z-index: 1000">
+    <div class="card">
+      <div class="card-block">
+        <div class="legend form-block">Model</div>
+        <pre style="min-height: 98px"><code>{{ model | json }}</code></pre>
+      </div>
+    </div>
+  </div>
+</div>

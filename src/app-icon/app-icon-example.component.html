@@ -1,0 +1,109 @@
+<div class="container-fluid">
+  <div class="content-flex-50 separator-bottom p-t-16 p-b-16">
+    <p class="col-2 a-s-center text-medium">Default icon</p>
+    <div class="col-2 d-col a-i-center">
+      <!-- important -->
+      <c8y-app-icon
+        class="icon-36"
+        [app]="defaultApp1"
+        [contextPath]="defaultApp1.contextPath"
+        [name]="defaultApp1.name"
+      ></c8y-app-icon>
+      <!-- /important -->
+      <p class="text-center">{{defaultApp1.name}}</p>
+    </div>
+    <div class="col-2 d-col a-i-center">
+      <c8y-app-icon
+        class="icon-36"
+        [app]="defaultApp2"
+        [contextPath]="defaultApp2.contextPath"
+        [name]="defaultApp2.name"
+      ></c8y-app-icon>
+      <p class="text-center">{{defaultApp2.name}}</p>
+    </div>
+    <div class="col-2 d-col a-i-center">
+      <c8y-app-icon
+        class="icon-36"
+        [app]="defaultApp3"
+        [contextPath]="defaultApp3.contextPath"
+        [name]="defaultApp3.name"
+      ></c8y-app-icon>
+      <p class="text-center">{{defaultApp3.name}}</p>
+    </div>
+    <div class="col-2 d-col a-i-center">
+      <c8y-app-icon
+        class="icon-36"
+        [app]="defaultApp4"
+        [contextPath]="defaultApp4.contextPath"
+        [name]="defaultApp4.name"
+      ></c8y-app-icon>
+      <p class="text-center">{{defaultApp4.name}}</p>
+    </div>
+    <div class="col-2 d-col a-i-center">
+      <c8y-app-icon
+        class="icon-36"
+        [app]="defaultApp5"
+        [contextPath]="defaultApp5.contextPath"
+        [name]="defaultApp5.name"
+      ></c8y-app-icon>
+      <p class="text-center">{{defaultApp5.name}}</p>
+    </div>
+  </div>
+
+  <div class="content-flex-50 separator-bottom p-t-16 p-b-16" >
+    <p class="col-2 a-s-center text-medium">Custom icon</p>
+    <div class="col-2 d-col a-i-center">
+      <!-- important -->
+      <c8y-app-icon
+      class="icon-36"
+      [app]="customApp1"
+      [contextPath]="customApp1.contextPath"
+      [name]="customApp1.name"
+      ></c8y-app-icon>
+      <!-- /important -->
+      <p class="text-center">{{customApp1.name}}</p>
+    </div>
+    <div class="col-2 d-col a-i-center">
+      <c8y-app-icon
+      class="icon-36"
+      [app]="customApp2"
+      [contextPath]="customApp2.contextPath"
+      [name]="customApp2.name"
+      ></c8y-app-icon>
+      <p class="text-center">{{customApp2.name}}</p>
+    </div>
+    <div class="col-2 d-col a-i-center">
+      <c8y-app-icon
+      class="icon-36"
+      [app]="customApp3"
+      [contextPath]="customApp3.contextPath"
+      [name]="customApp3.name"
+      ></c8y-app-icon>
+      <p class="text-center">{{customApp3.name}}</p>
+    </div>
+  </div>
+
+  <div class="content-flex-50 p-t-16 p-b-16" >
+    <p class="col-2 text-medium a-s-center">Fallback icon</p>
+    <div class="col-2 d-col a-i-center">
+      <!-- important -->
+      <c8y-app-icon
+        [app]="appExample1"
+        class="icon-36"
+        [contextPath]="appExample1.contextPath"
+        [name]="appExample1.name"
+      ></c8y-app-icon>
+      <!-- /important -->
+      <p class="text-center">{{appExample1.name}}</p>
+    </div>
+    <div class="col-2 d-col a-i-center">
+      <c8y-app-icon
+        [app]="appExample2"
+        class="icon-36"
+        [contextPath]="appExample2.contextPath"
+        [name]="appExample2.name"
+      ></c8y-app-icon>
+      <p class="text-center">{{appExample2.name}}</p>
+    </div>
+  </div>
+</div>

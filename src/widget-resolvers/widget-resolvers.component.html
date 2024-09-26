@@ -1,0 +1,13 @@
+<div class="m-8">
+  <div class="form-group">
+    <label>Event text</label>
+    <input type="text" class="form-control" [ngModel]="config?.event?.text" readonly disabled>
+  </div>
+  <div class="form-group">
+    <label>{{ label }}</label>
+    <input type="text" class="form-control" [ngModel]="value" readonly disabled>
+  </div>
+
+  <label>Config</label>
+  <pre><code>{{ config | json }}</code></pre>
+</div>

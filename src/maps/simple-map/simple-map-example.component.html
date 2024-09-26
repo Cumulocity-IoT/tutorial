@@ -1,0 +1,59 @@
+<c8y-title>Simple map example</c8y-title>
+
+<div class="d-flex p-16">
+  <div class="d-flex d-col j-c-center p-16">
+    <button
+      class="btn btn-default btn-block"
+      (click)="changeDevices()"
+    >
+      Toggle device amount
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="setRandomZoomLevel()"
+    >
+      Set random zoom level
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="setCenter()"
+    >
+      Set map to Düsseldorf
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="changeIcon()"
+    >
+      Change icon
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="changeColor()"
+    >
+      Change color
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="toggleRealtime()"
+    >
+      {{ config.realtime ? 'Disable realtime' : 'Enable realtime' }}
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="toggleFollow()"
+    >
+      {{ config.follow ? 'Unfollow' : 'Follow' }}
+    </button>
+  </div>
+  <!-- important -->
+  <div style="height: 350px; width: 100%;">
+    <c8y-map
+      [assets]="exampleDevices"
+      [config]="config"
+    ></c8y-map>
+  </div>
+  <!-- /important -->
+  <code style="width: 200px;" class="a-s-stretch p-16">
+    <pre>{{ config | json }}  </pre>
+  </code>
+</div>

@@ -1,0 +1,11 @@
+<!-- The c8y-title component will display the given string (here: "Component hook example") in the header as title -->
+<c8y-title>Component</c8y-title>
+<div class="card">
+  <div class="card-block">
+    <c8y-dynamic-component
+      componentId="simple.component"
+      [config]="{ text: 'Hello world' }"
+      [mode]="editComponent ? 'config' : 'component'"
+    ></c8y-dynamic-component>
+  </div>
+</div>

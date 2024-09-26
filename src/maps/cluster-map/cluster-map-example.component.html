@@ -1,0 +1,60 @@
+<c8y-title>Cluster map example</c8y-title>
+<div class="d-flex p-16">
+  <div class="d-flex d-col j-c-center p-16">
+    <button
+      class="btn btn-default btn-block"
+      (click)="setRandomZoomLevel()"
+    >
+      Set random zoom level
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="setCenter()"
+    >
+      Set map to Düsseldorf
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="changeIcon()"
+    >
+      Change icon
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="changeColor()"
+    >
+      Change color
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="toggleAutorefresh()"
+    >
+      Toggle auto refresh every 5s
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="showClusterColor = !showClusterColor"
+    >
+      Show cluster color
+    </button>
+  </div>
+  <!-- important -->
+  <div style="height: 350px; width: 100%; position: relative;">    
+    <c8y-map-status
+      [clusterMap]="map"
+      [(config)]="config"
+    ></c8y-map-status>
+    <c8y-cluster-map
+      #map
+      [config]="config"
+      [showClusterColor]="showClusterColor"
+    ></c8y-cluster-map>
+  </div>
+  <!-- /important -->
+  <code
+    class="a-s-stretch p-16"
+    style="width: 200px"
+  >
+    <pre>{{ config | json }}  </pre>
+  </code>
+</div>

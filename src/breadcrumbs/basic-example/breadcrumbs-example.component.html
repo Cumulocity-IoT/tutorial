@@ -1,0 +1,23 @@
+<c8y-title>Breadcrumb</c8y-title>
+
+<div class="card">
+  <!-- important -->
+  <c8y-breadcrumb>
+    <c8y-breadcrumb-item
+      [icon]="'cog'"
+      [label]="'Breadcrumb'"
+    ></c8y-breadcrumb-item>
+    <c8y-breadcrumb-item
+      [label]="'Breadcrumb expand'"
+      [path]="'/breadcrumbs-expand'"
+    ></c8y-breadcrumb-item>
+  </c8y-breadcrumb>
+  <!-- /important -->
+
+  <div class="card-block">
+    <c8y-breadcrumb-outlet
+      class="app-breadcrumbs"
+      [breadcrumbs]="breadcrumbService.items$ | async"
+    ></c8y-breadcrumb-outlet>
+  </div>
+</div>

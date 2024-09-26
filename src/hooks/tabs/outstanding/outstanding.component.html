@@ -1,0 +1,22 @@
+<!-- The c8y-title component will display the given string (here: "Outstanding Tab") in the header as title -->
+<c8y-title>Outstanding tab</c8y-title>
+<div class="card">
+  <div class="card-block">
+    <p>
+      This is the first tab we added with the
+      <code>hookTab</code>
+      . Note: If only one tab is used, the tabs are not rendered at all.
+    </p>
+    <p>
+      Tabs are by default orientated vertical. You can however set an application option or define
+      the orientation on the tab interface itself, to change the orientation. The following button
+      toggles the orientation for the whole application:
+    </p>
+    <button
+      class="btn btn-primary"
+      (click)="toggleOrientation()"
+    >
+      Toggle orientation
+    </button>
+  </div>
+</div>

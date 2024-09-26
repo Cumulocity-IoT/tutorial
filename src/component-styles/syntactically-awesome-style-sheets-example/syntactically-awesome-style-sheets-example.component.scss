@@ -1,0 +1,16 @@
+$background-color: #f6ffed;
+$border-color: #b7eb8f;
+
+.scss-example {
+  background-color: $background-color;
+  padding: 15px;
+  border: 1px solid $border-color;
+
+  h5 {
+    color: darken($border-color, 30%);
+  }
+
+  p {
+    color: darken($background-color, 50%);
+  }
+}

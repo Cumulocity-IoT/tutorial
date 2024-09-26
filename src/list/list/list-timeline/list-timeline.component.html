@@ -1,0 +1,30 @@
+<c8y-title>List example</c8y-title>
+
+<c8y-list-group class="m-t-16">
+  <c8y-li-timeline *c8yFor="let device of devices; loadMore: 'auto'; let i = index">
+    {{ device.creationTime | date }}
+    <c8y-li>
+      <c8y-li-radio (onSelect)="updateSelected($event, device)"></c8y-li-radio>
+      <c8y-li-icon [icon]="'rocket'"></c8y-li-icon>
+      {{ i + 1 }}. {{ device.name || '-' }}
+      <c8y-li-footer>
+        Device id:
+        <a [routerLink]="['/device', device.id]">{{ device.id }}</a>
+        {{ device.creationTime }}
+      </c8y-li-footer>
+
+      <c8y-li-action
+        icon="times"
+        (click)="deleteDevice(device.id)"
+      >
+        Delete
+      </c8y-li-action>
+      <c8y-li-action
+        icon="rocket"
+        (click)="(false)"
+      >
+        Launch to space
+      </c8y-li-action>
+    </c8y-li>
+  </c8y-li-timeline>
+</c8y-list-group>

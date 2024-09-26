@@ -1,0 +1,47 @@
+<c8y-title>List example</c8y-title>
+
+<c8y-list-group>
+  <c8y-li class="page-sticky-header">
+    <c8y-li-checkbox
+      (onSelect)="checkAll($event)"
+      [indeterminate]="isIndeterminate$ | async"
+    ></c8y-li-checkbox>
+    <c8y-li-icon
+      [icon]="'file'"
+      style="opacity: 0"
+    ></c8y-li-icon>
+    <span>Devices</span>
+  </c8y-li>
+  <ng-template
+    c8yFor
+    let-device
+    [c8yForOf]="devices"
+    [c8yForLoadMore]="'show'"
+    (c8yForChange)="itemsChange($event)"
+  >
+    <c8y-li #li>
+      <c8y-li-checkbox
+        [selected]="isSelected(device)"
+        (onSelect)="updateSelected($event, device)"
+        (click)="$event.stopPropagation()"
+      ></c8y-li-checkbox>
+      <c8y-li-icon [icon]="'exchange'"></c8y-li-icon>
+      <button
+        class="btn-clean"
+        (click)="li.collapsed = !li.collapsed"
+      >
+        {{ device.name || '-' }} {{ totalLoaded }}
+      </button>
+      <c8y-li-action
+        icon="delete"
+        (click)="deleteDevice(device.id)"
+      >
+        Delete
+      </c8y-li-action>
+      <c8y-li-collapse>
+        id:
+        <a [routerLink]="['/device', device.id]">{{ device.id }}</a>
+      </c8y-li-collapse>
+    </c8y-li>
+  </ng-template>
+</c8y-list-group>

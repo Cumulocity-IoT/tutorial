@@ -1,0 +1,105 @@
+<c8y-title>Forms Validation</c8y-title>
+<form
+  (ngSubmit)="formGroup.valid && save(formGroup.value)"
+  (change)="formChange()"
+  [formGroup]="formGroup"
+>
+  <c8y-form-group>
+    <label for="firstName" class="control-label" translate>First name (default validation messages)</label>
+    <input
+      type="text"
+      class="form-control"
+      id="firstName"
+      formControlName="firstName"
+      [placeholder]="'e.g. {{ example }}' | translate: { example: 'Max' }"
+    />
+  </c8y-form-group>
+
+  <c8y-form-group>
+    <label for="lastName" class="control-label" translate>Last name (custom validation messages added)</label>
+    <input
+      type="text"
+      class="form-control"
+      id="lastName"
+      formControlName="lastName"
+      [placeholder]="'e.g. {{ example }}' | translate: { example: 'Mustermann' }"
+    />
+    <c8y-messages>
+      <c8y-message name="required" text="Last Name is an required field, please fill it."></c8y-message>
+      <c8y-message name="minlength" [text]="'Last Name is supposed to be longer then {{ requiredLength }} characters.'"></c8y-message>
+      <c8y-message name="maxlength" [text]="'Last Name is not supposed to be longer then {{ requiredLength }} characters.'"></c8y-message>
+    </c8y-messages>
+  </c8y-form-group>
+
+  <c8y-form-group>
+    <label for="eMail" class="control-label" translate>E-Mail</label>
+    <input
+      type="email"
+      class="form-control"
+      id="eMail"
+      formControlName="eMail"
+      [placeholder]="'e.g. {{ example }}' | translate: { example: 'max.mustermann@example.com' }"
+    />
+    <c8y-messages>
+      <c8y-message name="email" text="This does not fulfill our standards for email addresses."></c8y-message>
+    </c8y-messages>
+  </c8y-form-group>
+
+  <c8y-form-group>
+    <label for="gender" translate>Gender</label>
+    <div class="c8y-select-wrapper">
+      <select id="gender" class="form-control" formControlName="gender">
+        <option [ngValue]="''">Select…</option>
+        <option [ngValue]="'male'">{{ 'Male' | translate }}</option>
+        <option [ngValue]="'female'">{{ 'Female' | translate }}</option>
+        <option [ngValue]="'x'">X</option>
+      </select>
+      <span></span>
+    </div>
+    <c8y-messages>
+      <c8y-message name="gender" [text]="'This is not a valid gender.' | translate"></c8y-message>
+    </c8y-messages>
+  </c8y-form-group>
+
+  <c8y-form-group>
+    <label for="description" class="control-label" translate>Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="description"
+      formControlName="description"
+      [placeholder]="'e.g. {{ example }}' | translate: { example: 'Some description' }"
+    />
+  </c8y-form-group>
+
+  <c8y-form-group>
+    <label for="description2" class="control-label" translate>Description2</label>
+    <input
+      type="text"
+      class="form-control"
+      id="description2"
+      formControlName="description2"
+      [placeholder]="'e.g. {{ example }}' | translate: { example: 'Some description' }"
+    />
+    <c8y-messages>
+      <c8y-message name="pattern" [text]="'Must start with \'description\', optionally followed by further letters.' | translate"></c8y-message>
+    </c8y-messages>
+  </c8y-form-group>
+
+  <c8y-form-group [novalidation]="true">
+    <label for="notes" class="control-label" translate>Notes</label>
+    <input
+      type="text"
+      class="form-control"
+      id="notes"
+      formControlName="notes"
+      [placeholder]="'e.g. {{ example }}' | translate: { example: 'Some notes' }" #test
+    />
+    <c8y-messages>
+      <c8y-message *ngIf="test.value?.length > 0 && test.value?.length < 5 ">Take longer notes.</c8y-message>
+      <c8y-message *ngIf="test.value?.length > 50">Don't take too long notes.</c8y-message>
+    </c8y-messages>
+  </c8y-form-group>
+
+  <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid" translate>Submit</button>
+</form>

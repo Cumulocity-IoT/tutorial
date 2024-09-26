@@ -1,0 +1,105 @@
+<c8y-title>List example</c8y-title>
+
+<c8y-range>
+  <input
+    id="range"
+    type="range"
+    min="0"
+    max="10000"
+    step="100"
+    [(ngModel)]="dataMultiplier"
+    (ngModelChange)="loadDevicesContainerStrategy()"
+  />
+</c8y-range>
+<p>number of loaded objects: {{ devicesContainerStrategy?.data?.length }}</p>
+<c8y-list-group>
+  <c8y-li>
+    <c8y-li-checkbox (onSelect)="checkAll = $event"></c8y-li-checkbox>
+    <label>All devices</label>
+  </c8y-li>
+  <c8y-li
+    *c8yFor="
+      let device of devicesContainerStrategy;
+      loadMore: 'show';
+      enableVirtualScroll: true;
+      virtualScrollElementSize: 40;
+      virtualScrollStrategy: 'fixed';
+      virtualScrollContainerHeight: 400
+    "
+    #li
+  >
+    <c8y-li-checkbox
+      [selected]="checkAll"
+      (onSelect)="updateSelected($event, device)"
+      (click)="$event.stopPropagation()"
+    ></c8y-li-checkbox>
+    <c8y-li-icon [icon]="'file'"></c8y-li-icon>
+    <button
+      class="btn-clean"
+      (click)="li.collapsed = !li.collapsed"
+    >
+      {{ device.name || '-' }}
+    </button>
+    <c8y-li-action
+      icon="times"
+      (click)="deleteDevice(device.id)"
+    >
+      Delete
+    </c8y-li-action>
+    <c8y-li-collapse>
+      id:
+      <a [routerLink]="['/device', device.id]">{{ device.id }}</a>
+    </c8y-li-collapse>
+  </c8y-li>
+</c8y-list-group>
+
+<hr />
+
+<label
+  class="c8y-checkbox"
+  title="Enable basic c8yFor with same number of elements as above:"
+>
+  <input
+    type="checkbox"
+    [(ngModel)]="enableBasicList"
+  />
+  <span></span>
+  <span>
+    Enable basic (non virtual scroll) c8yFor with same number of elements as above (this might crash
+    Your browser if input data is big):
+  </span>
+</label>
+
+<c8y-list-group *ngIf="enableBasicList">
+  <c8y-li>
+    <c8y-li-checkbox (onSelect)="checkAll = $event"></c8y-li-checkbox>
+    <label>All devices</label>
+  </c8y-li>
+  <c8y-li
+    *c8yFor="let device of devicesContainerStrategy"
+    #li
+  >
+    <c8y-li-checkbox
+      [selected]="checkAll"
+      (onSelect)="updateSelected($event, device)"
+      (click)="$event.stopPropagation()"
+    ></c8y-li-checkbox>
+    <c8y-li-icon [icon]="'file'"></c8y-li-icon>
+    <button
+      class="btn-clean"
+      (click)="li.collapsed = !li.collapsed"
+    >
+      {{ device.name || '-' }}
+    </button>
+    <c8y-li-action
+      icon="times"
+      (click)="deleteDevice(device.id)"
+    >
+      Delete
+    </c8y-li-action>
+    <c8y-li-collapse>
+      id:
+      <a [routerLink]="['/device', device.id]">{{ device.id }}</a>
+    </c8y-li-collapse>
+  </c8y-li>
+</c8y-list-group>

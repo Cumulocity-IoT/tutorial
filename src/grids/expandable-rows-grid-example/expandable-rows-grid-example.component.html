@@ -1,0 +1,18 @@
+<c8y-title>Data grid examples</c8y-title>
+
+<c8y-data-grid
+  [title]="title"
+  [columns]="columns"
+  [displayOptions]="displayOptions"
+  [rows]="data"
+  [pagination]="pagination"
+  [selectable]="selectable"
+  [expandableRows]="true"
+  (itemsSelect)="onItemsSelect($event)"
+  [actionControls]="actionControls"
+  class="content-fullpage d-flex d-col border-top border-bottom"
+>
+  <div *c8yExpandableRow="let context">
+    <c8y-expandable-row-example [context]="context"></c8y-expandable-row-example>
+  </div>
+</c8y-data-grid>

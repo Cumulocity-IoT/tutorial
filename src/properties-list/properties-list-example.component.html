@@ -1,0 +1,22 @@
+<div class="p-t-16">
+  <c8y-title>Properties list</c8y-title>
+  <!-- important -->
+  <c8y-properties-list
+    [title]="'Custom object properties'"
+    [data]="customData"
+    [emptyLabel]="'--'"
+    [properties]="customProperties"
+  ></c8y-properties-list>
+  <!-- /important -->
+
+  <br />
+
+  <!-- important -->
+  <c8y-properties-list
+    [title]="'Typed object properties'"
+    [data]="archiveManifest"
+    [emptyLabel]="'--'"
+    [properties]="specifiedPackageVersionProperties"
+  ></c8y-properties-list>
+  <!-- /important -->
+</div>

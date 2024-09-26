@@ -1,0 +1,202 @@
+<c8y-title>Data point selector</c8y-title>
+
+<div class="container-fluid p-t-24">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-9">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Open selection modal via e.g. button</h4>
+        </div>
+        <div class="card-block d-flex d-col">
+          <button class="btn btn-primary" (click)="addDatapoints()">Select data points</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-3">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Model</h4>
+        </div>
+        <div class="card-inner-scroll">
+          <pre style="min-height: 98px"><code>{{ datapoints1 | json }}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-9">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Data point selection list</h4>
+        </div>
+        <div class="card-inner-scroll d-flex d-col bg-component" style="height: 350px">
+          <c8y-datapoint-selection-list
+            class="d-contents"
+            [(ngModel)]="datapoints2"
+            [allowDragAndDrop]="false"
+          >
+          </c8y-datapoint-selection-list>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-3">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Model</h4>
+        </div>
+        <div class="card-inner-scroll">
+          <pre style="min-height: 98px"><code>{{ datapoints2 | json }}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-9">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Data point selection list (with drag and drop reordering)</h4>
+        </div>
+        <div class="card-inner-scroll d-flex d-col bg-component" style="height: 350px">
+          <c8y-datapoint-selection-list
+            class="d-contents"
+            [(ngModel)]="datapoints3"
+            [allowDragAndDrop]="true"
+          >
+          </c8y-datapoint-selection-list>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-3">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Model</h4>
+        </div>
+        <div class="card-inner-scroll">
+          <pre style="min-height: 98px"><code>{{ datapoints3 | json }}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-9">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Data point selection list (with validation error)</h4>
+        </div>
+        <div class="card-inner-scroll d-flex d-col bg-component" style="height: 350px">
+          <c8y-datapoint-selection-list
+            class="d-contents"
+            [(ngModel)]="datapoints4"
+            [allowDragAndDrop]="false"
+          >
+            <div
+              class="alert alert-danger"
+              role="alert"
+              translate
+            >
+              Some validation error message
+            </div>
+          </c8y-datapoint-selection-list>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-3">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Model</h4>
+        </div>
+        <div class="card-inner-scroll">
+          <pre style="min-height: 98px"><code>{{ datapoints4 | json }}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-9">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Data point selector</h4>
+        </div>
+        <div class="card-block d-flex d-col p-0" style="height: 300px">
+          <c8y-datapoint-selector
+            [allowDatapointsFromMultipleAssets]="true"
+            [(ngModel)]="datapoints5"
+            class="d-contents"
+          >
+          </c8y-datapoint-selector>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-3">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Model</h4>
+        </div>
+        <div class="card-inner-scroll">
+          <pre style="min-height: 98px"><code>{{ datapoints5 | json }}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="contextAsset">
+    <div class="col-xs-12 col-sm-8 col-md-9">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Data point selector with context</h4>
+        </div>
+        <div class="card-block d-flex d-col p-0" style="height: 300px">
+          <c8y-datapoint-selector
+            [contextAsset]="contextAsset"
+            [allowDatapointsFromMultipleAssets]="true"
+            [allowSearch]="false"
+            [(ngModel)]="datapoints6"
+            class="d-contents"
+          ></c8y-datapoint-selector>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-3">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Model</h4>
+        </div>
+        <div class="card-inner-scroll">
+          <pre style="min-height: 98px"><code>{{ datapoints6 | json }}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-9">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Data point selector (without data point templates)</h4>
+        </div>
+        <div class="card-block d-flex d-col p-0" style="height: 300px">
+          <c8y-datapoint-selector
+            [allowDatapointsFromMultipleAssets]="true"
+            [(ngModel)]="datapoints7"
+            [ignoreDatapointTemplates]="true"
+            class="d-contents"
+          ></c8y-datapoint-selector>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-3">
+      <div class="card">
+        <div class="card-header separator">
+          <h4 class="card-title">Model</h4>
+        </div>
+        <div class="card-inner-scroll">
+          <pre style="min-height: 98px"><code>{{ datapoints7 | json }}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

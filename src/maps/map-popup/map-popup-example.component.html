@@ -1,0 +1,34 @@
+<c8y-title>Map with popup example</c8y-title>
+
+<div class="d-flex p-16">
+  <div class="d-flex d-col j-c-center p-16">
+    <button
+      class="btn btn-primary btn-block"
+      (click)="showFirstPopup()"
+    >
+      Show first popup
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="changeDevices()"
+    >
+      Toogle device amount
+    </button>
+  </div>
+  <!-- important -->
+  <div style="height: 350px; width: 100%">
+    <c8y-map
+      [assets]="exampleDevices"
+      [config]="config"
+    >
+      <div *c8yMapPopup="let context">
+        Hello World from:
+        <br />
+        name: {{ context.name }}
+        <br />
+        id: {{ context.id }}
+      </div>
+    </c8y-map>
+  </div>
+  <!-- /important -->
+</div>

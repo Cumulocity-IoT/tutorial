@@ -1,0 +1,31 @@
+<div class="form-group">
+  <c8y-form-group>
+    <label>Event</label>
+    <div class="c8y-select-wrapper">
+      <select
+        class="form-control"
+        [ngModel]="config.event?.id"
+        (ngModelChange)="onEventSelect($event)"
+        [required]="true"
+        name="event"
+      >
+        <option [value]="event.id" *ngFor="let event of events">{{ event.text }}</option>
+      </select>
+    </div>
+  </c8y-form-group>
+</div>
+
+<div class="form-group">
+  <label>Property</label>
+  <div class="c8y-select-wrapper">
+    <select
+      class="form-control"
+      [ngModel]="config.property?.id"
+      (ngModelChange)="onPropertySelect($event)"
+      [required]="true"
+      name="property"
+    >
+      <option [value]="property.id" *ngFor="let property of properties">{{ property.name }}</option>
+    </select>
+  </div>
+</div>

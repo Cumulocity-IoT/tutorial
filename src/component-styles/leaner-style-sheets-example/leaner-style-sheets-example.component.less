@@ -1,0 +1,16 @@
+@background-color: #e6f7ff;
+@border-color: #91d5ff;
+
+.less-example {
+  background-color: @background-color;
+  padding: 15px;
+  border: 1px solid @border-color;
+
+  h5 {
+    color: darken(@border-color, 30%);
+  }
+
+  p {
+    color: darken(@background-color, 50%);
+  }
+}
