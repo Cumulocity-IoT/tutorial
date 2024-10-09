@@ -104,6 +104,7 @@ export class ServerGridExampleService {
         icon: 'online',
         iconClasses: 'm-r-4',
         text: 'Custom action',
+        showIf: selectedItemIds => selectedItemIds?.every(id => Number.parseInt(id) % 2 === 0),
         callback: selectedItemIds => console.dir(selectedItemIds)
       }
     ];
