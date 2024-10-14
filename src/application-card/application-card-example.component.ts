@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { IApplication } from '@c8y/client';
 import { AppStateService, CoreModule, PackageType } from '@c8y/ngx-components';
 import { SharedEcosystemModule } from '@c8y/ngx-components/ecosystem/shared';
-import { IApplication } from '@c8y/client';
 import { Observable, of } from 'rxjs';
 
 @Component({
@@ -43,7 +43,7 @@ export class ApplicationCardExampleComponent {
       key: 'devicemanagement-application-key',
       label: PackageType.OFFICIAL,
       description:
-        'This package is used to scaffold a Device management application for Cumulocity IoT.',
+        'This package is used to scaffold a Device Management application for Cumulocity IoT.',
       manifest: { version: '1.0.0', author: 'c8y_dev' }
     }
   ]);
