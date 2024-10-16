@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import {
   CommonModule as C8yCommonModule,
-  DynamicComponentDefinition,
   DynamicComponentErrorStrategy,
+  DynamicWidgetDefinition,
   FormsModule,
-  hookComponent
+  hookWidget,
+  WidgetDataType
 } from '@c8y/ngx-components';
 import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
-import { ContextWidgetConfig } from '@c8y/ngx-components/context-dashboard';
 import { WidgetConfigDemo } from './demo-widget-config.component';
 import { WidgetDemo } from './demo-widget.component';
 
@@ -23,7 +23,7 @@ import { WidgetDemo } from './demo-widget.component';
   imports: [FormsModule, AssetSelectorModule, C8yCommonModule],
   exports: [],
   providers: [
-    hookComponent({
+    hookWidget({
       id: 'angular.widget.demo',
       label: 'My angular widget',
       description: 'This is a description from  angular',
@@ -47,8 +47,8 @@ import { WidgetDemo } from './demo-widget.component';
         displaySettings: {
           globalTimeContext: true // Set this to true, to add a global time context binding
         }
-      } as ContextWidgetConfig
-    } as DynamicComponentDefinition)
+      } as WidgetDataType
+    } as DynamicWidgetDefinition)
   ]
 })
 export class DashboardWidgetDemoModule {}
