@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CoreModule, OptionsService, TabsService } from '@c8y/ngx-components';
 
 /**
@@ -12,7 +13,7 @@ import { CoreModule, OptionsService, TabsService } from '@c8y/ngx-components';
   selector: 'outstanding',
   templateUrl: './outstanding.component.html',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule, RouterModule]
 })
 export class OutstandingComponent {
   constructor(

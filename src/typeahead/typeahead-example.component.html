@@ -1,0 +1,45 @@
+<c8y-title>Typeahead</c8y-title>
+
+<div class="row">
+  <div class="col-xs-6">
+    <c8y-typeahead
+      container="body"
+      name="selectedDevice"
+      [placeholder]="'Search for devices...'"
+      (onSearch)="setPipe($event)"
+      [allowFreeEntries]="true"
+      [(ngModel)]="selectedDevice"
+    >
+      <c8y-li
+        class="p-l-8 p-r-8 c8y-list__item--link"
+        *c8yFor="let device of devices; notFound: notFoundTemplate; pipe: filterPipe"
+        (click)="selectedDevice = device"
+        [active]="selectedDevice === device"
+      >
+        <c8y-highlight
+          [text]="device.name"
+          [pattern]="pattern"
+        ></c8y-highlight>
+      </c8y-li>
+      <ng-template #notFoundTemplate>
+        <c8y-li
+          class="bg-level-2 p-8 sticky-bottom"
+          *ngIf="pattern.length > 0"
+        >
+          <span translate>No exact match found.</span>
+          <button
+            class="btn btn-default btn-sm m-l-8"
+            title="Add new device"
+            type="button"
+            translate
+          >
+            Add new device
+          </button>
+        </c8y-li>
+      </ng-template>
+    </c8y-typeahead>
+  </div>
+  <div class="col-xs-6">
+    <pre>{{ selectedDevice | json }}</pre>
+  </div>
+</div>

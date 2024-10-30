@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { IManagedObject, InventoryService } from '@c8y/client';
 import {
   DatapointSelectorModule,
-  DatapointSelectorService
+  DatapointSelectorService,
+  KPIDetails
 } from '@c8y/ngx-components/datapoint-selector';
-import { KPIDetails } from '@c8y/ngx-components/datapoint-selector/datapoint-selection.model';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '@c8y/ngx-components';
 import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';

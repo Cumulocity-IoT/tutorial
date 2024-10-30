@@ -729,6 +729,13 @@ export default {
         path: './src/pagination/pagination-example.module.ts',
         description: 'This is an example for pagination.',
         scope: 'self'
+      },
+      {
+        name: 'Typeahead',
+        module: 'TypeaheadExampleModule',
+        path: './src/typeahead/typeahead-example.module.ts',
+        description: 'This is an example for the typeahead component.',
+        scope: 'self'
       }
     ]
   },
@@ -742,7 +749,6 @@ export default {
     },
     // The embedded.css is used by codex for iframe embeddings.
     copy: [{ from: './node_modules/@c8y/style/embedded.css', to: './embedded.css' }],
-    brandingEntry: './src/branding/branding.less',
     federation: [
       '@angular/animations',
       '@angular/cdk',

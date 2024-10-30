@@ -94,6 +94,9 @@ export class InventoryInterceptor implements HttpInterceptor {
       c8y_IsAssetType: () => ({
         managedObjects: [generateAssetType()]
       }),
+      c8yAssetTypesCacheInvalidator: () => ({
+        managedObjects: [generateRandomMo()]
+      }),
       c8y_IsDeviceGroup: () => ({
         managedObjects: [
           ...[...Array(5)].map(() => (Math.random() < 0.5 ? generateSubGroup() : generateAsset()))

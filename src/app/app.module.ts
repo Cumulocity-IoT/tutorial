@@ -24,7 +24,6 @@ import { WidgetResolversModule } from '../widget-resolvers';
 import { MockModule } from '../__mocks';
 import { IntroductionModule } from '../provider-configuration';
 import { TranslationsModule } from '../translations';
-import { DashboardTabsModule } from '../dashboard-tabs';
 import { BreadcrumbsNodeModule } from '../breadcrumbs/breadcrumbs.module';
 import { AlarmsModule } from '@c8y/ngx-components/alarms';
 
@@ -61,7 +60,6 @@ import { AlarmsModule } from '@c8y/ngx-components/alarms';
     }),
     RedirectToLastRouteModule,
     MockModule,
-    DashboardTabsModule,
     BreadcrumbsNodeModule,
     AlarmsModule.config({ hybrid: false })
   ],

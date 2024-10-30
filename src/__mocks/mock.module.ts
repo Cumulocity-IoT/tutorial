@@ -10,14 +10,15 @@ import {
 import { InventoryInterceptor } from './global-mocks/inventory.interceptor';
 import { MeasurementsInterceptor } from './global-mocks/measurements.interceptor';
 import { API_MOCK_CONFIG, ApiMockConfig } from './mock.model';
-import { MockService } from './mock.service';
-import { NamedContextDashboardInterceptor } from './scoped-mocks/named-context-dashboard';
-import { ContextDashboardInterceptor } from './scoped-mocks/context-dashboard';
-import { ServerSideDataGridInterceptor } from './scoped-mocks/server-side-data-grid';
-import { DeviceDataGridInterceptor } from './scoped-mocks/device-data-grid';
-import { ServiceDashboardInterceptor } from './scoped-mocks/service-dashboard';
 import { RealtimeSubjectServiceWithMocking } from './mock.realtime';
+import { MockService } from './mock.service';
+import { ContextDashboardInterceptor } from './scoped-mocks/context-dashboard';
+import { DeviceDataGridInterceptor } from './scoped-mocks/device-data-grid';
 import { ListsInterceptor } from './scoped-mocks/lists';
+import { NamedContextDashboardInterceptor } from './scoped-mocks/named-context-dashboard';
+import { ServerSideDataGridInterceptor } from './scoped-mocks/server-side-data-grid';
+import { ServiceDashboardInterceptor } from './scoped-mocks/service-dashboard';
+import { TypeaheadInterceptor } from './scoped-mocks/typeahead';
 // import { BoilerplateInterceptor } from './scoped-mocks/boilerplate';
 @NgModule({
   imports: [CoreModule, CommonModule],
@@ -59,6 +60,16 @@ import { ListsInterceptor } from './scoped-mocks/lists';
         id: 'for-of-interceptor',
         path: 'for-of',
         mockService: ListsInterceptor,
+        debug: true
+      } as ApiMockConfig,
+      multi: true
+    },
+    {
+      provide: API_MOCK_CONFIG,
+      useValue: {
+        id: 'typeahaed-interceptor',
+        path: 'typeahead',
+        mockService: TypeaheadInterceptor,
         debug: true
       } as ApiMockConfig,
       multi: true

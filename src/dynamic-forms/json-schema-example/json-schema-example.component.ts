@@ -77,18 +77,20 @@ const exampleSchema: object = {
 export class JSONSchemaExampleComponent {
   form = new FormGroup({});
   model = {};
-  fields: FormlyFieldConfig[] = [
-    this.jsonschema.toFieldConfig(exampleSchema, {
-      map(mappedField: FormlyFieldConfig, _mapSource: JSONSchema7) {
-        return mappedField;
-      }
-    })
-  ];
+  fields: FormlyFieldConfig[];
 
   constructor(
     public jsonschema: C8yJSONSchema,
     private readonly changeDetectorRef: ChangeDetectorRef
-  ) {}
+  ) {
+    this.fields = [
+      this.jsonschema.toFieldConfig(exampleSchema, {
+        map(mappedField: FormlyFieldConfig, _mapSource: JSONSchema7) {
+          return mappedField;
+        }
+      })
+    ];
+  }
 
   ngAfterViewChecked(): void {
     this.changeDetectorRef.detectChanges();

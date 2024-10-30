@@ -1,8 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CommonModule, CoreModule } from '@c8y/ngx-components';
-import { AlarmEventSelectorModule, AlarmOrEvent } from '@c8y/ngx-components/alarm-event-selector';
-import { AlarmEventSelectorModalOptions } from '@c8y/ngx-components/alarm-event-selector/alarm-event-selector-modal/alarm-event-selector-modal.model';
+import {
+  AlarmEventSelectorModule,
+  AlarmOrEvent,
+  AlarmEventSelectorModalOptions
+} from '@c8y/ngx-components/alarm-event-selector';
 import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
 
 @Component({

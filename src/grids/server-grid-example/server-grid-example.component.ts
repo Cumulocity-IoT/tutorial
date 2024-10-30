@@ -66,18 +66,22 @@ export class ServerGridExampleComponent implements GridConfigContextProvider {
     hover: true
   };
 
-  columns: Column[] = this.service.getColumns();
-  pagination: Pagination = this.service.getPagination();
+  columns: Column[];
+  pagination: Pagination;
   infiniteScroll: LoadMoreMode = 'auto';
   serverSideDataCallback: any;
 
   refresh: EventEmitter<any> = new EventEmitter<any>();
 
   selectable = true;
-  actionControls: ActionControl[] = this.service.getActionControls();
-  bulkActionControls: BulkActionControl[] = this.service.getBulkActionControls();
+  actionControls: ActionControl[];
+  bulkActionControls: BulkActionControl[];
 
   constructor(private service: ServerGridExampleService) {
+    this.columns = this.service.getColumns();
+    this.pagination = this.service.getPagination();
+    this.actionControls = this.service.getActionControls();
+    this.bulkActionControls = this.service.getBulkActionControls();
     // we're setting up `serverSideDataCallback` to execute a method from this component with bound `this`
     this.serverSideDataCallback = this.onDataSourceModifier.bind(this);
     // we're setting up `onRefreshClick` to be executed on refresh event

@@ -1,6 +1,6 @@
 <!-- The c8y-title component will display the given string (here: "Outstanding Tab") in the header as title -->
 <c8y-title>Outstanding tab</c8y-title>
-<div class="card">
+<div class="card m-t-24">
   <div class="card-block">
     <p>
       This is the first tab we added with the
@@ -13,10 +13,21 @@
       toggles the orientation for the whole application:
     </p>
     <button
-      class="btn btn-primary"
+      class="btn btn-primary m-t-16"
       (click)="toggleOrientation()"
     >
       Toggle orientation
     </button>
+  </div>
+</div>
+<div class="card">
+  <div class="p-relative">
+    <c8y-tabs-outlet
+      orientation="horizontal"
+      outletName="inline-example"
+    ></c8y-tabs-outlet>
+  </div>
+  <div class="p-16" style="min-height: 100px">
+    <router-outlet></router-outlet>
   </div>
 </div>
