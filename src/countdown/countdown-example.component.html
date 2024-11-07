@@ -1,0 +1,35 @@
+<div class="time-elapsed">
+  <!-- important -->
+  <c8y-countdown-interval
+    [countdownInterval]="10000"
+    (countdownEnded)="onCountdownEnded()"
+  ></c8y-countdown-interval>
+  <!-- /important -->
+</div>
+<div class="container-fluid p-24 text-center">
+  <button
+    class="btn btn-default"
+    (click)="startCountdown()"
+  >
+    Start
+  </button>
+  <button
+    class="btn btn-default"
+    (click)="stopCountdown()"
+  >
+    Stop
+  </button>
+  <button
+    class="btn btn-default"
+    (click)="stopCountdownAtZero()"
+  >
+    Stop at 0
+  </button>
+  <button
+    class="btn btn-default"
+    (click)="resetCountdown()"
+  >
+    Reset
+  </button>
+</div>
+`

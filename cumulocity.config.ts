@@ -736,6 +736,13 @@ export default {
         path: './src/typeahead/typeahead-example.module.ts',
         description: 'This is an example for the typeahead component.',
         scope: 'self'
+      },
+      {
+        name: 'Countdown',
+        module: 'CountdownExampleModule',
+        path: './src/countdown/countdown-example.module.ts',
+        description: 'This is an example for the countdown component.',
+        scope: 'self'
       }
     ]
   },
