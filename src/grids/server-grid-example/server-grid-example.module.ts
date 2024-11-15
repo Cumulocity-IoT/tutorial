@@ -1,6 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { hookNavigator, hookRoute, NavigatorNode } from '@c8y/ngx-components';
+import { CommonModule, hookNavigator, hookRoute, NavigatorNode } from '@c8y/ngx-components';
 import { ServerGridActionControlsModule } from './server-grid-action-controls.module';
 
 @NgModule({

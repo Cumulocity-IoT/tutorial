@@ -1,6 +1,6 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FilteringFormRendererContext, FormsModule } from '@c8y/ngx-components';
-import { ServerGridExampleService, TypeFilteringModel } from '../server-grid-example.service';
+import { TypeFilteringModel } from '../server-grid-example.service';
 
 /**
  * This is the example component for custom filtering form.
@@ -79,12 +79,9 @@ import { ServerGridExampleService, TypeFilteringModel } from '../server-grid-exa
 export class TypeFilteringFormRendererComponent {
   model: TypeFilteringModel;
 
-  constructor(
-    public context: FilteringFormRendererContext,
-    @Inject(ServerGridExampleService) public service: ServerGridExampleService
-  ) {
+  constructor(public context: FilteringFormRendererContext) {
     // restores the settings from current column setup
-    this.model = (this.context.property.externalFilterQuery || {}).model || {};
+    this.model = this.context.property.externalFilterQuery || {};
   }
 
   /**
@@ -94,10 +91,7 @@ export class TypeFilteringFormRendererComponent {
    */
   applyFilter() {
     this.context.applyFilter({
-      externalFilterQuery: {
-        model: this.model,
-        query: this.service.getTypeQuery(this.model)
-      }
+      externalFilterQuery: { ...this.model }
     });
   }
 

@@ -10,6 +10,8 @@ import {
   Pagination
 } from '@c8y/ngx-components';
 
+import { assign, get, identity } from 'lodash-es';
+import { LastUpdatedDataGridColumn } from './last-updated-data-grid-column/last-updated.data-grid-column';
 import { TypeDataGridColumn } from './type-data-grid-column/type.data-grid-column';
 
 /** Model for custom type filtering form. */
@@ -59,7 +61,8 @@ export class ServerGridExampleService {
         filterable: true,
         sortable: true
       },
-      new TypeDataGridColumn()
+      new TypeDataGridColumn(),
+      new LastUpdatedDataGridColumn()
     ];
 
     return columns;
@@ -177,43 +180,6 @@ export class ServerGridExampleService {
     return { icon, label };
   }
 
-  /** Returns a query object for given settings of filtering by type. */
-  getTypeQuery(model: TypeFilteringModel): any {
-    let query: any = {};
-
-    if (model.group) {
-      query = this.queriesUtil.addOrFilter(query, { type: 'c8y_DeviceGroup' });
-    }
-
-    if (model.device) {
-      query = this.queriesUtil.addOrFilter(query, { __has: 'c8y_IsDevice' });
-    }
-
-    if (model.smartRule) {
-      query = this.queriesUtil.addOrFilter(query, {
-        type: { __in: ['c8y_SmartRule', 'c8y_PrivateSmartRule'] }
-      });
-    }
-
-    if (model.dashboard) {
-      query = this.queriesUtil.addOrFilter(query, {
-        type: { __has: 'c8y_Dashboard' }
-      });
-    }
-
-    if (model.file) {
-      query = this.queriesUtil.addOrFilter(query, {
-        type: { __has: 'c8y_IsBinary' }
-      });
-    }
-
-    if (model.application) {
-      query = this.queriesUtil.addOrFilter(query, { type: 'c8y_Application_*' });
-    }
-
-    return query;
-  }
-
   /** Returns filters for given columns and pagination setup. */
   private getFilters(columns: Column[], pagination: Pagination) {
     return {
@@ -232,10 +198,11 @@ export class ServerGridExampleService {
   }
 
   /** Returns a query object based on columns setup. */
-  private getQueryObj(columns: Column[]): any {
+  private getQueryObj(columns: Column[], defaultFilter = {}): any {
     return transform(columns, (query, column) => this.addColumnQuery(query, column), {
       __filter: {},
-      __orderby: []
+      __orderby: [],
+      ...defaultFilter
     });
   }
 
@@ -251,7 +218,17 @@ export class ServerGridExampleService {
 
       // in the case of custom filtering form, we're storing the query in `externalFilterQuery.query`
       if (column.externalFilterQuery) {
-        query = this.queriesUtil.addAndFilter(query, column.externalFilterQuery.query);
+        const getFilter = column.filteringConfig.getFilter || identity;
+        const queryObj = getFilter(column.externalFilterQuery);
+
+        if (queryObj.__or) {
+          query.__filter.__and = query.__filter.__and || [];
+          query.__filter.__and.push(queryObj);
+        } else if (queryObj.__and && get(query, '__filter.__and')) {
+          queryObj.__and.map(obj => query.__filter.__and.push(obj));
+        } else {
+          assign(query.__filter, queryObj);
+        }
       }
     }
 

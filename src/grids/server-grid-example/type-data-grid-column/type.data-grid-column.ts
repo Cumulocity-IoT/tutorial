@@ -1,47 +1,88 @@
 import { Type } from '@angular/core';
-import { Column, ColumnDataType, SortOrder, FilterPredicateFunction } from '@c8y/ngx-components';
-import { TypeHeaderCellRendererComponent } from './type.header-cell-renderer.component';
+import { BaseColumn, ColumnConfig, PartialFilterChipGenerationType } from '@c8y/ngx-components';
 import { TypeCellRendererComponent } from './type.cell-renderer.component';
 import { TypeFilteringFormRendererComponent } from './type.filtering-form-renderer.component';
+import { TypeHeaderCellRendererComponent } from './type.header-cell-renderer.component';
+
+const FILTER_TYPES = [
+  { key: 'group', label: 'Group' },
+  { key: 'device', label: 'Device' },
+  { key: 'smartRule', label: 'Smart Rule' },
+  { key: 'dashboard', label: 'Dashboard' },
+  { key: 'file', label: 'File' },
+  { key: 'application', label: 'Application' }
+];
 
 /**
- * Defines a class for custom Type column.
- * Implements `Column` interface and sets basic properties, as well as custom components.
+ * Defines a custom Type column with custom filtering form and chips generation.
  */
-export class TypeDataGridColumn implements Column {
-  name: string;
-  path?: string;
-  header?: string;
-  dataType?: ColumnDataType;
+export class TypeDataGridColumn extends BaseColumn {
+  readonly name = 'type';
+  readonly header = 'Type';
 
-  visible?: boolean;
-  positionFixed?: boolean;
-  gridTrackSize?: string;
+  headerCellRendererComponent: Type<any> = TypeHeaderCellRendererComponent;
+  cellRendererComponent: Type<any> = TypeCellRendererComponent;
+  sortable = false;
+  filterable = true;
+  filteringFormRendererComponent: Type<any> = TypeFilteringFormRendererComponent;
 
-  headerCSSClassName?: string | string[];
-  headerCellRendererComponent?: Type<any>;
+  constructor(initialColumnConfig?: ColumnConfig) {
+    super(initialColumnConfig);
 
-  cellCSSClassName?: string | string[];
-  cellRendererComponent?: Type<any>;
+    // Set the custom filtering configuration
+    this.filteringConfig = {
+      /**
+       * Generates filter chips based on the selected filters in the model.
+       * Each chip represents a filter and provides a way for users to visualize
+       * and remove the applied filters.
+       *
+       * @param model An object with defined structure (e.g. by schema).
+       * @returns return an array of partial filter chips with required properties 'displayValue' and 'value'.
+       */
+      generateChips: (model): PartialFilterChipGenerationType[] => {
+        const chips = [];
 
-  sortable?: boolean;
-  sortOrder?: SortOrder;
+        FILTER_TYPES.forEach(type => {
+          if (model[type.key]) {
+            chips.push({
+              displayValue: type.label,
+              value: type.key,
+              remove: () => {
+                delete model[type.key];
+                return {
+                  externalFilterQuery: { ...model },
+                  columnName: this.name
+                };
+              }
+            });
+          }
+        });
 
-  filterable?: boolean;
-  filteringFormRendererComponent?: Type<any>;
-  filterPredicate?: string | FilterPredicateFunction;
-  externalFilterQuery?: string | object;
+        return chips;
+      },
+      /**
+       * Transforms a filtering config model (e.g. coming from schema form component) to a query object.
+       * However, using schema form component is not necessary.
+       * Model can be defined arbitrarily but must converted to a valid query object.
+       * @param model An object with defined structure (e.g. by schema).
+       * @returns A query object to be used to generate a query string (QueryUtils).
+       */
+      getFilter: model => {
+        const filter: any = {};
+        const ors = [];
 
-  constructor() {
-    this.name = 'type';
-    this.header = 'Type';
+        if (model.group) ors.push({ type: 'c8y_DeviceGroup' });
+        if (model.device) ors.push({ __has: 'c8y_IsDevice' });
+        if (model.smartRule)
+          ors.push({ type: { __in: ['c8y_SmartRule', 'c8y_PrivateSmartRule'] } });
+        if (model.dashboard) ors.push({ type: { __has: 'c8y_Dashboard' } });
+        if (model.file) ors.push({ type: { __has: 'c8y_IsBinary' } });
+        if (model.application) ors.push({ type: 'c8y_Application_*' });
 
-    this.headerCellRendererComponent = TypeHeaderCellRendererComponent;
-    this.cellRendererComponent = TypeCellRendererComponent;
+        if (ors.length) filter.__or = ors;
 
-    this.filterable = true;
-    this.filteringFormRendererComponent = TypeFilteringFormRendererComponent;
-
-    this.sortable = false;
+        return filter;
+      }
+    };
   }
 }
