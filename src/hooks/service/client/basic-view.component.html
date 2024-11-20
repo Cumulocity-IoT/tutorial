@@ -1,0 +1,44 @@
+<c8y-title>Sharing a service between plugins</c8y-title>
+<div class="card-block">
+  <p>
+    A service instance can be used by components that need to communicate to each other or share a
+    common state. If these two components originate from different code bases, e.g. are deployed via
+    plugin-ins, then
+    <code>hookService</code>
+    comes as a way for such a shared service to be injected. The service interface might be declared
+    in a shared library known at compile time.
+  </p>
+  <p>
+    This example showcases two component instances that share a counter service. The counter service
+    interface is declared in the
+    <code>counder.model</code>
+    module which may be declared in a common library shared between plug-ins in a real world case.
+    The
+    <code>CounterHookModule</code>
+    leverages
+    <code>hookService</code>
+    to inject a service instance. This can happen in a plugin or in a shell application.
+  </p>
+</div>
+<div class="card-group">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header separator">
+        <p class="card-title">Component A</p>
+      </div>
+      <div class="card-block">
+        <c8y-dynamic-component componentId="counter.component"></c8y-dynamic-component>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header separator">
+        <p class="card-title">Component B</p>
+      </div>
+      <div class="card-block">
+        <c8y-dynamic-component componentId="counter.component"></c8y-dynamic-component>
+      </div>
+    </div>
+  </div>
+</div>

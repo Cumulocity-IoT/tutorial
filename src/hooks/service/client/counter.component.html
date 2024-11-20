@@ -1,0 +1,15 @@
+<p>
+  Hello there! I am a simple component added from a plugin by
+  <code>hookComponent</code>
+  . I use a shared counter service that has been provided in another plugin and injected by
+  <code>hookService</code>
+  .
+</p>
+<button
+  class="btn btn-default m-t-16"
+  type="button"
+  (click)="counter.count()"
+>
+  Click to increment counter
+  <span class="badge badge-system">{{ counter.counter }}</span>
+</button>

@@ -1,6 +1,6 @@
 import { ConfigurationOptions } from '@c8y/devkit';
 import { DefinePlugin } from 'webpack';
-import { author, description, version, name } from './package.json';
+import { author, description, name, version } from './package.json';
 
 export default {
   runTime: {
@@ -259,6 +259,13 @@ export default {
         module: 'WizardModule',
         path: './src/hooks/generic-wizard/wizard.module.ts',
         description: 'A sample for wizard hook.',
+        scope: 'self'
+      },
+      {
+        name: 'Service hook Codex sample',
+        module: 'ServiceHookCodexSampleModule',
+        path: './src/hooks/service/service-hook-codex-sample.module.ts',
+        description: 'A sample for hookService.',
         scope: 'self'
       },
       {
