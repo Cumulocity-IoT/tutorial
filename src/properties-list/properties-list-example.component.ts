@@ -94,4 +94,25 @@ export class PropertiesListExampleComponent {
       key: 'custom'
     }
   ];
+
+  readonly customPropertiesNoParse: PropertiesListItem[] = [
+    {
+      label: 'String property',
+      key: 'string',
+      value: this.customData.string,
+      type: 'string'
+    },
+    {
+      label: 'Number property',
+      key: 'number',
+      value: this.customData.number,
+      type: 'string'
+    },
+    {
+      label: 'Array property',
+      key: 'array',
+      value: this.customData.array,
+      type: 'array'
+    }
+  ];
 }
