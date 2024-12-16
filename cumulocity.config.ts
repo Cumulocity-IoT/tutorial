@@ -633,6 +633,13 @@ export default {
         scope: 'self'
       },
       {
+        name: 'Introduction to data points export selector',
+        module: 'DatapointsExportSelectorExampleModule',
+        path: './src/selector/data-points-export-selector-example/datapoints-export-selector.module.ts',
+        description: 'An introduction to data points export selector example.',
+        scope: 'self'
+      },
+      {
         name: 'Introduction to asset selector device child',
         module: 'AssetSingleSelectModule',
         path: './src/selector/asset-selector-example/single-select/asset-single-select.module.ts',

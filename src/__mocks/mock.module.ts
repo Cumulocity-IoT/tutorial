@@ -20,6 +20,7 @@ import { ServerSideDataGridInterceptor } from './scoped-mocks/server-side-data-g
 import { ServiceDashboardInterceptor } from './scoped-mocks/service-dashboard';
 import { TypeaheadInterceptor } from './scoped-mocks/typeahead';
 // import { BoilerplateInterceptor } from './scoped-mocks/boilerplate';
+import { MeasurementsSeriesInterceptor } from './scoped-mocks/measurement-series';
 @NgModule({
   imports: [CoreModule, CommonModule],
   providers: [
@@ -34,6 +35,16 @@ import { TypeaheadInterceptor } from './scoped-mocks/typeahead';
     //   } as ApiMockConfig,
     //   multi: true
     // },
+    {
+      provide: API_MOCK_CONFIG,
+      useValue: {
+        id: 'a-datapoints-export-selector-interceptor',
+        path: 'datapoints-export-selector-example',
+        mockService: MeasurementsSeriesInterceptor,
+        debug: true
+      } as ApiMockConfig,
+      multi: true
+    },
     {
       provide: API_MOCK_CONFIG,
       useValue: {

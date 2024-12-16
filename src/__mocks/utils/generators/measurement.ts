@@ -1,22 +1,27 @@
 import { IMeasurement, IMeasurementValue } from '@c8y/client';
 import { generateId, getFakeSource } from '../common';
 
-export function getFakeMeasurement(): IMeasurement {
+const MEASUREMENT_UNITS: Record<string, string> = {
+  c8y_Temperature: 'ºC',
+  c8y_Battery: '%'
+};
+
+export function getFakeMeasurement(fragment = 'T', type = 'c8y_Temperature'): IMeasurement {
   return {
     id: generateId(),
-    type: 'c8y_Temperature',
+    type: type,
     time: new Date().toISOString(),
     self: 'https://example.com/measurement/measurements/...',
     source: getFakeSource(),
-    c8y_Temperature: {
-      T: getFakeMeasurementValue()
+    [type]: {
+      [fragment]: getFakeMeasurementValue(type)
     }
   };
 }
 
-function getFakeMeasurementValue(): IMeasurementValue {
+function getFakeMeasurementValue(type: string): IMeasurementValue {
   return {
     value: Math.random() * 100,
-    unit: `ºC`
+    unit: MEASUREMENT_UNITS[type] || ''
   };
 }
