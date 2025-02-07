@@ -703,6 +703,13 @@ export default {
         scope: 'self'
       },
       {
+        name: 'Example of selectable nodes in the asset selector',
+        module: 'AssetSelectorNodeSelectableExampleModule',
+        path: './src/selector/asset-selector-example/node-selectable/asset-selector-node-selectable.module.ts',
+        description: 'Selectable nodes example for the asset-selector',
+        scope: 'self'
+      },
+      {
         name: 'Introduction to asset selector tree search',
         module: 'AssetSelectorTreeSearchModule',
         path: './src/selector/asset-selector-example/tree-search/asset-selector-tree-search.module.ts',
