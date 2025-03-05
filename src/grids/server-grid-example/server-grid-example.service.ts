@@ -124,22 +124,18 @@ export class ServerGridExampleService {
   /** Returns the number of items matching current columns and pagination setup. */
   async getCount(columns: Column[], pagination: Pagination) {
     const filters = {
-      // build filters based on columns and pagination
       ...this.getFilters(columns, pagination),
-      // but we only need the number of items, not the items themselves
-      pageSize: 1,
-      currentPage: 1
+      withTotalElements: true
     };
-    return (await this.inventoryService.list(filters)).paging.totalPages;
+    return (await this.inventoryService.list(filters)).paging.totalElements;
   }
 
   /** Returns the total number of items (with no filters). */
   async getTotal(): Promise<number> {
     const filters = {
-      pageSize: 1,
-      withTotalPages: true
+      withTotalElements: true
     };
-    return (await this.inventoryService.list(filters)).paging.totalPages;
+    return (await this.inventoryService.list(filters)).paging.totalElements;
   }
 
   /** Returns an icon and label representing the type of the managed object. */
