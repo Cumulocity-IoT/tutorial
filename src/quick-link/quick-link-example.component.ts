@@ -28,7 +28,7 @@ export class QuickLinkExampleComponent {
     const userGuide: Partial<DocLink> = {
       icon: 'c8y-user',
       label: gettext('User documentation'),
-      url: '/docs/section/getting_started',
+      url: '/docs/sector/getting_started',
       click: () => {
         const userGuideURL = this.docs.getUserGuideLink(userGuide.url) as string;
         window.open(userGuideURL);
