@@ -1,7 +1,7 @@
-import { Injectable, inject, Type } from '@angular/core';
+import { inject, Injectable, Type } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService, DeviceService, ViewContext, ViewContextServices } from '@c8y/ngx-components';
-import { SERVICE_FRAGMENT } from '@c8y/ngx-components/services';
+import { SERVICE_FRAGMENT } from '@c8y/ngx-components/services/shared';
 
 @Injectable({ providedIn: 'root' })
 export class ViewContextRedirectService {
