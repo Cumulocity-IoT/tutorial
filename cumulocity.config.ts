@@ -458,6 +458,13 @@ export default {
         scope: 'self'
       },
       {
+        name: 'User menu hook sample',
+        module: 'TutorialUserMenuModule',
+        path: './src/hooks/user-menu-item/user-menu.module.ts',
+        description: 'An example for hooking into the user menu items.',
+        scope: 'self'
+      },
+      {
         name: 'Version hook sample',
         module: 'TutorialVersionModule',
         path: './src/hooks/version/version.module.ts',
