@@ -104,6 +104,15 @@ import { TypeaheadInterceptor } from './scoped-mocks/typeahead';
     {
       provide: API_MOCK_CONFIG,
       useValue: {
+        id: 'scoped-dashboard-context-interceptor-2',
+        path: 'dashboards/widget-guide-context-dashboard',
+        mockService: ContextDashboardInterceptor
+      } as ApiMockConfig,
+      multi: true
+    },
+    {
+      provide: API_MOCK_CONFIG,
+      useValue: {
         path: 'named-context',
         // The interceptors are sorted by their ID, so the scoped interceptors should be before the global ones.
         id: 'named-context-interceptor-example',
