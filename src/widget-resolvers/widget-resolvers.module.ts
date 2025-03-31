@@ -31,6 +31,7 @@ import { ContextWidgetConfig } from '@c8y/ngx-components/context-dashboard';
       },
       errorStrategy: DynamicComponentErrorStrategy.OVERLAY_ERROR,
       data: {
+        schema: () => import('c8y-schema-loader?interfaceName=WidgetConfig!./widget-config.model'),
         settings: {
           noNewWidgets: false,
           widgetDefaults: {

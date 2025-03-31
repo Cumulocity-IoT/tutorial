@@ -33,6 +33,7 @@ import { WidgetDemo } from './demo-widget.component';
 
       /** new Angular-Dashboard definition */
       data: {
+        schema: () => import('c8y-schema-loader?interfaceName=WidgetConfig!./widget-config.model'),
         // The settings object can be used to configure the configComponent
         settings: {
           noNewWidgets: false, // Set this to true, to don't allow adding new widgets.

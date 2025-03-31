@@ -20,7 +20,10 @@ async function loadConfigComponent() {
       label: 'Lazy Loaded Widget',
       description: 'Lazy Loaded Widget',
       loadComponent: loadViewComponent,
-      loadConfigComponent: loadConfigComponent
+      loadConfigComponent: loadConfigComponent,
+      data: {
+        schema: () => import('c8y-schema-loader?interfaceName=WidgetConfig!./widget-config.model')
+      }
     })
   ]
 })

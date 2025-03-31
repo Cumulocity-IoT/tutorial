@@ -5,6 +5,7 @@ import {
   DynamicComponentAlertAggregator,
   gettext
 } from '@c8y/ngx-components';
+import { WidgetConfig } from './widget-config.model';
 
 @Component({
   selector: 'c8y-widget-demo',
@@ -33,7 +34,7 @@ import {
   ]
 })
 export class WidgetDemo implements OnChanges {
-  @Input() config;
+  @Input() config: WidgetConfig;
   alerts: DynamicComponentAlertAggregator;
 
   ngOnInit() {

@@ -1,12 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { ControlContainer, NgForm } from '@angular/forms';
-import {
-  DynamicComponent,
-  OnBeforeSave,
-  AlertService,
-  GlobalTimeContextWidgetConfig
-} from '@c8y/ngx-components';
+import { DynamicComponent, OnBeforeSave, AlertService } from '@c8y/ngx-components';
 import { omit } from 'lodash';
+import { WidgetConfig } from './widget-config.model';
 
 @Component({
   selector: 'c8y-widget-config-demo',
@@ -45,7 +41,7 @@ export class WidgetConfigDemo implements DynamicComponent, OnBeforeSave {
    *
    * Note: The dashboard itself adds certain properties. As such, some properties are not allowed (e.g. device or settings)
    */
-  @Input() config: GlobalTimeContextWidgetConfig & { [key: string]: any } = {};
+  @Input() config: WidgetConfig = {};
 
   /**
    * An internal component property used to hide/show settings.

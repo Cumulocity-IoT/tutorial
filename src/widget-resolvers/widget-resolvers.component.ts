@@ -1,13 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IEvent, IManagedObject } from '@c8y/client';
 import { DynamicComponentAlertAggregator, DynamicComponent } from '@c8y/ngx-components';
+import { WidgetConfig } from './widget-config.model';
 
 @Component({
   selector: 'app-widget-resolvers',
   templateUrl: './widget-resolvers.component.html'
 })
 export class WidgetResolversComponent implements OnInit, DynamicComponent {
-  @Input() config: any;
+  @Input() config: WidgetConfig;
   label: string;
   value: string;
   alerts: DynamicComponentAlertAggregator;

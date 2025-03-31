@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { WidgetConfig } from '../widget-config.model';
 
 @Component({
   selector: 'tutorial-lazy-widget-config',
@@ -7,4 +8,6 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule]
 })
-export class LazyWidgetConfigComponent {}
+export class LazyWidgetConfigComponent {
+  @Input() config: WidgetConfig;
+}

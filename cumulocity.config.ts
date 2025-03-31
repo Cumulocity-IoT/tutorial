@@ -507,6 +507,13 @@ export default {
         scope: 'self'
       },
       {
+        name: 'Generate JSON Schema example',
+        module: 'GenerateJsonSchemaModule',
+        path: './src/generate-json-schema/generate-json-schema.module.ts',
+        description: 'An example for generate JSON schema from interface.',
+        scope: 'self'
+      },
+      {
         name: 'Example of ngx modal',
         module: 'NgxModalExampleModule',
         path: './src/modal/ngx-modal/ngx-modal-example.module.ts',
