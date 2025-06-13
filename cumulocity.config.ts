@@ -416,6 +416,13 @@ export default {
         scope: 'self'
       },
       {
+        name: 'Tree grid example',
+        module: 'TreeGridExampleModule',
+        path: './src/grids/tree-grid-example/tree-grid-example.module.ts',
+        description: 'An example for a tree data grid.',
+        scope: 'self'
+      },
+      {
         name: 'Device grid example',
         module: 'DeviceGridExampleModule',
         path: './src/grids/device-grid-example/device-grid-example.module.ts',
