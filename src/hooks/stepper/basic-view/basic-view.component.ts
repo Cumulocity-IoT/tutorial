@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { SetupStep, StepperService, Steppers } from '@c8y/ngx-components';
+import {
+  SetupStep,
+  StepperService,
+  Steppers,
+  TitleComponent,
+  StepperOutletComponent
+} from '@c8y/ngx-components';
 import { firstValueFrom } from 'rxjs';
+import { NgIf } from '@angular/common';
 
 /**
  * This is a standard angular component.
@@ -21,7 +28,9 @@ import { firstValueFrom } from 'rxjs';
         </div>
       </div>
     </div>
-  `
+  `,
+  standalone: true,
+  imports: [TitleComponent, NgIf, StepperOutletComponent]
 })
 export class BasicViewComponent implements OnInit {
   readonly stepperId = Steppers.SETUP;

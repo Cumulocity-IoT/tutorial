@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { C8yStepperButtons } from '@c8y/ngx-components';
 
 @Component({
   selector: 'tut-step-2-device',
@@ -10,7 +11,9 @@ import { Component } from '@angular/core';
       [showButtons]="{ next: false, cancel: false, back: true, custom: false }"
       [labels]="{ back: 'Got it!' }"
     ></c8y-stepper-buttons>
-  `
+  `,
+  standalone: true,
+  imports: [C8yStepperButtons]
 })
 export class Step2Component {
   close() {

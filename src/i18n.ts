@@ -16,3 +16,6 @@ import '@c8y/ngx-components/locales/pt_BR.po';
 import '@c8y/ngx-components/locales/zh_CN.po';
 import '@c8y/ngx-components/locales/zh_TW.po';
 // import './locales/de.po'; // <- adding additional strings to the german translation.
+
+import './translations/locales/pt_BR.po';
+import './translations/locales/it.po';

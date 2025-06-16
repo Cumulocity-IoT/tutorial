@@ -21,8 +21,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [MinimalSetupComponent, MultipleEntriesOne, MultipleEntriesTwo],
-  imports: [RouterModule.forChild(routes), CoreModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    RouterModule.forChild(routes),
+    CoreModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MinimalSetupComponent,
+    MultipleEntriesOne,
+    MultipleEntriesTwo
+  ],
   /**
    * Adding the hooks to the providers:
    */

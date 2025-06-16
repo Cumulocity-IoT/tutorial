@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
+import { hookNavigator, hookRoute, NavigatorNode } from '@c8y/ngx-components';
 
-@NgModule({
-  providers: [
+export function provideProviderConfigurationIntroduction() {
+  return [
     hookRoute({
       path: 'provider-configuration/introduction-example',
       loadComponent: () => import('./introduction.component').then(m => m.IntroductionComponent)
@@ -16,6 +15,5 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         parent: 'Provider configuration'
       })
     )
-  ]
-})
-export class IntroductionModule {}
+  ];
+}

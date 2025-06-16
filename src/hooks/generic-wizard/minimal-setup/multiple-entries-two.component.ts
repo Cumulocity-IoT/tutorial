@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { WizardComponent } from '@c8y/ngx-components';
+import {
+  WizardComponent,
+  WizardHeaderComponent,
+  WizardBodyComponent,
+  WizardFooterComponent
+} from '@c8y/ngx-components';
 
 @Component({
   selector: 'multiple-entries-two-component',
@@ -10,7 +15,9 @@ import { WizardComponent } from '@c8y/ngx-components';
       <button class="btn btn-default" title="{{ 'Back' }}" (click)="back()">Back</button>
       <button class="btn btn-default" title="{{ 'Cancel' }}" (click)="cancel()">Cancel</button>
     </c8y-wizard-footer>
-  `
+  `,
+  standalone: true,
+  imports: [WizardHeaderComponent, WizardBodyComponent, WizardFooterComponent]
 })
 export class MultipleEntriesTwo {
   constructor(private wizardComponent: WizardComponent) {}

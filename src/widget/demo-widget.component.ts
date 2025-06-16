@@ -3,8 +3,10 @@ import {
   DismissAlertStrategy,
   DynamicComponentAlert,
   DynamicComponentAlertAggregator,
-  gettext
+  gettext,
+  DatePipe
 } from '@c8y/ngx-components';
+import { NgIf } from '@angular/common';
 import { WidgetConfig } from './widget-config.model';
 
 @Component({
@@ -31,7 +33,9 @@ import { WidgetConfig } from './widget-config.model';
         font-size: 2em;
       }
     `
-  ]
+  ],
+  standalone: true,
+  imports: [NgIf, DatePipe]
 })
 export class WidgetDemo implements OnChanges {
   @Input() config: WidgetConfig;

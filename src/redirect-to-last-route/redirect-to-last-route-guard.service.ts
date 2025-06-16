@@ -9,8 +9,17 @@ export class RedirectToLastRouteGuardService {
     if (!this.router.config.length) {
       return false;
     }
-    const lastRoute = this.router.config[this.router.config.length - 1];
-    this.router.navigate([lastRoute.path]);
+
+    for (let i = this.router.config.length - 1; i >= 0; i--) {
+      const route = this.router.config[i];
+      if (!route.path || route.path.includes('pickLastRoute')) {
+        continue;
+      }
+
+      this.router.navigate([route.path]);
+      return false;
+    }
+
     return false;
   };
 }

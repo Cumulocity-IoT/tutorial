@@ -1,16 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ControlContainer, NgForm } from '@angular/forms';
+import { ControlContainer, NgForm, FormsModule } from '@angular/forms';
 import { EventService, IEvent, IManagedObject, InventoryService } from '@c8y/client';
 import {
   DynamicComponent,
   DynamicComponentAlert,
-  DynamicComponentAlertAggregator
+  DynamicComponentAlertAggregator,
+  FormGroupComponent
 } from '@c8y/ngx-components';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-widget-resolvers-config',
   templateUrl: './widget-resolvers-config.component.html',
-  viewProviders: [{ provide: ControlContainer, useExisting: NgForm }]
+  viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
+  standalone: true,
+  imports: [FormGroupComponent, FormsModule, NgFor]
 })
 export class WidgetResolversConfigComponent implements OnInit, DynamicComponent {
   events: IEvent[];

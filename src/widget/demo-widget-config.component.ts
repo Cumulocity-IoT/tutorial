@@ -1,7 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { ControlContainer, NgForm } from '@angular/forms';
-import { DynamicComponent, OnBeforeSave, AlertService } from '@c8y/ngx-components';
+import { ControlContainer, NgForm, FormsModule } from '@angular/forms';
+import {
+  DynamicComponent,
+  OnBeforeSave,
+  AlertService,
+  FormGroupComponent
+} from '@c8y/ngx-components';
 import { omit } from 'lodash';
+import { JsonPipe } from '@angular/common';
 import { WidgetConfig } from './widget-config.model';
 
 @Component({
@@ -30,7 +36,9 @@ import { WidgetConfig } from './widget-config.model';
   // We connect our parent Form to this form (for disabling the save button)
   // you can also enable the button by using ContextServiceDashboard.formDisabled
   // property instead (by default it is enabled).
-  viewProviders: [{ provide: ControlContainer, useExisting: NgForm }]
+  viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
+  standalone: true,
+  imports: [FormGroupComponent, FormsModule, JsonPipe]
 })
 export class WidgetConfigDemo implements DynamicComponent, OnBeforeSave {
   /**

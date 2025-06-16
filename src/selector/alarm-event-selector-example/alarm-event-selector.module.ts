@@ -10,7 +10,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     }),
     hookNavigator(
       new NavigatorNode({
-        label: 'alarm event selector example',
+        label: 'Alarm event selector example',
         path: '/selector/alarm-event-selector-example',
         icon: 'th-list',
         priority: 15

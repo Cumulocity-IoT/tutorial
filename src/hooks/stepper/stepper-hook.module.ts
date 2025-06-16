@@ -13,8 +13,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [BasicViewComponent, Step1Component, Step2Component],
-  imports: [RouterModule.forChild(routes), CoreModule],
+  imports: [
+    RouterModule.forChild(routes),
+    CoreModule,
+    BasicViewComponent,
+    Step1Component,
+    Step2Component
+  ],
   /**
    * Adding the hooks to the providers:
    */

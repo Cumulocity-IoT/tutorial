@@ -1,7 +1,20 @@
 import { CdkStep } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { C8yStepper } from '@c8y/ngx-components';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
+import {
+  C8yStepper,
+  FormGroupComponent,
+  RequiredInputPlaceholderDirective,
+  MessagesComponent,
+  MessageDirective,
+  C8yStepperButtons
+} from '@c8y/ngx-components';
 
 @Component({
   selector: 'tut-step-1-device',
@@ -22,7 +35,17 @@ import { C8yStepper } from '@c8y/ngx-components';
         (onNext)="goToNextStep($event)"
       ></c8y-stepper-buttons>
     </div>
-  `
+  `,
+  standalone: true,
+  imports: [
+    FormGroupComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    RequiredInputPlaceholderDirective,
+    MessagesComponent,
+    MessageDirective,
+    C8yStepperButtons
+  ]
 })
 export class Step1Component implements OnInit {
   formGroupStepOne: FormGroup;

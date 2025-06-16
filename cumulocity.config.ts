@@ -1,6 +1,6 @@
 import { ConfigurationOptions } from '@c8y/devkit';
 import { DefinePlugin } from 'webpack';
-import { author, description, name, version } from './package.json';
+import { author, description, name, version, license } from './package.json';
 
 export default {
   runTime: {
@@ -15,6 +15,7 @@ export default {
     icon: {
       class: 'c8y-icon-tools'
     },
+    license,
     docs: {
       links: [
         {
@@ -784,6 +785,20 @@ export default {
         module: 'CountdownExampleModule',
         path: './src/countdown/countdown-example.module.ts',
         description: 'This is an example for the countdown component.',
+        scope: 'self'
+      },
+      {
+        name: 'Bottom drawer',
+        module: 'bottomDrawerExampleModuleProviders',
+        path: './src/bottom-drawer/bottom-drawer.providers.ts',
+        description: 'This is an example for the bottom drawer service.',
+        scope: 'self'
+      },
+      {
+        name: 'Widget Config Hook',
+        module: 'widgetConfigHookProviders',
+        path: './src/hooks/widget-config/widget-config.providers.ts',
+        description: 'This is an example for the bottom drawer service.',
         scope: 'self'
       }
     ]

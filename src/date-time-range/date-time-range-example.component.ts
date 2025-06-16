@@ -96,7 +96,6 @@ import { DateTimePickerModule } from '@c8y/ngx-components';
 })
 export class DateTimeRangeExampleComponent {
   form: FormGroup;
-
   constructor() {
     const dateTo = new Date();
     const dateFrom = new Date(dateTo.valueOf() - 24 * 60 * 60 * 1000);

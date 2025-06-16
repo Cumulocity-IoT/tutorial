@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { InventoryService } from '@c8y/ngx-components/api';
 import { BehaviorSubject } from 'rxjs';
-import { IIdentified, IManagedObject } from '@c8y/client';
+import { InventoryService, IIdentified, IManagedObject } from '@c8y/client';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '@c8y/ngx-components';
 import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';

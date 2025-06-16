@@ -4,7 +4,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
 @NgModule({
   providers: [
     hookRoute({
-      path: 'help',
+      path: 'countdown',
       loadComponent: () =>
         import('./countdown-example.component').then(m => m.CountdownExampleComponent)
     }),

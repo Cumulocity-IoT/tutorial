@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { CoreModule, Widget } from '@c8y/ngx-components';
 import { CommonModule } from '@angular/common';
-import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
-import { DatapointSelectorModule } from '@c8y/ngx-components/datapoint-selector';
 import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
 
 @Component({
@@ -16,13 +14,7 @@ import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
     ></c8y-context-dashboard>
   `,
   standalone: true,
-  imports: [
-    CommonModule,
-    CoreModule,
-    AssetSelectorModule,
-    DatapointSelectorModule,
-    ContextDashboardModule
-  ]
+  imports: [ContextDashboardModule, CoreModule, CommonModule]
 })
 export class WidgetGuideContextDashboardComponent {
   defaultWidgets: Widget[] = [

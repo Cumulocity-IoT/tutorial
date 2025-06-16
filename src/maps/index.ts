@@ -1,11 +1,7 @@
-import { NgModule } from '@angular/core';
 import { hookNavigator, NavigatorNode } from '@c8y/ngx-components';
 
-@NgModule({
-  declarations: [],
-  imports: [],
-  exports: [],
-  providers: [
+export function provideMapExampleNavigator() {
+  return [
     hookNavigator(
       new NavigatorNode({
         priority: 20,
@@ -13,6 +9,5 @@ import { hookNavigator, NavigatorNode } from '@c8y/ngx-components';
         label: 'Map examples'
       })
     )
-  ]
-})
-export class MapExamplesModule {}
+  ];
+}
