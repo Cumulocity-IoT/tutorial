@@ -214,6 +214,13 @@ export default {
         scope: 'self'
       },
       {
+        name: 'Preview feature',
+        module: 'PreviewFeatureModule',
+        path: './src/hooks/preview-feature/preview-feature.module.ts',
+        description: 'A sample for feature preview hook.',
+        scope: 'self'
+      },
+      {
         name: 'Breadcrumbs hook',
         module: 'BreadcrumbsModule',
         path: './src/hooks/breadcrumbs/breadcrumbs.module.ts',

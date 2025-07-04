@@ -2,7 +2,12 @@ export * from './mock.service';
 export * from './mock.model';
 export * from './mock.realtime';
 export * from './mock.realtime-subject';
-import { AppStateService, OptionsService, RealtimeSubjectService } from '@c8y/ngx-components';
+import {
+  AppStateService,
+  OptionsService,
+  Permissions,
+  RealtimeSubjectService
+} from '@c8y/ngx-components';
 import { InventoryInterceptor } from './global-mocks/inventory.interceptor';
 import { MeasurementsInterceptor } from './global-mocks/measurements.interceptor';
 import { API_MOCK_CONFIG, ApiMockConfig } from './mock.model';
@@ -18,6 +23,7 @@ import { MeasurementsSeriesInterceptor } from './scoped-mocks/measurement-series
 import { EnvironmentProviders, Provider, inject, provideAppInitializer } from '@angular/core';
 import { MockService } from './mock.service';
 import { IUser } from '@c8y/client';
+import { FeatureApiInterceptor } from './global-mocks/feature-api';
 
 export function provideAPIMock() {
   return [
@@ -147,6 +153,15 @@ export function provideAPIMock() {
       multi: true
     },
     {
+      provide: API_MOCK_CONFIG,
+      useValue: {
+        // The interceptors are sorted by their ID, so the scoped interceptors should be before the global ones.
+        id: 'z-global-feature-preview-interceptor-interceptor',
+        mockService: FeatureApiInterceptor
+      } as ApiMockConfig,
+      multi: true
+    },
+    {
       provide: RealtimeSubjectService,
       useExisting: RealtimeSubjectServiceWithMocking
     },
@@ -161,7 +176,16 @@ export function provideAPIMock() {
             appStateService.currentUser.next({
               id: 'NO_LOGIN',
               userName: 'noLogin',
-              displayName: 'noLogin'
+              displayName: 'noLogin',
+              roles: {
+                references: [
+                  {
+                    role: {
+                      id: Permissions.ROLE_TENANT_MANAGEMENT_ADMIN
+                    }
+                  }
+                ] as any
+              }
             } as IUser);
           }
         };
