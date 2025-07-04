@@ -20,8 +20,7 @@ import { DeviceGridModule } from '@c8y/ngx-components/device-grid';
 import { ServerTreeGridExampleService } from './server-tree-grid-example.service';
 
 /**
- * This is an example of using DataGridComponent for displaying, filtering and sorting managed objects
- * using customized columns and dynamically built inventory queries.
+ * This is an example of using DataGridComponent as a tree grid for displaying hierarchical data.
  */
 @Component({
   selector: 'c8y-server-tree-grid-example',
@@ -73,7 +72,7 @@ export class ServerTreeGridExampleComponent implements GridConfigContextProvider
        * You can provide data here that can be used for grid configration storage,
        * action control matchers, etc.
        */
-      key: 'server-grid-example'
+      key: 'server-tree-grid-example'
     };
   }
 
@@ -83,13 +82,14 @@ export class ServerTreeGridExampleComponent implements GridConfigContextProvider
   }
 
   /**
-   * This method loads data when data grid requests it (e.g. on initial load or on column settings change).
-   * It gets the object with current data grid setup and is supposed to return:
+   * This method loads data when data grid requests it (e.g. on initial load or when a row with child entries is expanded).
+   * It receives the `DataSourceModifier` context with current data grid setup and is supposed to return:
    * full response, list of items, paging object, the number of items in the filtered subset, the number of all items.
    */
   async onDataSourceModifier(
     dataSourceModifier: DataSourceModifier
   ): Promise<ServerSideDataResult> {
+    // If the `DataSourceModifier` context object has a `parentRow`, it means we are loading child nodes for a specific parent row.
     const { parentRow } = dataSourceModifier;
     if (parentRow) {
       const { res, data, paging } = await this.service.getChildDevices(
@@ -98,6 +98,8 @@ export class ServerTreeGridExampleComponent implements GridConfigContextProvider
       );
 
       data.forEach(row => {
+        // The `hasChildren` property should be set for each row to indicate if it has child entries.
+        // This is used by the grid to display expand/collapse icons.
         row.hasChildren = row.childDevices.count > 0;
       });
 
