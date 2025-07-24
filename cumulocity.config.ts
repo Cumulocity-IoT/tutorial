@@ -487,6 +487,20 @@ export default {
         scope: 'self'
       },
       {
+        name: 'Query param bottom drawer hook sample',
+        module: 'QueryParamBottomDrawerModule',
+        path: './src/hooks/query-param-bottom-drawer/query-param-bottom-drawer.module.ts',
+        description: 'An example for hooking into the query param bottom drawer.',
+        scope: 'self'
+      },
+      {
+        name: 'Query param modal hook sample',
+        module: 'QueryParamModalModule',
+        path: './src/hooks/query-param-modal/query-param-modal.module.ts',
+        description: 'An example for hooking into the query param modal.',
+        scope: 'self'
+      },
+      {
         name: 'pop confirm example',
         module: 'PopConfirmExampleModule',
         path: './src/popconfirm/pop-confirm-example.module.ts',
