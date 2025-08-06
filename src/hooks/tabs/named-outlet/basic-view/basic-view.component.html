@@ -1,0 +1,15 @@
+<c8y-title>Named router outlet example</c8y-title>
+<div
+  clas="d-flex"
+  *ngIf="tabs.length"
+>
+  <c8y-tabs-outlet
+    [outletName]="'namedOutletTabs'"
+    [orientation]="'horizontal'"
+    [openFirstTab]="true"
+    [tabs]="tabs"
+  ></c8y-tabs-outlet>
+  <div>
+    <router-outlet name="namedOutlet"></router-outlet>
+  </div>
+</div>

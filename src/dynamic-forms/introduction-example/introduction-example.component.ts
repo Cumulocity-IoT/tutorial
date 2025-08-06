@@ -8,7 +8,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
   selector: 'c8y-introduction-example',
   template: `<c8y-title>Dynamic forms: Introduction</c8y-title>
     <div class="row">
-      <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+      <div class="col-xs-12 col-md-7 col-lg-6">
         <form class="card" [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="card-block">
             <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
@@ -19,7 +19,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
           </div>
         </form>
       </div>
-      <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+      <div class="col-xs-12 col-md-5 col-lg-6">
         <div class="card">
           <div class="card-block">
             <div class="legend form-block">Model</div>

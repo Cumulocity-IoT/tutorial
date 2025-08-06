@@ -1,6 +1,6 @@
 <c8y-title>Cluster map example</c8y-title>
-<div class="d-flex p-16">
-  <div class="d-flex d-col j-c-center p-16">
+<div class="d-flex">
+  <div class="d-flex d-col j-c-center p-r-16" style="width: 280px;">
     <button
       class="btn btn-default btn-block"
       (click)="setRandomZoomLevel()"
@@ -9,9 +9,23 @@
     </button>
     <button
       class="btn btn-default btn-block"
-      (click)="setCenter()"
+      (click)="setCenterNY()"
+      *ngIf="40.7128 !== config.center[0] || -74.006 !== config.center[1]"
     >
-      Set map to Düsseldorf
+      Change center to New York
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="setCenterDus()"
+      *ngIf="51.23544 !== config.center[0] || 6.79599 !== config.center[1]"
+    >
+      Change center to Düsseldorf
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="map.center()"
+    >
+      Go back to defined center
     </button>
     <button
       class="btn btn-default btn-block"
@@ -37,12 +51,19 @@
     >
       Show cluster color
     </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="showMapStatus = !showMapStatus"
+    >
+      Show map status
+    </button>
   </div>
   <!-- important -->
-  <div style="height: 350px; width: 100%; position: relative;">    
+  <div class="flex-grow p-relative a-s-stretch">
     <c8y-map-status
       [clusterMap]="map"
       [(config)]="config"
+      *ngIf="showMapStatus"
     ></c8y-map-status>
     <c8y-cluster-map
       #map
@@ -51,10 +72,10 @@
     ></c8y-cluster-map>
   </div>
   <!-- /important -->
-  <code
-    class="a-s-stretch p-16"
-    style="width: 200px"
+  <div
+    class="a-s-stretch p-16 d-col bg-info-light"
+    style="width: 320px; height: 420px;"
   >
-    <pre>{{ config | json }}  </pre>
-  </code>
+    <pre class="flex-grow">{{ config | json }}  </pre>
+  </div>
 </div>

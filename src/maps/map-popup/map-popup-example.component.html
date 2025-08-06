@@ -1,7 +1,7 @@
 <c8y-title>Map with popup example</c8y-title>
 
-<div class="d-flex p-16">
-  <div class="d-flex d-col j-c-center p-16">
+<div class="d-flex">
+  <div class="d-flex d-col j-c-center p-r-16" style="width: 280px; height: 420px;">
     <button
       class="btn btn-primary btn-block"
       (click)="showFirstPopup()"
@@ -16,13 +16,13 @@
     </button>
   </div>
   <!-- important -->
-  <div style="height: 350px; width: 100%">
+  <div class="flex-grow p-relative a-s-stretch">
     <c8y-map
       [assets]="exampleDevices"
       [config]="config"
     >
       <div *c8yMapPopup="let context">
-        Hello World from:
+        <b>Hello World from:</b>
         <br />
         name: {{ context.name }}
         <br />

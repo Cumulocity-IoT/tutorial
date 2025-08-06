@@ -36,7 +36,6 @@ export const widgetConfigHookProviders = [
     })
   ),
   hookComponent(referenceWidgetDefinition),
-  // important
   hookWidgetConfig({
     widgetId: 'reference.component',
     label: 'An additional Configuration for the simple component',
@@ -47,7 +46,6 @@ export const widgetConfigHookProviders = [
         m => m.AdditionalConfigComponent
       )
   }),
-
   hookWidgetConfig({
     widgetId: 'reference.component',
     label: 'The default asset selector.',
@@ -55,5 +53,4 @@ export const widgetConfigHookProviders = [
     loadComponent: () =>
       import('@c8y/ngx-components/context-dashboard').then(m => m.WidgetAssetSelectorComponent)
   })
-  // /important
 ];

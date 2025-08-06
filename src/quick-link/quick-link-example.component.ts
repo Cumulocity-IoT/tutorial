@@ -8,9 +8,6 @@ import { CoreModule, DocLink, DocsService, gettext, QuickLinkModule } from '@c8y
       class="btn-clean card text-pre-normal"
       *ngFor="let link of quickLinks"
       (click)="link.click ? link.click() : false"
-      c8yProductExperience
-      [actionName]="'welcomeWidgetClicked'"
-      [actionData]="{ link: link.label }"
     >
       <c8y-quick-link [icon]="link.icon" [label]="link.label"></c8y-quick-link>
     </button>`,

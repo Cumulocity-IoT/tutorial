@@ -36,6 +36,7 @@ export class CountdownExampleComponent implements AfterViewInit {
   }
 
   onCountdownEnded(): void {
+    // eslint-disable-next-line no-console
     console.log('Countdown Ended!');
 
     this.resetCountdown();

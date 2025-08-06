@@ -6,6 +6,7 @@ import { CoreModule } from '@c8y/ngx-components';
   template: `
     <h3>Base interface</h3>
     <pre>{{ baseInterface }}</pre>
+    <h3>Referenced types in base interface</h3>
     <pre>{{ referencedInterfaces }}</pre>
     <h3>JSON Schema generated from ExampleInterface</h3>
     <pre>{{ schemaString }}</pre>

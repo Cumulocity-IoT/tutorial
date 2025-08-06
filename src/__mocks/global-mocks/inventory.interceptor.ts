@@ -69,8 +69,13 @@ export class InventoryInterceptor implements HttpInterceptor {
       'has(c8y_IsDeviceGroup)': () => ({
         managedObjects: [...[...Array(5)].map(() => generateGroup())]
       }),
+      // generate 3 realtime devices for the map example
       'has(c8y_Position)': () => ({
-        managedObjects: [generateRealtimeDeviceMO()]
+        managedObjects: [
+          generateRealtimeDeviceMO(),
+          generateRealtimeDeviceMO(),
+          generateRealtimeDeviceMO()
+        ]
       }),
       'has(c8y_IsDevice)': () => ({
         managedObjects: [...[...Array(5)].map(() => generateDevice())]

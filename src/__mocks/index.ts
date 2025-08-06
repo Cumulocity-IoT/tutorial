@@ -24,6 +24,8 @@ import { EnvironmentProviders, Provider, inject, provideAppInitializer } from '@
 import { MockService } from './mock.service';
 import { IUser } from '@c8y/client';
 import { FeatureApiInterceptor } from './global-mocks/feature-api';
+import { ProviderDefinitionsApiInterceptor } from './global-mocks/provider-definitions';
+import { ProviderConfigurationsApiInterceptor } from './global-mocks/provider-configuration';
 
 export function provideAPIMock() {
   return [
@@ -158,6 +160,22 @@ export function provideAPIMock() {
         // The interceptors are sorted by their ID, so the scoped interceptors should be before the global ones.
         id: 'z-global-feature-preview-interceptor-interceptor',
         mockService: FeatureApiInterceptor
+      } as ApiMockConfig,
+      multi: true
+    },
+    {
+      provide: API_MOCK_CONFIG,
+      useValue: {
+        id: 'z-global-provider-definitions-interceptor-interceptor',
+        mockService: ProviderDefinitionsApiInterceptor
+      } as ApiMockConfig,
+      multi: true
+    },
+    {
+      provide: API_MOCK_CONFIG,
+      useValue: {
+        id: 'z-global-provider-configurations-interceptor-interceptor',
+        mockService: ProviderConfigurationsApiInterceptor
       } as ApiMockConfig,
       multi: true
     },

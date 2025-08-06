@@ -13,7 +13,24 @@ import { referenceWidgetDefinition } from '../widget-config.providers';
  */
 @Component({
   selector: 'tut-basic-widget-config-hook-view',
-  templateUrl: './basic-edit.component.html',
+  template: `<div class="card">
+    <div class="card-block">
+      <c8y-widget-config-section
+        *ngFor="let section of widgetConfigService.currentSections$ | async; let i = index"
+        [section]="section"
+      ></c8y-widget-config-section>
+    </div>
+
+    <div class="card-block">
+      <label>The configuration is:</label>
+      <code>
+        <pre>
+    {{ widgetConfigService.currentConfig$ | async | json }}
+  </pre
+        >
+      </code>
+    </div>
+  </div>`,
   standalone: true,
   imports: [CoreModule, CommonModule, WidgetConfigSectionComponent, AsyncPipe, JsonPipe]
 })

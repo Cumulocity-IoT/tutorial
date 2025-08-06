@@ -13,7 +13,7 @@ export function ipValidator(control: AbstractControl): ValidationErrors {
   selector: 'c8y-validation-example',
   template: `<c8y-title>Dynamic forms: Validation</c8y-title>
     <div class="row">
-      <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+      <div class="col-xs-12 col-md-7 col-lg-6">
         <form class="card" [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="card-block">
             <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
@@ -24,7 +24,7 @@ export function ipValidator(control: AbstractControl): ValidationErrors {
           </div>
         </form>
       </div>
-      <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+      <div class="col-xs-12 col-md-5 col-lg-6">
         <div class="card">
           <div class="card-block">
             <div class="legend form-block">Model</div>

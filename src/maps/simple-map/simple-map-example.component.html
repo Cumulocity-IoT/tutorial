@@ -1,7 +1,7 @@
 <c8y-title>Simple map example</c8y-title>
 
-<div class="d-flex p-16">
-  <div class="d-flex d-col j-c-center p-16">
+<div class="d-flex">
+  <div class="d-flex d-col j-c-center p-r-16" style="width: 280px;">
     <button
       class="btn btn-default btn-block"
       (click)="changeDevices()"
@@ -46,14 +46,17 @@
     </button>
   </div>
   <!-- important -->
-  <div style="height: 350px; width: 100%;">
+  <div class="flex-grow p-relative a-s-stretch">
     <c8y-map
       [assets]="exampleDevices"
       [config]="config"
     ></c8y-map>
   </div>
   <!-- /important -->
-  <code style="width: 200px;" class="a-s-stretch p-16">
+  <div
+    class="a-s-stretch p-16 d-col bg-info-light"
+    style="width: 320px; height: 420px;"
+  >
     <pre>{{ config | json }}  </pre>
-  </code>
+  </div>
 </div>

@@ -1,0 +1,27 @@
+<c8y-title>Simple map with custom config</c8y-title>
+
+<div class="d-flex">
+  <div class="d-flex d-col j-c-center p-r-16" style="width: 280px; height: 420px">
+    <button
+      class="btn btn-default btn-block"
+      (click)="mapLayerService?.changeLayer('Carto')"
+    >
+      Change to Carto layer
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="mapLayerService?.changeLayer('OpenTopo')"
+    >
+      Change to OpenTopo layer
+    </button>
+    <button
+      class="btn btn-default btn-block"
+      (click)="mapLayerService?.revert()"
+    >
+      Change to default
+    </button>
+  </div>
+  <div class="flex-grow p-relative a-s-stretch">
+    <c8y-map></c8y-map>
+  </div>
+</div>

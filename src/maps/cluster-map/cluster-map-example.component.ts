@@ -13,13 +13,18 @@ import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
 export class ClusterMapExampleComponent {
   config: ClusterMapConfig = { center: defaultMapConfig.center, zoomLevel: 4 };
   showClusterColor = false;
+  showMapStatus = true;
 
   setRandomZoomLevel() {
     this.config = { ...this.config, zoomLevel: Math.floor(1 + Math.random() * 11) };
   }
 
-  setCenter() {
-    this.config = { ...this.config, center: defaultMapConfig.center };
+  setCenterNY() {
+    this.config = { ...this.config, center: [40.7128, -74.006] };
+  }
+
+  setCenterDus() {
+    this.config = { ...this.config, center: [51.23544, 6.79599] };
   }
 
   changeIcon() {

@@ -193,6 +193,13 @@ export default {
         scope: 'self'
       },
       {
+        name: 'Simple map with custom config',
+        module: 'SimpleMapCustomConfigModule',
+        path: './src/maps/simple-map-custom-config/simple-map-custom-config.module.ts',
+        description: 'A sample for simple map with custom config.',
+        scope: 'self'
+      },
+      {
         name: 'Cluster map',
         module: 'ClusterMapExampleModule',
         path: './src/maps/cluster-map/cluster-map-example.module.ts',
@@ -214,10 +221,17 @@ export default {
         scope: 'self'
       },
       {
-        name: 'Preview feature',
-        module: 'PreviewFeatureModule',
-        path: './src/hooks/preview-feature/preview-feature.module.ts',
-        description: 'A sample for feature preview hook.',
+        name: 'Default Preview feature',
+        module: 'PreviewFeatureDefaultModule',
+        path: './src/hooks/preview-feature/basic-view-default/preview-feature-default.module.ts',
+        description: 'A sample for default feature preview hook.',
+        scope: 'self'
+      },
+      {
+        name: 'Custom Preview feature',
+        module: 'PreviewFeatureCustomModule',
+        path: './src/hooks/preview-feature/basic-view-custom/preview-feature-custom.module.ts',
+        description: 'A sample for custom feature preview hook.',
         scope: 'self'
       },
       {
@@ -288,6 +302,13 @@ export default {
         module: 'TabsModule',
         path: './src/hooks/tabs/tabs.module.ts',
         description: 'A sample for tabs hook.',
+        scope: 'self'
+      },
+      {
+        name: 'Named router outlet',
+        module: 'NamedOutletModule',
+        path: './src/hooks/tabs/named-outlet/named-outlet.module.ts',
+        description: 'A sample for named router outlet and related hooks.',
         scope: 'self'
       },
       {
@@ -781,6 +802,13 @@ export default {
         scope: 'self'
       },
       {
+        name: 'Hooking via service',
+        module: 'HookDocsModule',
+        path: './src/hooks/docs/hook-docs.module.ts',
+        description: 'This is an example for an hook docs added via module or service.',
+        scope: 'self'
+      },
+      {
         name: 'Device connection status',
         module: 'DeviceConnectionStatusExampleModule',
         path: './src/device-connection-status/device-connection-status-example.module.ts',
@@ -819,6 +847,13 @@ export default {
         name: 'Widget Config Hook',
         module: 'widgetConfigHookProviders',
         path: './src/hooks/widget-config/widget-config.providers.ts',
+        description: 'This is an example for the bottom drawer service.',
+        scope: 'self'
+      },
+      {
+        name: 'Widget Hook',
+        module: 'widgetHookProviders',
+        path: './src/hooks/widget/widget.providers.ts',
         description: 'This is an example for the bottom drawer service.',
         scope: 'self'
       }

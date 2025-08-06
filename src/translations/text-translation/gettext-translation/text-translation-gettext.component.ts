@@ -9,13 +9,15 @@ import { CoreModule, gettext } from '@c8y/ngx-components';
         <h4 class="card-title">Gettext example (mark string for translation)</h4>
       </div>
       <div class="card-block">
-        This word will be translated: {{ (enabled ? enabledLabel : disabledLabel) | translate }}.
+        <p class="m-b-8">
+          This word will be translated: {{ (enabled ? enabledLabel : disabledLabel) | translate }}.
+        </p>
+        <label class="c8y-switch">
+          <input type="checkbox" [(ngModel)]="enabled" />
+          <span></span>
+          Toggle state
+        </label>
       </div>
-      <label class="c8y-switch">
-        <input type="checkbox" [(ngModel)]="enabled" />
-        <span></span>
-        Toggle state
-      </label>
     </div>`,
   standalone: true,
   imports: [CoreModule]

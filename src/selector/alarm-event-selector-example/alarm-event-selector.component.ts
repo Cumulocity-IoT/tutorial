@@ -13,21 +13,25 @@ import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
   template: `
     <div class="row">
       <div class="col-md-6">
-        <form [formGroup]="formGroup">
-          <c8y-alarm-event-selection-list
-            name="alarms"
-            [config]="config"
-            [timelineType]="'ALARM'"
-            formControlName="alarms"
-          >
-          </c8y-alarm-event-selection-list>
-          <c8y-alarm-event-selection-list
-            name="events"
-            [config]="config"
-            [timelineType]="'EVENT'"
-            formControlName="events"
-          >
-          </c8y-alarm-event-selection-list>
+        <form class="card" [formGroup]="formGroup">
+          <div class="inner-scroll" style="max-height:560px">
+            <c8y-alarm-event-selection-list
+              class="bg-inherit"
+              name="alarms"
+              [config]="config"
+              [timelineType]="'ALARM'"
+              formControlName="alarms"
+            >
+            </c8y-alarm-event-selection-list>
+            <c8y-alarm-event-selection-list
+              class="bg-inherit"
+              name="events"
+              [config]="config"
+              [timelineType]="'EVENT'"
+              formControlName="events"
+            >
+            </c8y-alarm-event-selection-list>
+          </div>
         </form>
       </div>
     </div>

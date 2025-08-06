@@ -1,4 +1,7 @@
-<div class="time-elapsed">
+<div class="time-elapsed" 
+  [attr.aria-live]="'polite'" 
+  [attr.aria-label]="'Time remaining until next refresh' | translate"
+>
   <!-- important -->
   <c8y-countdown-interval
     [countdownInterval]="10000"

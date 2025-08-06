@@ -3,9 +3,7 @@ import { NavigatorNode, hookNavigator, hookRoute, hookTab } from '@c8y/ngx-compo
 import { ExampleTabFactory } from './tab';
 
 export const hooks = [
-  // important
   hookTab(ExampleTabFactory),
-  // /important
   hookRoute([
     {
       path: 'hooks/tabs',

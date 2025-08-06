@@ -11,10 +11,11 @@ import {
 @Component({
   selector: 'pop-confirm-example',
   template: `<c8y-title>Popover confirm</c8y-title>
-    <div class="p-24">
+    <div class="p-24 d-inline-block">
       <button
         class="btn btn-dot btn-dot--danger m-l-auto"
         title="{{ 'Delete' | translate }}"
+        [attr.aria-label]="'Delete' | translate"
         type="button"
         (click)="triggerPopover(poConfirm)"
       >
@@ -46,7 +47,9 @@ export class PopConfirmExampleComponent {
 
   async triggerPopover(poConfirm: PopoverConfirmComponent): Promise<void> {
     // to set the message
-    poConfirm.message = gettext('This action is irreversible.');
+    poConfirm.message = gettext(
+      'Are you sure you want to delete this item? This action is irreversible.'
+    );
     try {
       const remove = await poConfirm.show(this.confirmRemoveColumnButtons);
       if (!remove) {
