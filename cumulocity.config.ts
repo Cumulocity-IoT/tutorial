@@ -704,6 +704,20 @@ export default {
         scope: 'self'
       },
       {
+        name: 'Introduction to properties selector- inline usage',
+        module: 'propertiesSelectorInlineExampleProviders',
+        path: './src/selector/properties-selector-inline-example/properties-selector-inline.providers.ts',
+        description: 'An introduction to properties selector example- inline usage.',
+        scope: 'self'
+      },
+      {
+        name: 'Introduction to properties selector- drawer usage',
+        module: 'propertiesSelectorDrawerExampleProviders',
+        path: './src/selector/properties-selector-drawer-example/properties-selector-drawer.providers.ts',
+        description: 'An introduction to properties selector example- drawer usage.',
+        scope: 'self'
+      },
+      {
         name: 'Introduction to asset selector device child',
         module: 'AssetSingleSelectModule',
         path: './src/selector/asset-selector-example/single-select/asset-single-select.module.ts',
