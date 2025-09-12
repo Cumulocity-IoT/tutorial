@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IIdentified, IManagedObject, InventoryService } from '@c8y/client';
-import { BottomDrawerService, C8yTranslatePipe, TitleComponent } from '@c8y/ngx-components';
+import { C8yTranslatePipe, TitleComponent } from '@c8y/ngx-components';
 import {
   AssetPropertyActionDirective,
   AssetPropertyListComponent,
@@ -97,7 +97,7 @@ import { JsonPipe } from '@angular/common';
             </div>
           </fieldset>
           <label class="c8y-switch">
-            <input type="checkbox" [(ngModel)]="searchable" />
+            <input type="checkbox" [(ngModel)]="filterable" />
             <span></span>
             <small>searchable</small>
           </label>
@@ -116,21 +116,27 @@ import { JsonPipe } from '@angular/common';
             <span></span>
             <small>showKey</small>
           </label>
+          <label class="c8y-switch m-0">
+            <input type="checkbox" [(ngModel)]="allowAddingCustomProperties" />
+            <span></span>
+            <small>allowAddingCustomProperties</small>
+          </label>
         </div>
       </div>
       <div class="col-xs-12 col-md-5">
         <div class="card">
-          <div class="card-inner-scroll d-flex d-col bg-component" style="height: 559px">
+          <div class="card-inner-scroll d-flex d-col bg-component" style="height: 591px">
             <c8y-asset-property-list
               class="bg-component"
               [asset]="selectedAsset"
               [config]="{
                 selectMode: multiSelect,
                 showHeader: showHeader,
-                searchable: searchable,
+                filterable: filterable,
                 showValue: showValue,
                 expansionMode: expansionMode,
-                showKey: showKey
+                showKey: showKey,
+                allowAddingCustomProperties: allowAddingCustomProperties
               }"
               (selectedProperties)="onSelectedProperties($event)"
             >
@@ -150,7 +156,7 @@ import { JsonPipe } from '@angular/common';
         </div>
       </div>
       <div class="col-xs-12 col-md-4">
-        <pre class="inner-scroll" style="height: 559px">{{ assetPropertiesOutput | json }}</pre>
+        <pre class="inner-scroll" style="height: 591px">{{ assetPropertiesOutput | json }}</pre>
       </div>
     </div>`,
   standalone: true,
@@ -171,7 +177,6 @@ export class PropertiesSelectorInlineExampleComponent {
   model: IIdentified;
   selectedAsset: IManagedObject;
   assetPropertiesOutput: AssetPropertyType[] | AssetPropertyType;
-  bottomDrawerService = inject(BottomDrawerService);
 
   multiSelect: 'single' | 'multi' | 'none' = 'multi';
   expansionMode: 'expandedByDefault' | 'collapsedByDefault' | 'nonCollapsible' =
@@ -179,7 +184,8 @@ export class PropertiesSelectorInlineExampleComponent {
   showHeader = true;
   showValue = true;
   showKey = true;
-  searchable = true;
+  filterable = true;
+  allowAddingCustomProperties = true;
 
   selectionChanged(e: AssetSelectionChangeEvent) {
     this.selectedAsset = e.change.item;

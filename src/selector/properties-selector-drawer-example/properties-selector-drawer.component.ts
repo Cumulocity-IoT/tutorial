@@ -2,7 +2,10 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IIdentified, IManagedObject, InventoryService } from '@c8y/client';
 import { BottomDrawerService, TitleComponent } from '@c8y/ngx-components';
-import { AssetPropertySelectorDrawerComponent } from '@c8y/ngx-components/asset-properties';
+import {
+  AssetPropertySelectorDrawerComponent,
+  AssetPropertyType
+} from '@c8y/ngx-components/asset-properties';
 import {
   AssetSelectionChangeEvent,
   AssetSelectorModule
@@ -53,7 +56,7 @@ export class PropertiesSelectorDrawerExampleComponent {
   inventoryService = inject(InventoryService);
   model: IIdentified;
   selectedAsset: IManagedObject;
-  output: unknown;
+  output: AssetPropertyType[] = [];
   bottomDrawerService = inject(BottomDrawerService);
 
   selectionChanged(e: AssetSelectionChangeEvent) {
@@ -70,7 +73,8 @@ export class PropertiesSelectorDrawerExampleComponent {
           expansionMode: 'collapsedByDefault',
           showValue: true,
           showKey: true,
-          emptyStateContent: 'default-properties'
+          emptyStateContent: 'default-properties',
+          selectedProperties: this.output
         }
       }
     });
@@ -79,7 +83,7 @@ export class PropertiesSelectorDrawerExampleComponent {
       const resultOf = await drawer.instance.result;
       this.output = resultOf;
     } catch (ex) {
-      this.output = 'Cancelled';
+      this.output = [];
     }
   }
 }
