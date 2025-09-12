@@ -46,6 +46,13 @@ export default {
     },
     exports: [
       {
+        name: 'Resizable grid example',
+        module: 'ResizableGridExampleModule',
+        path: './src/resizable-grid-example/resizable-grid-example.module.ts',
+        description: 'An example for a grid with two resizable columns.',
+        scope: 'self'
+      },
+      {
         name: 'Introduction to asset selector',
         module: 'AssetSelectorExampleModule',
         path: './src/selector/asset-selector-example/general-example/asset-selector-example.module.ts',
