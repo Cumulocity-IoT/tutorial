@@ -66,7 +66,8 @@ export class AssetSelectorMillerExampleComponent {
     showFilter: false,
     showUnassignedDevices: false,
     singleColumn: false,
-    label: 'Asset selection'
+    label: 'Asset selection',
+    showSelected: true
   };
 
   reloadComponent() {

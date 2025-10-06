@@ -64,7 +64,8 @@ export class AssetSelectorTreeExampleComponent {
     search: false,
     showChildDevices: false,
     showUnassignedDevices: false,
-    label: 'Asset selection'
+    label: 'Asset selection',
+    showSelected: true
   };
 
   reloadComponent() {
