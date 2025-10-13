@@ -725,6 +725,13 @@ export default {
         scope: 'self'
       },
       {
+        name: 'Properties selector- computed properties',
+        module: 'computedAssetPropertiesProvidersExample',
+        path: './src/selector/properties-selector-computed-properties/index.ts',
+        description: 'Hookable computed property example.',
+        scope: 'self'
+      },
+      {
         name: 'Introduction to asset selector device child',
         module: 'AssetSingleSelectModule',
         path: './src/selector/asset-selector-example/single-select/asset-single-select.module.ts',
@@ -876,6 +883,13 @@ export default {
         module: 'widgetHookProviders',
         path: './src/hooks/widget/widget.providers.ts',
         description: 'This is an example for the bottom drawer service.',
+        scope: 'self'
+      },
+      {
+        name: 'Computed asset properties',
+        module: 'computedAssetPropertiesProviders',
+        path: '@c8y/ngx-components/computed-asset-properties',
+        description: 'Set of predefined computed asset properties.',
         scope: 'self'
       }
     ]

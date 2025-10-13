@@ -22,6 +22,7 @@ import { JsonPipe } from '@angular/common';
         <div class="card">
           <div class="card-inner-scroll d-flex d-col bg-component" style="height: 490px">
             <c8y-asset-selector
+              class="bg-inherit"
               [(ngModel)]="model"
               [config]="{
                 groupsSelectable: true,
