@@ -1,5 +1,6 @@
 import { FormGroup } from '@angular/forms';
-import { BaseColumn, ColumnConfig, gettext } from '@c8y/ngx-components';
+import { gettext } from '@c8y/ngx-components/gettext';
+import { BaseColumn, ColumnConfig } from '@c8y/ngx-components';
 import { LastUpdatedCellRendererComponent } from './last-updated.cell-renderer.component';
 
 /**

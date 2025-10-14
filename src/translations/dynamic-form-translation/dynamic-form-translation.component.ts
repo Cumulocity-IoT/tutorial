@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { CoreModule, DynamicFormsModule, gettext } from '@c8y/ngx-components';
+import { gettext } from '@c8y/ngx-components/gettext';
+import { CoreModule, DynamicFormsModule } from '@c8y/ngx-components';
 
 @Component({
   selector: 'dynamic-form-translation',

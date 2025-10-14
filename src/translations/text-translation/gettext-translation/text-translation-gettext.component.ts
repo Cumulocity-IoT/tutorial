@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { CoreModule, gettext } from '@c8y/ngx-components';
+import { gettext } from '@c8y/ngx-components/gettext';
+import { CoreModule } from '@c8y/ngx-components';
 
 @Component({
   selector: 'text-translation-gettext',

@@ -891,6 +891,20 @@ export default {
         path: '@c8y/ngx-components/computed-asset-properties',
         description: 'Set of predefined computed asset properties.',
         scope: 'self'
+      },
+      {
+        name: 'Editor JSON sample',
+        module: 'editorJSONSampleProviders',
+        path: './src/editor/editor-json-sample/index.ts',
+        description: 'This is an example for editing JSON via the editor component.',
+        scope: 'self'
+      },
+      {
+        name: 'Editor CSS sample',
+        module: 'editorCSSSampleProviders',
+        path: './src/editor/editor-css-sample/index.ts',
+        description: 'This is an example for editing CSS via the editor component.',
+        scope: 'self'
       }
     ]
   },
