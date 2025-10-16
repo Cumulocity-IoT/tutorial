@@ -19,7 +19,8 @@ export class BottomDrawerExampleComponent {
       initialState: {
         // place here any content you want to pass to the component
         isDisabled: true
-      }
+      },
+      disableClickOutside: true
     });
 
     try {
