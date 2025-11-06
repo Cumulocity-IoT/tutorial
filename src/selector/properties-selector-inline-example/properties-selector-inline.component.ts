@@ -21,7 +21,7 @@ import { JsonPipe } from '@angular/common';
     <div class="d-flex-md row">
       <div class="col-xs-12 col-md-3">
         <div class="card">
-          <div class="card-inner-scroll d-flex d-col bg-component" style="height: 208px">
+          <div class="inner-scroll d-flex d-col bg-component" style="height: 208px">
             <c8y-asset-selector
               class="bg-component"
               [(ngModel)]="model"
@@ -121,11 +121,16 @@ import { JsonPipe } from '@angular/common';
             <span></span>
             <small>allowAddingCustomProperties</small>
           </label>
+          <label class="c8y-switch m-0">
+            <input type="checkbox" [(ngModel)]="allowDragAndDrop" />
+            <span></span>
+            <small>allowDragAndDrop</small>
+          </label>
         </div>
       </div>
       <div class="col-xs-12 col-md-5">
         <div class="card">
-          <div class="card-inner-scroll d-flex d-col bg-component" style="height: 591px">
+          <div class="inner-scroll d-flex d-col bg-component" style="height: 623px">
             <c8y-asset-property-list
               class="bg-component"
               [asset]="selectedAsset"
@@ -136,7 +141,8 @@ import { JsonPipe } from '@angular/common';
                 showValue: showValue,
                 expansionMode: expansionMode,
                 showKey: showKey,
-                allowAddingCustomProperties: allowAddingCustomProperties
+                allowAddingCustomProperties: allowAddingCustomProperties,
+                allowDragAndDrop: allowDragAndDrop
               }"
               (selectedProperties)="onSelectedProperties($event)"
             >
@@ -156,7 +162,7 @@ import { JsonPipe } from '@angular/common';
         </div>
       </div>
       <div class="col-xs-12 col-md-4">
-        <pre class="inner-scroll" style="height: 591px">{{ assetPropertiesOutput | json }}</pre>
+        <pre class="inner-scroll" style="height: 623px">{{ assetPropertiesOutput | json }}</pre>
       </div>
     </div>`,
   standalone: true,
@@ -186,6 +192,7 @@ export class PropertiesSelectorInlineExampleComponent {
   showKey = true;
   filterable = true;
   allowAddingCustomProperties = true;
+  allowDragAndDrop = true;
 
   selectionChanged(e: AssetSelectionChangeEvent) {
     this.selectedAsset = e.change.item;
