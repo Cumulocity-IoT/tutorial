@@ -1,9 +1,9 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { gettext } from '@c8y/ngx-components/gettext';
 import {
   DismissAlertStrategy,
   DynamicComponentAlert,
   DynamicComponentAlertAggregator,
-  gettext,
   DatePipe
 } from '@c8y/ngx-components';
 import { NgIf } from '@angular/common';

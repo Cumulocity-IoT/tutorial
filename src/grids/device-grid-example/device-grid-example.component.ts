@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { gettext } from '@c8y/ngx-components/gettext';
 import {
   Column,
   CoreModule,
   CustomColumn,
   DATA_GRID_CONFIGURATION_CONTEXT_PROVIDER,
   DATA_GRID_CONFIGURATION_STRATEGY,
-  gettext,
   GridConfigContext,
   GridConfigContextProvider
 } from '@c8y/ngx-components';

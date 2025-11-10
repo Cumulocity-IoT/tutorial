@@ -1,5 +1,6 @@
 import { EnvironmentProviders, Provider, inject, provideAppInitializer } from '@angular/core';
-import { AlertService, gettext, UserMenuService } from '@c8y/ngx-components';
+import { gettext } from '@c8y/ngx-components/gettext';
+import { AlertService, UserMenuService } from '@c8y/ngx-components';
 
 export function provideUserMenuSample() {
   return [

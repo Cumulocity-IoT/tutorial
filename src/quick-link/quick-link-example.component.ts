@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { CoreModule, DocLink, DocsService, gettext, QuickLinkModule } from '@c8y/ngx-components';
+import { gettext } from '@c8y/ngx-components/gettext';
+import { CoreModule, DocLink, DocsService, QuickLinkModule } from '@c8y/ngx-components';
 
 @Component({
   selector: 'quick-link-example',

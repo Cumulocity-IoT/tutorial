@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-import {
-  CoreModule,
-  FormsModule,
-  gettext,
-  ModalModule,
-  ModalService,
-  Status
-} from '@c8y/ngx-components';
+import { gettext } from '@c8y/ngx-components/gettext';
+import { CoreModule, FormsModule, ModalModule, ModalService, Status } from '@c8y/ngx-components';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { DeleteModalExampleComponent } from './delete-modal-example.component';
 

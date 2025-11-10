@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
-import { EventService } from '@c8y/client';
-import { IEvent } from '@c8y/client';
-import {
-  DynamicBulkIIdentifiedResolver,
-  DynamicResolverService,
-  gettext
-} from '@c8y/ngx-components';
+import { EventService, IEvent } from '@c8y/client';
+import { gettext } from '@c8y/ngx-components/gettext';
+import { DynamicBulkIIdentifiedResolver, DynamicResolverService } from '@c8y/ngx-components';
 
 /**
  * An short alternative to the DynamicEventResolver class using the abstract class DynamicBulkIIdentifiedResolver.

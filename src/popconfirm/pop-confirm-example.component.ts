@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { gettext } from '@c8y/ngx-components/gettext';
 import {
   CommonModule,
-  gettext,
   HeaderModule,
   ModalModule,
   PopoverConfirmButtons,
