@@ -886,6 +886,13 @@ export default {
         scope: 'self'
       },
       {
+        name: 'AI Components',
+        module: 'aiComponentsProviders',
+        path: './src/ai/ai-components.providers.ts',
+        description: 'Showcasing the most common AI components.',
+        scope: 'self'
+      },
+      {
         name: 'Computed asset properties',
         module: 'computedAssetPropertiesProviders',
         path: '@c8y/ngx-components/computed-asset-properties',
