@@ -6,7 +6,11 @@ import { ResizableGridComponent, CoreModule } from '@c8y/ngx-components';
   template: `<c8y-title>Resizable Grid</c8y-title>
     <div class="p-t-24">
       <div class="card">
-        <c8y-resizable-grid style="height: 350px;">
+        <c8y-resizable-grid
+          style="height: 350px;"
+          [collapsible]="collapsible"
+          [collapseThreshold]="320"
+        >
           <div left-pane>
             <div class="card-header">
               <h4>Left Column</h4>
@@ -28,6 +32,11 @@ import { ResizableGridComponent, CoreModule } from '@c8y/ngx-components';
           </div>
         </c8y-resizable-grid>
       </div>
+      <label class="c8y-switch">
+        <input type="checkbox" [(ngModel)]="collapsible" />
+        <span></span>
+        <span class="p-l-8">Enable Collapse Behavior (when width &lt; 320px)</span>
+      </label>
     </div>`,
   standalone: true,
   imports: [ResizableGridComponent, CoreModule]

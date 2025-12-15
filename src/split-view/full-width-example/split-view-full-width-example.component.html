@@ -1,0 +1,62 @@
+<div class="p-l-16 p-r-16">
+  <c8y-title>Single column example</c8y-title>
+
+  <c8y-sv>
+    <c8y-sv-list
+      [emptyStateIcon]="'c8y-project'"
+      [emptyStateTitle]="'No projects to display'"
+      [title]="'Projects'"
+      [showEmptyState]="items.length === 0"
+    >
+      <c8y-sv-header-actions>
+        <button class="btn btn-primary btn-sm">
+          <i c8yIcon="plus"></i>
+          Add Project
+        </button>
+      </c8y-sv-header-actions>
+
+      @if (items.length > 0) {
+        <c8y-list-group>
+          @for (item of items; track item) {
+            <c8y-li>
+              <c8y-li-body>
+                <div class="d-flex a-i-start">
+                  <div class="flex-grow min-width-0">
+                    <h4 class="m-b-4">{{ item.name }}</h4>
+                    <p class="text-muted m-b-8">{{ item.description }}</p>
+                    <div class="progress">
+                      <div
+                        class="progress-bar"
+                        [style.width.%]="item.progress"
+                        [ngClass]="getProgressClass(item.progress)"
+                      >
+                        {{ item.progress }}%
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-right m-l-16">
+                    <span
+                      class="badge"
+                      [ngClass]="getStatusClass(item.status)"
+                    >
+                      {{ item.status }}
+                    </span>
+                    <br />
+                    <small class="text-muted m-t-4 d-block">Progress: {{ item.progress }}%</small>
+                  </div>
+                </div>
+              </c8y-li-body>
+            </c8y-li>
+          }
+        </c8y-list-group>
+      }
+
+      <c8y-sv-footer>
+        <div class="d-flex justify-content-between">
+          <small class="text-muted">{{ items.length }} projects total</small>
+          <small class="text-muted">Mode: List only</small>
+        </div>
+      </c8y-sv-footer>
+    </c8y-sv-list>
+  </c8y-sv>
+</div>

@@ -277,6 +277,27 @@ export default {
         scope: 'self'
       },
       {
+        name: 'Resizable example',
+        module: 'SplitViewResizableExampleModule',
+        path: './src/split-view/resizable-example/split-view-resizable-example.module.ts',
+        description: 'A sample for split view with resizable layout.',
+        scope: 'self'
+      },
+      {
+        name: 'Fixed example',
+        module: 'SplitViewFixedExampleModule',
+        path: './src/split-view/fixed-example/split-view-fixed-example.module.ts',
+        description: 'A sample for split view with fixed layout.',
+        scope: 'self'
+      },
+      {
+        name: 'Split view full width',
+        module: 'SplitViewFullWidthExampleModule',
+        path: './src/split-view/full-width-example/split-view-full-width-example.module.ts',
+        description: 'A sample for split view in full width mode.',
+        scope: 'self'
+      },
+      {
         name: 'Component',
         module: 'ComponentModule',
         path: './src/hooks/component/component.module.ts',

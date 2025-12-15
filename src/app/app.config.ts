@@ -16,6 +16,8 @@ import { provideMapExampleNavigator } from '../maps';
 import { provideTranslationsNavigator } from '../translations';
 import { provideLazyWidget } from '../lazy-widget';
 import { provideBreadcrumbsNavigator } from '../breadcrumbs';
+import { provideSplitViewSamples } from '../split-view';
+import { provideIconPanelExample } from '../icon-panel';
 import { provideClientInterceptorSample } from '../client-interceptor';
 import { provideUserMenuSample } from '../user-menu';
 import { AlarmsModule } from '@c8y/ngx-components/alarms';
@@ -53,6 +55,8 @@ export const appConfig: ApplicationConfig = {
     ...provideRedirectToLastRoute(),
     ...provideAPIMock(),
     ...provideBreadcrumbsNavigator(),
+    ...provideSplitViewSamples(),
+    ...provideIconPanelExample(),
     importProvidersFrom(AlarmsModule.config({ hybrid: false }))
   ]
 };

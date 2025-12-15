@@ -1,0 +1,188 @@
+<div class="p-l-16 p-r-16">
+  <c8y-title>Basic example</c8y-title>
+  <c8y-sv
+    [resizableConfig]="{ trackId: 'basic-example-split-view', collapsible: false }"
+    (selectionChange)="onSelectionChange($event)"
+  >
+    <c8y-sv-list
+      [emptyStateIcon]="'c8y-devices'"
+      [title]="'Device list' | translate"
+      [emptyStateTitle]="'No devices to display'"
+      [loading]="loading"
+      [listOpacity]="loading ? 0.6 : 1"
+      [showEmptyState]="items.length === 0 && !loading"
+      [docsUrl]="'/docs/device-management-application/managing-devices/#device-list'"
+    >
+      <c8y-sv-header-actions>
+        <button
+          class="btn btn-default btn-sm"
+          (click)="refresh()"
+          [disabled]="loading"
+        >
+          <i
+            c8yIcon="refresh"
+            [ngClass]="{ 'icon-spin': loading }"
+          ></i>
+          Refresh
+        </button>
+      </c8y-sv-header-actions>
+
+      <!-- Actual content items -->
+      @if (!loading && items.length > 0) {
+        <c8y-list-group>
+          @for (item of items; track item) {
+            <c8y-li
+              [c8ySvListItem]="item"
+              [selectable]="false"
+            >
+              <c8y-li-icon class="a-s-start">
+                <div class="device-icons">
+                  <i
+                    class="icon-24 text-gray-dark stroked-icon"
+                    c8yIcon="c8y-device"
+                  ></i>
+                </div>
+                <c8y-device-status
+                  [mo]="item.managedObject"
+                  [size]="20"
+                ></c8y-device-status>
+              </c8y-li-icon>
+              <c8y-li-body class="a-s-stretch">
+                <div class="d-flex a-i-start fit-h">
+                  <div class="min-width-0 flex-grow">
+                    <p class="text-truncate-wrap p-b-4">
+                      {{ item.name }}
+                    </p>
+                    <div class="d-flex">
+                      <p
+                        class="small text-muted text-truncate flex-grow"
+                        [title]="item.location"
+                      >
+                        <i c8yIcon="map-marker"></i>
+                        {{ item.location }}
+                      </p>
+                      <span
+                        class="badge m-l-8"
+                        [class.badge-success]="item.status === 'Active'"
+                        [class.badge-info]="item.status === 'Inactive'"
+                        [class.badge-danger]="item.status === 'Maintenance'"
+                      >
+                        {{ item.status }}
+                      </span>
+                    </div>
+                    <p class="small text-muted m-t-4">
+                      <i c8yIcon="tag"></i>
+                      {{ item.type }} • {{ item.deviceId }}
+                    </p>
+                  </div>
+                </div>
+              </c8y-li-body>
+            </c8y-li>
+          }
+        </c8y-list-group>
+      }
+
+      <c8y-sv-footer>
+        <small class="text-muted">Total devices: {{ items.length }}</small>
+      </c8y-sv-footer>
+    </c8y-sv-list>
+
+    <c8y-sv-details
+      emptyStateIcon="c8y-device"
+      emptyStateTitle="No device selected"
+      [title]="'Device details' | translate"
+      emptyStateSubtitle="Select a device from the list to view details"
+    >
+      @if (selectedItem) {
+        <c8y-sv-extra-header>
+          <div class="d-flex a-i-center gap-4">
+            <label class="m-b-0">Device ID</label>
+            <p>{{ selectedItem.deviceId }}</p>
+          </div>
+        </c8y-sv-extra-header>
+      }
+
+      @if (selectedItem) {
+        <ng-container>
+          <div class="row">
+            <div class="col-md-4 m-b-16">
+              <label class="text-muted small">Type</label>
+              <p>{{ selectedItem.type }}</p>
+            </div>
+            <div class="col-md-4 m-b-16">
+              <label class="text-muted small">Location</label>
+              <p>{{ selectedItem.location }}</p>
+            </div>
+            <div class="col-md-4 m-b-16">
+              <label class="text-muted small">Last Seen</label>
+              <p>{{ selectedItem.lastSeen }}</p>
+            </div>
+          </div>
+
+          <p class="m-t-16 text-bold">Connection Status</p>
+          <div class="row d-flex-md m-b-24">
+            <div class="col-md-4 col-xs-12">
+              <label class="text-muted small">Send Status</label>
+              <p
+                [ngClass]="getStatusColorClass(selectedItem.managedObject.c8y_Availability?.status)"
+              >
+                {{ selectedItem.managedObject.c8y_Availability?.status || 'UNKNOWN' }}
+              </p>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+              <label class="text-muted small">Push Status</label>
+              <p [ngClass]="getStatusColorClass(selectedItem.managedObject.c8y_Connection?.status)">
+                {{ selectedItem.managedObject.c8y_Connection?.status || 'UNKNOWN' }}
+              </p>
+            </div>
+            <div class="col-md-4 col-xs-12">
+              <label class="text-muted small">Response Interval</label>
+              <p>
+                {{ selectedItem.managedObject.c8y_RequiredAvailability?.responseInterval || 0 }}s
+              </p>
+            </div>
+          </div>
+
+          <c8y-sv-details-actions class="m-t-16">
+            <button
+              class="btn btn-default btn-sm"
+              (click)="editDevice()"
+            >
+              <i c8yIcon="pencil"></i>
+              Edit
+            </button>
+            <button
+              class="btn btn-primary btn-sm"
+              (click)="restartDevice()"
+            >
+              <i c8yIcon="refresh"></i>
+              Restart
+            </button>
+          </c8y-sv-details-actions>
+        </ng-container>
+      }
+      <c8y-sv-footer>
+        <button
+          class="btn btn-default btn-sm"
+          (click)="clearSelection()"
+        >
+          Cancel
+        </button>
+        <button
+          class="btn btn-danger btn-sm"
+          (click)="deleteDevice()"
+        >
+          <i class="fa fa-trash"></i>
+          Delete
+        </button>
+        <button
+          class="btn btn-default btn-sm"
+          (click)="editDevice()"
+        >
+          <i class="fa fa-edit"></i>
+          Edit
+        </button>
+      </c8y-sv-footer>
+    </c8y-sv-details>
+  </c8y-sv>
+</div>

@@ -1,0 +1,97 @@
+<div class="p-l-16 p-r-16">
+  <c8y-title>Static example</c8y-title>
+
+  <c8y-sv
+    [isResizable]="false"
+    (selectionChange)="onSelectionChange($event)"
+  >
+    <c8y-sv-list
+      [title]="'Tools & utilities'"
+      [showEmptyState]="false"
+    >
+      <c8y-list-group>
+        @for (item of items; track item) {
+          <c8y-li
+            [selectable]="false"
+            [c8ySvListItem]="item"
+          >
+            <c8y-li-icon>
+              <i
+                class="icon-24"
+                [c8yIcon]="item.icon"
+              ></i>
+            </c8y-li-icon>
+
+            <c8y-li-body>
+              <div class="d-flex a-i-center p-b-4">
+                <p class="m-b-0 text-bold text-16 flex-grow">{{ item.name }}</p>
+                <span
+                  class="badge"
+                  [ngClass]="getStatusClass(item.status)"
+                >
+                  <i
+                    class="icon-12 m-r-4"
+                    [c8yIcon]="getStatusIcon(item.status)"
+                  ></i>
+                  {{ item.status }}
+                </span>
+              </div>
+              <p class="text-muted small m-b-4">{{ item.type }}</p>
+            </c8y-li-body>
+          </c8y-li>
+        }
+      </c8y-list-group>
+      <c8y-sv-footer>
+        <div class="d-flex justify-content-between">
+          <small class="text-muted">{{ items.length }} tools available</small>
+        </div>
+      </c8y-sv-footer>
+    </c8y-sv-list>
+    <c8y-sv-details
+      emptyStateIcon="cog"
+      emptyStateTitle="No tool selected"
+      emptyStateSubtitle="Select a tool from the list to view details"
+      [title]="'Tool details' | translate"
+    >
+      @if (selectedItem) {
+        <ng-container>
+          <div class="d-flex a-i-center m-b-16">
+            <i
+              class="icon-24 m-r-8"
+              [c8yIcon]="selectedItem.icon"
+            ></i>
+            <h4 class="m-b-0 m-r-8 text-bold">{{ selectedItem.name }}</h4>
+            <span
+              class="badge"
+              [ngClass]="getStatusClass(selectedItem.status)"
+            >
+              <i
+                class="icon-12 m-r-4"
+                [c8yIcon]="getStatusIcon(selectedItem.status)"
+              ></i>
+              {{ selectedItem.status }}
+            </span>
+          </div>
+          <p class="m-b-16">{{ selectedItem.description }}</p>
+          <c8y-icon-panel [sections]="itemInfoSections"></c8y-icon-panel>
+        </ng-container>
+      }
+      <c8y-sv-footer>
+        <button
+          class="btn btn-default btn-sm"
+          (click)="editItem()"
+        >
+          <i class="fa fa-edit"></i>
+          Edit
+        </button>
+        <button
+          class="btn btn-danger btn-sm"
+          (click)="deleteItem()"
+        >
+          <i class="fa fa-trash"></i>
+          Delete
+        </button>
+      </c8y-sv-footer>
+    </c8y-sv-details>
+  </c8y-sv>
+</div>
