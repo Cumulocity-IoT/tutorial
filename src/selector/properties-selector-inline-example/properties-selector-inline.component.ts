@@ -14,6 +14,7 @@ import {
 import { SubAssetsModule } from '@c8y/ngx-components/sub-assets';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { JsonPipe } from '@angular/common';
+import { PopoverDirective } from 'ngx-bootstrap/popover';
 
 @Component({
   selector: 'tut-properties-selector-inline',
@@ -126,11 +127,29 @@ import { JsonPipe } from '@angular/common';
             <span></span>
             <small>allowDragAndDrop</small>
           </label>
+          <label class="c8y-switch m-0">
+            <input type="checkbox" [(ngModel)]="usePreselectedProperties" />
+            <span></span>
+            <small>Use preselected properties</small>
+            <button
+              class="btn-help btn-help--sm"
+              [attr.aria-label]="'Help' | translate"
+              [popover]="helpRef"
+              placement="right"
+              triggers="focus"
+              container="body"
+              type="button"
+              [adaptivePosition]="true"
+            ></button>
+            <ng-template #helpRef>
+              <div [innerHTML]="preselectedPropertiesHelpText"></div>
+            </ng-template>
+          </label>
         </div>
       </div>
       <div class="col-xs-12 col-md-5">
         <div class="card">
-          <div class="inner-scroll d-flex d-col bg-component" style="height: 623px">
+          <div class="inner-scroll d-flex d-col bg-component" style="height: 655px">
             <c8y-asset-property-list
               class="bg-component"
               [asset]="selectedAsset"
@@ -142,7 +161,8 @@ import { JsonPipe } from '@angular/common';
                 expansionMode: expansionMode,
                 showKey: showKey,
                 allowAddingCustomProperties: allowAddingCustomProperties,
-                allowDragAndDrop: allowDragAndDrop
+                allowDragAndDrop: allowDragAndDrop,
+                selectedProperties: usePreselectedProperties ? selectedProperties : []
               }"
               (selectedProperties)="onSelectedProperties($event)"
             >
@@ -162,7 +182,7 @@ import { JsonPipe } from '@angular/common';
         </div>
       </div>
       <div class="col-xs-12 col-md-4">
-        <pre class="inner-scroll" style="height: 623px">{{ assetPropertiesOutput | json }}</pre>
+        <pre class="inner-scroll" style="height: 655px">{{ assetPropertiesOutput | json }}</pre>
       </div>
     </div>`,
   standalone: true,
@@ -175,10 +195,40 @@ import { JsonPipe } from '@angular/common';
     AssetPropertyActionDirective,
     C8yTranslatePipe,
     TooltipModule,
-    JsonPipe
+    JsonPipe,
+    PopoverDirective
   ]
 })
 export class PropertiesSelectorInlineExampleComponent {
+  selectedProperties: AssetPropertyType[] = [
+    {
+      label: 'id',
+      name: 'id',
+      type: 'string',
+      isEditable: true,
+      c8y_JsonSchema: {
+        properties: {
+          id: {
+            key: 'id',
+            type: 'string',
+            label: 'id',
+            properties: {}
+          }
+        }
+      },
+      active: true
+    },
+    {
+      title: 'critical',
+      type: 'number',
+      name: 'critical',
+      label: 'critical',
+      keyPath: ['c8y_ActiveAlarmsStatus', 'critical'],
+      active: true
+    }
+  ];
+  preselectedPropertiesHelpText = `Use preselected properties defined in the component code: \n
+                <pre>${JSON.stringify(this.selectedProperties, null, 2)}</pre>`;
   inventoryService = inject(InventoryService);
   model: IIdentified;
   selectedAsset: IManagedObject;
@@ -193,6 +243,7 @@ export class PropertiesSelectorInlineExampleComponent {
   filterable = true;
   allowAddingCustomProperties = true;
   allowDragAndDrop = true;
+  usePreselectedProperties = false;
 
   selectionChanged(e: AssetSelectionChangeEvent) {
     this.selectedAsset = e.change.item;
