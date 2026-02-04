@@ -107,10 +107,16 @@ export class ClientGridExampleComponent implements OnInit {
   ];
   /** Static data to display. */
   data: any[];
+  /** Indicates whether the grid is in loading state. */
+  loading = true;
 
   ngOnInit() {
     // load static data from another file, could be loaded from anywhere
-    this.data = getData();
+    // simulating loading delay with setTimeout
+    setTimeout(() => {
+      this.data = getData();
+      this.loading = false;
+    }, 5_000);
   }
 
   /** Executes an edit action on the selected item. */
