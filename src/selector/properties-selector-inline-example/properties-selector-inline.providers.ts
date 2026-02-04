@@ -1,4 +1,6 @@
 import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
+import { hookComputedProperty } from '@c8y/ngx-components/asset-properties';
+import { alarmCountLastWeek } from '../properties-selector-computed-properties/alarm-count-last-week-computed-property';
 
 export const propertiesSelectorInlineExampleProviders = [
   hookRoute({
@@ -15,5 +17,6 @@ export const propertiesSelectorInlineExampleProviders = [
       icon: 'th-list',
       priority: 4
     })
-  )
+  ),
+  hookComputedProperty([alarmCountLastWeek])
 ];
