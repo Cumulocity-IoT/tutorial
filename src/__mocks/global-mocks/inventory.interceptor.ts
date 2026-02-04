@@ -147,6 +147,110 @@ export class InventoryInterceptor implements HttpInterceptor {
       }),
       language: () => ({
         managedObjects: [generateUserPreferences()]
+      }),
+      c8y_JsonSchema: () => ({
+        managedObjects: [
+          {
+            id: '100001',
+            type: 'c8y_JsonSchema',
+            name: 'Temperature Sensor Configuration',
+            lastUpdated: new Date().toISOString(),
+            creationTime: new Date().toISOString(),
+            owner: 'admin',
+            c8y_Global: {},
+            c8y_JsonSchema: {
+              type: 'object',
+              properties: {
+                temperatureThreshold: {
+                  type: 'number',
+                  title: 'Temperature Threshold',
+                  minimum: -50,
+                  maximum: 150,
+                  default: 25,
+                  required: true
+                },
+                unit: {
+                  type: 'string',
+                  title: 'Temperature Unit',
+                  enum: ['Celsius', 'Fahrenheit'],
+                  default: 'Celsius'
+                }
+              }
+            },
+            appliesTo: {
+              MANAGED_OBJECTS: true
+            }
+          },
+          {
+            id: '100002',
+            type: 'c8y_JsonSchema',
+            name: 'Device Metadata',
+            lastUpdated: new Date().toISOString(),
+            creationTime: new Date().toISOString(),
+            owner: 'admin',
+            c8y_Global: {},
+            c8y_JsonSchema: {
+              type: 'object',
+              properties: {
+                deviceName: {
+                  type: 'string',
+                  title: 'Device Name',
+                  minLength: 3,
+                  maxLength: 50,
+                  required: true
+                },
+                isActive: {
+                  type: 'boolean',
+                  title: 'Device Active',
+                  default: true
+                },
+                lastMaintenance: {
+                  type: 'string',
+                  format: 'datetime',
+                  title: 'Last Maintenance Date'
+                }
+              }
+            },
+            appliesTo: {
+              MANAGED_OBJECTS: true
+            }
+          },
+          {
+            id: '100003',
+            type: 'c8y_JsonSchema',
+            name: 'Alert Configuration',
+            lastUpdated: new Date().toISOString(),
+            creationTime: new Date().toISOString(),
+            owner: 'admin',
+            c8y_Global: {},
+            c8y_JsonSchema: {
+              type: 'object',
+              properties: {
+                alertPriority: {
+                  type: 'integer',
+                  title: 'Alert Priority',
+                  minimum: 1,
+                  maximum: 5,
+                  default: 3
+                },
+                enableNotifications: {
+                  type: 'boolean',
+                  title: 'Enable Email Notifications',
+                  default: false
+                }
+              }
+            },
+            appliesTo: {
+              MANAGED_OBJECTS: true
+            }
+          }
+        ],
+        statistics: {
+          totalPages: 1,
+          pageSize: 20,
+          currentPage: 1,
+          totalElements: 3
+        }
       })
     };
   }
