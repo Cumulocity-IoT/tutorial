@@ -718,6 +718,13 @@ export default {
         scope: 'self'
       },
       {
+        name: 'Introduction to data point single select example',
+        module: 'DatapointSelectionSingleSelectExampleModule',
+        path: './src/selector/datapoint-selection-example/single-select-example/datapoint-selection-single-select-example.module.ts',
+        description: 'An introduction to data point single select example.',
+        scope: 'self'
+      },
+      {
         name: 'Introduction to alarm event selector',
         module: 'AlarmEventSlectorExampleModule',
         path: './src/selector/alarm-event-selector-example/alarm-event-selector.module.ts',
