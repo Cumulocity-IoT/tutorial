@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { gettext } from '@c8y/ngx-components/gettext';
 import { CoreModule, FormsModule, ModalModule, ModalService, Status } from '@c8y/ngx-components';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { DeleteModalExampleComponent } from './delete-modal-example.component';
@@ -20,7 +19,7 @@ import { DeleteModalExampleComponent } from './delete-modal-example.component';
     </div>
   </div>`,
   standalone: true,
-  imports: [ModalModule, FormsModule, CoreModule, DeleteModalExampleComponent]
+  imports: [ModalModule, FormsModule, CoreModule]
 })
 export class ConfirmModalExampleComponent {
   constructor(
@@ -34,16 +33,37 @@ export class ConfirmModalExampleComponent {
 
   async deleteConfigurationSnapshot() {
     try {
-      await this.modalService.confirm(
-        'Delete configuration snapshot',
-        'You are about to delete the configuration snapshot DeviceA.',
+      const result = await this.modalService.confirm(
+        'Delete configuration snapshot?',
+        'You are about to delete the configuration snapshot from "Device A". Do you want to proceed?',
         Status.DANGER,
         {
-          ok: gettext('Delete')
+          ok: 'Delete'
+        },
+        {
+          resetToLatestSnapshot: {
+            checked: false,
+            text: 'Reset configuration to latest snapshot',
+            disabledByKey: 'resetToFactoryDefaults'
+          },
+          resetToFactoryDefaults: {
+            checked: false,
+            text: 'Reset configuration to factory defaults',
+            disabledByKey: 'resetToLatestSnapshot'
+          },
+          restartDevice: {
+            checked: false,
+            text: 'Restart device',
+            showIf: () => true
+          }
         }
       );
       // eslint-disable-next-line no-console
       console.log('Delete clicked');
+      if (typeof result !== 'boolean') {
+        // eslint-disable-next-line no-console
+        console.log('Options selected:', result.confirmOptions);
+      }
     } catch (e) {
       // eslint-disable-next-line no-console
       console.log('Cancel clicked');
