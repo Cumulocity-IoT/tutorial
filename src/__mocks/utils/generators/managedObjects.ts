@@ -172,10 +172,10 @@ export function generateDashboard({
           _x: 3,
           _y: 0,
           id: id,
-          title: 'Hello',
+          title: 'Demo Widget Example',
           _width: 6,
           config: {
-            text: 'Welcome to a context dashboard'
+            text: 'This text is configured via the widget settings. Click the edit button to change it!'
           },
           _height: 6
         }

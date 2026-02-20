@@ -5,7 +5,9 @@ import { generateResponse, handleRequest } from '../utils/common';
 import { generateDashboard } from '../../__mocks/utils/generators/managedObjects';
 
 export class ContextDashboardInterceptor implements HttpInterceptor {
-  dashboard = generateDashboard();
+  dashboard = generateDashboard({
+    device: { id: '12345', name: 'Demo Sensor Device' }
+  });
 
   intercept(req: ApiCall, next: HttpHandler): Observable<IFetchResponse> {
     return handleRequest(req, next, 'inventory/managedObjects', {

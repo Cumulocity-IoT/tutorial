@@ -1,13 +1,27 @@
-import { Component, Input } from '@angular/core';
-import { ControlContainer, NgForm, FormsModule } from '@angular/forms';
+import { AsyncPipe } from '@angular/common';
 import {
-  DynamicComponent,
-  OnBeforeSave,
-  AlertService,
-  FormGroupComponent
-} from '@c8y/ngx-components';
-import { omit } from 'lodash';
-import { JsonPipe } from '@angular/common';
+  Component,
+  DestroyRef,
+  inject,
+  Input,
+  OnInit,
+  TemplateRef,
+  ViewChild
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {
+  ControlContainer,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NgForm,
+  ReactiveFormsModule,
+  Validators
+} from '@angular/forms';
+import { AlertService, DynamicComponent, FormGroupComponent } from '@c8y/ngx-components';
+import { WidgetConfigService } from '@c8y/ngx-components/context-dashboard';
+import { BehaviorSubject } from 'rxjs';
+import { WidgetDemo } from './demo-widget.component';
 import { WidgetConfig } from './widget-config.model';
 
 @Component({
@@ -16,75 +30,64 @@ import { WidgetConfig } from './widget-config.model';
     <div class="form-group">
       <c8y-form-group>
         <label>Text</label>
-        <textarea
-          style="width: 100%"
-          name="text"
-          [(ngModel)]="config.text"
-          [required]="true"
-        ></textarea>
+        <textarea style="width: 100%" [formControl]="formGroup.controls.text"></textarea>
       </c8y-form-group>
-
-      <label
-        >Configuration
-        <button class="btn btn-primary btn-xs" type="button" (click)="more = !more">
-          {{ more ? 'Hide' : 'Show' }} settings
-        </button></label
-      >
-      <pre><code>{{ clean(config, more) | json }}</code></pre>
     </div>
+
+    <ng-template #widgetPreview>
+      <c8y-widget-demo [config]="config$ | async"></c8y-widget-demo>
+    </ng-template>
   `,
-  // We connect our parent Form to this form (for disabling the save button)
-  // you can also enable the button by using ContextServiceDashboard.formDisabled
-  // property instead (by default it is enabled).
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
   standalone: true,
-  imports: [FormGroupComponent, FormsModule, JsonPipe]
+  imports: [FormGroupComponent, ReactiveFormsModule, WidgetDemo, AsyncPipe]
 })
-export class WidgetConfigDemo implements DynamicComponent, OnBeforeSave {
-  /**
-   * The configuration which is shared between configuration component and display component.
-   * Should be searilzabled to allow to save it to the API. The config is saved automatically
-   * to the API on "save"-button hit. The onBeforeSave handler can be used to change this behavior,
-   * or to manipulate the object.
-   *
-   * Note: The dashboard itself adds certain properties. As such, some properties are not allowed (e.g. device or settings)
-   */
+export class WidgetConfigDemo implements DynamicComponent, OnInit {
+  /** Configuration passed by the dashboard framework. */
   @Input() config: WidgetConfig = {};
 
-  /**
-   * An internal component property used to hide/show settings.
-   */
-  more = false;
+  /** Reactive form group for the widget configuration. */
+  formGroup: FormGroup<{ text: FormControl<string | null> }>;
 
-  /**
-   * Default Angular DI can be used, to use additional services.
-   */
-  constructor(private alert: AlertService) {}
+  /** Emits config changes for the preview template. */
+  config$ = new BehaviorSubject<WidgetConfig>({});
 
-  /**
-   * This example onBeforeSave handler cancels the saving, if the text is only a white-space.
-   */
-  onBeforeSave(config: any): boolean {
-    if (config.text.trim() === '') {
-      this.alert.warning('Please enter a valid text.');
-      return false;
-    }
-    this.config.widgetInstanceGlobalTimeContext = true;
-    this.config.canDecoupleGlobalTimeContext = true;
-    return true;
+  private readonly alert = inject(AlertService);
+  private readonly widgetConfigService = inject(WidgetConfigService);
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly form = inject(NgForm);
+  private readonly destroyRef = inject(DestroyRef);
+
+  @ViewChild('widgetPreview')
+  set preview(template: TemplateRef<any>) {
+    this.widgetConfigService.setPreview(template ?? null);
   }
 
-  /**
-   * Used to hide/show config settings on toggle.
-   */
-  clean(config, more) {
-    if (more) {
-      return config;
-    }
-    return omit(config, 'settings');
-  }
+  ngOnInit(): void {
+    // Create form with initial values from config
+    this.formGroup = this.formBuilder.group({
+      text: [this.config?.text || '', Validators.required]
+    });
 
-  selectionChanged(e) {
-    console.log(e);
+    // Register form with parent NgForm for validation
+    this.form.form.addControl('widgetConfig', this.formGroup);
+
+    // Initialize preview
+    this.config$.next(this.config);
+
+    // Update preview when form values change
+    this.formGroup.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(value => {
+      this.config$.next({ ...this.config, ...value });
+    });
+
+    // Register save callback - validates and merges form values into config
+    this.widgetConfigService.addOnBeforeSave(config => {
+      if (this.formGroup.invalid) {
+        this.alert.warning('Please enter a valid text.');
+        return false;
+      }
+      Object.assign(config, this.formGroup.value);
+      return true;
+    });
   }
 }

@@ -1,65 +1,55 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { gettext } from '@c8y/ngx-components/gettext';
+import { Component, computed, input, OnInit } from '@angular/core';
 import {
   DismissAlertStrategy,
   DynamicComponentAlert,
-  DynamicComponentAlertAggregator,
-  DatePipe
+  DynamicComponentAlertAggregator
 } from '@c8y/ngx-components';
-import { NgIf } from '@angular/common';
 import { WidgetConfig } from './widget-config.model';
 
 @Component({
   selector: 'c8y-widget-demo',
   template: `
     <div class="p-16">
-      <h1>Hi I'm a widget from angular</h1>
-      <p class="text">Text from config object: {{ config?.text || 'No text' }}</p>
-      <small>My context is: {{ config?.device?.name || 'No context' }}</small
-      ><br />
-      <ng-container *ngIf="config?.date?.length === 2">
-        My time context is:
-        <ul>
-          <li>from: {{ (config?.date[0] | c8yDate) || 'No time context' }}</li>
-          <li>To: {{ (config?.date[1] | c8yDate) || 'No time context' }}</li>
-        </ul>
-      </ng-container>
-      <button class="btn btn-default" (click)="addAlert()">Add warning alert</button>
+      <h1>Demo Widget</h1>
+      <p class="text">{{ displayText() }}</p>
+      @if (deviceName()) {
+        <small>Device: {{ deviceName() }}</small>
+      }
+      <div class="m-t-16">
+        <button class="btn btn-default btn-sm" (click)="showAlert()">Show alert</button>
+      </div>
     </div>
   `,
   styles: [
     `
       .text {
-        font-size: 2em;
+        font-size: 1.5em;
+        color: var(--c8y-brand-primary);
       }
     `
   ],
-  standalone: true,
-  imports: [NgIf, DatePipe]
+  standalone: true
 })
-export class WidgetDemo implements OnChanges {
-  @Input() config: WidgetConfig;
+export class WidgetDemo implements OnInit {
+  readonly config = input<WidgetConfig>();
+
+  /** Computed signal for display text with fallback */
+  readonly displayText = computed(() => this.config()?.text || 'No text configured');
+
+  /** Computed signal for device name */
+  readonly deviceName = computed(() => this.config()?.device?.name);
+
+  /** Set by the dashboard framework - used to display alerts on the widget */
   alerts: DynamicComponentAlertAggregator;
 
-  ngOnInit() {
-    this.alerts.setAlertGroupDismissStrategy(
-      'warning',
-      DismissAlertStrategy.TEMPORARY_OR_PERMANENT
-    );
+  ngOnInit(): void {
+    // Enable dismissible alerts for warning type
+    this.alerts?.setAlertGroupDismissStrategy('warning', DismissAlertStrategy.TEMPORARY);
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!changes['config']?.firstChange && changes['config']?.currentValue.date) {
-      console.log('Global time context changed:', this.config.date);
-    }
-  }
-
-  addAlert() {
-    this.alerts.addAlerts(
-      new DynamicComponentAlert({
-        type: 'warning',
-        text: gettext('Operation not supported by this device.')
-      })
+  showAlert(): void {
+    this.alerts?.addAlerts(
+      new DynamicComponentAlert({ type: 'warning', text: 'This is a dismissible demo alert!' })
     );
   }
 }

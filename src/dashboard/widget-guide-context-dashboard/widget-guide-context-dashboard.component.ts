@@ -17,6 +17,14 @@ import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
   imports: [ContextDashboardModule, CoreModule, CommonModule]
 })
 export class WidgetGuideContextDashboardComponent {
+  /**
+   * Default widgets shown when no dashboard exists in the backend.
+   *
+   * Note: In the codex environment, the mock interceptor at
+   * `packages/tutorial/src/__mocks/utils/generators/managedObjects.ts`
+   * returns a fake dashboard, so these defaults are not used.
+   * If you change these values, also update `generateDashboard()` in the mock.
+   */
   defaultWidgets: Widget[] = [
     {
       _x: 3,
@@ -25,10 +33,10 @@ export class WidgetGuideContextDashboardComponent {
       _height: 6,
       componentId: 'angular.widget.demo',
       config: {
-        text: 'Welcome to a context dashboard'
+        text: 'This text is configured via the widget settings. Click the edit button to change it!'
       },
-      title: 'Hello',
-      id: 'some_unique_id'
+      title: 'Demo Widget Example1',
+      id: 'demo_widget_example'
     }
   ];
 }

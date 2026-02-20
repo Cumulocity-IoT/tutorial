@@ -1,3 +1,6 @@
-import { GlobalTimeContextWidgetConfig } from '@c8y/ngx-components';
+import { IIdentified, IManagedObject } from '@c8y/client';
 
-export type WidgetConfig = GlobalTimeContextWidgetConfig & { [key: string]: any };
+export interface WidgetConfig {
+  text?: string;
+  device?: IIdentified & Partial<IManagedObject>;
+}
