@@ -1,0 +1,39 @@
+<div class="card-header separator">
+  <span
+    class="h4 card-title"
+    id="drawerTitle"
+  >
+    {{ title }}
+  </span>
+</div>
+<div class="inner-scroll flex-grow">
+  <div class="card-block">
+    <p>Bottom drawer content</p>
+    <button
+      class="btn btn-primary"
+      (click)="openTopDrawer()"
+    >
+      Open bottom drawer via service
+    </button>
+  </div>
+</div>
+<div class="card-footer text-center p-24 separator flex-no-shrink">
+  <button
+    class="btn btn-default"
+    [disabled]="isDisabled"
+  >
+    This button is disabled, as the inital state defines it.
+  </button>
+  <button
+    class="btn btn-default"
+    (click)="cancel()"
+  >
+    Cancel
+  </button>
+  <button
+    class="btn btn-primary"
+    (click)="save()"
+  >
+    Save
+  </button>
+</div>

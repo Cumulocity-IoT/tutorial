@@ -900,6 +900,13 @@ export default {
         scope: 'self'
       },
       {
+        name: 'Bottom drawer stacked',
+        module: 'bottomDrawerStackedExampleModuleProviders',
+        path: './src/bottom-drawer-stacked/bottom-drawer-stacked.providers.ts',
+        description: 'This is an example for multiple bottom drawers.',
+        scope: 'self'
+      },
+      {
         name: 'Widget Config Hook',
         module: 'widgetConfigHookProviders',
         path: './src/hooks/widget-config/widget-config.providers.ts',
