@@ -17,6 +17,27 @@ import { JsonPipe } from '@angular/common';
 @Component({
   selector: 'tut-properties-selector-drawer',
   template: `<c8y-title>Properties selector- drawer</c8y-title>
+    <h2>Example of using properties selector with asset selection</h2>
+    <div class="d-flex row">
+      <div class="col-xs-12 col-md-6">
+        <div class="card">
+          <div class="card-inner-scroll d-flex d-col bg-component" style="height: 490px"></div>
+          <div class="card-header">
+            <button class="btn btn-primary" (click)="selectAssetAndProperty()">
+              Select asset and property
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-6">
+        <pre class="inner-scroll m-0" style="height: 554px">{{
+          selectorWithAssetSelectionOutput | json
+        }}</pre>
+      </div>
+    </div>
+
+    <h2>Example of using properties selector without asset selection</h2>
     <div class="d-flex row">
       <div class="col-xs-12 col-md-6">
         <div class="card">
@@ -41,7 +62,7 @@ import { JsonPipe } from '@angular/common';
       </div>
 
       <div class="col-xs-12 col-md-6">
-        <pre class="inner-scroll m-0" style="height: 554px">{{ output | json }}</pre>
+        <pre class="inner-scroll m-0" style="height: 554px">{{ simpleSelectorOutput | json }}</pre>
       </div>
     </div>`,
   imports: [
@@ -57,8 +78,34 @@ export class PropertiesSelectorDrawerExampleComponent {
   inventoryService = inject(InventoryService);
   model: IIdentified;
   selectedAsset: IManagedObject;
-  output: AssetPropertyType[] = [];
+  selectorWithAssetSelectionOutput: AssetPropertyType[] = [];
+  simpleSelectorOutput: AssetPropertyType[] = [];
   bottomDrawerService = inject(BottomDrawerService);
+
+  async selectAssetAndProperty() {
+    const drawer = this.bottomDrawerService.openDrawer(AssetPropertySelectorDrawerComponent, {
+      disableClickOutside: true,
+      initialState: {
+        allowChangingContext: true,
+        hideSelection: false,
+        config: {
+          selectMode: 'plus',
+          expansionMode: 'collapsedByDefault',
+          showValue: true,
+          showKey: true,
+          selectedProperties: this.selectorWithAssetSelectionOutput,
+          allowAddingCustomProperties: true
+        }
+      }
+    });
+
+    try {
+      const resultOf = await drawer.instance.result;
+      this.selectorWithAssetSelectionOutput = resultOf;
+    } catch (ex) {
+      // cancel clicked
+    }
+  }
 
   selectionChanged(e: AssetSelectionChangeEvent) {
     this.selectedAsset = e.change.item;
@@ -68,23 +115,22 @@ export class PropertiesSelectorDrawerExampleComponent {
     const drawer = this.bottomDrawerService.openDrawer(AssetPropertySelectorDrawerComponent, {
       disableClickOutside: true,
       initialState: {
-        asset: this.selectedAsset,
+        contextAsset: this.selectedAsset,
         config: {
           selectMode: 'single',
           expansionMode: 'collapsedByDefault',
           showValue: true,
           showKey: true,
-          emptyStateContent: 'default-properties',
-          selectedProperties: this.output
+          selectedProperties: this.simpleSelectorOutput
         }
       }
     });
 
     try {
       const resultOf = await drawer.instance.result;
-      this.output = resultOf;
+      this.simpleSelectorOutput = resultOf;
     } catch (ex) {
-      this.output = [];
+      // cancel clicked
     }
   }
 }

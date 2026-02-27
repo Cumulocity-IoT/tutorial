@@ -5,6 +5,7 @@ import { C8yTranslatePipe, TitleComponent } from '@c8y/ngx-components';
 import {
   AssetPropertyActionDirective,
   AssetPropertyListComponent,
+  AssetPropertySelectorComponent,
   AssetPropertyType
 } from '@c8y/ngx-components/asset-properties';
 import {
@@ -19,6 +20,7 @@ import { PopoverDirective } from 'ngx-bootstrap/popover';
 @Component({
   selector: 'tut-properties-selector-inline',
   template: `<c8y-title>Properties selector- inline</c8y-title>
+    <h2>Example of using properties selector with asset selection as separate component</h2>
     <div class="d-flex-md row">
       <div class="col-xs-12 col-md-3">
         <div class="card">
@@ -184,7 +186,27 @@ import { PopoverDirective } from 'ngx-bootstrap/popover';
       <div class="col-xs-12 col-md-4">
         <pre class="inner-scroll" style="height: 655px">{{ assetPropertiesOutput | json }}</pre>
       </div>
-    </div>`,
+    </div>
+    <br />
+    <h2>Example of using properties selector with asset selection part of selector</h2>
+    <div class="d-flex-md row" style="height: 655px">
+      <c8y-asset-property-selector
+        [config]="{
+          selectMode: 'plus',
+          expansionMode: 'collapsedByDefault',
+          showValue: true,
+          showKey: true,
+          selectedProperties: this.selectorWithAssetSelectionOutput,
+          allowAddingCustomProperties: true
+        }"
+        [allowChangingContext]="true"
+        [allowPropertiesFromMultipleAssets]="true"
+        [hideSelection]="false"
+        [allowSearch]="true"
+        [ngModel]="selectedProperties"
+        (ngModelChange)="propertiesSelectionChange($event)"
+      ></c8y-asset-property-selector>
+    </div> `,
   standalone: true,
   imports: [
     AssetSelectorModule,
@@ -196,7 +218,8 @@ import { PopoverDirective } from 'ngx-bootstrap/popover';
     C8yTranslatePipe,
     TooltipModule,
     JsonPipe,
-    PopoverDirective
+    PopoverDirective,
+    AssetPropertySelectorComponent
   ]
 })
 export class PropertiesSelectorInlineExampleComponent {
@@ -233,7 +256,7 @@ export class PropertiesSelectorInlineExampleComponent {
   model: IIdentified;
   selectedAsset: IManagedObject;
   assetPropertiesOutput: AssetPropertyType[] | AssetPropertyType;
-
+  selectorWithAssetSelectionOutput: AssetPropertyType[] = [];
   multiSelect: 'single' | 'multi' | 'none' = 'multi';
   expansionMode: 'expandedByDefault' | 'collapsedByDefault' | 'nonCollapsible' =
     'expandedByDefault';
@@ -252,6 +275,11 @@ export class PropertiesSelectorInlineExampleComponent {
   onSelectedProperties($event: AssetPropertyType[]) {
     this.assetPropertiesOutput = $event;
     // console.log('Selected properties:', $event);
+  }
+
+  propertiesSelectionChange($event: AssetPropertyType[]) {
+    this.selectorWithAssetSelectionOutput = $event;
+    // console.log('Selected properties from selector:', $event);
   }
 
   copyProperty(context: AssetPropertyType) {
