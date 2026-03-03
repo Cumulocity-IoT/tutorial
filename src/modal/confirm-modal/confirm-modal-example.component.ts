@@ -24,6 +24,11 @@ import { DeleteModalExampleComponent } from './delete-modal-example.component';
         Confirm modal using <code>c8y-confirm-modal</code> component
       </button>
     </div>
+    <div class="p-b-24 text-center">
+      <button class="btn btn-default" (click)="deleteTenantWithCodeVerification()">
+        Confirm modal with code verification
+      </button>
+    </div>
   </div>`,
   standalone: true,
   imports: [ModalModule, FormsModule, CoreModule, DeleteModalExampleComponent]
@@ -53,6 +58,27 @@ export class ConfirmModalExampleComponent {
     } catch (e) {
       // eslint-disable-next-line no-console
       console.log('Cancel clicked');
+    }
+  }
+
+  async deleteTenantWithCodeVerification() {
+    try {
+      await this.modalService.confirm(
+        'Confirm delete?',
+        'You are about to delete the tenant. This action will immediately affect all users.<br><br>For security reasons, enter the following code to continue:',
+        Status.DANGER,
+        {
+          ok: 'Delete'
+        },
+        {},
+        undefined,
+        true // requireCodeVerification
+      );
+      // eslint-disable-next-line no-console
+      console.log('Delete confirmed with code verification');
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.log('Cancel clicked or code verification failed');
     }
   }
 }
