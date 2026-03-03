@@ -14,6 +14,8 @@ export interface ICounterService {
   count: () => void;
 }
 
+export {};
+
 declare global {
   /**
    * The `CumulocityServiceRegistry` namespaces is declared in `@c8y/ngx-components` as part of the global scope.
