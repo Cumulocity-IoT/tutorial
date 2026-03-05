@@ -893,6 +893,13 @@ export default {
         scope: 'self'
       },
       {
+        name: 'Charts',
+        module: 'ChartsExampleModule',
+        path: './src/c8y-charts/charts-example.module.ts',
+        description: 'This is an example for the charts component.',
+        scope: 'self'
+      },
+      {
         name: 'Bottom drawer',
         module: 'bottomDrawerExampleModuleProviders',
         path: './src/bottom-drawer/bottom-drawer.providers.ts',
