@@ -94,7 +94,8 @@ export class PropertiesSelectorDrawerExampleComponent {
           showValue: true,
           showKey: true,
           selectedProperties: this.selectorWithAssetSelectionOutput,
-          allowAddingCustomProperties: true
+          allowAddingCustomProperties: true,
+          addAssetToProperty: true
         }
       }
     });
