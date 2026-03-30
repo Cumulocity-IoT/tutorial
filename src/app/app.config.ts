@@ -15,6 +15,7 @@ import { provideWidgetsResolverSample } from '../widget-resolvers';
 import { provideMapExampleNavigator } from '../maps';
 import { provideTranslationsNavigator } from '../translations';
 import { provideLazyWidget } from '../lazy-widget';
+import { provideGlobalContextWidget } from '../global-context-widget';
 import { provideBreadcrumbsNavigator } from '../breadcrumbs';
 import { provideSplitViewSamples } from '../split-view';
 import { provideIconPanelExample } from '../icon-panel';
@@ -22,6 +23,7 @@ import { provideClientInterceptorSample } from '../client-interceptor';
 import { provideUserMenuSample } from '../user-menu';
 import { AlarmsModule } from '@c8y/ngx-components/alarms';
 import { BulkOperationSchedulerModule } from '@c8y/ngx-components/operations/bulk-operation-scheduler';
+import { GlobalContextModule } from '@c8y/ngx-components/global-context';
 import { provideRedirectToLastRoute } from '../redirect-to-last-route';
 import { provideAPIMock } from '../__mocks';
 import { configureWidgetProviders } from '@c8y/ngx-components/widgets/widget-providers';
@@ -51,12 +53,14 @@ export const appConfig: ApplicationConfig = {
     // Get rid of a default version factory
     importProvidersFrom(VersionModule.config({ disableWebSDKPluginVersionFactory: true })),
     ...provideLazyWidget(),
+    ...provideGlobalContextWidget(),
     ...configureWidgetProviders(),
     ...provideRedirectToLastRoute(),
     ...provideAPIMock(),
     ...provideBreadcrumbsNavigator(),
     ...provideSplitViewSamples(),
     ...provideIconPanelExample(),
-    importProvidersFrom(AlarmsModule.config({ hybrid: false }))
+    importProvidersFrom(AlarmsModule.config({ hybrid: false })),
+    importProvidersFrom(GlobalContextModule)
   ]
 };
