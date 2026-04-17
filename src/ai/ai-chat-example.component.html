@@ -1,15 +1,15 @@
 <c8y-title>Chat component example</c8y-title>
-<div class="row d-flex-sm">
-  <div class="col-md-4 p-0">
+<div class="row d-flex-md">
+  <div class="col-md-4 col-xs-12 p-0">
     <div class="d-col p-16 form-group-sm bg-level-1">
-      <p class="text-medium p-b-16">Config options</p>
+      <p class="text-medium p-b-16">ChatConfig options</p>
 
-      <label>title</label>
+      <label>headline</label>
       <div class="input-group input-group-sm m-b-8">
         <input
           class="form-control"
           type="text"
-          [(ngModel)]="config.title"
+          [(ngModel)]="config.headline"
         />
         <div class="input-group-btn">
           <button
@@ -21,12 +21,12 @@
         </div>
       </div>
 
-      <label>headline</label>
+      <label>title</label>
       <div class="input-group input-group-sm m-b-8">
         <input
           class="form-control"
           type="text"
-          [(ngModel)]="config.headline"
+          [(ngModel)]="config.title"
         />
         <div class="input-group-btn">
           <button
@@ -55,12 +55,109 @@
         </div>
       </div>
 
+      <label>welcomePosition</label>
+      <div class="input-group input-group-sm form-group-sm m-b-8">
+        <div class="c8y-select-wrapper">
+          <select
+            class="form-control"
+            [(ngModel)]="config.welcomePosition"
+          >
+            <option value="top">Top</option>
+            <option value="center">Center</option>
+            <option value="bottom">Bottom</option>
+          </select>
+        </div>
+        <div class="input-group-btn">
+          <button
+            class="btn btn-default"
+            (click)="reloadComponent()"
+          >
+            {{ 'Apply' | translate }}
+          </button>
+        </div>
+      </div>
+
+      <label>suggestionsLayout</label>
+      <div class="input-group input-group-sm m-b-8">
+        <div class="c8y-select-wrapper">
+          <select
+            class="form-control"
+            [(ngModel)]="config.suggestionsLayout"
+          >
+            <option value="vertical">Vertical</option>
+            <option value="horizontal">Horizontal</option>
+          </select>
+        </div>
+        <div class="input-group-btn">
+          <button
+            class="btn btn-default"
+            (click)="reloadComponent()"
+          >
+            {{ 'Apply' | translate }}
+          </button>
+        </div>
+      </div>
+
+      <label>scrollbarOnlyOnHover</label>
+      <div class="m-b-8">
+        <label
+          class="c8y-switch"
+          title="scrollbarOnlyOnHover"
+        >
+          <input
+            type="checkbox"
+            [(ngModel)]="config.scrollbarOnlyOnHover"
+            (ngModelChange)="reloadComponent()"
+          />
+          <span></span>
+          <span>scrollbarOnlyOnHover</span>
+        </label>
+      </div>
+
+      <label>appearance</label>
+      <div class="input-group input-group-sm m-b-8">
+        <div class="c8y-select-wrapper">
+          <select
+            class="form-control"
+            [(ngModel)]="config.appearance"
+          >
+            <option value="framed">framed</option>
+            <option value="flat">flat</option>
+          </select>
+        </div>
+        <div class="input-group-btn">
+          <button
+            class="btn btn-default"
+            (click)="reloadComponent()"
+          >
+            {{ 'Apply' | translate }}
+          </button>
+        </div>
+      </div>
+
       <label>placeholder</label>
       <div class="input-group input-group-sm m-b-8">
         <input
           class="form-control"
           type="text"
           [(ngModel)]="config.placeholder"
+        />
+        <div class="input-group-btn">
+          <button
+            class="btn btn-default"
+            (click)="reloadComponent()"
+          >
+            {{ 'Apply' | translate }}
+          </button>
+        </div>
+      </div>
+
+      <label>disclaimerText</label>
+      <div class="input-group input-group-sm m-b-8">
+        <input
+          class="form-control"
+          type="text"
+          [(ngModel)]="config.disclaimerText"
         />
         <div class="input-group-btn">
           <button
@@ -106,27 +203,10 @@
         </div>
       </div>
 
-      <label>disclaimerText</label>
-      <div class="input-group input-group-sm m-b-8">
-        <input
-          class="form-control"
-          type="text"
-          [(ngModel)]="config.disclaimerText"
-        />
-        <div class="input-group-btn">
-          <button
-            class="btn btn-default"
-            (click)="reloadComponent()"
-          >
-            {{ 'Apply' | translate }}
-          </button>
-        </div>
-      </div>
-
       <pre class="m-t-16 inner-scroll small">{{ config | json }}</pre>
     </div>
   </div>
-  <div class="col-md-8">
+  <div class="col-md-8 col-xs-12">
     @if (showComponent) {
       <label
         class="c8y-switch m-t-8"
@@ -143,12 +223,13 @@
       </label>
       <div
         class="card m-t-16"
-        style="height: 530px"
+        style="height: 730px"
       >
         <c8y-ai-chat
           [config]="config"
           (onMessage)="sendMessage($event)"
           [isLoading]="isLoading"
+          [suggestionsTemplate]="suggestionsRef"
         >
           @if (showInitialMessage) {
             <c8y-ai-chat-message>
@@ -163,8 +244,24 @@
               ></c8y-ai-chat-message-action>
             </c8y-ai-chat-message>
           }
-          @for (message of displayMessages; track message) {
+          @for (message of displayMessages; track message; let i = $index) {
             <c8y-ai-chat-message [message]="message">
+              @if (message.role === 'user') {
+                <div [innerHTML]="message.content | markdownToHtml | async"></div>
+              } @else {
+                <ng-container
+                  [ngComponentOutlet]="AiChatAssistantMessageComponent"
+                  [ngComponentOutletInputs]="{
+                    assistantMessageContext: {
+                      message: message,
+                      config: assistantMessageDisplayConfig,
+                      isMessageLoading: isLoading && i === messages.length - 1,
+                      messageDisplayIndex: messages.length - 1 - i
+                    }
+                  }"
+                ></ng-container>
+              }
+
               @if (message.role === 'assistant') {
                 <c8y-ai-chat-message-action
                   icon="thumbs-up"
@@ -183,7 +280,7 @@
                 <c8y-ai-chat-message-action
                   icon="undo"
                   tooltip="Revert"
-                  (click)="revertMessage(message)"
+                  (actionClicked)="revertMessage(message)"
                 ></c8y-ai-chat-message-action>
               }
 
@@ -208,6 +305,21 @@
             </c8y-ai-chat-message>
           }
 
+          <div slot="welcome">
+            You can also project custom content into the welcome area of the chat component.
+          </div>
+          @if (showInitialMessage) {
+            <div slot="before-messages">
+              You can also project custom content before all messages.
+            </div>
+          }
+          @if (showInitialMessage) {
+            <div slot="after-messages">You can also project custom content after all messages.</div>
+          }
+          @if (showInitialMessage) {
+            <div>This is content that is projected by default and always shown.</div>
+          }
+
           <c8y-ai-chat-suggestion
             [label]="'Create device '"
             [prompt]="'AHOI, create a new device'"
@@ -221,6 +333,17 @@
             [prompt]="'Create a device with a measurement and an event'"
             (suggestionClicked)="sendMessage($event)"
           ></c8y-ai-chat-suggestion>
+
+          <!-- For cases where dynamic behaviour is needed, use `<ng-template>` -->
+          <ng-template #suggestionsRef>
+            <c8y-ai-chat-suggestion
+              [icon]="'c8y-bulb'"
+              [useAiButtons]="true"
+              [label]="'Dynamic suggestion from AI'"
+              [prompt]="'Dynamic suggestion from AI'"
+              (suggestionClicked)="sendMessage($event)"
+            ></c8y-ai-chat-suggestion>
+          </ng-template>
         </c8y-ai-chat>
       </div>
     }
