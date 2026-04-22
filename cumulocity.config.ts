@@ -648,6 +648,13 @@ export default {
         scope: 'self'
       },
       {
+        name: 'Example of inline editable input',
+        module: 'InputGroupEditableExampleModule',
+        path: './src/input-group/input-group-editable-example.module.ts',
+        description: 'An example for the input-group-editable pattern.',
+        scope: 'self'
+      },
+      {
         name: 'Example of time picker',
         module: 'TimePickerExampleModule',
         path: './src/time/time-picker-example.module.ts',
