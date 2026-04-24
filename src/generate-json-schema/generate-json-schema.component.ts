@@ -38,7 +38,7 @@ export class GenerateJsonSchemaComponent implements OnInit {
 
   async ngOnInit() {
     const { schema } = await import(
-      'c8y-schema-loader?interfaceName=ExampleInterface!./schema-example.model'
+      'c8y-schema-loader?interfaceName=ExampleInterface&type=some-type-to-be-grouped-by!./schema-example.model'
     );
     this.schemaString = JSON.stringify(schema, null, 2);
   }

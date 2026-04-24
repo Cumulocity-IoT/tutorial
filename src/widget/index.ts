@@ -12,7 +12,11 @@ export function provideDemoWidget() {
       configComponent: WidgetConfigDemo,
       errorStrategy: DynamicComponentErrorStrategy.OVERLAY_ERROR,
       data: {
-        schema: () => import('c8y-schema-loader?interfaceName=WidgetConfig!./widget-config.model'),
+        schema: () =>
+          import(
+            'c8y-schema-loader?interfaceName=WidgetConfig&type=widget-config!./widget-config.model'
+          ),
+        // The settings object can be used to configure the configComponent
         settings: {
           noNewWidgets: false
         }

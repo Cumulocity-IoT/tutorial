@@ -47,7 +47,10 @@ export function provideGlobalContextWidget() {
           m => m.GlobalContextWidgetConfigComponent
         ),
       data: {
-        schema: () => import('c8y-schema-loader?interfaceName=WidgetConfig!./widget-config.model'),
+        schema: () =>
+          import(
+            'c8y-schema-loader?interfaceName=WidgetConfig&type=widget-config!./widget-config.model'
+          ),
         // Widget controls for view component
         controls: WIDGET_CONTROLS
       }
