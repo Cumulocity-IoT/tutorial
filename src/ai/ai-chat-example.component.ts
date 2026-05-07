@@ -78,37 +78,36 @@ export class ChatExampleComponent {
     setTimeout(() => {
       // Simulate a delay for the response
       this.messages.push({
-        content: "I've finished implementing your **amazing idea**.",
-        steps: [
+        content: [
           {
             type: 'text',
-            text: '**Great idea**, I can definitely help you with that!\n\nFirst let me use some tools to gather the information I need.',
-            reasoning:
-              "The user asked me a question but I need more information. I see, I have some tools available that can help! \n\nNow I'll initiate a call to help solve this problem.",
-            toolResults: [
-              {
-                toolName: 'c8y-read-documentation',
-                toolCallId: 'call1',
-                type: 'tool-result',
-                input: { query: 'Example query' },
-                output: '<html>\n<h1>\n    C8Y doc sample\n</h1>\n</html>'
-              },
-              {
-                toolName: 'c8y-tool-with-json-output',
-                toolCallId: 'call3',
-                type: 'tool-result',
-                input: {},
-                output: { 'Key 1': 123, 'Key 2': 'Value 2' }
-              },
-              {
-                toolName: 'c8y-tool-with-error',
-                toolCallId: 'call4',
-                type: 'tool-result',
-                input: { url: 'something invalid' },
-                output: 'This is an error message\nSomething bad happened',
-                error: true
-              }
-            ]
+            text: '**Great idea**, I can definitely help you with that!\n\nFirst let me use some tools to gather the information I need.'
+          },
+          {
+            type: 'reasoning',
+            text: "The user asked me a question but I need more information. I see, I have some tools available that can help! \n\nNow I'll initiate a call to help solve this problem."
+          },
+          {
+            type: 'tool-result',
+            toolName: 'c8y-read-documentation',
+            toolCallId: 'call1',
+            input: { query: 'Example query' },
+            output: '<html>\n<h1>\n    C8Y doc sample\n</h1>\n</html>'
+          },
+          {
+            toolName: 'c8y-tool-with-json-output',
+            toolCallId: 'call3',
+            type: 'tool-result',
+            input: {},
+            output: { 'Key 1': 123, 'Key 2': 'Value 2' }
+          },
+          {
+            toolName: 'c8y-tool-with-error',
+            toolCallId: 'call4',
+            type: 'tool-result',
+            input: { url: 'something invalid' },
+            output: 'This is an error message\nSomething bad happened',
+            error: true
           },
           {
             type: 'text',
