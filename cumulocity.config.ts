@@ -1,5 +1,4 @@
-import { ConfigurationOptions } from '@c8y/devkit';
-import { DefinePlugin } from 'webpack';
+import { ConfigurationOptions, webpack } from '@c8y/devkit';
 import { author, description, name, version, license } from './package.json';
 
 export default {
@@ -967,7 +966,7 @@ export default {
   buildTime: {
     extraWebpackConfig: {
       plugins: [
-        new DefinePlugin({
+        new webpack.DefinePlugin({
           HELLO_WORLD: JSON.stringify('HELLO WORLD')
         })
       ]
