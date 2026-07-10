@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { transform } from 'lodash-es';
 
 import { IManagedObject, InventoryService, QueriesUtil } from '@c8y/client';
 import {
@@ -7,10 +6,10 @@ import {
   BuiltInActionType,
   BulkActionControl,
   Column,
-  Pagination
+  Pagination,
 } from '@c8y/ngx-components';
 
-import { assign, get, identity } from 'lodash-es';
+import { assign, get, identity, transform } from 'lodash-es';
 
 /** Model for custom type filtering form. */
 export interface TypeFilteringModel {
@@ -50,15 +49,15 @@ export class ServerTreeGridExampleService {
         header: 'ID',
         path: 'id',
         filterable: true,
-        sortable: true
+        sortable: true,
       },
       {
         name: 'name',
         header: 'Name',
         path: 'name',
         filterable: true,
-        sortable: true
-      }
+        sortable: true,
+      },
     ];
 
     return columns;
@@ -68,7 +67,7 @@ export class ServerTreeGridExampleService {
   getPagination(): Pagination {
     return {
       pageSize: 10,
-      currentPage: 1
+      currentPage: 1,
     };
   }
 
@@ -76,22 +75,22 @@ export class ServerTreeGridExampleService {
   getChildNodePagination(): Pagination {
     return {
       pageSize: 2,
-      currentPage: 1
+      currentPage: 1,
     };
   }
 
   /** Returns an array of individual row actions. */
   getActionControls(): ActionControl[] {
     return [
-      { type: BuiltInActionType.Edit, callback: item => console.dir(item) },
-      { type: BuiltInActionType.Export, callback: item => console.dir(item) },
-      { type: BuiltInActionType.Delete, callback: item => console.dir(item) },
+      { type: BuiltInActionType.Edit, callback: (item) => console.dir(item) },
+      { type: BuiltInActionType.Export, callback: (item) => console.dir(item) },
+      { type: BuiltInActionType.Delete, callback: (item) => console.dir(item) },
       {
         type: 'customAction',
         icon: 'online',
         text: 'Custom action',
-        callback: item => console.dir(item)
-      }
+        callback: (item) => console.dir(item),
+      },
     ];
   }
 
@@ -100,20 +99,20 @@ export class ServerTreeGridExampleService {
     return [
       {
         type: BuiltInActionType.Export,
-        callback: selectedItemIds => console.dir(selectedItemIds)
+        callback: (selectedItemIds) => console.dir(selectedItemIds),
       },
       {
         type: BuiltInActionType.Delete,
-        callback: selectedItemIds => console.dir(selectedItemIds)
+        callback: (selectedItemIds) => console.dir(selectedItemIds),
       },
       {
         type: 'customAction',
         icon: 'online',
         iconClasses: 'm-r-4',
         text: 'Custom action',
-        showIf: selectedItemIds => selectedItemIds?.every(id => Number.parseInt(id) % 2 === 0),
-        callback: selectedItemIds => console.dir(selectedItemIds)
-      }
+        showIf: (selectedItemIds) => selectedItemIds?.every((id) => Number.parseInt(id) % 2 === 0),
+        callback: (selectedItemIds) => console.dir(selectedItemIds),
+      },
     ];
   }
 
@@ -129,7 +128,7 @@ export class ServerTreeGridExampleService {
   async getCount(columns: Column[], pagination: Pagination) {
     const filters = {
       ...this.getFilters(columns, pagination),
-      withTotalElements: true
+      withTotalElements: true,
     };
     return (await this.inventoryService.list(filters)).paging.totalElements;
   }
@@ -137,7 +136,7 @@ export class ServerTreeGridExampleService {
   /** Returns the total number of items (with no filters). */
   async getTotal(): Promise<number> {
     const filters = {
-      withTotalElements: true
+      withTotalElements: true,
     };
     return (await this.inventoryService.list(filters)).paging.totalElements;
   }
@@ -146,7 +145,7 @@ export class ServerTreeGridExampleService {
     const filters = {
       ...this.getFilters([], pagination),
       withChildren: false,
-      withChildrenCount: true
+      withChildrenCount: true,
     };
     return this.inventoryService.childDevicesList(parentId, filters);
   }
@@ -197,7 +196,7 @@ export class ServerTreeGridExampleService {
       currentPage: pagination.currentPage,
       withChildren: false,
       withChildrenCount: true,
-      withTotalPages: true
+      withTotalPages: true,
     };
   }
 
@@ -212,7 +211,7 @@ export class ServerTreeGridExampleService {
     return transform(columns, (query, column) => this.addColumnQuery(query, column), {
       __filter: {},
       __orderby: [],
-      ...defaultFilter
+      ...defaultFilter,
     });
   }
 
@@ -235,7 +234,7 @@ export class ServerTreeGridExampleService {
           query.__filter.__and = query.__filter.__and || [];
           query.__filter.__and.push(queryObj);
         } else if (queryObj.__and && get(query, '__filter.__and')) {
-          queryObj.__and.map(obj => query.__filter.__and.push(obj));
+          queryObj.__and.map((obj) => query.__filter.__and.push(obj));
         } else {
           assign(query.__filter, queryObj);
         }
@@ -246,7 +245,7 @@ export class ServerTreeGridExampleService {
     if (column.sortable && column.sortOrder) {
       // add sorting condition for the configured column `path`
       query.__orderby.push({
-        [column.path]: column.sortOrder === 'asc' ? 1 : -1
+        [column.path]: column.sortOrder === 'asc' ? 1 : -1,
       });
     }
 

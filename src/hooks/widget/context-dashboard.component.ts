@@ -8,6 +8,6 @@ import { CommonModule } from '@angular/common';
   template: `<c8y-title>Context dashboard</c8y-title>
     <c8y-context-dashboard name="example-widget" [canDelete]="false"></c8y-context-dashboard> `,
   standalone: true,
-  imports: [ContextDashboardModule, CoreModule, CommonModule]
+  imports: [ContextDashboardModule, CoreModule, CommonModule],
 })
 export class ContextDashboardComponent {}

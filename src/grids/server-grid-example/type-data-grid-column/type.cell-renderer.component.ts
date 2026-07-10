@@ -17,7 +17,7 @@ import { ServerGridExampleService } from '../server-grid-example.service';
   `,
   selector: 'example-type-cell-renderer',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class TypeCellRendererComponent {
   /** Returns the icon and label for the current item. */
@@ -27,6 +27,6 @@ export class TypeCellRendererComponent {
 
   constructor(
     public context: CellRendererContext,
-    @Inject(ServerGridExampleService) public service: ServerGridExampleService
+    @Inject(ServerGridExampleService) public service: ServerGridExampleService,
   ) {}
 }

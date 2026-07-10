@@ -6,7 +6,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'dashboards/custom',
       loadComponent: () =>
-        import('./custom-dashboard.component').then(m => m.CustomDashboardComponent)
+        import('./custom-dashboard.component').then((m) => m.CustomDashboardComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -14,9 +14,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/dashboards/custom',
         icon: 'th-large',
         priority: 3,
-        parent: 'Dashboards'
-      })
-    )
-  ]
+        parent: 'Dashboards',
+      }),
+    ),
+  ],
 })
 export class CustomDashboardModule {}

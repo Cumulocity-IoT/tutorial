@@ -11,7 +11,7 @@ import { LazyWidgetViewComponent } from '../lazy-widget-view';
       <tutorial-lazy-widget-view></tutorial-lazy-widget-view>
     </ng-template>`,
   standalone: true,
-  imports: [CommonModule, LazyWidgetViewComponent]
+  imports: [CommonModule, LazyWidgetViewComponent],
 })
 export class LazyWidgetConfigComponent {
   @Input() config: WidgetConfig;

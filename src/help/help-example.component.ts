@@ -7,6 +7,6 @@ import { DeviceListModule } from '@c8y/ngx-components/device-list';
   selector: 'help-example',
   templateUrl: './help-example.component.html',
   standalone: true,
-  imports: [CoreModule, CommonModule, DeviceGridModule, DeviceListModule]
+  imports: [CoreModule, CommonModule, DeviceGridModule, DeviceListModule],
 })
 export class HelpExampleComponent {}

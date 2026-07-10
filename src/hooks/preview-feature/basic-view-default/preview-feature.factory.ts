@@ -9,7 +9,7 @@ export class ExamplePreviewFeatureNavigationFactory implements NavigatorNodeFact
   get(): Observable<NavigatorNode[]> {
     return this.previewFeatureService.getState$('preview-feature-key').pipe(
       distinctUntilChanged(),
-      map(state => {
+      map((state) => {
         if (state) {
           return [
             new NavigatorNode({
@@ -18,12 +18,12 @@ export class ExamplePreviewFeatureNavigationFactory implements NavigatorNodeFact
               icon: 'science',
               label: 'Preview Feature',
               parent: 'Hooks',
-              preventDuplicates: true
-            })
+              preventDuplicates: true,
+            }),
           ];
         }
         return [];
-      })
+      }),
     );
   }
 }

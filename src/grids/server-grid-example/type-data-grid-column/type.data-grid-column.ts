@@ -10,7 +10,7 @@ const FILTER_TYPES = [
   { key: 'smartRule', label: 'Smart Rule' },
   { key: 'dashboard', label: 'Dashboard' },
   { key: 'file', label: 'File' },
-  { key: 'application', label: 'Application' }
+  { key: 'application', label: 'Application' },
 ];
 
 /**
@@ -42,7 +42,7 @@ export class TypeDataGridColumn extends BaseColumn {
       generateChips: (model): PartialFilterChipGenerationType[] => {
         const chips = [];
 
-        FILTER_TYPES.forEach(type => {
+        FILTER_TYPES.forEach((type) => {
           if (model[type.key]) {
             chips.push({
               displayValue: type.label,
@@ -51,9 +51,9 @@ export class TypeDataGridColumn extends BaseColumn {
                 delete model[type.key];
                 return {
                   externalFilterQuery: { ...model },
-                  columnName: this.name
+                  columnName: this.name,
                 };
-              }
+              },
             });
           }
         });
@@ -67,7 +67,7 @@ export class TypeDataGridColumn extends BaseColumn {
        * @param model An object with defined structure (e.g. by schema).
        * @returns A query object to be used to generate a query string (QueryUtils).
        */
-      getFilter: model => {
+      getFilter: (model) => {
         const filter: any = {};
         const ors = [];
 
@@ -82,7 +82,7 @@ export class TypeDataGridColumn extends BaseColumn {
         if (ors.length) filter.__or = ors;
 
         return filter;
-      }
+      },
     };
   }
 }

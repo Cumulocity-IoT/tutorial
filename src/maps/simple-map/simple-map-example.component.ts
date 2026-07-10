@@ -7,14 +7,14 @@ import {
   MapModule,
   MapService,
   PositionManagedObject,
-  defaultMapConfig
+  defaultMapConfig,
 } from '@c8y/ngx-components/map';
 
 @Component({
   selector: 'c8y-simple-map-examples',
   templateUrl: './simple-map-example.component.html',
   standalone: true,
-  imports: [CommonModule, MapModule, CoreModule, AssetSelectorModule]
+  imports: [CommonModule, MapModule, CoreModule, AssetSelectorModule],
 })
 export class SimpleMapExampleComponent implements OnInit {
   exampleDevices: PositionManagedObject | PositionManagedObject[];
@@ -64,7 +64,7 @@ export class SimpleMapExampleComponent implements OnInit {
       ...this.config,
       follow: !this.config.follow,
       disablePan: !this.config.follow,
-      disableZoom: !this.config.follow
+      disableZoom: !this.config.follow,
     };
   }
 }

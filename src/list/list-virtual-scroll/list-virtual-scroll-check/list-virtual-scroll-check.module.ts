@@ -8,15 +8,17 @@ import { hookNavigator, hookRoute, NavigatorNode } from '@c8y/ngx-components';
     hookRoute({
       path: 'lists/list-virtual-scroll-check',
       loadComponent: () =>
-        import('./list-virtual-scroll-check.component').then(m => m.ListVirtualScrollCheckComponent)
+        import('./list-virtual-scroll-check.component').then(
+          (m) => m.ListVirtualScrollCheckComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
         label: 'Virtual scroll with checkboxes',
         path: 'lists/list-virtual-scroll-check',
-        parent: 'Lists'
-      })
-    )
-  ]
+        parent: 'Lists',
+      }),
+    ),
+  ],
 })
 export class ListVirtualScrollCheckModule {}

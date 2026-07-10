@@ -6,7 +6,7 @@ import { IconPanelComponent, IconPanelSection, TitleComponent } from '@c8y/ngx-c
   selector: 'c8y-icon-panel-example',
   templateUrl: './icon-panel-example.component.html',
   standalone: true,
-  imports: [CommonModule, IconPanelComponent, TitleComponent]
+  imports: [CommonModule, IconPanelComponent, TitleComponent],
 })
 export class IconPanelExampleComponent {
   deviceSections: IconPanelSection[] = [
@@ -22,7 +22,7 @@ export class IconPanelExampleComponent {
           <p class="m-b-0"><strong>Firmware:</strong> v2.4.1</p>
         </div>
       `,
-      colClass: 'col-xs-12 col-md-6'
+      colClass: 'col-xs-12 col-md-6',
     },
     {
       id: 'location',
@@ -35,7 +35,7 @@ export class IconPanelExampleComponent {
           <p class="m-b-0"><small class="text-muted">Room 101</small></p>
         </div>
       `,
-      colClass: 'col-xs-12 col-md-6'
+      colClass: 'col-xs-12 col-md-6',
     },
     {
       id: 'connection',
@@ -45,7 +45,7 @@ export class IconPanelExampleComponent {
       content:
         '<p class="m-b-0"><strong class="text-success">Online</strong> - Last seen 2 minutes ago</p>',
       colClass: 'col-xs-12 col-md-4',
-      iconClass: 'text-success'
+      iconClass: 'text-success',
     },
     {
       id: 'battery',
@@ -54,7 +54,7 @@ export class IconPanelExampleComponent {
       visible: true,
       content: '<p class="m-b-0"><strong class="text-success">98%</strong> - Charging</p>',
       colClass: 'col-xs-12 col-md-4',
-      iconClass: 'text-success'
+      iconClass: 'text-success',
     },
     {
       id: 'signal',
@@ -63,8 +63,8 @@ export class IconPanelExampleComponent {
       visible: true,
       content: '<p class="m-b-0"><strong class="text-warning">Medium</strong> - 3/5 bars</p>',
       colClass: 'col-xs-12 col-md-4',
-      iconClass: 'text-warning'
-    }
+      iconClass: 'text-warning',
+    },
   ];
 
   alarmSections: IconPanelSection[] = [
@@ -75,7 +75,7 @@ export class IconPanelExampleComponent {
       visible: true,
       content: '<span class="badge badge-danger">2</span> active',
       colClass: 'col-xs-12 col-sm-6 col-md-3',
-      iconClass: 'status critical stroked-icon'
+      iconClass: 'status critical stroked-icon',
     },
     {
       id: 'major',
@@ -84,7 +84,7 @@ export class IconPanelExampleComponent {
       visible: true,
       content: '<span class="badge badge-warning">5</span> active',
       colClass: 'col-xs-12 col-sm-6 col-md-3',
-      iconClass: 'status major stroked-icon'
+      iconClass: 'status major stroked-icon',
     },
     {
       id: 'minor',
@@ -93,7 +93,7 @@ export class IconPanelExampleComponent {
       visible: true,
       content: '<span class="badge badge-info">12</span> active',
       colClass: 'col-xs-12 col-sm-6 col-md-3',
-      iconClass: 'status minor stroked-icon'
+      iconClass: 'status minor stroked-icon',
     },
     {
       id: 'cleared',
@@ -102,7 +102,7 @@ export class IconPanelExampleComponent {
       visible: true,
       content: '<span class="badge badge-success">28</span> cleared',
       colClass: 'col-xs-12 col-sm-6 col-md-3',
-      iconClass: 'text-success'
-    }
+      iconClass: 'text-success',
+    },
   ];
 }

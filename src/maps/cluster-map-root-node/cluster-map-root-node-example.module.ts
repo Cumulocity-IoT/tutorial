@@ -9,8 +9,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'maps/cluster-root-node',
       loadComponent: () =>
         import('./cluster-map-root-node-example.component').then(
-          m => m.ClusterMapRootNodeExampleComponent
-        )
+          (m) => m.ClusterMapRootNodeExampleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -18,9 +18,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: 'maps/cluster-root-node',
         icon: 'c8y-find-map',
         label: 'Cluster map with different root node',
-        parent: 'Map examples'
-      })
-    )
-  ]
+        parent: 'Map examples',
+      }),
+    ),
+  ],
 })
 export class ClusterMapRootNodeExampleModule {}

@@ -8,6 +8,6 @@ import { HeaderModule } from '@c8y/ngx-components';
     <p>Hello from inline tab 1</p>
   `,
   standalone: true,
-  imports: [HeaderModule]
+  imports: [HeaderModule],
 })
 export class InlineOne {}

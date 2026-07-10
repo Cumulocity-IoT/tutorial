@@ -30,7 +30,7 @@ import { FormlyModule } from '@ngx-formly/core';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormlyModule, HeaderModule]
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, HeaderModule],
 })
 export class CustomElementExampleComponent {
   readonly pageTitle = 'Dynamic forms';
@@ -42,15 +42,15 @@ export class CustomElementExampleComponent {
       type: 'custom',
       templateOptions: {
         label: 'Custom checkbox',
-        description: 'This custom checkbox always displays its label in UPPERCASE.'
-      }
+        description: 'This custom checkbox always displays its label in UPPERCASE.',
+      },
     },
     {
       key: 'checkbox',
       type: 'checkbox',
       templateOptions: {
-        label: 'Standard checkbox'
-      }
+        label: 'Standard checkbox',
+      },
     },
     {
       key: 'text',
@@ -58,9 +58,9 @@ export class CustomElementExampleComponent {
       templateOptions: {
         label: 'Simple text input',
         placeholder: 'You can provide some examples displayed as placeholder…',
-        description: '…and some short description.'
-      }
-    }
+        description: '…and some short description.',
+      },
+    },
   ];
 
   onSubmit() {

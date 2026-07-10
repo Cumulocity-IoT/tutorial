@@ -9,7 +9,7 @@ import {
   DATA_GRID_CONFIGURATION_CONTEXT_PROVIDER,
   DATA_GRID_CONFIGURATION_STRATEGY,
   GridConfigContext,
-  GridConfigContextProvider
+  GridConfigContextProvider,
 } from '@c8y/ngx-components';
 import { DeviceGridModule, DeviceGridService } from '@c8y/ngx-components/device-grid';
 import { FormlyFieldConfig } from '@ngx-formly/core';
@@ -29,7 +29,7 @@ import { DeviceGridExampleConfigurationStrategy } from './device-grid-example-co
      */
     {
       provide: DATA_GRID_CONFIGURATION_STRATEGY,
-      useClass: DeviceGridExampleConfigurationStrategy
+      useClass: DeviceGridExampleConfigurationStrategy,
     },
     /* Providing a DATA_GRID_CONFIGURATION_CONTEXT_PROVIDER gives you the flexibility
      * to persist configurations based on various criteria at runtime - device type,
@@ -42,9 +42,9 @@ import { DeviceGridExampleConfigurationStrategy } from './device-grid-example-co
      */
     {
       provide: DATA_GRID_CONFIGURATION_CONTEXT_PROVIDER,
-      useExisting: DeviceGridExampleComponent
-    }
-  ]
+      useExisting: DeviceGridExampleComponent,
+    },
+  ],
 })
 export class DeviceGridExampleComponent implements GridConfigContextProvider {
   readonly withPersistedConfigExampleLabel =
@@ -59,7 +59,7 @@ export class DeviceGridExampleComponent implements GridConfigContextProvider {
       this.getExampleWithStandardColumnsAndSavedFilteringSorting(),
       this.getExampleWithCustomColumnAndPredefinedFiltering(),
       this.getExampleWithCustomColumnAndCustomValidator(),
-      this.getExampleWithStandardColumnsAndPersistedConfiguration()
+      this.getExampleWithStandardColumnsAndPersistedConfiguration(),
     ];
     this.selectExample(this.examples[0]);
   }
@@ -69,7 +69,7 @@ export class DeviceGridExampleComponent implements GridConfigContextProvider {
       key:
         this.selectedExample.label === this.withPersistedConfigExampleLabel
           ? 'example-device-grid'
-          : null
+          : null,
     };
   }
 
@@ -77,7 +77,7 @@ export class DeviceGridExampleComponent implements GridConfigContextProvider {
     const columns = this.deviceGridService.getDefaultColumns();
     return {
       label: 'Standard columns',
-      columns
+      columns,
     };
   }
 
@@ -85,12 +85,12 @@ export class DeviceGridExampleComponent implements GridConfigContextProvider {
     const columns = this.deviceGridService.getDefaultColumns();
     const nameColumn = find(columns, { name: 'name' });
     nameColumn.externalFilterQuery = {
-      names: ['*Temp*']
+      names: ['*Temp*'],
     };
     nameColumn.sortOrder = 'desc';
     return {
       label: 'Standard columns with saved filtering/sorting',
-      columns
+      columns,
     };
   }
 
@@ -101,18 +101,18 @@ export class DeviceGridExampleComponent implements GridConfigContextProvider {
     typeColumn.path = 'type';
     typeColumn.header = gettext('Type');
     typeColumn.externalFilterQuery = {
-      equals: ['c8y_MQTTDevice']
+      equals: ['c8y_MQTTDevice'],
     };
     columns.splice(2, 0, typeColumn);
     return {
       label: 'Standard columns with custom one with predefined filtering',
-      columns
+      columns,
     };
   }
 
   getExampleWithCustomColumnAndCustomValidator() {
     const columns = this.deviceGridService.getDefaultColumns();
-    const nameColumn = columns.find(column => column.name === 'name');
+    const nameColumn = columns.find((column) => column.name === 'name');
 
     nameColumn.filteringConfig.fields = [
       {
@@ -121,7 +121,7 @@ export class DeviceGridExampleComponent implements GridConfigContextProvider {
         defaultValue: [''],
         templateOptions: {
           required: true,
-          addText: 'Add next`name`'
+          addText: 'Add next`name`',
         },
         fieldArray: {
           type: 'string',
@@ -129,32 +129,32 @@ export class DeviceGridExampleComponent implements GridConfigContextProvider {
             required: true,
             label: 'Show items with name',
             tooltip: 'Use * as a wildcard character',
-            placeholder: 'My device`DEVICE_NAME`'
+            placeholder: 'My device`DEVICE_NAME`',
           },
           validators: {
             minLength: {
               expression: (c: AbstractControl) => c.value.length >= 3,
               message: (error: any, field: FormlyFieldConfig) =>
-                `value "${field.formControl.value}" is too short. min length is 3 characters`
+                `value "${field.formControl.value}" is too short. min length is 3 characters`,
             },
             maxLength: {
               expression: (c: AbstractControl) => c.value.length <= 6,
               message: (error: any, field: FormlyFieldConfig) =>
-                `value "${field.formControl.value}" is too long. max length is 6 characters `
+                `value "${field.formControl.value}" is too long. max length is 6 characters `,
             },
             regexExampleValidator: {
               expression: (c: AbstractControl) => /foo/.test(c.value),
               message: (error: any, field: FormlyFieldConfig) =>
-                `value "${field.formControl.value}" must contain "foo"`
-            }
-          }
-        }
-      }
+                `value "${field.formControl.value}" must contain "foo"`,
+            },
+          },
+        },
+      },
     ];
 
     return {
       label: 'Standard columns with custom validators for "Name" column\'s filter',
-      columns
+      columns,
     };
   }
 
@@ -162,7 +162,7 @@ export class DeviceGridExampleComponent implements GridConfigContextProvider {
     const columns = this.deviceGridService.getDefaultColumns();
     return {
       label: this.withPersistedConfigExampleLabel,
-      columns
+      columns,
     };
   }
 

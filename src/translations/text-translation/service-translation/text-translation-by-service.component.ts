@@ -17,7 +17,7 @@ import { TranslateService } from '@ngx-translate/core';
     </div>
   `,
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class TextTranslationByServiceComponent {
   translateInstant = '';
@@ -33,7 +33,7 @@ export class TextTranslationByServiceComponent {
     const deviceProfileName = 'Johny';
     return this.translateService.instant(
       gettext('You are about to delete a device profile "{{ deviceProfileName }}".'),
-      { deviceProfileName }
+      { deviceProfileName },
     );
   }
 }

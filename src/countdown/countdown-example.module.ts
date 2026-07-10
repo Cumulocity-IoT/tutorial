@@ -6,16 +6,16 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'countdown',
       loadComponent: () =>
-        import('./countdown-example.component').then(m => m.CountdownExampleComponent)
+        import('./countdown-example.component').then((m) => m.CountdownExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
         path: '/countdown',
         label: 'Countdown',
         icon: 'hand-o-right',
-        priority: 110
-      })
-    )
-  ]
+        priority: 110,
+      }),
+    ),
+  ],
 })
 export class CountdownExampleModule {}

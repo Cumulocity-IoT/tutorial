@@ -7,8 +7,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'selector/asset-selector-example/tree-single',
       loadComponent: () =>
         import('./asset-selector-tree-single.component').then(
-          m => m.AssetSelectorTreeSingleComponent
-        )
+          (m) => m.AssetSelectorTreeSingleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/selector/asset-selector-example/tree-single',
         icon: 'th-list',
         priority: -1,
-        parent: 'Asset selector'
-      })
-    )
-  ]
+        parent: 'Asset selector',
+      }),
+    ),
+  ],
 })
 export class AssetSelectorTreeSingleModule {}

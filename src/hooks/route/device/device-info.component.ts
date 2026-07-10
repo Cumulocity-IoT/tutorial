@@ -6,7 +6,7 @@ import { CoreModule } from '@c8y/ngx-components';
   selector: 'device-info',
   templateUrl: './device-info.component.html',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class DeviceInfoComponent {
   constructor(public route: ActivatedRoute) {}

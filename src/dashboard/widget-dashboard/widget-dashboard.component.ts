@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
         canDelete: false,
         translateWidgetTitle: false,
         allowFullscreen: true,
-        title: ''
+        title: '',
       }"
       (onChangeDashboard)="change($event)"
       (onAddWidget)="addWidget()"
@@ -24,12 +24,12 @@ import { CommonModule } from '@angular/common';
     >
     </c8y-widgets-dashboard> `,
   standalone: true,
-  imports: [CommonModule, CoreModule]
+  imports: [CommonModule, CoreModule],
 })
 export class WidgetDashboardComponent {
   widgets = [
     { _x: 0, _y: 0, _width: 6, _height: 4, componentId: 'angular.widget.demo' },
-    { _x: 6, _y: 0, _width: 6, _height: 6, componentId: 'angular.widget.demo' }
+    { _x: 6, _y: 0, _width: 6, _height: 6, componentId: 'angular.widget.demo' },
   ] as Widget[];
 
   toggleFreeze(event: DashboardSettings) {

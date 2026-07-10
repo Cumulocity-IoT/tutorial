@@ -8,7 +8,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'maps/cluster',
       loadComponent: () =>
-        import('./cluster-map-example.component').then(m => m.ClusterMapExampleComponent)
+        import('./cluster-map-example.component').then((m) => m.ClusterMapExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: 'maps/cluster',
         icon: 'address',
         label: 'Cluster map',
-        parent: 'Map examples'
-      })
-    )
-  ]
+        parent: 'Map examples',
+      }),
+    ),
+  ],
 })
 export class ClusterMapExampleModule {}

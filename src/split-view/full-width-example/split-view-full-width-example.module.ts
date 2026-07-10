@@ -9,9 +9,9 @@ import { hookRoute } from '@c8y/ngx-components';
       path: 'split-view-full-width',
       loadComponent: () =>
         import('./split-view-full-width-example.component').then(
-          m => m.SplitViewFullWidthExampleComponent
-        )
-    })
-  ]
+          (m) => m.SplitViewFullWidthExampleComponent,
+        ),
+    }),
+  ],
 })
 export class SplitViewFullWidthExampleModule {}

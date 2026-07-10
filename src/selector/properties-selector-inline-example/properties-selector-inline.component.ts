@@ -6,11 +6,11 @@ import {
   AssetPropertyActionDirective,
   AssetPropertyListComponent,
   AssetPropertySelectorComponent,
-  AssetPropertyType
+  AssetPropertyType,
 } from '@c8y/ngx-components/asset-properties';
 import {
   AssetSelectionChangeEvent,
-  AssetSelectorModule
+  AssetSelectorModule,
 } from '@c8y/ngx-components/assets-navigator';
 import { SubAssetsModule } from '@c8y/ngx-components/sub-assets';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -31,7 +31,7 @@ import { PopoverDirective } from 'ngx-bootstrap/popover';
               [config]="{
                 groupsSelectable: true,
                 showUnassignedDevices: true,
-                showChildDevices: true
+                showChildDevices: true,
               }"
               (onSelected)="selectionChanged($event)"
             ></c8y-asset-selector>
@@ -164,7 +164,7 @@ import { PopoverDirective } from 'ngx-bootstrap/popover';
                 showKey: showKey,
                 allowAddingCustomProperties: allowAddingCustomProperties,
                 allowDragAndDrop: allowDragAndDrop,
-                selectedProperties: usePreselectedProperties ? selectedProperties : []
+                selectedProperties: usePreselectedProperties ? selectedProperties : [],
               }"
               (selectedProperties)="onSelectedProperties($event)"
             >
@@ -197,7 +197,7 @@ import { PopoverDirective } from 'ngx-bootstrap/popover';
           showValue: true,
           showKey: true,
           selectedProperties: this.selectorWithAssetSelectionOutput,
-          allowAddingCustomProperties: true
+          allowAddingCustomProperties: true,
         }"
         [allowChangingContext]="true"
         [allowPropertiesFromMultipleAssets]="true"
@@ -219,8 +219,8 @@ import { PopoverDirective } from 'ngx-bootstrap/popover';
     TooltipModule,
     JsonPipe,
     PopoverDirective,
-    AssetPropertySelectorComponent
-  ]
+    AssetPropertySelectorComponent,
+  ],
 })
 export class PropertiesSelectorInlineExampleComponent {
   selectedProperties: AssetPropertyType[] = [
@@ -235,11 +235,11 @@ export class PropertiesSelectorInlineExampleComponent {
             key: 'id',
             type: 'string',
             label: 'id',
-            properties: {}
-          }
-        }
+            properties: {},
+          },
+        },
       },
-      active: true
+      active: true,
     },
     {
       title: 'critical',
@@ -247,8 +247,8 @@ export class PropertiesSelectorInlineExampleComponent {
       name: 'critical',
       label: 'critical',
       keyPath: ['c8y_ActiveAlarmsStatus', 'critical'],
-      active: true
-    }
+      active: true,
+    },
   ];
   preselectedPropertiesHelpText = `Use preselected properties defined in the component code: \n
                 <pre>${JSON.stringify(this.selectedProperties, null, 2)}</pre>`;

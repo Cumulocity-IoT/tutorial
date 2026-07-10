@@ -1,7 +1,7 @@
 import { hookWidget, hookRoute, hookNavigator, NavigatorNode } from '@c8y/ngx-components';
 import {
   GlobalContextSectionComponent,
-  hookWidgetConfig
+  hookWidgetConfig,
 } from '@c8y/ngx-components/context-dashboard';
 import { GLOBAL_CONTEXT_DASHBOARD_PATHS } from '@c8y/ngx-components/global-context';
 import { gettext } from '@c8y/ngx-components/gettext';
@@ -28,7 +28,7 @@ export function provideGlobalContextWidget() {
     {
       provide: GLOBAL_CONTEXT_DASHBOARD_PATHS,
       useValue: [DASHBOARD_PATH],
-      multi: true
+      multi: true,
     },
 
     // Register the widget
@@ -36,24 +36,22 @@ export function provideGlobalContextWidget() {
       id: WIDGET_ID,
       label: gettext('Global context widget'),
       description: gettext(
-        'Example widget demonstrating Global Time Context v2 integration with GlobalContextConnector and LocalControls.'
+        'Example widget demonstrating Global Time Context v2 integration with GlobalContextConnector and LocalControls.',
       ),
       loadComponent: () =>
         import('./global-context-widget-view.component').then(
-          m => m.GlobalContextWidgetViewComponent
+          (m) => m.GlobalContextWidgetViewComponent,
         ),
       loadConfigComponent: () =>
         import('./global-context-widget-config.component').then(
-          m => m.GlobalContextWidgetConfigComponent
+          (m) => m.GlobalContextWidgetConfigComponent,
         ),
       data: {
         schema: () =>
-          import(
-            'c8y-schema-loader?interfaceName=WidgetConfig&type=widget-config!./widget-config.model'
-          ),
+          import('c8y-schema-loader?interfaceName=WidgetConfig&type=widget-config!./widget-config.model'),
         // Widget controls for view component
-        controls: WIDGET_CONTROLS
-      }
+        controls: WIDGET_CONTROLS,
+      },
     }),
 
     // Register the "Time context" configuration section
@@ -63,17 +61,21 @@ export function provideGlobalContextWidget() {
       priority: 10,
       label: gettext('Time context'),
       initialState: {
-        controls: WIDGET_CONTROLS
+        controls: WIDGET_CONTROLS,
       },
       loadComponent: () =>
-        import('@c8y/ngx-components/context-dashboard').then(m => m.GlobalContextSectionComponent)
+        import('@c8y/ngx-components/context-dashboard').then(
+          (m) => m.GlobalContextSectionComponent,
+        ),
     }),
 
     // Register route for the example dashboard
     hookRoute({
       path: DASHBOARD_PATH,
       loadComponent: () =>
-        import('./global-context-dashboard.component').then(m => m.GlobalContextDashboardComponent)
+        import('./global-context-dashboard.component').then(
+          (m) => m.GlobalContextDashboardComponent,
+        ),
     }),
 
     // Register navigator entry under "Dashboards"
@@ -83,8 +85,8 @@ export function provideGlobalContextWidget() {
         path: `/${DASHBOARD_PATH}`,
         icon: 'clock1',
         priority: -10,
-        parent: 'Dashboards'
-      })
-    )
+        parent: 'Dashboards',
+      }),
+    ),
   ];
 }

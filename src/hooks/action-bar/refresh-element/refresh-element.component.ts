@@ -5,7 +5,7 @@ import { CoreModule } from '@c8y/ngx-components';
   selector: 'tut-refresh-element',
   templateUrl: './refresh-element.component.html',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class RefreshActionComponent {
   requestInProgress: boolean;

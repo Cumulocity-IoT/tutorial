@@ -6,7 +6,7 @@ import {
   DynamicComponentAlert,
   DynamicComponentAlertAggregator,
   WidgetTimeContextDateRangeService,
-  DateAndTimeOptions
+  DateAndTimeOptions,
 } from '@c8y/ngx-components';
 import { TimeContextComponent } from '@c8y/ngx-components/time-context';
 import {
@@ -17,7 +17,7 @@ import {
   ChartHelpersService,
   ChartsComponent,
   DatapointsGraphKPIDetails,
-  DatapointsGraphWidgetConfig
+  DatapointsGraphWidgetConfig,
 } from '@c8y/ngx-components/echart';
 import { aggregationType } from '@c8y/client';
 
@@ -47,8 +47,8 @@ import { aggregationType } from '@c8y/client';
     ChartEventsService,
     ChartAlarmsService,
     ChartHelpersService,
-    WidgetTimeContextDateRangeService
-  ]
+    WidgetTimeContextDateRangeService,
+  ],
 })
 export class ChartsExampleComponent implements OnInit {
   // Chart configuration object
@@ -69,7 +69,7 @@ export class ChartsExampleComponent implements OnInit {
     mergeMatchingDatapoints: false,
     forceMergeDatapoints: false,
     setYaxisStartToZero: false,
-    numberOfDecimalPlaces: 2
+    numberOfDecimalPlaces: 2,
   };
 
   // Alert aggregator for chart notifications
@@ -97,7 +97,7 @@ export class ChartsExampleComponent implements OnInit {
   readonly TIME_PICKER_CONFIG: DateAndTimeOptions = {
     showMinutes: true,
     showSeconds: true,
-    showSpinners: false
+    showSpinners: false,
   };
 
   // Flag to skip onTimeContextChange during zoom handling
@@ -107,7 +107,7 @@ export class ChartsExampleComponent implements OnInit {
   configExamples = [
     { label: 'Basic Chart', value: 'basic' },
     { label: 'With Slider', value: 'slider' },
-    { label: 'Multiple Axes', value: 'multiaxis' }
+    { label: 'Multiple Axes', value: 'multiaxis' },
   ];
 
   selectedExample = 'basic';
@@ -123,7 +123,7 @@ export class ChartsExampleComponent implements OnInit {
         dateTo: new Date(this.config.dateTo),
         interval: this.config.interval as any,
         realtime: this.config.realtime,
-        aggregation: this.config.realtime ? null : this.config.aggregation
+        aggregation: this.config.realtime ? null : this.config.aggregation,
       };
     }
   }
@@ -178,7 +178,7 @@ export class ChartsExampleComponent implements OnInit {
       interval,
       realtime: false,
       isAutoRefreshEnabled: false,
-      refreshInterval: 0
+      refreshInterval: 0,
     };
 
     // Update timeProps binding
@@ -186,7 +186,7 @@ export class ChartsExampleComponent implements OnInit {
       dateFrom: new Date(timeProps.dateFrom.getTime()),
       dateTo: new Date(timeProps.dateTo.getTime()),
       interval: 'custom',
-      realtime: false
+      realtime: false,
     };
 
     this.isHandlingZoom = false;
@@ -196,7 +196,7 @@ export class ChartsExampleComponent implements OnInit {
    * Handle real-time updates to the time range
    */
   updateTimeRangeOnRealtime(
-    timeRange: Pick<DatapointsGraphWidgetConfig, 'dateFrom' | 'dateTo'>
+    timeRange: Pick<DatapointsGraphWidgetConfig, 'dateFrom' | 'dateTo'>,
   ): void {
     if (this.config.dateFrom === timeRange.dateFrom && this.config.dateTo === timeRange.dateTo) {
       return;
@@ -204,7 +204,7 @@ export class ChartsExampleComponent implements OnInit {
 
     this.config = {
       ...this.config,
-      ...timeRange
+      ...timeRange,
     };
 
     // Update timeProps for time context
@@ -212,7 +212,7 @@ export class ChartsExampleComponent implements OnInit {
       this.timeProps = {
         ...this.timeProps,
         dateFrom: new Date(timeRange.dateFrom),
-        dateTo: new Date(timeRange.dateTo)
+        dateTo: new Date(timeRange.dateTo),
       };
     }
   }
@@ -225,7 +225,7 @@ export class ChartsExampleComponent implements OnInit {
 
     const alert = new DynamicComponentAlert({
       type: 'warning',
-      text: 'Datapoint out of sync: ' + datapoint.label
+      text: 'Datapoint out of sync: ' + datapoint.label,
     });
 
     this.alerts?.addAlerts(alert);
@@ -241,7 +241,7 @@ export class ChartsExampleComponent implements OnInit {
 
     this.config = {
       ...this.config,
-      alarmsEventsConfigs
+      alarmsEventsConfigs,
     };
   }
 
@@ -273,7 +273,7 @@ export class ChartsExampleComponent implements OnInit {
   toggleOption(option: keyof DatapointsGraphWidgetConfig): void {
     this.config = {
       ...this.config,
-      [option]: !this.config[option]
+      [option]: !this.config[option],
     };
   }
 
@@ -290,7 +290,7 @@ export class ChartsExampleComponent implements OnInit {
       realtime: false,
       showSlider: false,
       yAxisSplitLines: true,
-      xAxisSplitLines: false
+      xAxisSplitLines: false,
     };
   }
 
@@ -307,7 +307,7 @@ export class ChartsExampleComponent implements OnInit {
       realtime: true,
       isAutoRefreshEnabled: true,
       refreshInterval: 5000,
-      showSlider: false
+      showSlider: false,
     };
   }
 
@@ -323,7 +323,7 @@ export class ChartsExampleComponent implements OnInit {
       interval: 'weeks',
       realtime: false,
       showSlider: true,
-      aggregation: aggregationType.HOURLY
+      aggregation: aggregationType.HOURLY,
     };
   }
 
@@ -340,7 +340,7 @@ export class ChartsExampleComponent implements OnInit {
       realtime: false,
       showSlider: true,
       mergeMatchingDatapoints: false,
-      showLabelAndUnit: true
+      showLabelAndUnit: true,
     };
   }
 
@@ -362,7 +362,7 @@ export class ChartsExampleComponent implements OnInit {
         color: this.getColorForIndex(i),
         lineType: 'line',
         renderType: 'min',
-        __active: true
+        __active: true,
       } as any);
     }
 

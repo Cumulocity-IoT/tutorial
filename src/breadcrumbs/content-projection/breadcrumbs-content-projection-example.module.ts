@@ -9,17 +9,17 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'breadcrumbs-content-projection',
       loadComponent: () =>
         import('./breadcrumbs-content-projection-example.component').then(
-          m => m.BreadcrumbsContentProjectionExampleComponents
-        )
+          (m) => m.BreadcrumbsContentProjectionExampleComponents,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
         path: 'breadcrumbs-content-projection',
         icon: 'notification',
         label: 'Breadcrumbs content projection',
-        parent: 'Breadcrumbs'
-      })
-    )
-  ]
+        parent: 'Breadcrumbs',
+      }),
+    ),
+  ],
 })
 export class BreadcrumbsContentProjectionExampleModule {}

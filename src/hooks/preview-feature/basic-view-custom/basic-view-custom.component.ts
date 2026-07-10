@@ -9,7 +9,7 @@ import { CoreModule } from '@c8y/ngx-components';
   selector: 'tut-custom-basic-preview-feature-view',
   templateUrl: './basic-view-custom.component.html',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class CustomBasicViewComponent {
   /**

@@ -9,16 +9,16 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'lists/list-virtual-scroll-timeline',
       loadComponent: () =>
         import('./list-virtual-scroll-timeline.component').then(
-          m => m.ListVirtualScrollTimelineComponent
-        )
+          (m) => m.ListVirtualScrollTimelineComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
         label: 'Virtual scroll with filter',
         path: 'lists/list-virtual-scroll-timeline',
-        parent: 'Lists'
-      })
-    )
-  ]
+        parent: 'Lists',
+      }),
+    ),
+  ],
 })
 export class ListVirtualScrollTimelineModule {}

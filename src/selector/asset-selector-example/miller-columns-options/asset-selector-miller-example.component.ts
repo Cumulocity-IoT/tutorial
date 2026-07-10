@@ -50,7 +50,7 @@ import { IIdentified } from '@c8y/client';
       </div>
     </div>`,
   standalone: true,
-  imports: [CommonModule, AssetSelectorModule, CoreModule]
+  imports: [CommonModule, AssetSelectorModule, CoreModule],
 })
 export class AssetSelectorMillerExampleComponent {
   model: IIdentified;
@@ -67,7 +67,7 @@ export class AssetSelectorMillerExampleComponent {
     showUnassignedDevices: false,
     singleColumn: false,
     label: 'Asset selection',
-    showSelected: true
+    showSelected: true,
   };
 
   reloadComponent() {

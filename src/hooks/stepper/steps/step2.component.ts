@@ -13,7 +13,7 @@ import { C8yStepperButtons } from '@c8y/ngx-components';
     ></c8y-stepper-buttons>
   `,
   standalone: true,
-  imports: [C8yStepperButtons]
+  imports: [C8yStepperButtons],
 })
 export class Step2Component {
   close() {

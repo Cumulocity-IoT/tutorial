@@ -14,7 +14,7 @@ import { HeaderModule } from '@c8y/ngx-components';
     </div>
   `,
   standalone: true,
-  imports: [CommonModule, HeaderModule]
+  imports: [CommonModule, HeaderModule],
 })
 export class ComponentOne {
   mos: any[];

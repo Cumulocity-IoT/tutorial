@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   template: `<p class="text-center">Current time:</p>
     <p class="text-center">{{ currentTime$ | async | date: 'medium' }}</p> `,
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class TimeNavigatorNodeComponent {
   currentTime$: Observable<Date>;

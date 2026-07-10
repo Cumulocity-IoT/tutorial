@@ -4,7 +4,7 @@ import {
   StepperService,
   Steppers,
   TitleComponent,
-  StepperOutletComponent
+  StepperOutletComponent,
 } from '@c8y/ngx-components';
 import { firstValueFrom } from 'rxjs';
 import { NgIf } from '@angular/common';
@@ -30,7 +30,7 @@ import { NgIf } from '@angular/common';
     </div>
   `,
   standalone: true,
-  imports: [TitleComponent, NgIf, StepperOutletComponent]
+  imports: [TitleComponent, NgIf, StepperOutletComponent],
 })
 export class BasicViewComponent implements OnInit {
   readonly stepperId = Steppers.SETUP;
@@ -48,8 +48,8 @@ export class BasicViewComponent implements OnInit {
       (step: SetupStep, index) => ({
         ...step,
         index,
-        completed: false
-      })
+        completed: false,
+      }),
     );
   }
 }

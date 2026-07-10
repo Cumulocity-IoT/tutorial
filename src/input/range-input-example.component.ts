@@ -81,6 +81,6 @@ import { CoreModule } from '@c8y/ngx-components';
       </div>
     </div>`,
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class RangeInputExampleComponent {}

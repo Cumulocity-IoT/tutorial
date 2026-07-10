@@ -1,4 +1,4 @@
-@use "sass:color";
+@use 'sass:color';
 
 $background-color: #f6ffed;
 $border-color: #b7eb8f;
@@ -9,10 +9,10 @@ $border-color: #b7eb8f;
   border: 1px solid $border-color;
 
   h5 {
-    color: color.adjust($border-color, $lightness: -30%)
+    color: color.adjust($border-color, $lightness: -30%);
   }
 
   p {
-    color: color.adjust($border-color, $lightness: -30%)
+    color: color.adjust($border-color, $lightness: -30%);
   }
 }

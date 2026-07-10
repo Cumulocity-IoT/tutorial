@@ -8,13 +8,7 @@
     "noPropertyAccessFromIndexSignature": false,
     "noImplicitReturns": false
   },
-  "files": [
-    "src/main.ts"
-  ],
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "../ngx-components/**/*.spec.ts"
-  ]
+  "files": ["src/main.ts"],
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.spec.ts", "../ngx-components/**/*.spec.ts"]
 }

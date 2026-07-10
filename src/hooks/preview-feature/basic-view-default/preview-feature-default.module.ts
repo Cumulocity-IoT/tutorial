@@ -11,24 +11,24 @@ import { ExamplePreviewFeatureNavigationFactory } from './preview-feature.factor
 export const hooks = [
   hookRoute({
     path: 'hooks/preview-feature-default',
-    loadComponent: () => import('./basic-view-default.component').then(m => m.BasicViewComponent)
+    loadComponent: () => import('./basic-view-default.component').then((m) => m.BasicViewComponent),
   }),
   hookNavigator(ExamplePreviewFeatureNavigationFactory),
   hookPreview({
     key: 'preview-feature-key',
     label: 'Example preview feature relying on feature toggles API',
     description: () =>
-      import('@c8y/style/markdown-files/codex-example-markdown.md').then(m => m.default),
+      import('@c8y/style/markdown-files/codex-example-markdown.md').then((m) => m.default),
     settings: {
-      reload: true
-    }
-  })
+      reload: true,
+    },
+  }),
 ];
 
 @NgModule({
   /**
    * Adding the hooks to the providers:
    */
-  providers: [...hooks]
+  providers: [...hooks],
 })
 export class PreviewFeatureDefaultModule {}

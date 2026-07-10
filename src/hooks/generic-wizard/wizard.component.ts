@@ -7,7 +7,7 @@ import { takeUntil } from 'rxjs/operators';
   selector: 'container-component',
   templateUrl: 'wizard.component.html',
   standalone: true,
-  imports: [HeaderModule]
+  imports: [HeaderModule],
 })
 export class ContainerComponent {
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -18,12 +18,12 @@ export class ContainerComponent {
     const wizardConfig: WizardConfig = {
       headerText: 'One Menu Entry Example',
       headerIcon: 'rocket',
-      bodyHeaderIcon: 'rocket'
+      bodyHeaderIcon: 'rocket',
     };
 
     const initialState: any = {
       id: 'singleEntry',
-      wizardConfig
+      wizardConfig,
     };
     const modalOptions = { initialState };
 
@@ -35,29 +35,29 @@ export class ContainerComponent {
       headerText: 'Multiple Entries example',
       headerIcon: 'rocket',
       bodyHeaderText: 'Select methods',
-      bodyHeaderIcon: 'rocket'
+      bodyHeaderIcon: 'rocket',
     };
 
     const initialState: any = {
       id: 'multipleEntries',
-      wizardConfig
+      wizardConfig,
     };
 
     const modalOptions = { initialState };
 
     const modalRef = this.wizardModalService.show(modalOptions);
 
-    modalRef.content.onSelect.pipe(takeUntil(this.destroy$)).subscribe(menuEntry => {
+    modalRef.content.onSelect.pipe(takeUntil(this.destroy$)).subscribe((menuEntry) => {
       // handle menu entry
       console.log(menuEntry);
     });
 
-    modalRef.content.onClose.pipe(takeUntil(this.destroy$)).subscribe(result => {
+    modalRef.content.onClose.pipe(takeUntil(this.destroy$)).subscribe((result) => {
       // handle result
       console.log(result);
     });
 
-    modalRef.content.onReset.pipe(takeUntil(this.destroy$)).subscribe(result => {
+    modalRef.content.onReset.pipe(takeUntil(this.destroy$)).subscribe((result) => {
       // handle result
       console.log(result);
     });
@@ -67,12 +67,12 @@ export class ContainerComponent {
     const wizardConfig: WizardConfig = {
       headerText: 'Stepper Example',
       headerIcon: 'c8y-icon-modules',
-      bodyHeaderIcon: 'c8y-icon-modules'
+      bodyHeaderIcon: 'c8y-icon-modules',
     };
 
     const initialState: any = {
       id: 'stepperExample',
-      wizardConfig
+      wizardConfig,
     };
     const modalOptions = { initialState };
 

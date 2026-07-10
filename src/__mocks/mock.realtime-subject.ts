@@ -47,7 +47,7 @@ export class MockRealtimeSubject {
   private setInterval(realtimeMessageSubject$: Subject<RealtimeMessage<IManagedObject>>) {
     this.intervalSubscription = interval(5000)
       .pipe(map(() => getFakeData<IManagedObject>(this.REALTIME_CHANNEL)))
-      .subscribe(data => {
+      .subscribe((data) => {
         if (!realtimeMessageSubject$.isStopped) {
           realtimeMessageSubject$.next(data);
         }

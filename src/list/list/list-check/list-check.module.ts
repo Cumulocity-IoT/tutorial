@@ -7,15 +7,15 @@ import { hookNavigator, hookRoute, NavigatorNode } from '@c8y/ngx-components';
   providers: [
     hookRoute({
       path: 'lists/list-check',
-      loadComponent: () => import('./list-check.component').then(m => m.ListCheckComponent)
+      loadComponent: () => import('./list-check.component').then((m) => m.ListCheckComponent),
     }),
     hookNavigator(
       new NavigatorNode({
         label: 'Basic list with checkboxes',
         path: 'lists/list-check',
-        parent: 'Lists'
-      })
-    )
-  ]
+        parent: 'Lists',
+      }),
+    ),
+  ],
 })
 export class ListCheckModule {}

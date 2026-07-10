@@ -8,16 +8,16 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'breadcrumbs-basic',
       loadComponent: () =>
-        import('./breadcrumbs-example.component').then(m => m.BreadcrumbsExampleComponents)
+        import('./breadcrumbs-example.component').then((m) => m.BreadcrumbsExampleComponents),
     }),
     hookNavigator(
       new NavigatorNode({
         path: 'breadcrumbs-basic',
         icon: 'notification',
         label: 'Breadcrumbs basic',
-        parent: 'Breadcrumbs'
-      })
-    )
-  ]
+        parent: 'Breadcrumbs',
+      }),
+    ),
+  ],
 })
 export class BreadcrumbsExampleModule {}

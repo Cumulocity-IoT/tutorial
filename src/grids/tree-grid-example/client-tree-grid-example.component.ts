@@ -9,7 +9,7 @@ import {
   CustomColumnConfig,
   GridConfig,
   Pagination,
-  Row
+  Row,
 } from '@c8y/ngx-components';
 import { DeviceGridModule } from '@c8y/ngx-components/device-grid';
 import { data } from './client-tree-grid.data';
@@ -22,7 +22,7 @@ import { data } from './client-tree-grid.data';
   selector: 'c8y-client-tree-grid-example',
   templateUrl: './client-tree-grid-example.component.html',
   standalone: true,
-  imports: [CoreModule, DeviceGridModule, RouterModule]
+  imports: [CoreModule, DeviceGridModule, RouterModule],
 })
 export class ClientGridExampleComponent implements OnInit {
   /** This will be used as a title for the data grid. */
@@ -36,31 +36,31 @@ export class ClientGridExampleComponent implements OnInit {
       name: 'name',
       header: 'Name',
       path: 'name',
-      filterable: true
+      filterable: true,
     },
     {
       name: 'id',
       header: 'ID',
       path: 'id',
-      filterable: true
+      filterable: true,
     },
     {
       name: 'serialNumber',
       header: 'Serial number',
       path: 'serialNumber',
-      filterable: true
+      filterable: true,
     },
     {
       name: 'firmwareVersion',
       header: 'Firmware',
       path: 'firmwareVersion',
-      filterable: true
-    }
+      filterable: true,
+    },
   ];
   /** Initial pagination settings. */
   pagination: Pagination = {
     pageSize: 30,
-    currentPage: 1
+    currentPage: 1,
   };
   /** Will allow for selecting items and perform bulk actions on them. */
   selectable = true;
@@ -72,12 +72,12 @@ export class ClientGridExampleComponent implements OnInit {
   actionControls: ActionControl[] = [
     {
       type: BuiltInActionType.Edit,
-      callback: selectedItem => this.onItemEdit(selectedItem)
+      callback: (selectedItem) => this.onItemEdit(selectedItem),
     },
     {
       type: BuiltInActionType.Delete,
-      callback: selectedItem => this.onItemDelete(selectedItem)
-    }
+      callback: (selectedItem) => this.onItemDelete(selectedItem),
+    },
   ];
   /**
    * Defines actions for multiple rows.
@@ -87,12 +87,12 @@ export class ClientGridExampleComponent implements OnInit {
   bulkActionControls: BulkActionControl[] = [
     {
       type: BuiltInActionType.Export,
-      callback: selectedItemIds => this.onItemsExport(selectedItemIds)
+      callback: (selectedItemIds) => this.onItemsExport(selectedItemIds),
     },
     {
       type: BuiltInActionType.Delete,
-      callback: selectedItemIds => this.onItemsDelete(selectedItemIds)
-    }
+      callback: (selectedItemIds) => this.onItemsDelete(selectedItemIds),
+    },
   ];
   /** Static data to display. */
   data: any[];
@@ -155,11 +155,11 @@ export class ClientGridExampleComponent implements OnInit {
   }
 
   private dataToRows(data: any[], parentRow?: Row): Row[] {
-    return data.map(item => {
+    return data.map((item) => {
       const row = {
         ...item,
         hasChildren: item.childNodes?.length > 0,
-        parentRow
+        parentRow,
       };
       row.childNodes =
         item.childNodes?.length > 0 ? this.dataToRows(item.childNodes, row) : undefined;

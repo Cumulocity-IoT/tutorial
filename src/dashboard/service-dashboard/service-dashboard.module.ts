@@ -9,7 +9,7 @@ import { ViewContextRedirectService } from '../../redirect-to-last-route/view-co
         path: 'service-dashboard',
         context: ViewContext.Service,
         loadComponent: () =>
-          import('./service-dashboard.component').then(m => m.ServiceDashboardComponent)
+          import('./service-dashboard.component').then((m) => m.ServiceDashboardComponent),
       },
       {
         path: 'dashboards/service-dashboard',
@@ -17,19 +17,19 @@ import { ViewContextRedirectService } from '../../redirect-to-last-route/view-co
           () =>
             inject(ViewContextRedirectService).redirectToFirstItemOf(
               ViewContext.Service,
-              'service-dashboard'
-            )
+              'service-dashboard',
+            ),
         ],
-        component: EmptyComponent
-      }
+        component: EmptyComponent,
+      },
     ]),
     hookNavigator({
       label: 'Service dashboard',
       path: '/dashboards/service-dashboard',
       icon: 'th-list',
       priority: -2,
-      parent: 'Dashboards'
-    })
-  ]
+      parent: 'Dashboards',
+    }),
+  ],
 })
 export class ServiceDashboardModule {}

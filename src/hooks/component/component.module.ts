@@ -10,7 +10,8 @@ import { NavigatorNode, hookComponent, hookNavigator, hookRoute } from '@c8y/ngx
 export const hooks = [
   hookRoute({
     path: 'hooks/component',
-    loadComponent: () => import('./basic-view/basic-view.component').then(m => m.BasicViewComponent)
+    loadComponent: () =>
+      import('./basic-view/basic-view.component').then((m) => m.BasicViewComponent),
   }),
   hookNavigator(
     new NavigatorNode({
@@ -18,21 +19,21 @@ export const hooks = [
       path: 'hooks/component',
       icon: 'blockly',
       label: 'Component',
-      parent: 'Hooks'
-    })
+      parent: 'Hooks',
+    }),
   ),
   hookComponent({
     id: 'simple.component',
     label: 'My simple component',
     description: 'Nothing to describe',
-    loadComponent: () => import('./basic-view/simple.component').then(m => m.SimpleComponent)
-  })
+    loadComponent: () => import('./basic-view/simple.component').then((m) => m.SimpleComponent),
+  }),
 ];
 
 @NgModule({
   /**
    * Adding the hooks to the providers:
    */
-  providers: [...hooks]
+  providers: [...hooks],
 })
 export class ComponentModule {}

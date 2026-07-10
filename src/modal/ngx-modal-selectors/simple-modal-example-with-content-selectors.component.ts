@@ -46,11 +46,11 @@ import { CommonModule, FormsModule, HeaderModule, ModalModule } from '@c8y/ngx-c
     </c8y-modal>
   `,
   standalone: true,
-  imports: [ModalModule, HeaderModule, CommonModule, FormsModule]
+  imports: [ModalModule, HeaderModule, CommonModule, FormsModule],
 })
 export class SimpleModalExampleWithContentSelectorsComponent {
   smartGroup = {
-    name: ''
+    name: '',
   };
   pending = false;
 

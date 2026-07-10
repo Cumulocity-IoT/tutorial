@@ -8,7 +8,7 @@ import {
   DatapointsExportSelectorComponent,
   ExportColumnConfig,
   ExportConfig,
-  ExportType
+  ExportType,
 } from '@c8y/ngx-components/datapoints-export-selector';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
@@ -64,8 +64,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     FormsModule,
     TooltipModule,
     DatapointsExportSelectorComponent,
-    DatapointSelectorModule
-  ]
+    DatapointSelectorModule,
+  ],
 })
 export class DatapointsExportSelectorExampleComponent {
   config: ExportConfig | null = null;
@@ -82,7 +82,7 @@ export class DatapointsExportSelectorExampleComponent {
     { id: 'current', label: 'Current', visible: true, order: 2 },
     { id: 'diff', label: 'Diff', visible: true, order: 3 },
     { id: 'diffPercentage', label: 'Diff %', visible: true, order: 4 },
-    { id: 'asset', label: 'Asset', visible: true, order: 5 }
+    { id: 'asset', label: 'Asset', visible: true, order: 5 },
   ];
 
   updateExportConfig(): void {
@@ -100,7 +100,7 @@ export class DatapointsExportSelectorExampleComponent {
         valueFragmentSeries: datapoint.series,
         valueFragmentType: datapoint.fragment,
         target: mockTarget,
-        label: datapoint.label ?? `${datapoint.fragment}.${datapoint.series}`
+        label: datapoint.label ?? `${datapoint.fragment}.${datapoint.series}`,
       };
     });
 
@@ -113,7 +113,7 @@ export class DatapointsExportSelectorExampleComponent {
       exportType,
       datapointDetails: this.datapointDetails,
       dateFrom,
-      dateTo
+      dateTo,
     };
 
     // Add type-specific configuration

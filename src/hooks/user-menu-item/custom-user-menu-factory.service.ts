@@ -8,7 +8,7 @@ export class CustomUserMenuFactory implements ExtensionFactory<UserMenuItem> {
     icon: 'user',
     label: 'Example',
     click: () => console.log('I am the first example'),
-    priority: 100
+    priority: 100,
   };
 
   /**

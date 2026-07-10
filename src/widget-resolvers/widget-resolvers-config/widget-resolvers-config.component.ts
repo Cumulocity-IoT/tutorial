@@ -5,7 +5,7 @@ import {
   DynamicComponent,
   DynamicComponentAlert,
   DynamicComponentAlertAggregator,
-  FormGroupComponent
+  FormGroupComponent,
 } from '@c8y/ngx-components';
 import { NgFor } from '@angular/common';
 
@@ -14,7 +14,7 @@ import { NgFor } from '@angular/common';
   templateUrl: './widget-resolvers-config.component.html',
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
   standalone: true,
-  imports: [FormGroupComponent, FormsModule, NgFor]
+  imports: [FormGroupComponent, FormsModule, NgFor],
 })
 export class WidgetResolversConfigComponent implements OnInit, DynamicComponent {
   events: IEvent[];
@@ -25,7 +25,7 @@ export class WidgetResolversConfigComponent implements OnInit, DynamicComponent 
 
   constructor(
     private eventsService: EventService,
-    private inventory: InventoryService
+    private inventory: InventoryService,
   ) {}
 
   ngOnInit() {
@@ -38,11 +38,13 @@ export class WidgetResolversConfigComponent implements OnInit, DynamicComponent 
   async loadData() {
     const [events, properties] = await Promise.all([
       this.eventsService.list({ pageSize: 20 }),
-      this.inventory.list({ type: 'c8y_JsonSchema', pageSize: 100 })
+      this.inventory.list({ type: 'c8y_JsonSchema', pageSize: 100 }),
     ]);
     this.events = events.data;
     if (this.config?.event && !(this.config?.event instanceof DynamicComponentAlert)) {
-      const configuredEventPresent = this.events.find(event => event.id === this.config?.event.id);
+      const configuredEventPresent = this.events.find(
+        (event) => event.id === this.config?.event.id,
+      );
       if (!configuredEventPresent) {
         this.events.push(this.config?.event);
       }
@@ -50,7 +52,7 @@ export class WidgetResolversConfigComponent implements OnInit, DynamicComponent 
     this.properties = properties.data;
     if (this.config?.property && !(this.config?.property instanceof DynamicComponentAlert)) {
       const configuredPropertyPresent = this.properties.find(
-        property => property.id === this.config?.property.id
+        (property) => property.id === this.config?.property.id,
       );
       if (!configuredPropertyPresent) {
         this.properties.push(this.config?.property);
@@ -59,13 +61,13 @@ export class WidgetResolversConfigComponent implements OnInit, DynamicComponent 
   }
 
   onEventSelect(eventId: string) {
-    const event = this.events.find(tmp => tmp.id === eventId);
+    const event = this.events.find((tmp) => tmp.id === eventId);
     this.config.event = event;
     this.config.source = { id: event.source.id, name: event.source.name };
   }
 
   onPropertySelect(propertyId: string) {
-    const property = this.properties.find(tmp => tmp.id === propertyId);
+    const property = this.properties.find((tmp) => tmp.id === propertyId);
     this.config.property = property;
   }
 }

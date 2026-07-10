@@ -9,8 +9,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
       path: 'selector/asset-selector-example/tree-options',
       loadComponent: () =>
         import('./asset-selector-tree-example.component').then(
-          m => m.AssetSelectorTreeExampleComponent
-        )
+          (m) => m.AssetSelectorTreeExampleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -18,9 +18,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
         path: '/selector/asset-selector-example/tree-options',
         icon: 'tree-structure',
         priority: 10,
-        parent: 'Asset selector'
-      })
-    )
-  ]
+        parent: 'Asset selector',
+      }),
+    ),
+  ],
 })
 export class AssetSelectorTreeExampleModule {}

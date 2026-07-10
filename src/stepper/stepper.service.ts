@@ -14,7 +14,7 @@ export class StepperService {
   }
 
   addDevice(device: Device) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         this.devices.push(device);
         resolve(true);
@@ -26,7 +26,7 @@ export class StepperService {
     this.modalService.show(DeviceStepperComponent, {
       class: 'modal-lg',
       ariaDescribedby: 'modal-body',
-      ariaLabelledBy: 'modal-title'
+      ariaLabelledBy: 'modal-title',
     });
   }
 }

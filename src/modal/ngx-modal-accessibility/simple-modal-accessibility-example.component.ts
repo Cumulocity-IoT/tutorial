@@ -5,7 +5,7 @@ import {
   HeaderModule,
   ListGroupModule,
   ModalLabels,
-  ModalModule
+  ModalModule,
 } from '@c8y/ngx-components';
 
 @Component({
@@ -32,7 +32,7 @@ import {
     </c8y-modal>
   `,
   standalone: true,
-  imports: [ModalModule, HeaderModule, CommonModule, FormsModule, ListGroupModule]
+  imports: [ModalModule, HeaderModule, CommonModule, FormsModule, ListGroupModule],
 })
 export class SimpleModalAccessibilityExampleComponent {
   labels: ModalLabels = { ok: 'Export', cancel: 'Cancel' };

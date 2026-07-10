@@ -9,8 +9,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'component-styles/css',
       loadComponent: () =>
         import('./cascading-style-sheets-example.component').then(
-          m => m.CascadingStyleSheetsExampleComponent
-        )
+          (m) => m.CascadingStyleSheetsExampleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -18,9 +18,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         label: 'CSS',
         icon: 'c8y-css',
         priority: 79,
-        parent: 'Component styles'
-      })
-    )
-  ]
+        parent: 'Component styles',
+      }),
+    ),
+  ],
 })
 export class CascadingStyleSheetsExampleModule {}

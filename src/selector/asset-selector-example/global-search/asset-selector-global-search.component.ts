@@ -21,7 +21,7 @@ import { IIdentified } from '@c8y/client';
                 showFilter: true,
                 showUnassignedDevices: true,
                 showChildDevices: true,
-                search: true
+                search: true,
               }"
             ></c8y-asset-selector-miller>
           </div>
@@ -39,7 +39,7 @@ import { IIdentified } from '@c8y/client';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, AssetSelectorModule, CoreModule]
+  imports: [CommonModule, AssetSelectorModule, CoreModule],
 })
 export class AssetSelectorGlobalSearchComponent {
   model: IIdentified;

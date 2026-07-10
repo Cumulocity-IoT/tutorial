@@ -14,7 +14,7 @@ export class MockService {
     @Inject(API_MOCK_CONFIG) private apiMocks,
     private apiService: ApiService,
     private router: Router,
-    private options: OptionsService
+    private options: OptionsService,
   ) {
     if (this.options.get('noLogin', false)) {
       this.setupMocks();
@@ -39,7 +39,7 @@ export class MockService {
    */
   private setupScopedInterceptorsOnNavigationEnd() {
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
+      .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.handleScopedInterceptors(event.url);
       });
@@ -87,12 +87,12 @@ export class MockService {
       }
     });
 
-    this.applyMockConfig(mocksToRegister, mock => {
+    this.applyMockConfig(mocksToRegister, (mock) => {
       this.logDebugInfo({ text: `Added scoped interceptor with id: ${mock.id}` }, mock.debug);
       this.apiService.addInterceptor(new mock.mockService() as any, mock.id);
     });
 
-    this.applyMockConfig(mocksToUnregister, mock => {
+    this.applyMockConfig(mocksToUnregister, (mock) => {
       if (this.apiService.hasInterceptor(mock.id)) {
         this.logDebugInfo({ text: `Removed scoped interceptor with id: ${mock.id}` }, mock.debug);
         this.apiService.removeInterceptor(mock.id);
@@ -101,7 +101,7 @@ export class MockService {
   }
 
   private applyMockConfig(mockConfigs: ApiMockConfig[], action: (mock: ApiMockConfig) => void) {
-    mockConfigs.forEach(mock => action(mock));
+    mockConfigs.forEach((mock) => action(mock));
   }
 
   private logDebugInfo(data: DebugData, show: boolean) {

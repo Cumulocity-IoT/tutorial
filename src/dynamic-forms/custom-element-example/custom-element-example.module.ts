@@ -10,7 +10,7 @@ import { CustomFieldCheckbox } from './types/checkbox/checkbox.type.component';
     hookRoute({
       path: 'dynamic-forms/custom',
       loadComponent: () =>
-        import('./custom-element-example.component').then(m => m.CustomElementExampleComponent)
+        import('./custom-element-example.component').then((m) => m.CustomElementExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -18,8 +18,8 @@ import { CustomFieldCheckbox } from './types/checkbox/checkbox.type.component';
         label: 'Custom element',
         icon: 'cut',
         priority: 78,
-        parent: 'Dynamic forms'
-      })
+        parent: 'Dynamic forms',
+      }),
     ),
     /* Register your custom field as Formly input type */
     {
@@ -29,11 +29,11 @@ import { CustomFieldCheckbox } from './types/checkbox/checkbox.type.component';
         types: [
           {
             name: 'custom',
-            component: CustomFieldCheckbox
-          }
-        ]
-      }
-    }
-  ]
+            component: CustomFieldCheckbox,
+          },
+        ],
+      },
+    },
+  ],
 })
 export class CustomElementExampleModule {}

@@ -6,8 +6,8 @@ export function provideHooksSample() {
       new NavigatorNode({
         priority: 90,
         icon: 'u-turn',
-        label: 'Hooks'
-      })
-    )
+        label: 'Hooks',
+      }),
+    ),
   ];
 }

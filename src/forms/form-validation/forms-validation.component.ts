@@ -5,7 +5,7 @@ import {
   FormGroup,
   ValidationErrors,
   ValidatorFn,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '@c8y/ngx-components';
@@ -14,7 +14,7 @@ import { CoreModule } from '@c8y/ngx-components';
   selector: 'app-forms-validation-tutorial',
   templateUrl: './forms-validation.component.html',
   standalone: true,
-  imports: [CommonModule, CoreModule]
+  imports: [CommonModule, CoreModule],
 })
 export class FormsValidationTutorialComponent {
   formGroup: FormGroup;
@@ -27,7 +27,7 @@ export class FormsValidationTutorialComponent {
       gender: ['', this.genderValidator()],
       description: ['', [Validators.required, Validators.pattern(/^description[a-z]*$/)]],
       description2: ['', [Validators.required, Validators.pattern(/^description[a-z]*$/)]],
-      notes: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]]
+      notes: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
     });
   }
 

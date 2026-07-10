@@ -7,8 +7,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'modal/ngx-modal-accessibility',
       loadComponent: () =>
         import('./ngx-modal-accessibility-example.component').then(
-          m => m.NgxModalAccessibilityExampleComponent
-        )
+          (m) => m.NgxModalAccessibilityExampleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/modal/ngx-modal-accessibility',
         icon: 'list-alt',
         priority: 10,
-        parent: 'Modal'
-      })
-    )
-  ]
+        parent: 'Modal',
+      }),
+    ),
+  ],
 })
 export class NgxModalAccessibilityExampleModule {}

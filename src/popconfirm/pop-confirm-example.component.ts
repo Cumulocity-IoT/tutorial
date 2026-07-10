@@ -5,7 +5,7 @@ import {
   HeaderModule,
   ModalModule,
   PopoverConfirmButtons,
-  PopoverConfirmComponent
+  PopoverConfirmComponent,
 } from '@c8y/ngx-components';
 
 @Component({
@@ -29,26 +29,26 @@ import {
       ></c8y-popover-confirm>
     </div>`,
   standalone: true,
-  imports: [ModalModule, CommonModule, HeaderModule]
+  imports: [ModalModule, CommonModule, HeaderModule],
 })
 export class PopConfirmExampleComponent {
   // you can provide custom buttons
   confirmRemoveColumnButtons: PopoverConfirmButtons[] = [
     {
       label: gettext('Cancel'),
-      action: () => Promise.resolve(false)
+      action: () => Promise.resolve(false),
     },
     {
       label: gettext('Delete'),
       status: 'danger',
-      action: () => Promise.resolve(true)
-    }
+      action: () => Promise.resolve(true),
+    },
   ];
 
   async triggerPopover(poConfirm: PopoverConfirmComponent): Promise<void> {
     // to set the message
     poConfirm.message = gettext(
-      'Are you sure you want to delete this item? This action is irreversible.'
+      'Are you sure you want to delete this item? This action is irreversible.',
     );
     try {
       const remove = await poConfirm.show(this.confirmRemoveColumnButtons);

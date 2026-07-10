@@ -35,7 +35,7 @@ import { CoreModule, FormsModule } from '@c8y/ngx-components';
       <div class="sr-only" aria-live="polite" #liveRegion>{{ liveMessage }}</div>
     </div>`,
   standalone: true,
-  imports: [CoreModule, FormsModule, CommonModule]
+  imports: [CoreModule, FormsModule, CommonModule],
 })
 export class ExtendableInputListExampleComponent {
   items: string[] = [];

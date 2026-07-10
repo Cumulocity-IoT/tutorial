@@ -9,17 +9,17 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'extendable-input-list',
       loadComponent: () =>
         import('./extendable-input-list-example.component').then(
-          m => m.ExtendableInputListExampleComponent
-        )
+          (m) => m.ExtendableInputListExampleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
         path: '/extendable-input-list',
         label: 'Extendable input list',
         icon: 'hand-o-right',
-        priority: 5
-      })
-    )
-  ]
+        priority: 5,
+      }),
+    ),
+  ],
 })
 export class ExtendableInputListExampleModule {}

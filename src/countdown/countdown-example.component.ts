@@ -2,14 +2,14 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import {
   CommonModule,
   CountdownIntervalComponent,
-  CountdownIntervalModule
+  CountdownIntervalModule,
 } from '@c8y/ngx-components';
 
 @Component({
   selector: 'tut-countdown-example',
   templateUrl: './countdown-example.component.html',
   standalone: true,
-  imports: [CommonModule, CountdownIntervalModule]
+  imports: [CommonModule, CountdownIntervalModule],
 })
 export class CountdownExampleComponent implements AfterViewInit {
   @ViewChild(CountdownIntervalComponent)

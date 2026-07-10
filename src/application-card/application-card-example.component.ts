@@ -14,9 +14,9 @@ import { Observable, of } from 'rxjs';
   providers: [
     {
       provide: AppStateService,
-      useValue: { currentTenant: { value: { name: '' } } }
-    }
-  ]
+      useValue: { currentTenant: { value: { name: '' } } },
+    },
+  ],
 })
 export class ApplicationCardExampleComponent {
   listClass: string;
@@ -27,7 +27,7 @@ export class ApplicationCardExampleComponent {
       key: 'cockpit-application-key',
       label: PackageType.OFFICIAL,
       description: 'This package is used to scaffold a cockpit application for Cumulocity IoT.',
-      manifest: { version: '1.0.0', author: 'c8y_dev' }
+      manifest: { version: '1.0.0', author: 'c8y_dev' },
     },
     {
       name: 'administration',
@@ -35,7 +35,7 @@ export class ApplicationCardExampleComponent {
       key: 'administration-application-key',
       label: PackageType.OFFICIAL,
       description: '',
-      manifest: { version: '1.0.0', author: 'c8y_dev' }
+      manifest: { version: '1.0.0', author: 'c8y_dev' },
     },
     {
       name: 'devicemanagement',
@@ -44,8 +44,8 @@ export class ApplicationCardExampleComponent {
       label: PackageType.OFFICIAL,
       description:
         'This package is used to scaffold a Device Management application for Cumulocity IoT.',
-      manifest: { version: '1.0.0', author: 'c8y_dev' }
-    }
+      manifest: { version: '1.0.0', author: 'c8y_dev' },
+    },
   ]);
 
   appDeleted(app: IApplication[]) {

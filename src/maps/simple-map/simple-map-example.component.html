@@ -1,62 +1,29 @@
 <c8y-title>Simple map example</c8y-title>
 
 <div class="d-flex">
-  <div class="d-flex d-col j-c-center p-r-16" style="width: 280px;">
-    <button
-      class="btn btn-default btn-block"
-      (click)="changeDevices()"
-    >
+  <div class="d-flex d-col j-c-center p-r-16" style="width: 280px">
+    <button class="btn btn-default btn-block" (click)="changeDevices()">
       Toggle device amount
     </button>
-    <button
-      class="btn btn-default btn-block"
-      (click)="setRandomZoomLevel()"
-    >
+    <button class="btn btn-default btn-block" (click)="setRandomZoomLevel()">
       Set random zoom level
     </button>
-    <button
-      class="btn btn-default btn-block"
-      (click)="setCenter()"
-    >
-      Set map to Düsseldorf
-    </button>
-    <button
-      class="btn btn-default btn-block"
-      (click)="changeIcon()"
-    >
-      Change icon
-    </button>
-    <button
-      class="btn btn-default btn-block"
-      (click)="changeColor()"
-    >
-      Change color
-    </button>
-    <button
-      class="btn btn-default btn-block"
-      (click)="toggleRealtime()"
-    >
+    <button class="btn btn-default btn-block" (click)="setCenter()">Set map to Düsseldorf</button>
+    <button class="btn btn-default btn-block" (click)="changeIcon()">Change icon</button>
+    <button class="btn btn-default btn-block" (click)="changeColor()">Change color</button>
+    <button class="btn btn-default btn-block" (click)="toggleRealtime()">
       {{ config.realtime ? 'Disable realtime' : 'Enable realtime' }}
     </button>
-    <button
-      class="btn btn-default btn-block"
-      (click)="toggleFollow()"
-    >
+    <button class="btn btn-default btn-block" (click)="toggleFollow()">
       {{ config.follow ? 'Unfollow' : 'Follow' }}
     </button>
   </div>
   <!-- important -->
   <div class="flex-grow p-relative a-s-stretch">
-    <c8y-map
-      [assets]="exampleDevices"
-      [config]="config"
-    ></c8y-map>
+    <c8y-map [assets]="exampleDevices" [config]="config"></c8y-map>
   </div>
   <!-- /important -->
-  <div
-    class="a-s-stretch p-16 d-col bg-info-light"
-    style="width: 320px; height: 420px;"
-  >
+  <div class="a-s-stretch p-16 d-col bg-info-light" style="width: 320px; height: 420px">
     <pre>{{ config | json }}  </pre>
   </div>
 </div>

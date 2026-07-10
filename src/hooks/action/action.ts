@@ -25,11 +25,11 @@ export class ExampleActionFactory implements ActionFactory {
         label: 'Custom action',
         action: () => console.log('Custom action is triggered.'),
         disabled: true,
-        priority: 1
+        priority: 1,
       };
 
       const customLogoutButton: Action = {
-        component: LogoutActionComponent
+        component: LogoutActionComponent,
       };
 
       actions.push(someDeviceAction);

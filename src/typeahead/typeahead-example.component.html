@@ -16,16 +16,10 @@
         (click)="selectedDevice = device"
         [active]="selectedDevice === device"
       >
-        <c8y-highlight
-          [text]="device.name"
-          [pattern]="pattern"
-        ></c8y-highlight>
+        <c8y-highlight [text]="device.name" [pattern]="pattern"></c8y-highlight>
       </c8y-li>
       <ng-template #notFoundTemplate>
-        <c8y-li
-          class="bg-level-2 p-8 sticky-bottom"
-          *ngIf="pattern.length > 0"
-        >
+        <c8y-li class="bg-level-2 p-8 sticky-bottom" *ngIf="pattern.length > 0">
           <span translate>No exact match found.</span>
           <button
             class="btn btn-default btn-sm m-l-8"

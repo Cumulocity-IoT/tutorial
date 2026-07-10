@@ -47,7 +47,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
       </div>
     </div>`,
   standalone: true,
-  imports: [PopoverModule, CoreModule]
+  imports: [PopoverModule, CoreModule],
 })
 export class IntroductionComponent {
   sampleConfig = `ProviderConfigurationModule.config([

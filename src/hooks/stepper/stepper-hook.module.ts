@@ -8,8 +8,8 @@ import { Step2Component } from './steps/step2.component';
 const routes: Routes = [
   {
     path: 'stepper-hook',
-    component: BasicViewComponent
-  }
+    component: BasicViewComponent,
+  },
 ];
 
 @NgModule({
@@ -18,7 +18,7 @@ const routes: Routes = [
     CoreModule,
     BasicViewComponent,
     Step1Component,
-    Step2Component
+    Step2Component,
   ],
   /**
    * Adding the hooks to the providers:
@@ -31,7 +31,7 @@ const routes: Routes = [
       path: 'stepper-hook',
       parent: 'Hooks',
       // TODO: clarify why preventDuplicates is needed
-      preventDuplicates: true
+      preventDuplicates: true,
     }),
     hookStepper([
       {
@@ -41,7 +41,7 @@ const routes: Routes = [
         setupId: 'step1',
         priority: 100,
         // TODO: proper fix needed
-        injector: null
+        injector: null,
       },
       {
         stepperId: 'example',
@@ -50,9 +50,9 @@ const routes: Routes = [
         setupId: 'step2',
         priority: 90,
         // TODO: proper fix needed
-        injector: null
-      }
-    ] as SetupStep[])
-  ]
+        injector: null,
+      },
+    ] as SetupStep[]),
+  ],
 })
 export class StepperHookModule {}

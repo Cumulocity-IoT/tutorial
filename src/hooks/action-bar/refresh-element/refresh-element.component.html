@@ -1,14 +1,7 @@
 <c8y-action-bar-item [placement]="'right'">
   <li>
-    <a
-      class="btn btn-link"
-      title="{{ 'Only pretends to do something...' }}"
-      (click)="refresh()"
-    >
-      <i
-        c8yIcon="refresh"
-        [ngClass]="{ 'icon-spin': requestInProgress }"
-      ></i>
+    <a class="btn btn-link" title="{{ 'Only pretends to do something...' }}" (click)="refresh()">
+      <i c8yIcon="refresh" [ngClass]="{ 'icon-spin': requestInProgress }"></i>
       {{ 'Refresh' }}
     </a>
   </li>

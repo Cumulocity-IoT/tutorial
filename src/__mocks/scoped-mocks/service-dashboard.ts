@@ -10,15 +10,15 @@ export class ServiceDashboardInterceptor implements HttpInterceptor {
     name: 'myCustomDeviceDashboardName-3',
     device: {
       name: 'Service',
-      id: '<contextId>'
-    }
+      id: '<contextId>',
+    },
   });
 
   intercept(req: ApiCall, next: HttpHandler): Observable<IFetchResponse> {
     return handleRequest(req, next, 'inventory/managedObjects', {
       POST: this.mockPOST.bind(this),
       PUT: this.mockPUT.bind(this),
-      GET: this.mockGET.bind(this)
+      GET: this.mockGET.bind(this),
     });
   }
 

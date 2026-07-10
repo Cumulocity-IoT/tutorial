@@ -8,7 +8,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'grids/device-grid-example',
       loadComponent: () =>
-        import('./device-grid-example.component').then(m => m.DeviceGridExampleComponent)
+        import('./device-grid-example.component').then((m) => m.DeviceGridExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: 'grids/device-grid-example',
         icon: 'table',
         label: 'Device grid',
-        parent: 'Data grid examples'
-      })
-    )
-  ]
+        parent: 'Data grid examples',
+      }),
+    ),
+  ],
 })
 export class DeviceGridExampleModule {}

@@ -4,7 +4,7 @@ import {
   Validators,
   FormBuilder,
   FormsModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
 } from '@angular/forms';
 import { C8yStepper, CoreModule } from '@c8y/ngx-components';
 import { StepperService } from './stepper.service';
@@ -15,13 +15,13 @@ import { upperFirst } from 'lodash';
 enum step {
   FIRST = 0,
   SECOND = 1,
-  THIRD = 2
+  THIRD = 2,
 }
 @Component({
   selector: 'tut-device-stepper',
   templateUrl: './device-stepper.component.html',
   standalone: true,
-  imports: [CoreModule, FormsModule, ReactiveFormsModule]
+  imports: [CoreModule, FormsModule, ReactiveFormsModule],
 })
 export class DeviceStepperComponent implements OnInit {
   @ViewChild(C8yStepper, { static: true })
@@ -37,16 +37,16 @@ export class DeviceStepperComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private stepperService: StepperService,
-    private bsModalRef: BsModalRef
+    private bsModalRef: BsModalRef,
   ) {}
 
   ngOnInit(): void {
     this.formGroupStepOne = this.fb.group({
-      name: ['', Validators.required]
+      name: ['', Validators.required],
     });
 
     this.formGroupStepTwo = this.fb.group({
-      type: ['']
+      type: [''],
     });
   }
 
@@ -89,7 +89,7 @@ export class DeviceStepperComponent implements OnInit {
     await this.stepperService.addDevice({
       id: Math.random() * 1000,
       name: upperFirst(this.formGroupStepOne.get('name').value),
-      type: upperFirst(this.formGroupStepTwo.get('type').value)
+      type: upperFirst(this.formGroupStepTwo.get('type').value),
     });
   }
 

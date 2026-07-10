@@ -28,7 +28,7 @@ import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
       [defaultWidgets]="defaultWidgets"
       [canDelete]="false"
     ></c8y-context-dashboard>
-  `
+  `,
 })
 export class GlobalContextDashboardComponent {
   defaultWidgets: Widget[] = [
@@ -41,10 +41,10 @@ export class GlobalContextDashboardComponent {
       config: {
         // IMPORTANT: displayMode must be 'dashboard' for GlobalContextConnector to be used.
         // This tells the system that this widget is linked to the global time context.
-        displayMode: 'dashboard'
+        displayMode: 'dashboard',
       },
       title: 'Widget 1 - Linked to Global Context',
-      id: 'global-context-widget-1'
+      id: 'global-context-widget-1',
     },
     {
       _x: 6,
@@ -53,10 +53,10 @@ export class GlobalContextDashboardComponent {
       _height: 5,
       componentId: 'tutorial.global-context-widget',
       config: {
-        displayMode: 'dashboard'
+        displayMode: 'dashboard',
       },
       title: 'Widget 2 - Also Linked',
-      id: 'global-context-widget-2'
-    }
+      id: 'global-context-widget-2',
+    },
   ];
 }

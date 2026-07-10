@@ -12,6 +12,6 @@ import { TitleComponent } from '@c8y/ngx-components';
         <p>See the <code>Right drawer</code> in the <code>Documentation</code> section.</p>
       </div>
     </div>
-  `
+  `,
 })
 export class HookDocsExampleComponent {}

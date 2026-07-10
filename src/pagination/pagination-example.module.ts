@@ -6,16 +6,16 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'pagination',
       loadComponent: () =>
-        import('./pagination-example.component').then(m => m.PaginationExampleComponent)
+        import('./pagination-example.component').then((m) => m.PaginationExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
         path: '/pagination',
         label: 'Pagination',
         icon: 'realtime',
-        priority: 20
-      })
-    )
-  ]
+        priority: 20,
+      }),
+    ),
+  ],
 })
 export class PaginationExampleModule {}

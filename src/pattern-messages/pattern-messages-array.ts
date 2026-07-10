@@ -5,16 +5,16 @@ hookPatternMessages([
     '^Alarm: (.+) is active$': {
       gettext: 'Active alarm for {{alarmType}} detected',
       placeholders: {
-        alarmType: '$1'
-      }
-    }
+        alarmType: '$1',
+      },
+    },
   },
   {
     '^User (.+) has logged in$': {
       gettext: 'Welcome, {{username}}!',
       placeholders: {
-        username: '$1'
-      }
-    }
-  }
+        username: '$1',
+      },
+    },
+  },
 ]);

@@ -30,7 +30,7 @@ import { HeaderModule } from '@c8y/ngx-components';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, HeaderModule]
+  imports: [CommonModule, HeaderModule],
 })
 export class DatapointSelectionSingleSelectExampleComponent {
   // important
@@ -40,15 +40,15 @@ export class DatapointSelectionSingleSelectExampleComponent {
   selectDatapoint(): void {
     this.datapointSelectorService
       .selectDataPoints({
-        finishWithFirstSelection: true
+        finishWithFirstSelection: true,
       })
       .then(
-        res => {
+        (res) => {
           this.datapoint = res.length ? res[0] : null;
         },
         () => {
           // nothing to do, modal was canceled
-        }
+        },
       );
   }
   // /important

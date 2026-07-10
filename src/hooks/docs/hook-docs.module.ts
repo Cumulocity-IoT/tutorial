@@ -8,13 +8,13 @@ import { DocsExampleService } from './docs-example.service';
       icon: 'c8y-icon c8y-icon-mobile-add',
       type: 'doc',
       url: 'https://cumulocity.com/docs/',
-      label: 'Doc link from hookDocs'
+      label: 'Doc link from hookDocs',
     } as DocLink),
     hookDocs(DocsExampleService),
     hookRoute({
       path: 'hooks/docs',
       loadComponent: () =>
-        import('./hook-docs-example.component').then(m => m.HookDocsExampleComponent)
+        import('./hook-docs-example.component').then((m) => m.HookDocsExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -22,9 +22,9 @@ import { DocsExampleService } from './docs-example.service';
         path: 'hooks/docs',
         icon: 'document',
         label: 'Docs',
-        parent: 'Hooks'
-      })
-    )
-  ]
+        parent: 'Hooks',
+      }),
+    ),
+  ],
 })
 export class HookDocsModule {}

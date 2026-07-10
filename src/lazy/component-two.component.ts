@@ -12,6 +12,6 @@ import { HeaderModule } from '@c8y/ngx-components';
     </div>
   `,
   standalone: true,
-  imports: [HeaderModule]
+  imports: [HeaderModule],
 })
 export class ComponentTwo {}

@@ -7,8 +7,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'translations/text-translation/ngNonBindable-translation',
       loadComponent: () =>
         import('./text-translation-ngnonbindable.component').then(
-          m => m.TextTranslationNgnonbindableComponent
-        )
+          (m) => m.TextTranslationNgnonbindableComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: 'translations/text-translation/ngNonBindable-translation',
         icon: 'rocket',
         label: 'Text translation',
-        parent: 'Translations'
-      })
-    )
-  ]
+        parent: 'Translations',
+      }),
+    ),
+  ],
 })
 export class TextTranslationNgnonbindableModule {}

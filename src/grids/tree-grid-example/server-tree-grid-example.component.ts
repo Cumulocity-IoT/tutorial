@@ -14,7 +14,7 @@ import {
   LoadMoreMode,
   Pagination,
   Row,
-  ServerSideDataResult
+  ServerSideDataResult,
 } from '@c8y/ngx-components';
 import { DeviceGridModule } from '@c8y/ngx-components/device-grid';
 import { ServerTreeGridExampleService } from './server-tree-grid-example.service';
@@ -27,7 +27,7 @@ import { ServerTreeGridExampleService } from './server-tree-grid-example.service
   templateUrl: './server-tree-grid-example.component.html',
   standalone: true,
   imports: [CoreModule, DeviceGridModule, RouterModule],
-  providers: [ServerTreeGridExampleService]
+  providers: [ServerTreeGridExampleService],
 })
 export class ServerTreeGridExampleComponent implements GridConfigContextProvider {
   title = 'Managed objects';
@@ -39,7 +39,7 @@ export class ServerTreeGridExampleComponent implements GridConfigContextProvider
     striped: true,
     filter: true,
     gridHeader: true,
-    hover: true
+    hover: true,
   };
 
   columns: Column[];
@@ -72,7 +72,7 @@ export class ServerTreeGridExampleComponent implements GridConfigContextProvider
        * You can provide data here that can be used for grid configration storage,
        * action control matchers, etc.
        */
-      key: 'server-tree-grid-example'
+      key: 'server-tree-grid-example',
     };
   }
 
@@ -87,17 +87,17 @@ export class ServerTreeGridExampleComponent implements GridConfigContextProvider
    * full response, list of items, paging object, the number of items in the filtered subset, the number of all items.
    */
   async onDataSourceModifier(
-    dataSourceModifier: DataSourceModifier
+    dataSourceModifier: DataSourceModifier,
   ): Promise<ServerSideDataResult> {
     // If the `DataSourceModifier` context object has a `parentRow`, it means we are loading child nodes for a specific parent row.
     const { parentRow } = dataSourceModifier;
     if (parentRow) {
       const { res, data, paging } = await this.service.getChildDevices(
         parentRow?.id,
-        parentRow?.pagination
+        parentRow?.pagination,
       );
 
-      data.forEach(row => {
+      data.forEach((row) => {
         // The `hasChildren` property should be set for each row to indicate if it has child entries.
         // This is used by the grid to display expand/collapse icons.
         row.hasChildren = row.childDevices.count > 0;
@@ -109,22 +109,22 @@ export class ServerTreeGridExampleComponent implements GridConfigContextProvider
         paging,
         filteredSize: parentRow.childDevices.count,
         size: parentRow.childDevices.count,
-        parentRow
+        parentRow,
       };
       return serverSideDataResult;
     } else {
       const { res, data, paging } = await this.service.getData(
         dataSourceModifier.columns,
-        dataSourceModifier.pagination
+        dataSourceModifier.pagination,
       );
 
-      data.forEach(row => {
+      data.forEach((row) => {
         row.hasChildren = row.childDevices.count > 0;
       });
 
       const filteredSize: number = await this.service.getCount(
         dataSourceModifier.columns,
-        dataSourceModifier.pagination
+        dataSourceModifier.pagination,
       );
       const size: number = await this.service.getTotal();
 

@@ -7,8 +7,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'selector/asset-selector-example/column-header',
       loadComponent: () =>
         import('./asset-selector-column-header.component').then(
-          m => m.AssetSelectorColumnHeaderComponent
-        )
+          (m) => m.AssetSelectorColumnHeaderComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/selector/asset-selector-example/column-header',
         icon: 'th-list',
         priority: -1,
-        parent: 'Asset selector'
-      })
-    )
-  ]
+        parent: 'Asset selector',
+      }),
+    ),
+  ],
 })
 export class AssetSelectorColumnHeaderModule {}

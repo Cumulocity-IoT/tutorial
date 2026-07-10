@@ -6,7 +6,7 @@ import { CoreModule, PropertiesListItem } from '@c8y/ngx-components';
   selector: 'tut-properties-list-example',
   templateUrl: './properties-list-example.component.html',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class PropertiesListExampleComponent {
   readonly customData: any = {
@@ -16,39 +16,39 @@ export class PropertiesListExampleComponent {
     array: [1, 'two', false],
     object: { key: 'value' },
     null: null,
-    undefined: undefined
+    undefined: undefined,
   };
 
   readonly customProperties: PropertiesListItem[] = [
     {
       label: 'String property',
-      key: 'string'
+      key: 'string',
     },
     {
       label: 'Number property',
-      key: 'number'
+      key: 'number',
     },
     {
       label: 'Boolean property',
-      key: 'boolean'
+      key: 'boolean',
     },
     {
       label: 'Array property',
-      key: 'array'
+      key: 'array',
     },
     {
       label: 'Object property',
       key: 'object',
-      transform: (object: any) => object.key
+      transform: (object: any) => object.key,
     },
     {
       label: 'Null property',
-      key: 'null'
+      key: 'null',
     },
     {
       label: 'Undefined property',
-      key: 'undefined'
-    }
+      key: 'undefined',
+    },
   ];
 
   readonly archiveManifest: Partial<IManifest> = {
@@ -58,41 +58,41 @@ export class PropertiesListExampleComponent {
     license: 'Apache 2.0',
     repository: {
       type: 'git',
-      url: 'git+https://github.com/SoftwareAG/some-not-exisiting-repository.git'
+      url: 'git+https://github.com/SoftwareAG/some-not-exisiting-repository.git',
     },
     requiredPlatformVersion: '>=10.18.0.0',
     version: '10.20.0.0',
     name: 'Application name',
-    custom: 'Custom property value'
+    custom: 'Custom property value',
   };
 
   readonly specifiedPackageVersionProperties: PropertiesListItem[] = [
     {
       label: 'Author',
-      key: 'author'
+      key: 'author',
     },
     {
       label: 'Homepage',
       key: 'homepage',
       type: 'link',
-      action: (event, link: string) => window.open(link, '_blank', 'noopener,noreferrer')
+      action: (event, link: string) => window.open(link, '_blank', 'noopener,noreferrer'),
     },
     {
       label: 'Required platform version',
-      key: 'requiredPlatformVersion'
+      key: 'requiredPlatformVersion',
     },
     {
       label: 'Version',
-      key: 'version'
+      key: 'version',
     },
     {
       label: 'Name',
-      key: 'name'
+      key: 'name',
     },
     {
       label: 'Custom property',
-      key: 'custom'
-    }
+      key: 'custom',
+    },
   ];
 
   readonly customPropertiesNoParse: PropertiesListItem[] = [
@@ -100,19 +100,19 @@ export class PropertiesListExampleComponent {
       label: 'String property',
       key: 'string',
       value: this.customData.string,
-      type: 'string'
+      type: 'string',
     },
     {
       label: 'Number property',
       key: 'number',
       value: this.customData.number,
-      type: 'string'
+      type: 'string',
     },
     {
       label: 'Array property',
       key: 'array',
       value: this.customData.array,
-      type: 'array'
-    }
+      type: 'array',
+    },
   ];
 }

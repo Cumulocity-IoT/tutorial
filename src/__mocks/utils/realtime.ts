@@ -16,7 +16,7 @@ const generators = {
   [Channels.BulkOperations]: getFakeOperationBulk,
   [Channels.Measurements]: getFakeMeasurement,
   [Channels.Alarms]: getFakeAlarm,
-  [Channels.Events]: getFakeEvent
+  [Channels.Events]: getFakeEvent,
 };
 
 /**
@@ -31,8 +31,8 @@ export function getFakeData<T>(channel: string): RealtimeMessage<T> {
   if (!generator) {
     throw new Error(
       `No fake data generator for channel ${channel}, either stay with the supported mocked channels (${Object.keys(
-        generators
-      )}), provide a generator for your channel or remove the "noLogin" query parameter and login.`
+        generators,
+      )}), provide a generator for your channel or remove the "noLogin" query parameter and login.`,
     );
   }
   const data: IAnyData = generator();
@@ -40,7 +40,7 @@ export function getFakeData<T>(channel: string): RealtimeMessage<T> {
     id: (data?.id).toString(),
     channel: data?.id ? channel.replace('*', (data?.id).toString()) : channel,
     realtimeAction: getRandomRealtimeAction(),
-    data: data as unknown as T
+    data: data as unknown as T,
   };
   return message;
 }

@@ -12,12 +12,12 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
     MessagesComponent,
     FormGroupComponent,
     ReactiveFormsModule,
-    MonacoEditorMarkerValidatorDirective
+    MonacoEditorMarkerValidatorDirective,
   ],
   host: {
     class: 'd-col fit-w',
-    style: 'height: 400px'
-  }
+    style: 'height: 400px',
+  },
 })
 export class EditorCSSSampleComponent {
   form: FormGroup;
@@ -25,7 +25,7 @@ export class EditorCSSSampleComponent {
 
   constructor() {
     this.form = new FormGroup({
-      cssEditor: new FormControl('.test { display: none; }')
+      cssEditor: new FormControl('.test { display: none; }'),
     });
   }
 }

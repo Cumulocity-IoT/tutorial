@@ -16,6 +16,6 @@ import { DeviceStepperComponent } from './device-stepper.component';
     </div>
   </div> `,
   standalone: true,
-  imports: [HeaderModule, DeviceStepperComponent]
+  imports: [HeaderModule, DeviceStepperComponent],
 })
 export class StepperComponent {}

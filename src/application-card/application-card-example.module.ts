@@ -8,15 +8,17 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'application-card',
       loadComponent: () =>
-        import('./application-card-example.component').then(m => m.ApplicationCardExampleComponent)
+        import('./application-card-example.component').then(
+          (m) => m.ApplicationCardExampleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
         path: 'application-card',
         icon: 'inactive-state',
-        label: 'Application card'
-      })
-    )
-  ]
+        label: 'Application card',
+      }),
+    ),
+  ],
 })
 export class ApplicationCardExampleModule {}

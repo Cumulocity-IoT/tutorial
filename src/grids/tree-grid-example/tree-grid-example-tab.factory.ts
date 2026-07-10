@@ -14,15 +14,15 @@ export class TreeGridTabFactory implements TabFactory {
           label: 'Server side data',
           icon: 'server',
           priority: 1050,
-          orientation: 'horizontal'
+          orientation: 'horizontal',
         } as Tab,
         {
           path: 'grids/tree-grid-example/client',
           label: 'Client side data',
           icon: 'house',
           priority: 1000,
-          orientation: 'horizontal'
-        } as Tab
+          orientation: 'horizontal',
+        } as Tab,
       );
     }
 

@@ -13,7 +13,7 @@ import { CoreModule, DocLink, DocsService, QuickLinkModule } from '@c8y/ngx-comp
       <c8y-quick-link [icon]="link.icon" [label]="link.label"></c8y-quick-link>
     </button>`,
   standalone: true,
-  imports: [QuickLinkModule, CoreModule]
+  imports: [QuickLinkModule, CoreModule],
 })
 export class QuickLinkExampleComponent {
   quickLinks = [];
@@ -30,7 +30,7 @@ export class QuickLinkExampleComponent {
       click: () => {
         const userGuideURL = this.docs.getUserGuideLink(userGuide.url) as string;
         window.open(userGuideURL);
-      }
+      },
     };
     this.quickLinks.push(userGuide);
   }

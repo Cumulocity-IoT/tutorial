@@ -8,7 +8,7 @@ export class MeasurementsInterceptor implements HttpInterceptor {
     return handleRequest(req, next, 'measurement/measurements', {
       POST: this.mockPOST.bind(this),
       PUT: this.mockPUT.bind(this),
-      GET: this.mockGET.bind(this)
+      GET: this.mockGET.bind(this),
     });
   }
 
@@ -76,8 +76,8 @@ export class MeasurementsInterceptor implements HttpInterceptor {
       values[timestamp] = [
         {
           min: Number(value.toFixed(2)),
-          max: Number(value.toFixed(2))
-        }
+          max: Number(value.toFixed(2)),
+        },
       ];
 
       current.setHours(current.getHours() + 1);
@@ -86,21 +86,21 @@ export class MeasurementsInterceptor implements HttpInterceptor {
     let seriesInfo = {
       unit: '%',
       name: 'Battery',
-      type: 'c8y_Battery'
+      type: 'c8y_Battery',
     };
 
     if (series?.includes('c8y_Temperature')) {
       seriesInfo = {
         unit: '°C',
         name: 'T',
-        type: 'c8y_Temperature'
+        type: 'c8y_Temperature',
       };
     }
 
     return generateResponse(() => ({
       values,
       series: [seriesInfo],
-      truncated: false
+      truncated: false,
     }));
   }
 
@@ -112,17 +112,17 @@ export class MeasurementsInterceptor implements HttpInterceptor {
             id: '10000',
             type: 'c8y_Battery',
             source: {
-              id: '20000'
+              id: '20000',
             },
             c8y_Battery: {
               Battery: {
                 unit: '%',
-                value: 67
-              }
-            }
-          }
-        ]
-      })
+                value: 67,
+              },
+            },
+          },
+        ],
+      }),
     };
   }
 }

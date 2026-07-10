@@ -9,7 +9,7 @@ import { MapLayerService } from './map-layer.service';
   selector: 'c8y-simple-map-custom-config',
   templateUrl: './simple-map-custom-config.component.html',
   standalone: true,
-  imports: [CommonModule, MapModule, CoreModule, AssetSelectorModule]
+  imports: [CommonModule, MapModule, CoreModule, AssetSelectorModule],
 })
 export class SimpleMapCustomConfigComponent {
   mapLayerService = inject(MapLayerService);

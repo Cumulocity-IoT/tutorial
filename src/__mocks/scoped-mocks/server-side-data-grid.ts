@@ -10,7 +10,7 @@ export class ServerSideDataGridInterceptor implements HttpInterceptor {
     return handleRequest(req, next, 'managedObjects', {
       POST: this.mockPOST.bind(this),
       PUT: this.mockPUT.bind(this),
-      GET: this.mockGET.bind(this)
+      GET: this.mockGET.bind(this),
     });
   }
 
@@ -40,8 +40,8 @@ export class ServerSideDataGridInterceptor implements HttpInterceptor {
   private getResponseGenerators() {
     return {
       pageSize: () => ({
-        managedObjects: [...[...Array(25)].map(() => generateRandomMo())]
-      })
+        managedObjects: [...[...Array(25)].map(() => generateRandomMo())],
+      }),
     };
   }
 }

@@ -19,7 +19,7 @@ import { IIdentified } from '@c8y/client';
                 groupsSelectable: true,
                 showChildDevices: true,
                 showUnassignedDevices: true,
-                showFilter: true
+                showFilter: true,
               }"
             ></c8y-asset-selector-miller>
             <!-- /important -->
@@ -38,7 +38,7 @@ import { IIdentified } from '@c8y/client';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, AssetSelectorModule, CoreModule]
+  imports: [CommonModule, AssetSelectorModule, CoreModule],
 })
 export class AssetSelectorChildDevicesComponent {
   model: IIdentified;

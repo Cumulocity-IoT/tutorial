@@ -14,15 +14,8 @@
       [docsUrl]="'/docs/device-management-application/managing-devices/#device-list'"
     >
       <c8y-sv-header-actions>
-        <button
-          class="btn btn-default btn-sm"
-          (click)="refresh()"
-          [disabled]="loading"
-        >
-          <i
-            c8yIcon="refresh"
-            [ngClass]="{ 'icon-spin': loading }"
-          ></i>
+        <button class="btn btn-default btn-sm" (click)="refresh()" [disabled]="loading">
+          <i c8yIcon="refresh" [ngClass]="{ 'icon-spin': loading }"></i>
           Refresh
         </button>
       </c8y-sv-header-actions>
@@ -31,21 +24,12 @@
       @if (!loading && items.length > 0) {
         <c8y-list-group>
           @for (item of items; track item) {
-            <c8y-li
-              [c8ySvListItem]="item"
-              [selectable]="false"
-            >
+            <c8y-li [c8ySvListItem]="item" [selectable]="false">
               <c8y-li-icon class="a-s-start">
                 <div class="device-icons">
-                  <i
-                    class="icon-24 text-gray-dark stroked-icon"
-                    c8yIcon="c8y-device"
-                  ></i>
+                  <i class="icon-24 text-gray-dark stroked-icon" c8yIcon="c8y-device"></i>
                 </div>
-                <c8y-device-status
-                  [mo]="item.managedObject"
-                  [size]="20"
-                ></c8y-device-status>
+                <c8y-device-status [mo]="item.managedObject" [size]="20"></c8y-device-status>
               </c8y-li-icon>
               <c8y-li-body class="a-s-stretch">
                 <div class="d-flex a-i-start fit-h">
@@ -54,10 +38,7 @@
                       {{ item.name }}
                     </p>
                     <div class="d-flex">
-                      <p
-                        class="small text-muted text-truncate flex-grow"
-                        [title]="item.location"
-                      >
+                      <p class="small text-muted text-truncate flex-grow" [title]="item.location">
                         <i c8yIcon="map-marker"></i>
                         {{ item.location }}
                       </p>
@@ -144,17 +125,11 @@
           </div>
 
           <c8y-sv-details-actions class="m-t-16">
-            <button
-              class="btn btn-default btn-sm"
-              (click)="editDevice()"
-            >
+            <button class="btn btn-default btn-sm" (click)="editDevice()">
               <i c8yIcon="pencil"></i>
               Edit
             </button>
-            <button
-              class="btn btn-primary btn-sm"
-              (click)="restartDevice()"
-            >
+            <button class="btn btn-primary btn-sm" (click)="restartDevice()">
               <i c8yIcon="refresh"></i>
               Restart
             </button>
@@ -162,23 +137,12 @@
         </ng-container>
       }
       <c8y-sv-footer>
-        <button
-          class="btn btn-default btn-sm"
-          (click)="clearSelection()"
-        >
-          Cancel
-        </button>
-        <button
-          class="btn btn-danger btn-sm"
-          (click)="deleteDevice()"
-        >
+        <button class="btn btn-default btn-sm" (click)="clearSelection()">Cancel</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteDevice()">
           <i class="fa fa-trash"></i>
           Delete
         </button>
-        <button
-          class="btn btn-default btn-sm"
-          (click)="editDevice()"
-        >
+        <button class="btn btn-default btn-sm" (click)="editDevice()">
           <i class="fa fa-edit"></i>
           Edit
         </button>

@@ -4,7 +4,7 @@ import {
   hookNavigator,
   hookQueryParamModal,
   hookRoute,
-  NavigatorNode
+  NavigatorNode,
 } from '@c8y/ngx-components';
 import { ExampleComponent } from './example-component';
 
@@ -14,7 +14,8 @@ import { ExampleComponent } from './example-component';
   providers: [
     hookRoute({
       path: 'hooks/query-param-modal',
-      loadComponent: () => import('./example-button.component').then(m => m.ExampleButtonComponent)
+      loadComponent: () =>
+        import('./example-button.component').then((m) => m.ExampleButtonComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -22,8 +23,8 @@ import { ExampleComponent } from './example-component';
         path: 'hooks/query-param-modal',
         icon: 'navigation-toolbar-top',
         label: 'QueryParamModal',
-        parent: 'Hooks'
-      })
+        parent: 'Hooks',
+      }),
     ),
     hookQueryParamModal({
       queryParam: 'showExampleModalComponent',
@@ -31,9 +32,9 @@ import { ExampleComponent } from './example-component';
       modalConfig: {
         class: 'modal-lg',
         ignoreBackdropClick: true,
-        keyboard: false
-      }
-    })
-  ]
+        keyboard: false,
+      },
+    }),
+  ],
 })
 export class QueryParamModalModule {}

@@ -8,7 +8,7 @@ import { WizardHeaderComponent, WizardBodyComponent } from '@c8y/ngx-components'
     <c8y-wizard-body> New body </c8y-wizard-body>
   `,
   standalone: true,
-  imports: [WizardHeaderComponent, WizardBodyComponent]
+  imports: [WizardHeaderComponent, WizardBodyComponent],
 })
 export class MinimalSetupComponent {
   // In this case cancel method is not required, because it is the default button when the <c8y-wizard-footer> tag is missing.

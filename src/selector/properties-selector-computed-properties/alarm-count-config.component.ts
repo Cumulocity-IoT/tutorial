@@ -4,7 +4,7 @@ import {
   FormBuilder,
   NgForm,
   ReactiveFormsModule,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { C8yTranslatePipe, CommonModule, CoreModule } from '@c8y/ngx-components';
 import { DatapointSelectorModule } from '@c8y/ngx-components/datapoint-selector';
@@ -37,9 +37,9 @@ import { AlarmCountLastWeekConfig } from './alarm-count-last-week-computed-prope
     DatapointSelectorModule,
     CommonModule,
     C8yTranslatePipe,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  viewProviders: [{ provide: ControlContainer, useExisting: NgForm }]
+  viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
 })
 export class ComputedPropertyAlarmCountConfigComponent implements OnInit {
   @Input() config?: AlarmCountLastWeekConfig;
@@ -53,7 +53,7 @@ export class ComputedPropertyAlarmCountConfigComponent implements OnInit {
   }
 
   onBeforeSave(
-    config?: AlarmCountLastWeekConfig
+    config?: AlarmCountLastWeekConfig,
   ): boolean | Promise<boolean> | Observable<boolean> {
     if (this.formGroup.valid) {
       Object.assign(config, this.formGroup.value);
@@ -70,7 +70,7 @@ export class ComputedPropertyAlarmCountConfigComponent implements OnInit {
 
   private createForm() {
     return this.formBuilder.group({
-      type: ['', [Validators.required]]
+      type: ['', [Validators.required]],
     });
   }
 }

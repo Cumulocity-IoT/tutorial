@@ -6,7 +6,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'selector/asset-selector-example/general-example',
       loadComponent: () =>
-        import('./asset-selector-example.component').then(m => m.AssetSelectorExampleComponent)
+        import('./asset-selector-example.component').then((m) => m.AssetSelectorExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -14,9 +14,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/selector/asset-selector-example/general-example',
         icon: 'list-alt',
         priority: 2,
-        parent: 'Asset selector'
-      })
-    )
-  ]
+        parent: 'Asset selector',
+      }),
+    ),
+  ],
 })
 export class AssetSelectorExampleModule {}

@@ -9,17 +9,17 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'breadcrumbs-expand',
       loadComponent: () =>
         import('./breadcrumbs-expand-example.component').then(
-          m => m.BreadcrumbsExpandExampleComponents
-        )
+          (m) => m.BreadcrumbsExpandExampleComponents,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
         path: 'breadcrumbs-expand',
         icon: 'notification',
         label: 'Breadcrumbs expand',
-        parent: 'Breadcrumbs'
-      })
-    )
-  ]
+        parent: 'Breadcrumbs',
+      }),
+    ),
+  ],
 })
 export class BreadcrumbsExpandExampleModule {}

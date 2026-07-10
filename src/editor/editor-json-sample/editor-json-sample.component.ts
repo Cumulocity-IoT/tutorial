@@ -12,12 +12,12 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
     MessagesComponent,
     FormGroupComponent,
     ReactiveFormsModule,
-    MonacoEditorMarkerValidatorDirective
+    MonacoEditorMarkerValidatorDirective,
   ],
   host: {
     class: 'd-col fit-w',
-    style: 'height: 400px'
-  }
+    style: 'height: 400px',
+  },
 })
 export class EditorJsonSampleComponent {
   form: FormGroup;
@@ -26,8 +26,8 @@ export class EditorJsonSampleComponent {
   constructor() {
     this.form = new FormGroup({
       jsonEditor: new FormControl(
-        JSON.stringify({ name: 'John Doe', age: 30, email: 'john.doe@example.com' }, undefined, 2)
-      )
+        JSON.stringify({ name: 'John Doe', age: 30, email: 'john.doe@example.com' }, undefined, 2),
+      ),
     });
   }
 
@@ -38,26 +38,26 @@ export class EditorJsonSampleComponent {
       properties: {
         name: {
           type: 'string',
-          description: 'Name of the person'
+          description: 'Name of the person',
         },
         age: {
           type: 'integer',
           description: 'Age of the person',
-          minimum: 0
+          minimum: 0,
         },
         email: {
           type: 'string',
           format: 'email',
-          description: 'Email address of the person'
-        }
+          description: 'Email address of the person',
+        },
       },
-      required: ['name', 'age']
+      required: ['name', 'age'],
     } as const;
     this.editorComponent.monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
       validate: true,
       schemas: [{ schema, fileMatch: ['*'], uri: 'editor-json-sample' }],
       enableSchemaRequest: false,
-      allowComments: false
+      allowComments: false,
     });
   }
 }

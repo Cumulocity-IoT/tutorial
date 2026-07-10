@@ -1,12 +1,7 @@
 <c8y-title>Custom dashboard</c8y-title>
 
 <c8y-action-bar-item [placement]="'right'">
-  <button
-    class="btn btn-link"
-    title="{{ 'Add random' }}"
-    type="button"
-    (click)="addRandom()"
-  >
+  <button class="btn btn-link" title="{{ 'Add random' }}" type="button" (click)="addRandom()">
     <i c8yIcon="plus-circle"></i>
     {{ 'Add random' }}
   </button>
@@ -14,9 +9,16 @@
 <c8y-action-bar-item [placement]="'right'">
   <button
     class="btn btn-link"
-    title="{{ 'Toggle freeze' }}"
-    (click)="isFrozen = !isFrozen"
+    title="{{ 'Toggle layout' }}"
+    type="button"
+    (click)="layout = layout === 'grid' ? 'custom' : 'grid'"
   >
+    <i [c8yIcon]="layout === 'grid' ? 'cogs' : 'th'"></i>
+    {{ layout === 'grid' ? 'Switch to custom layout' : 'Switch to grid layout' }}
+  </button>
+</c8y-action-bar-item>
+<c8y-action-bar-item [placement]="'right'">
+  <button class="btn btn-link" title="{{ 'Toggle freeze' }}" (click)="isFrozen = !isFrozen">
     <i [c8yIcon]="isFrozen ? 'lock' : 'unlock'"></i>
     {{ 'Toggle freeze' }}
   </button>
@@ -24,39 +26,40 @@
 
 <c8y-help src="/docs/cockpit/working-with-dashboards/#working-with-dashboards"></c8y-help>
 
-<c8y-dashboard (dashboardChange)="dashboardChange($event)">
+<c8y-dashboard [layout]="layout" (dashboardChange)="dashboardChange($event)">
   <!--  Simple widgets represented by widgets array property from CustomDashboardComponent class-->
-  <c8y-dashboard-child
-    [class]="{
-      'panel-title-hidden': true
-    }"
-    title="dynamic"
-    [isFrozen]="isFrozen"
-    *ngFor="let widget of widgets"
-    [data]="widget"
-    [width]="widget.width"
-    [height]="widget.height"
-    #current
-  >
-    <div class="card-block">
-      Simple widget with content only
-      <br />
-      x: {{ current.x }}
-      <br />
-      y: {{ current.y }}
-      <br />
-      width: {{ current.width }}
-      <br />
-      height: {{ current.height }}
-      <br />
-    </div>
-  </c8y-dashboard-child>
+  @for (widget of widgets; track widget) {
+    <c8y-dashboard-child
+      [class]="{
+        'panel-title-hidden': true,
+      }"
+      title="dynamic"
+      [isFrozen]="isFrozen"
+      [data]="widget"
+      [width]="widget.width"
+      [height]="widget.height"
+      #current
+    >
+      <div class="card-block">
+        Simple widget with content only
+        <br />
+        x: {{ current.x }}
+        <br />
+        y: {{ current.y }}
+        <br />
+        width: {{ current.width }}
+        <br />
+        height: {{ current.height }}
+        <br />
+      </div>
+    </c8y-dashboard-child>
+  }
 
   <!--  Dashboard child with title and widget classes applied-->
   <c8y-dashboard-child
     [class]="{
       'panel-content-branded': true,
-      'panel-title-border': true
+      'panel-title-border': true,
     }"
     #cpWidget
     [isFrozen]="isFrozen"
@@ -96,10 +99,7 @@
       <span>Widget title</span>
     </c8y-dashboard-child-title>
     <c8y-dashboard-child-action>
-      <a
-        href=""
-        (click)="cpWidget2.isFrozen = !cpWidget2.isFrozen; (false)"
-      >
+      <a href="" (click)="cpWidget2.isFrozen = !cpWidget2.isFrozen; (false)">
         <i [c8yIcon]="cpWidget2.isFrozen ? 'lock' : 'unlock'"></i>
         Toggle freeze
       </a>
@@ -129,23 +129,19 @@
     [width]="8"
     [height]="2"
   >
-    <c8y-dashboard-child-title *ngIf="showTitle">
-      <span>Widget title</span>
-    </c8y-dashboard-child-title>
+    @if (showTitle) {
+      <c8y-dashboard-child-title>
+        <span>Widget title</span>
+      </c8y-dashboard-child-title>
+    }
     <c8y-dashboard-child-action>
-      <a
-        href=""
-        (click)="showTitle = !showTitle; (false)"
-      >
+      <a href="" (click)="showTitle = !showTitle; (false)">
         <i [c8yIcon]="'heading'"></i>
         Hide/show title
       </a>
     </c8y-dashboard-child-action>
     <c8y-dashboard-child-action>
-      <a
-        href=""
-        (click)="cpWidget3.isFrozen = !cpWidget3.isFrozen; (false)"
-      >
+      <a href="" (click)="cpWidget3.isFrozen = !cpWidget3.isFrozen; (false)">
         <i [c8yIcon]="cpWidget3.isFrozen ? 'lock' : 'unlock'"></i>
         Toggle freeze
       </a>
@@ -166,11 +162,7 @@
   </c8y-dashboard-child>
 
   <!-- Dashboard child with a dynamic component -->
-  <c8y-dashboard-child
-    [isFrozen]="isFrozen"
-    [width]="10"
-    [height]="4"
-  >
+  <c8y-dashboard-child [isFrozen]="isFrozen" [width]="10" [height]="4">
     <c8y-dashboard-child-title>
       <span>Dynamic component child title</span>
     </c8y-dashboard-child-title>
@@ -185,10 +177,7 @@
       </button>
     </c8y-dashboard-child-action>
     <div class="card-block">
-      <form
-        name="form"
-        #configForm="ngForm"
-      >
+      <form name="form" #configForm="ngForm">
         <c8y-dynamic-component
           componentId="angular.widget.demo"
           [config]="{ text: 'Hello world' }"

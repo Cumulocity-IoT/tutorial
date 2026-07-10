@@ -3,7 +3,7 @@ import { IManagedObject, InventoryService } from '@c8y/client';
 import {
   DatapointSelectorModule,
   DatapointSelectorService,
-  KPIDetails
+  KPIDetails,
 } from '@c8y/ngx-components/datapoint-selector';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '@c8y/ngx-components';
@@ -13,7 +13,7 @@ import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
   selector: 'c8y-datapoint-selection-example',
   templateUrl: './datapoint-selection-example.component.html',
   standalone: true,
-  imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule]
+  imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule],
 })
 export class DatapointSelectionExampleComponent implements OnInit {
   datapoints1: KPIDetails[] = [];
@@ -27,25 +27,25 @@ export class DatapointSelectionExampleComponent implements OnInit {
 
   constructor(
     private datapointSelection: DatapointSelectorService,
-    private inventory: InventoryService
+    private inventory: InventoryService,
   ) {}
 
   async ngOnInit(): Promise<void> {
     const { data: groups } = await this.inventory.list({
       pageSize: 1,
-      fragmentType: 'c8y_IsDeviceGroup'
+      fragmentType: 'c8y_IsDeviceGroup',
     });
     this.contextAsset = groups[0];
   }
 
   addDatapoints(): void {
     this.datapointSelection.selectDataPoints({ selectedDatapoints: [...this.datapoints1] }).then(
-      res => {
+      (res) => {
         this.datapoints1 = res;
       },
       () => {
         // nothing to do, modal was canceled
-      }
+      },
     );
   }
 }

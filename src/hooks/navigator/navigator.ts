@@ -21,13 +21,13 @@ export class ExampleNavigationFactory implements NavigatorNodeFactory {
         label: 'Hello',
         icon: 'rocket',
         path: '/hello',
-        priority: 100
-      })
+        priority: 100,
+      }),
     );
 
     navs.push({
       component: TimeNavigatorNodeComponent,
-      priority: -Infinity
+      priority: -Infinity,
     } as NavigatorNode);
 
     return navs;

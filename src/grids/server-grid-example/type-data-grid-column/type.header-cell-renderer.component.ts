@@ -14,7 +14,7 @@ import { CellRendererContext } from '@c8y/ngx-components';
     </span>
   `,
   selector: 'example-type-header-cell-renderer',
-  standalone: true
+  standalone: true,
 })
 export class TypeHeaderCellRendererComponent {
   constructor(public context: CellRendererContext) {}

@@ -1,10 +1,7 @@
 <c8y-wizard-header>New header</c8y-wizard-header>
 <c8y-wizard-body>
   <c8y-stepper>
-    <cdk-step
-      [stepControl]="formGroupStepOne"
-      label="Device name"
-    >
+    <cdk-step [stepControl]="formGroupStepOne" label="Device name">
       <div class="m-l-40 m-r-40 m-t-32">
         <c8y-form-group>
           <div [formGroup]="formGroupStepOne">
@@ -29,10 +26,7 @@
       </div>
       <c8y-stepper-buttons></c8y-stepper-buttons>
     </cdk-step>
-    <cdk-step
-      state="final"
-      label="Job done!"
-    >
+    <cdk-step state="final" label="Job done!">
       <div class="m-l-40 m-r-40 m-t-32">
         <h4 class="p-b-32 text-center">Your device is now ready to save the world!</h4>
       </div>
@@ -41,11 +35,7 @@
 </c8y-wizard-body>
 <c8y-wizard-footer>
   @if (stepper.selectedIndex === 1) {
-    <button
-      class="btn btn-default"
-      title="{{ 'Done' }}"
-      (click)="done()"
-    >
+    <button class="btn btn-default" title="{{ 'Done' }}" (click)="done()">
       {{ 'Done' }}
     </button>
   }

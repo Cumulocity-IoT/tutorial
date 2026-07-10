@@ -9,8 +9,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'component-styles/sass',
       loadComponent: () =>
         import('./syntactically-awesome-style-sheets-example.component').then(
-          m => m.SyntacticallyAwesomeStyleSheetsExampleComponent
-        )
+          (m) => m.SyntacticallyAwesomeStyleSheetsExampleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -18,9 +18,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         label: 'SASS',
         icon: 'c8y-css',
         priority: 79,
-        parent: 'Component styles'
-      })
-    )
-  ]
+        parent: 'Component styles',
+      }),
+    ),
+  ],
 })
 export class SyntacticallyAwesomeStyleSheetsExampleModule {}

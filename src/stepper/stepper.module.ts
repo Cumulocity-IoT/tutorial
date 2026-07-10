@@ -9,16 +9,16 @@ import { StepperService } from './stepper.service';
     StepperService,
     hookRoute({
       path: 'stepper',
-      loadComponent: () => import('./stepper.component').then(m => m.StepperComponent)
+      loadComponent: () => import('./stepper.component').then((m) => m.StepperComponent),
     }),
     hookNavigator(
       new NavigatorNode({
         label: 'Stepper',
         path: '/stepper',
         icon: 'step-forward',
-        priority: 10
-      })
-    )
-  ]
+        priority: 10,
+      }),
+    ),
+  ],
 })
 export class StepperModule {}

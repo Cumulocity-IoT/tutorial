@@ -17,16 +17,16 @@ export function provideRouteSample() {
         path: 'context',
         context: ViewContext.Device,
         loadComponent: () =>
-          import('./device/device-tab-context.component').then(m => m.DeviceTabContextComponent),
+          import('./device/device-tab-context.component').then((m) => m.DeviceTabContextComponent),
         label: 'Context',
         priority: 1000,
-        icon: 'bell'
+        icon: 'bell',
       },
       {
         path: 'info',
         context: ViewContext.Device,
         loadComponent: () =>
-          import('./device/device-info.component').then(m => m.DeviceInfoComponent),
+          import('./device/device-info.component').then((m) => m.DeviceInfoComponent),
         label: 'Info',
         priority: 0,
         icon: 'info',
@@ -35,8 +35,8 @@ export function provideRouteSample() {
          * the child route. See Guards documentation from Angular
          * for more details.
          */
-        canActivate: [RandomGuard]
-      }
-    ])
+        canActivate: [RandomGuard],
+      },
+    ]),
   ];
 }

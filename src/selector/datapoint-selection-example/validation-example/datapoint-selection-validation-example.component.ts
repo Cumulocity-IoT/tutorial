@@ -39,7 +39,7 @@ import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule]
+  imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule],
 })
 export class DatapointSelectionValidationExampleComponent {
   datapoints: KPIDetails[] = [];

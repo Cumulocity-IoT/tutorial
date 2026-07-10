@@ -5,15 +5,15 @@ export const bottomDrawerStackedExampleModuleProviders = [
     path: 'bottom-drawer-stacked',
     loadComponent: () =>
       import('./bottom-drawer-stacked-example.component').then(
-        m => m.BottomDrawerStackedExampleComponent
-      )
+        (m) => m.BottomDrawerStackedExampleComponent,
+      ),
   }),
   hookNavigator(
     new NavigatorNode({
       label: 'Bottom drawer stacked',
       path: '/bottom-drawer-stacked',
       icon: 'th-list',
-      priority: 0
-    })
-  )
+      priority: 0,
+    }),
+  ),
 ];

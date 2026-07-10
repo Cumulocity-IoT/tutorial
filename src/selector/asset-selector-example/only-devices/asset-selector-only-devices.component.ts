@@ -15,7 +15,7 @@ import { IIdentified } from '@c8y/client';
               [(ngModel)]="model"
               (onSelected)="selectionChanged($event)"
               [config]="{
-                groupsSelectable: false
+                groupsSelectable: false,
               }"
             ></c8y-asset-selector-miller>
           </div>
@@ -33,7 +33,7 @@ import { IIdentified } from '@c8y/client';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, AssetSelectorModule, CoreModule]
+  imports: [CommonModule, AssetSelectorModule, CoreModule],
 })
 export class AssetSelectorOnlyDevicesComponent {
   model: IIdentified;

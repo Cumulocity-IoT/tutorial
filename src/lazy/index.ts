@@ -2,23 +2,23 @@ import { hookNavigator, hookRoute, NavigatorNode } from '@c8y/ngx-components';
 
 const root = new NavigatorNode({
   label: 'Lazy loaded',
-  icon: 'hourglass-start'
+  icon: 'hourglass-start',
 });
 
 root.add(
   new NavigatorNode({
     path: '/lazy/one',
     label: 'One',
-    icon: 'thermometer'
-  })
+    icon: 'thermometer',
+  }),
 );
 
 root.add(
   new NavigatorNode({
     path: '/lazy/two',
     label: 'Two',
-    icon: 'thermometer-3'
-  })
+    icon: 'thermometer-3',
+  }),
 );
 
 export function provideLazySample() {
@@ -30,9 +30,9 @@ export function provideLazySample() {
     hookRoute([
       {
         path: 'lazy',
-        loadChildren: () => import('./lazy-loaded.module').then(m => m.LazyLoadedModule)
-      }
+        loadChildren: () => import('./lazy-loaded.module').then((m) => m.LazyLoadedModule),
+      },
     ]),
-    hookNavigator(root)
+    hookNavigator(root),
   ];
 }

@@ -1,26 +1,15 @@
 <c8y-title>Map with popup example</c8y-title>
 
 <div class="d-flex">
-  <div class="d-flex d-col j-c-center p-r-16" style="width: 280px; height: 420px;">
-    <button
-      class="btn btn-primary btn-block"
-      (click)="showFirstPopup()"
-    >
-      Show first popup
-    </button>
-    <button
-      class="btn btn-default btn-block"
-      (click)="changeDevices()"
-    >
+  <div class="d-flex d-col j-c-center p-r-16" style="width: 280px; height: 420px">
+    <button class="btn btn-primary btn-block" (click)="showFirstPopup()">Show first popup</button>
+    <button class="btn btn-default btn-block" (click)="changeDevices()">
       Toogle device amount
     </button>
   </div>
   <!-- important -->
   <div class="flex-grow p-relative a-s-stretch">
-    <c8y-map
-      [assets]="exampleDevices"
-      [config]="config"
-    >
+    <c8y-map [assets]="exampleDevices" [config]="config">
       <div *c8yMapPopup="let context">
         <b>Hello World from:</b>
         <br />

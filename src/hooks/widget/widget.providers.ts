@@ -4,7 +4,7 @@ export const widgetHookProviders = [
   hookRoute({
     path: 'hooks/widget',
     loadComponent: () =>
-      import('./context-dashboard.component').then(m => m.ContextDashboardComponent)
+      import('./context-dashboard.component').then((m) => m.ContextDashboardComponent),
   }),
   hookNavigator(
     new NavigatorNode({
@@ -12,7 +12,7 @@ export const widgetHookProviders = [
       path: 'hooks/widget',
       icon: 'edit',
       label: 'Widget',
-      parent: 'Hooks'
-    })
-  )
+      parent: 'Hooks',
+    }),
+  ),
 ];

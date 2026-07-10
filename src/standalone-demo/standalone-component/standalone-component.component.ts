@@ -6,6 +6,6 @@ import { HeaderModule } from '@c8y/ngx-components';
   templateUrl: './standalone-component.component.html',
   standalone: true,
   // imports done here instead of a separate ng module.
-  imports: [HeaderModule]
+  imports: [HeaderModule],
 })
 export class StandaloneComponentComponent {}

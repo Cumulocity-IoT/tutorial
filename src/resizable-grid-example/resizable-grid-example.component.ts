@@ -39,7 +39,7 @@ import { ResizableGridComponent, CoreModule } from '@c8y/ngx-components';
       </label>
     </div>`,
   standalone: true,
-  imports: [ResizableGridComponent, CoreModule]
+  imports: [ResizableGridComponent, CoreModule],
 })
 export class ResizableGridExampleComponent {}
 // This component demonstrates the usage of the ResizableGridComponent

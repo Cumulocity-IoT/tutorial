@@ -36,7 +36,7 @@ import { IManagedObject, InventoryService } from '@c8y/client';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule]
+  imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule],
 })
 export class DatapointSelectionContextExampleComponent {
   datapoints: KPIDetails[] = [];
@@ -47,7 +47,7 @@ export class DatapointSelectionContextExampleComponent {
   async ngOnInit(): Promise<void> {
     const { data: groups } = await this.inventory.list({
       pageSize: 1,
-      fragmentType: 'c8y_IsDeviceGroup'
+      fragmentType: 'c8y_IsDeviceGroup',
     });
     this.contextAsset = groups[0];
   }

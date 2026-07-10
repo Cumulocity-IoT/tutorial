@@ -8,7 +8,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'dynamic-forms/json',
       loadComponent: () =>
-        import('./json-schema-example.component').then(m => m.JSONSchemaExampleComponent)
+        import('./json-schema-example.component').then((m) => m.JSONSchemaExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         label: 'JSON Schema',
         icon: 'c8y-css',
         priority: 79,
-        parent: 'Dynamic forms'
-      })
-    )
-  ]
+        parent: 'Dynamic forms',
+      }),
+    ),
+  ],
 })
 export class JsonSchemaExampleModule {}

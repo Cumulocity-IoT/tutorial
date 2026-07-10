@@ -4,11 +4,11 @@ import { IIdentified, IManagedObject, InventoryService } from '@c8y/client';
 import { BottomDrawerService, TitleComponent } from '@c8y/ngx-components';
 import {
   AssetPropertySelectorDrawerComponent,
-  AssetPropertyType
+  AssetPropertyType,
 } from '@c8y/ngx-components/asset-properties';
 import {
   AssetSelectionChangeEvent,
-  AssetSelectorModule
+  AssetSelectorModule,
 } from '@c8y/ngx-components/assets-navigator';
 import { SubAssetsModule } from '@c8y/ngx-components/sub-assets';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -48,7 +48,7 @@ import { JsonPipe } from '@angular/common';
               [config]="{
                 groupsSelectable: true,
                 showUnassignedDevices: true,
-                showChildDevices: true
+                showChildDevices: true,
               }"
               (onSelected)="selectionChanged($event)"
             ></c8y-asset-selector>
@@ -71,8 +71,8 @@ import { JsonPipe } from '@angular/common';
     FormsModule,
     SubAssetsModule,
     TooltipModule,
-    JsonPipe
-  ]
+    JsonPipe,
+  ],
 })
 export class PropertiesSelectorDrawerExampleComponent {
   inventoryService = inject(InventoryService);
@@ -95,9 +95,9 @@ export class PropertiesSelectorDrawerExampleComponent {
           showKey: true,
           selectedProperties: this.selectorWithAssetSelectionOutput,
           allowAddingCustomProperties: true,
-          addAssetToProperty: true
-        }
-      }
+          addAssetToProperty: true,
+        },
+      },
     });
 
     try {
@@ -122,9 +122,9 @@ export class PropertiesSelectorDrawerExampleComponent {
           expansionMode: 'collapsedByDefault',
           showValue: true,
           showKey: true,
-          selectedProperties: this.simpleSelectorOutput
-        }
-      }
+          selectedProperties: this.simpleSelectorOutput,
+        },
+      },
     });
 
     try {

@@ -5,7 +5,7 @@ import {
   IManagedObject,
   IMeasurement,
   IOperation,
-  IOperationBulk
+  IOperationBulk,
 } from '@c8y/client';
 import { HttpInterceptor } from '@c8y/ngx-components/api';
 
@@ -23,12 +23,7 @@ export type ResponseWithType<T = unknown> = Response & {
  * A union type representing any of the possible data types.
  */
 export type IAnyData =
-  | IAlarm
-  | IEvent
-  | IManagedObject
-  | IMeasurement
-  | IOperation
-  | IOperationBulk;
+  IAlarm | IEvent | IManagedObject | IMeasurement | IOperation | IOperationBulk;
 
 /**
  * Enumeration of the possible channel paths.
@@ -40,7 +35,7 @@ export enum Channels {
   Measurements = '/measurements/*',
   Alarms = '/alarms/*',
   Events = '/events/*',
-  MangedObjectsMap = '/managedobjects/1'
+  MangedObjectsMap = '/managedobjects/1',
 }
 /**
  * path and mockService
@@ -72,5 +67,5 @@ export interface ApiMockConfig {
 export const DEFAULT_STATISTICS = {
   totalPages: 1,
   pageSize: 2000,
-  currentPage: 1
+  currentPage: 1,
 };

@@ -4,7 +4,7 @@ import { CommonModule, CoreModule } from '@c8y/ngx-components';
 import {
   AlarmEventSelectorModule,
   AlarmOrEvent,
-  AlarmEventSelectorModalOptions
+  AlarmEventSelectorModalOptions,
 } from '@c8y/ngx-components/alarm-event-selector';
 import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
 
@@ -37,7 +37,7 @@ import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
     </div>
   `,
   standalone: true,
-  imports: [CommonModule, AssetSelectorModule, CoreModule, AlarmEventSelectorModule]
+  imports: [CommonModule, AssetSelectorModule, CoreModule, AlarmEventSelectorModule],
 })
 export class AlarmEventSelectorExampleComponent {
   selectedAlarmEvent: AlarmOrEvent;
@@ -53,7 +53,7 @@ export class AlarmEventSelectorExampleComponent {
   initForm() {
     this.formGroup = this.formBuilder.group({
       alarms: [[]],
-      events: [[]]
+      events: [[]],
     });
   }
 }

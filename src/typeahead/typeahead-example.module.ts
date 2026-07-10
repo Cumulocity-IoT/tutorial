@@ -6,14 +6,14 @@ import { hookNavigator, hookRoute, NavigatorNode } from '@c8y/ngx-components';
     hookRoute({
       path: 'typeahead',
       loadComponent: () =>
-        import('./typeahead-example.component').then(m => m.TypeaheadExampleComponent)
+        import('./typeahead-example.component').then((m) => m.TypeaheadExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
         label: 'Typeahead',
-        path: 'typeahead'
-      })
-    )
-  ]
+        path: 'typeahead',
+      }),
+    ),
+  ],
 })
 export class TypeaheadExampleModule {}

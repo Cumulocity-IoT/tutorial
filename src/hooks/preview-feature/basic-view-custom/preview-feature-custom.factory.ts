@@ -11,7 +11,7 @@ export class ExampleCustomPreviewFeatureNavigationFactory implements NavigatorNo
     const customFeatureLabel = 'Custom feature preview';
     return this.previewFeatureService.getState$(customFeatureLabel).pipe(
       distinctUntilChanged(),
-      map(state => {
+      map((state) => {
         if (state) {
           return [
             new NavigatorNode({
@@ -20,12 +20,12 @@ export class ExampleCustomPreviewFeatureNavigationFactory implements NavigatorNo
               icon: 'science',
               label: 'Feature Preview Custom',
               parent: 'Hooks',
-              preventDuplicates: true
-            })
+              preventDuplicates: true,
+            }),
           ];
         }
         return [];
-      })
+      }),
     );
   }
 }

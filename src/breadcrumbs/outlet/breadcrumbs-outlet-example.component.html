@@ -2,20 +2,16 @@
 
 <div class="card">
   <c8y-breadcrumb>
-    <c8y-breadcrumb-item
-      [icon]="'cog'"
-      [label]="'Group A'"
-    ></c8y-breadcrumb-item>
+    <c8y-breadcrumb-item [icon]="'cog'" [label]="'Group A'"></c8y-breadcrumb-item>
   </c8y-breadcrumb>
 
-
   <div class="card-block">
-  <!-- important -->
+    <!-- important -->
 
     <c8y-breadcrumb-outlet
       class="app-breadcrumbs"
       [breadcrumbs]="breadcrumbService.items$ | async"
     ></c8y-breadcrumb-outlet>
-  <!-- /important -->
+    <!-- /important -->
   </div>
 </div>

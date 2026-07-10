@@ -13,17 +13,7 @@
       <pre>{{ actionService.items$ | async | json }}</pre>
     </code>
 
-    <button
-      class="btn btn-primary"
-      (click)="addAction()"
-    >
-      Add a action bar item via service
-    </button>
-    <button
-      class="btn btn-default"
-      (click)="removeAction()"
-    >
-      Remove this action
-    </button>
+    <button class="btn btn-primary" (click)="addAction()">Add a action bar item via service</button>
+    <button class="btn btn-default" (click)="removeAction()">Remove this action</button>
   </div>
 </div>

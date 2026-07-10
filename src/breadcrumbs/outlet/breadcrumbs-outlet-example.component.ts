@@ -6,7 +6,7 @@ import { BreadcrumbService, CoreModule } from '@c8y/ngx-components';
   selector: 'tut-breadcrumbs-outlet-example',
   templateUrl: './breadcrumbs-outlet-example.component.html',
   standalone: true,
-  imports: [CommonModule, CoreModule]
+  imports: [CommonModule, CoreModule],
 })
 export class BreadcrumbsOutletExampleComponent {
   constructor(public breadcrumbService: BreadcrumbService) {}

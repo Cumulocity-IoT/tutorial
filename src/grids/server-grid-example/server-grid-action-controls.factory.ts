@@ -17,11 +17,11 @@ export class ActionControlsFactory implements ActionControlFactory {
         callback: () => alert('factory'),
         type: 'factory',
         icon: 'factory',
-        priority: -10
+        priority: -10,
       },
       matchesGrid: () => {
         return this.appState.currentApplication.value.contextPath === 'tutorial';
-      }
+      },
     };
   }
 }

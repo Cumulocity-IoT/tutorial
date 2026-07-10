@@ -6,8 +6,8 @@ export function provideListsSampleNavigator() {
       new NavigatorNode({
         label: 'Lists',
         icon: 'c8y-device',
-        priority: 97
-      })
-    )
+        priority: 97,
+      }),
+    ),
   ];
 }

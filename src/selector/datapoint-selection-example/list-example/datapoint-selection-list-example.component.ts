@@ -35,7 +35,7 @@ import { CoreModule } from '@c8y/ngx-components';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, DatapointSelectorModule, CoreModule]
+  imports: [CommonModule, DatapointSelectorModule, CoreModule],
 })
 export class DatapointSelectionListExampleComponent {
   datapoints: KPIDetails[] = [];

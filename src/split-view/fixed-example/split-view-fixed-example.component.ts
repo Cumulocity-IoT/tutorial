@@ -13,7 +13,7 @@ import {
   SplitViewDetailsComponent,
   SplitViewFooterComponent,
   SplitViewListComponent,
-  SplitViewListItemDirective
+  SplitViewListItemDirective,
 } from '@c8y/ngx-components';
 
 @Component({
@@ -33,8 +33,8 @@ import {
     SplitViewDetailsComponent,
     SplitViewFooterComponent,
     IconPanelComponent,
-    SplitViewListItemDirective
-  ]
+    SplitViewListItemDirective,
+  ],
 })
 export class SplitViewFixedExampleComponent {
   items = [
@@ -44,7 +44,7 @@ export class SplitViewFixedExampleComponent {
       type: 'System Tool',
       status: 'Ready',
       description: 'Manage application settings and preferences',
-      icon: 'cog'
+      icon: 'cog',
     },
     {
       id: 2,
@@ -52,7 +52,7 @@ export class SplitViewFixedExampleComponent {
       type: 'Analytics Tool',
       status: 'Processing',
       description: 'Analyze and visualize your data',
-      icon: 'c8y-chart'
+      icon: 'c8y-chart',
     },
     {
       id: 3,
@@ -60,7 +60,7 @@ export class SplitViewFixedExampleComponent {
       type: 'Admin Tool',
       status: 'Active',
       description: 'Manage users, roles and permissions',
-      icon: 'c8y-user'
+      icon: 'c8y-user',
     },
     {
       id: 4,
@@ -68,7 +68,7 @@ export class SplitViewFixedExampleComponent {
       type: 'Monitoring Tool',
       status: 'Connected',
       description: 'Monitor device status and health',
-      icon: 'c8y-device'
+      icon: 'c8y-device',
     },
     {
       id: 5,
@@ -76,8 +76,8 @@ export class SplitViewFixedExampleComponent {
       type: 'Reporting Tool',
       status: 'Idle',
       description: 'Generate custom reports and exports',
-      icon: 'c8y-report'
-    }
+      icon: 'c8y-report',
+    },
   ];
 
   selectedItem?: (typeof this.items)[0];
@@ -163,8 +163,8 @@ export class SplitViewFixedExampleComponent {
             <span>${item.description}</span>
           </p>
         `,
-        colClass: 'col-xs-12'
-      }
+        colClass: 'col-xs-12',
+      },
     ];
   }
 }

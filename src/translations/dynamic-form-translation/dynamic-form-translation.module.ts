@@ -6,7 +6,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'translations/dynamic-form-translation',
       loadComponent: () =>
-        import('./dynamic-form-translation.component').then(m => m.DynamicFormTranslationComponent)
+        import('./dynamic-form-translation.component').then(
+          (m) => m.DynamicFormTranslationComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -14,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: 'translations/dynamic-form-translation',
         icon: 'rocket',
         label: 'Dynamic form translation',
-        parent: 'Translations'
-      })
-    )
-  ]
+        parent: 'Translations',
+      }),
+    ),
+  ],
 })
 export class DynamicFormTranslationModule {}

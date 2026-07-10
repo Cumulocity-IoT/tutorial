@@ -10,8 +10,8 @@ export function provideBreadcrumbsNavigator() {
     hookNavigator(
       new NavigatorNode({
         icon: 'notification',
-        label: 'Breadcrumbs'
-      })
-    )
+        label: 'Breadcrumbs',
+      }),
+    ),
   ];
 }

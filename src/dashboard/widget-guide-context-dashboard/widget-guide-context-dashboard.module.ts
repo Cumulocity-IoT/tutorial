@@ -7,8 +7,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'dashboards/widget-guide-context-dashboard',
       loadComponent: () =>
         import('./widget-guide-context-dashboard.component').then(
-          m => m.WidgetGuideContextDashboardComponent
-        )
+          (m) => m.WidgetGuideContextDashboardComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/dashboards/widget-guide-context-dashboard',
         icon: 'th-large',
         priority: -6,
-        parent: 'Dashboards'
-      })
-    )
-  ]
+        parent: 'Dashboards',
+      }),
+    ),
+  ],
 })
 export class WidgetGuideContextDashboardModule {}

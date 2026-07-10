@@ -8,7 +8,7 @@ import {
   MeasurementRealtimeService,
   OperationBulkRealtimeService,
   OperationRealtimeService,
-  RealtimeMessage
+  RealtimeMessage,
 } from '@c8y/ngx-components';
 import { Observable, merge } from 'rxjs';
 import { map, scan } from 'rxjs/operators';
@@ -22,10 +22,10 @@ import { map, scan } from 'rxjs/operators';
     OperationBulkRealtimeService,
     MeasurementRealtimeService,
     AlarmRealtimeService,
-    EventRealtimeService
+    EventRealtimeService,
   ],
   standalone: true,
-  imports: [CommonModule, CoreModule]
+  imports: [CommonModule, CoreModule],
 })
 export class RealtimeTutorialComponent {
   allAPIsRealtime$: ReturnType<RealtimeTutorialComponent['setupAllAPIsRealtime$']>;
@@ -50,13 +50,13 @@ export class RealtimeTutorialComponent {
      * Always subscribing for all realtime notifications might generate a lot of traffic/load.
      * For that reason try to provide your entityId where ever it is possible in your production code.
      */
-    const observables = this.services.map(service => service.instance.onAll$());
+    const observables = this.services.map((service) => service.instance.onAll$());
     return merge(...observables).pipe(
       scan((acc, val) => {
         acc.push(val);
         return acc.slice(this.bufferSize * -1);
       }, []),
-      map(messages => [...messages].reverse())
+      map((messages) => [...messages].reverse()),
     );
   }
 
@@ -64,28 +64,28 @@ export class RealtimeTutorialComponent {
     return [
       {
         className: 'ManagedObjectRealtimeService',
-        instance: inject(ManagedObjectRealtimeService)
+        instance: inject(ManagedObjectRealtimeService),
       },
       {
         className: 'OperationRealtimeService',
-        instance: inject(OperationRealtimeService)
+        instance: inject(OperationRealtimeService),
       },
       {
         className: 'OperationBulkRealtimeService',
-        instance: inject(OperationBulkRealtimeService)
+        instance: inject(OperationBulkRealtimeService),
       },
       {
         className: 'MeasurementRealtimeService',
-        instance: inject(MeasurementRealtimeService)
+        instance: inject(MeasurementRealtimeService),
       },
       {
         className: 'AlarmRealtimeService',
-        instance: inject(AlarmRealtimeService)
+        instance: inject(AlarmRealtimeService),
       },
       {
         className: 'EventRealtimeService',
-        instance: inject(EventRealtimeService)
-      }
+        instance: inject(EventRealtimeService),
+      },
     ];
   }
 }

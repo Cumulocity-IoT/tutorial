@@ -8,9 +8,9 @@ const selectableWidgetForDevicesDefinition: DynamicWidgetDefinition = {
   component: WidgetDemo,
   data: {
     settings: {
-      isWidgetSelectable: ({ assetMo }) => !!assetMo?.c8y_IsDevice
-    }
-  }
+      isWidgetSelectable: ({ assetMo }) => !!assetMo?.c8y_IsDevice,
+    },
+  },
 };
 
 export function provideSelectableWidgetForDevices() {

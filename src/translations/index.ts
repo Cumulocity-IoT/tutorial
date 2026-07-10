@@ -6,8 +6,8 @@ export function provideTranslationsNavigator() {
       new NavigatorNode({
         priority: 20,
         icon: 'rocket',
-        label: 'Translations'
-      })
-    )
+        label: 'Translations',
+      }),
+    ),
   ];
 }

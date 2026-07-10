@@ -6,8 +6,8 @@ export function provideMapExampleNavigator() {
       new NavigatorNode({
         priority: 20,
         icon: 'map',
-        label: 'Map examples'
-      })
-    )
+        label: 'Map examples',
+      }),
+    ),
   ];
 }

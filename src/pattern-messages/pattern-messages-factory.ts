@@ -8,9 +8,9 @@ export class MyPatternMessagesFactory implements ExtensionFactory<PatternMessage
       '^Firmware update for (.+) completed$': {
         gettext: 'Firmware update finished for device: {{deviceName}}',
         placeholders: {
-          deviceName: '$1'
-        }
-      }
+          deviceName: '$1',
+        },
+      },
     };
   }
 }

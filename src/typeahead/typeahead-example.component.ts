@@ -8,7 +8,7 @@ import { map, tap } from 'rxjs/operators';
   selector: 'tut-typeahead-example',
   templateUrl: './typeahead-example.component.html',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class TypeaheadExampleComponent {
   devices: IResultList<IManagedObject>;
@@ -27,7 +27,7 @@ export class TypeaheadExampleComponent {
       pageSize: 10,
       withTotalPages: true,
       fragmentType: 'c8y_IsDevice',
-      currentPage: 1
+      currentPage: 1,
     });
   }
 
@@ -41,9 +41,9 @@ export class TypeaheadExampleComponent {
       map((data: []) => {
         return data.filter(
           (mo: IManagedObject) =>
-            mo.name && mo.name.toLowerCase().indexOf(filterStr.toLowerCase()) > -1
+            mo.name && mo.name.toLowerCase().indexOf(filterStr.toLowerCase()) > -1,
         );
-      })
+      }),
     );
   }
 }

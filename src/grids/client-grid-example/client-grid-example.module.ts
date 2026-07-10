@@ -8,7 +8,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'grids/client-grid-example',
       loadComponent: () =>
-        import('./client-grid-example.component').then(m => m.ClientGridExampleComponent)
+        import('./client-grid-example.component').then((m) => m.ClientGridExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: 'grids/client-grid-example',
         icon: 'table',
         label: 'Client grid',
-        parent: 'Data grid examples'
-      })
-    )
-  ]
+        parent: 'Data grid examples',
+      }),
+    ),
+  ],
 })
 export class ClientGridExampleModule {}

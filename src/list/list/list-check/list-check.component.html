@@ -6,10 +6,7 @@
       (onSelect)="checkAll($event)"
       [indeterminate]="isIndeterminate$ | async"
     ></c8y-li-checkbox>
-    <c8y-li-icon
-      [icon]="'file'"
-      style="opacity: 0"
-    ></c8y-li-icon>
+    <c8y-li-icon [icon]="'file'" style="opacity: 0"></c8y-li-icon>
     <span>Devices</span>
   </c8y-li>
   <ng-template
@@ -26,18 +23,10 @@
         (click)="$event.stopPropagation()"
       ></c8y-li-checkbox>
       <c8y-li-icon [icon]="'exchange'"></c8y-li-icon>
-      <button
-        class="btn-clean"
-        (click)="li.collapsed = !li.collapsed"
-      >
+      <button class="btn-clean" (click)="li.collapsed = !li.collapsed">
         {{ device.name || '-' }}
       </button>
-      <c8y-li-action
-        icon="delete"
-        (click)="deleteDevice(device.id)"
-      >
-        Delete
-      </c8y-li-action>
+      <c8y-li-action icon="delete" (click)="deleteDevice(device.id)"> Delete </c8y-li-action>
       <c8y-li-collapse>
         id:
         <a [routerLink]="['/device', device.id]">{{ device.id }}</a>

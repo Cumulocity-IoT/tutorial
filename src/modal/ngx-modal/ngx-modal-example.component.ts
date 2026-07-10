@@ -6,7 +6,7 @@ import {
   HeaderModule,
   ModalLabels,
   ModalModule,
-  CoreModule
+  CoreModule,
 } from '@c8y/ngx-components';
 import { SimpleModalExampleComponent } from './simple-modal-example.component';
 
@@ -49,8 +49,8 @@ import { SimpleModalExampleComponent } from './simple-modal-example.component';
     C8yTranslateModule,
     FormsModule,
     ModalModule,
-    CoreModule
-  ]
+    CoreModule,
+  ],
 })
 export class NgxModalExampleComponent {
   modalRef?: BsModalRef;
@@ -80,7 +80,7 @@ export class NgxModalExampleComponent {
       class: size,
       ariaDescribedby: 'modal-body',
       ariaLabelledBy: 'modal-title',
-      ignoreBackdropClick: true
+      ignoreBackdropClick: true,
     }).content as SimpleModalExampleComponent;
   }
 }

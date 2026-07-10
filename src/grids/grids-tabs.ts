@@ -14,21 +14,21 @@ export class GridsTabs implements TabFactory {
         icon: 'resume-website',
         priority: 1000,
         label: 'Client-side data grid',
-        path: 'data-grid/client-grid-example'
+        path: 'data-grid/client-grid-example',
       } as Tab);
 
       tabs.push({
         icon: 'server',
         priority: 900,
         label: 'Server-side data grid',
-        path: 'data-grid/server-grid-example'
+        path: 'data-grid/server-grid-example',
       } as Tab);
 
       tabs.push({
         icon: 'c8y-device-management',
         priority: 800,
         label: 'Device grid',
-        path: 'data-grid/device-grid-example'
+        path: 'data-grid/device-grid-example',
       } as Tab);
     }
 

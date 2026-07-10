@@ -16,8 +16,8 @@ export class CustomVersionFactory implements ExtensionFactory<Version> {
       priority: 100,
       // Is not going to be shown in the UI, but will be part of the JSON that can be copied to clipboard and e.g. sent to support.
       custom: {
-        myDetails: 'Some details specific to this version'
-      }
+        myDetails: 'Some details specific to this version',
+      },
     },
     /**
      * Will not be shown in right drawer as `hideInRightDrawer` is set.
@@ -28,7 +28,7 @@ export class CustomVersionFactory implements ExtensionFactory<Version> {
       type: 'someCustomType',
       version: '0.0.2',
       priority: 99,
-      hidden: false
+      hidden: false,
     },
     /**
      * Will not be shown in the UI as `hidden` is set.
@@ -39,8 +39,8 @@ export class CustomVersionFactory implements ExtensionFactory<Version> {
       type: 'someCustomType',
       version: '0.0.3',
       priority: 98,
-      hidden: true
-    }
+      hidden: true,
+    },
   ];
 
   get(): Version | Version[] | Observable<Version | Version[]> | Promise<Version | Version[]> {

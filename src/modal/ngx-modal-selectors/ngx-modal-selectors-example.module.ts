@@ -7,8 +7,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'modal/ngx-modal-selectors',
       loadComponent: () =>
         import('./ngx-modal-selectors-example.component').then(
-          m => m.NgxModalSelectorsExampleComponent
-        )
+          (m) => m.NgxModalSelectorsExampleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/modal/ngx-modal-selectors',
         icon: 'list-alt',
         priority: 10,
-        parent: 'Modal'
-      })
-    )
-  ]
+        parent: 'Modal',
+      }),
+    ),
+  ],
 })
 export class NgxModalSelectorsExampleModule {}

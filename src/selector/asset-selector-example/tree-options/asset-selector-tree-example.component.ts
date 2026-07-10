@@ -51,7 +51,7 @@ import { IIdentified } from '@c8y/client';
       </div>
     </div>`,
   standalone: true,
-  imports: [CommonModule, AssetSelectorModule, CoreModule]
+  imports: [CommonModule, AssetSelectorModule, CoreModule],
 })
 export class AssetSelectorTreeExampleComponent {
   model: IIdentified;
@@ -65,7 +65,7 @@ export class AssetSelectorTreeExampleComponent {
     showChildDevices: false,
     showUnassignedDevices: false,
     label: 'Asset selection',
-    showSelected: true
+    showSelected: true,
   };
 
   reloadComponent() {

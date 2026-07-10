@@ -6,7 +6,7 @@ import {
   AppStateService,
   OptionsService,
   Permissions,
-  RealtimeSubjectService
+  RealtimeSubjectService,
 } from '@c8y/ngx-components';
 import { InventoryInterceptor } from './global-mocks/inventory.interceptor';
 import { MeasurementsInterceptor } from './global-mocks/measurements.interceptor';
@@ -46,9 +46,9 @@ export function provideAPIMock() {
         id: 'a-datapoints-export-selector-interceptor',
         path: 'datapoints-export-selector-example',
         mockService: MeasurementsSeriesInterceptor,
-        debug: true
+        debug: true,
       } as ApiMockConfig,
-      multi: true
+      multi: true,
     },
     {
       provide: API_MOCK_CONFIG,
@@ -56,9 +56,9 @@ export function provideAPIMock() {
         id: 'a-service-dashboard-interceptor',
         path: 'service-dashboard',
         mockService: ServiceDashboardInterceptor,
-        debug: true
+        debug: true,
       } as ApiMockConfig,
-      multi: true
+      multi: true,
     },
     {
       provide: API_MOCK_CONFIG,
@@ -66,9 +66,9 @@ export function provideAPIMock() {
         id: 'list-group-interceptor',
         path: 'lists',
         mockService: ListsInterceptor,
-        debug: true
+        debug: true,
       } as ApiMockConfig,
-      multi: true
+      multi: true,
     },
     {
       provide: API_MOCK_CONFIG,
@@ -76,9 +76,9 @@ export function provideAPIMock() {
         id: 'for-of-interceptor',
         path: 'for-of',
         mockService: ListsInterceptor,
-        debug: true
+        debug: true,
       } as ApiMockConfig,
-      multi: true
+      multi: true,
     },
     {
       provide: API_MOCK_CONFIG,
@@ -86,45 +86,45 @@ export function provideAPIMock() {
         id: 'typeahaed-interceptor',
         path: 'typeahead',
         mockService: TypeaheadInterceptor,
-        debug: true
+        debug: true,
       } as ApiMockConfig,
-      multi: true
+      multi: true,
     },
     {
       provide: API_MOCK_CONFIG,
       useValue: {
         id: 'server-side-data-grid-interceptor',
         path: 'server-grid-example',
-        mockService: ServerSideDataGridInterceptor
+        mockService: ServerSideDataGridInterceptor,
       } as ApiMockConfig,
-      multi: true
+      multi: true,
     },
     {
       provide: API_MOCK_CONFIG,
       useValue: {
         id: 'device-data-grid-interceptor',
         path: 'device-grid-example',
-        mockService: DeviceDataGridInterceptor
+        mockService: DeviceDataGridInterceptor,
       } as ApiMockConfig,
-      multi: true
+      multi: true,
     },
     {
       provide: API_MOCK_CONFIG,
       useValue: {
         id: 'scoped-dashboard-context-interceptor',
         path: 'dashboards/context',
-        mockService: ContextDashboardInterceptor
+        mockService: ContextDashboardInterceptor,
       } as ApiMockConfig,
-      multi: true
+      multi: true,
     },
     {
       provide: API_MOCK_CONFIG,
       useValue: {
         id: 'scoped-dashboard-context-interceptor-2',
         path: 'dashboards/widget-guide-context-dashboard',
-        mockService: ContextDashboardInterceptor
+        mockService: ContextDashboardInterceptor,
       } as ApiMockConfig,
-      multi: true
+      multi: true,
     },
     {
       provide: API_MOCK_CONFIG,
@@ -132,62 +132,62 @@ export function provideAPIMock() {
         path: 'named-context',
         // The interceptors are sorted by their ID, so the scoped interceptors should be before the global ones.
         id: 'named-context-interceptor-example',
-        mockService: NamedContextDashboardInterceptor
+        mockService: NamedContextDashboardInterceptor,
       } as ApiMockConfig,
-      multi: true
+      multi: true,
     },
     {
       provide: API_MOCK_CONFIG,
       useValue: {
         // The interceptors are sorted by their ID, so the scoped interceptors should be before the global ones.
         id: 'z-global-inventory-interceptor',
-        mockService: InventoryInterceptor
+        mockService: InventoryInterceptor,
       } as ApiMockConfig,
-      multi: true
+      multi: true,
     },
     {
       provide: API_MOCK_CONFIG,
       useValue: {
         // The interceptors are sorted by their ID, so the scoped interceptors should be before the global ones.
         id: 'z-global-measurementsInterceptor-interceptor',
-        mockService: MeasurementsInterceptor
+        mockService: MeasurementsInterceptor,
       } as ApiMockConfig,
-      multi: true
+      multi: true,
     },
     {
       provide: API_MOCK_CONFIG,
       useValue: {
         // The interceptors are sorted by their ID, so the scoped interceptors should be before the global ones.
         id: 'z-global-feature-preview-interceptor-interceptor',
-        mockService: FeatureApiInterceptor
+        mockService: FeatureApiInterceptor,
       } as ApiMockConfig,
-      multi: true
+      multi: true,
     },
     {
       provide: API_MOCK_CONFIG,
       useValue: {
         id: 'z-global-provider-definitions-interceptor-interceptor',
-        mockService: ProviderDefinitionsApiInterceptor
+        mockService: ProviderDefinitionsApiInterceptor,
       } as ApiMockConfig,
-      multi: true
+      multi: true,
     },
     {
       provide: API_MOCK_CONFIG,
       useValue: {
         id: 'z-global-provider-configurations-interceptor-interceptor',
-        mockService: ProviderConfigurationsApiInterceptor
+        mockService: ProviderConfigurationsApiInterceptor,
       } as ApiMockConfig,
-      multi: true
+      multi: true,
     },
     {
       provide: RealtimeSubjectService,
-      useExisting: RealtimeSubjectServiceWithMocking
+      useExisting: RealtimeSubjectServiceWithMocking,
     },
     provideAppInitializer(() => {
       const initializerFn = ((
         _service: MockService,
         appStateService: AppStateService,
-        options: OptionsService
+        options: OptionsService,
       ) => {
         return () => {
           if (options.get('noLogin', false)) {
@@ -199,16 +199,16 @@ export function provideAPIMock() {
                 references: [
                   {
                     role: {
-                      id: Permissions.ROLE_TENANT_MANAGEMENT_ADMIN
-                    }
-                  }
-                ] as any
-              }
+                      id: Permissions.ROLE_TENANT_MANAGEMENT_ADMIN,
+                    },
+                  },
+                ] as any,
+              },
             } as IUser);
           }
         };
       })(inject(MockService), inject(AppStateService), inject(OptionsService));
       return initializerFn();
-    })
+    }),
   ] satisfies (Provider | EnvironmentProviders)[];
 }

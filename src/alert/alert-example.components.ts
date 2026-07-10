@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'c8y-alert-example',
   templateUrl: './alert-example.components.html',
   standalone: true,
-  imports: [CommonModule, FormsModule, CoreModule]
+  imports: [CommonModule, FormsModule, CoreModule],
 })
 export class AlertExampleComponents {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -47,7 +47,7 @@ export class AlertExampleComponents {
       type: 'system',
       text: 'System toast',
       timeout: 5000,
-      detailedData: ' Alert details'
+      detailedData: ' Alert details',
     });
   }
 
@@ -55,7 +55,7 @@ export class AlertExampleComponents {
     this.alertService.add({
       text: '<p>This is a <b>toast</b> with <code>HTML</code> content</p>',
       allowHtml: true,
-      type: 'success'
+      type: 'success',
     });
   }
 
@@ -71,7 +71,7 @@ export class AlertExampleComponents {
       // eslint-disable-next-line no-console
       onClose: () => console.log('Alert closed'),
       // eslint-disable-next-line no-console
-      onDetail: () => console.log('Details opened.')
+      onDetail: () => console.log('Details opened.'),
     });
   }
 }

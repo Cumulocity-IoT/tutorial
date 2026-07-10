@@ -6,7 +6,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'modal/confirm-modal',
       loadComponent: () =>
-        import('./confirm-modal-example.component').then(m => m.ConfirmModalExampleComponent)
+        import('./confirm-modal-example.component').then((m) => m.ConfirmModalExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -14,9 +14,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/modal/confirm-modal',
         icon: 'list-alt',
         priority: 1,
-        parent: 'Modal'
-      })
-    )
-  ]
+        parent: 'Modal',
+      }),
+    ),
+  ],
 })
 export class ConfirmModalExampleModule {}

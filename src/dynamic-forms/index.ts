@@ -7,8 +7,8 @@ export function provideDynamicFormsNavigator() {
     hookNavigator(
       new NavigatorNode({
         label: 'Dynamic forms',
-        icon: 'file-text'
-      })
-    )
+        icon: 'file-text',
+      }),
+    ),
   ];
 }

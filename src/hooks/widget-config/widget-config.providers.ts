@@ -3,7 +3,7 @@ import {
   NavigatorNode,
   hookComponent,
   hookNavigator,
-  hookRoute
+  hookRoute,
 } from '@c8y/ngx-components';
 import { hookWidgetConfig } from '@c8y/ngx-components/context-dashboard';
 
@@ -12,7 +12,7 @@ export const referenceWidgetDefinition = {
   label:
     'A configuration is always attached to a component. This is an empty one, just for demo pruposes.',
   description: 'Nothing to describe',
-  loadComponent: () => Promise.resolve(EmptyComponent)
+  loadComponent: () => Promise.resolve(EmptyComponent),
 };
 
 /**
@@ -24,7 +24,8 @@ export const referenceWidgetDefinition = {
 export const widgetConfigHookProviders = [
   hookRoute({
     path: 'hooks/widget-config',
-    loadComponent: () => import('./basic-view/basic-edit.component').then(m => m.BasicEditComponent)
+    loadComponent: () =>
+      import('./basic-view/basic-edit.component').then((m) => m.BasicEditComponent),
   }),
   hookNavigator(
     new NavigatorNode({
@@ -32,8 +33,8 @@ export const widgetConfigHookProviders = [
       path: 'hooks/widget-config',
       icon: 'edit',
       label: 'Widget Config',
-      parent: 'Hooks'
-    })
+      parent: 'Hooks',
+    }),
   ),
   hookComponent(referenceWidgetDefinition),
   hookWidgetConfig({
@@ -43,14 +44,14 @@ export const widgetConfigHookProviders = [
     expanded: true,
     loadComponent: () =>
       import('./additional-config/additional-config.component').then(
-        m => m.AdditionalConfigComponent
-      )
+        (m) => m.AdditionalConfigComponent,
+      ),
   }),
   hookWidgetConfig({
     widgetId: 'reference.component',
     label: 'The default asset selector.',
     priority: 10,
     loadComponent: () =>
-      import('@c8y/ngx-components/context-dashboard').then(m => m.WidgetAssetSelectorComponent)
-  })
+      import('@c8y/ngx-components/context-dashboard').then((m) => m.WidgetAssetSelectorComponent),
+  }),
 ];

@@ -7,15 +7,16 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
   providers: [
     hookRoute({
       path: 'alert',
-      loadComponent: () => import('./alert-example.components').then(m => m.AlertExampleComponents)
+      loadComponent: () =>
+        import('./alert-example.components').then((m) => m.AlertExampleComponents),
     }),
     hookNavigator(
       new NavigatorNode({
         path: 'alert',
         icon: 'notification',
-        label: 'Alert'
-      })
-    )
-  ]
+        label: 'Alert',
+      }),
+    ),
+  ],
 })
 export class AlertExampleModule {}

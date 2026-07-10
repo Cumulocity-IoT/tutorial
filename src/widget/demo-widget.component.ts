@@ -2,7 +2,7 @@ import { Component, computed, input, OnInit } from '@angular/core';
 import {
   DismissAlertStrategy,
   DynamicComponentAlert,
-  DynamicComponentAlertAggregator
+  DynamicComponentAlertAggregator,
 } from '@c8y/ngx-components';
 import { WidgetConfig } from './widget-config.model';
 
@@ -26,9 +26,9 @@ import { WidgetConfig } from './widget-config.model';
         font-size: 1.5em;
         color: var(--c8y-brand-primary);
       }
-    `
+    `,
   ],
-  standalone: true
+  standalone: true,
 })
 export class WidgetDemo implements OnInit {
   readonly config = input<WidgetConfig>();
@@ -49,7 +49,7 @@ export class WidgetDemo implements OnInit {
 
   showAlert(): void {
     this.alerts?.addAlerts(
-      new DynamicComponentAlert({ type: 'warning', text: 'This is a dismissible demo alert!' })
+      new DynamicComponentAlert({ type: 'warning', text: 'This is a dismissible demo alert!' }),
     );
   }
 }

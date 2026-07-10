@@ -9,8 +9,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
       path: 'selector/asset-selector-example/miller-columns-options',
       loadComponent: () =>
         import('./asset-selector-miller-example.component').then(
-          m => m.AssetSelectorMillerExampleComponent
-        )
+          (m) => m.AssetSelectorMillerExampleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -18,9 +18,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
         path: '/selector/asset-selector-example/miller-columns-options',
         icon: 'view-column',
         priority: 5,
-        parent: 'Asset selector'
-      })
-    )
-  ]
+        parent: 'Asset selector',
+      }),
+    ),
+  ],
 })
 export class AssetSelectorMillerExampleModule {}

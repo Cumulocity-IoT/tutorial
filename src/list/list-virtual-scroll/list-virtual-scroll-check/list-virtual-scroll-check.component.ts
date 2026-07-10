@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './list-virtual-scroll-check.component.html',
   standalone: true,
   imports: [CoreModule, RouterModule],
-  providers: [StepperService]
+  providers: [StepperService],
 })
 export class ListVirtualScrollCheckComponent implements OnInit {
   devices: IResultList<IManagedObject>;
@@ -27,7 +27,7 @@ export class ListVirtualScrollCheckComponent implements OnInit {
     fragmentType: 'c8y_IsDevice',
     // paging information will be a part of the response now
     withTotalPages: true,
-    pageSize: 10
+    pageSize: 10,
   };
 
   constructor(public inventory: InventoryService) {}

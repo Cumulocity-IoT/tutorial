@@ -4,7 +4,7 @@ import {
   hookNavigator,
   hookQueryParamBottomDrawer,
   hookRoute,
-  NavigatorNode
+  NavigatorNode,
 } from '@c8y/ngx-components';
 import { ExampleComponent } from './example-component';
 
@@ -14,7 +14,8 @@ import { ExampleComponent } from './example-component';
   providers: [
     hookRoute({
       path: 'hooks/query-param-bottom-drawer',
-      loadComponent: () => import('./example-button.component').then(m => m.ExampleButtonComponent)
+      loadComponent: () =>
+        import('./example-button.component').then((m) => m.ExampleButtonComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -22,15 +23,15 @@ import { ExampleComponent } from './example-component';
         path: 'hooks/query-param-bottom-drawer',
         icon: 'filter',
         label: 'QueyParamBottomDrawer',
-        parent: 'Hooks'
-      })
+        parent: 'Hooks',
+      }),
     ),
     hookQueryParamBottomDrawer({
       queryParam: 'showExampleComponent',
       closeOnNavigation: false,
       disableClickOutside: true,
-      component: ExampleComponent
-    })
-  ]
+      component: ExampleComponent,
+    }),
+  ],
 })
 export class QueryParamBottomDrawerModule {}

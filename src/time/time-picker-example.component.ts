@@ -7,7 +7,7 @@ import { HeaderModule, TimePickerModule } from '@c8y/ngx-components';
   template: `<c8y-title>Time picker</c8y-title>
     <c8y-time-picker [formControl]="form.get('time')"></c8y-time-picker>`,
   standalone: true,
-  imports: [TimePickerModule, ReactiveFormsModule, HeaderModule]
+  imports: [TimePickerModule, ReactiveFormsModule, HeaderModule],
 })
 export class TimePickerExampleComponent {
   form: FormGroup;

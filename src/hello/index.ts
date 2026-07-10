@@ -7,12 +7,12 @@ export function provideHelloSample() {
       {
         path: '',
         redirectTo: 'hello',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: 'hello',
-        component: HelloComponent
-      }
-    ])
+        component: HelloComponent,
+      },
+    ]),
   ];
 }

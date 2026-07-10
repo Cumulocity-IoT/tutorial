@@ -10,16 +10,17 @@ import { Subscription } from 'rxjs';
   selector: 'tut-custom-dashboard',
   templateUrl: './custom-dashboard.component.html',
   standalone: true,
-  imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule]
+  imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule],
 })
 export class CustomDashboardComponent implements AfterViewInit, OnDestroy {
   widgets = [
     { x: 0, y: 0, width: 12, height: 1 },
-    { x: 3, y: 1, width: 5, height: 2 }
+    { x: 3, y: 1, width: 5, height: 2 },
   ] as DashboardChildDimension[];
   isFrozen = false;
   showTitle = true;
   editComponent = false;
+  layout: 'grid' | 'custom' = 'grid';
 
   @ViewChild('configForm', { static: false })
   configForm: NgForm;
@@ -27,8 +28,8 @@ export class CustomDashboardComponent implements AfterViewInit, OnDestroy {
   subscription: Subscription;
 
   ngAfterViewInit() {
-    this.subscription = this.configForm.valueChanges.subscribe(value =>
-      console.log('Widget config:', value)
+    this.subscription = this.configForm.valueChanges.subscribe((value) =>
+      console.log('Widget config:', value),
     );
   }
 

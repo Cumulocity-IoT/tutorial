@@ -6,7 +6,7 @@ import {
   SplitViewComponent,
   SplitViewFooterComponent,
   SplitViewHeaderActionsComponent,
-  SplitViewListComponent
+  SplitViewListComponent,
 } from '@c8y/ngx-components';
 
 @Component({
@@ -20,8 +20,8 @@ import {
     SplitViewComponent,
     SplitViewListComponent,
     SplitViewHeaderActionsComponent,
-    SplitViewFooterComponent
-  ]
+    SplitViewFooterComponent,
+  ],
 })
 export class SplitViewFullWidthExampleComponent {
   items = [
@@ -30,36 +30,36 @@ export class SplitViewFullWidthExampleComponent {
       name: 'Project Alpha',
       description: 'Web application development project',
       status: 'In Progress',
-      progress: 75
+      progress: 75,
     },
     {
       id: 2,
       name: 'Project Beta',
       description: 'Mobile app development project',
       status: 'Planning',
-      progress: 25
+      progress: 25,
     },
     {
       id: 3,
       name: 'Project Gamma',
       description: 'API integration project',
       status: 'Completed',
-      progress: 100
+      progress: 100,
     },
     {
       id: 4,
       name: 'Project Delta',
       description: 'Database migration project',
       status: 'In Progress',
-      progress: 55
+      progress: 55,
     },
     {
       id: 5,
       name: 'Project Epsilon',
       description: 'Security audit project',
       status: 'On Hold',
-      progress: 0
-    }
+      progress: 0,
+    },
   ];
 
   getStatusClass(status: string): string {

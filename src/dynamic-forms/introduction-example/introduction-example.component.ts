@@ -29,14 +29,14 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, DynamicFormsModule, HeaderModule]
+  imports: [CommonModule, DynamicFormsModule, HeaderModule],
 })
 export class IntroductionExampleComponent {
   form = new FormGroup({});
   model = {
     readonly: 'This is a read-only value',
     disabled: 'This is a disabled field',
-    'checkbox-disabled': true
+    'checkbox-disabled': true,
   };
   fields: FormlyFieldConfig[] = [
     {
@@ -45,8 +45,8 @@ export class IntroductionExampleComponent {
       templateOptions: {
         label: 'Simple text input',
         placeholder: 'Use placeholder to provide an expected value example',
-        description: 'If helpful, add&nbsp;<strong>short</strong>&nbspinfo here.'
-      }
+        description: 'If helpful, add&nbsp;<strong>short</strong>&nbspinfo here.',
+      },
     },
     {
       key: 'required',
@@ -56,8 +56,8 @@ export class IntroductionExampleComponent {
         placeholder: 'Required value example',
         description:
           'If needed, you can give more context to the user using a popover.&nbsp;<br>&nbsp;You can use&nbsp;<em><strong>HTML</strong></em>&nbsp;markup. The HTML content is sanitized.',
-        required: true
-      }
+        required: true,
+      },
     },
     {
       key: 'readonly',
@@ -65,8 +65,8 @@ export class IntroductionExampleComponent {
       templateOptions: {
         label: 'Read-only text input',
         description: 'This is a read-only field',
-        readonly: true
-      }
+        readonly: true,
+      },
     },
     {
       key: 'disabled',
@@ -74,8 +74,8 @@ export class IntroductionExampleComponent {
       templateOptions: {
         label: 'Disabled text input',
         description: 'This is a disabled field',
-        disabled: true
-      }
+        disabled: true,
+      },
     },
     {
       key: 'checkbox',
@@ -83,16 +83,16 @@ export class IntroductionExampleComponent {
       templateOptions: {
         label: 'Checkbox',
         description: 'Checkboxes can have a description too.',
-        required: true
-      }
+        required: true,
+      },
     },
     {
       key: 'checkbox-disabled',
       type: 'checkbox',
       templateOptions: {
         label: 'Disabled checkboxes cannot be interacted with',
-        disabled: true
-      }
+        disabled: true,
+      },
     },
     {
       key: 'attachments',
@@ -103,9 +103,9 @@ export class IntroductionExampleComponent {
         required: true,
         accept: 'image/*,text/*',
         icon: 'file-text-o',
-        alwaysShow: true
-      }
-    }
+        alwaysShow: true,
+      },
+    },
   ];
 
   onSubmit() {

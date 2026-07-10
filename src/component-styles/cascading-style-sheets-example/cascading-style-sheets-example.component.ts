@@ -10,6 +10,6 @@ import { HeaderModule } from '@c8y/ngx-components';
     </div>`,
   styleUrls: ['./cascading-style-sheets-example.component.css'],
   standalone: true,
-  imports: [HeaderModule]
+  imports: [HeaderModule],
 })
 export class CascadingStyleSheetsExampleComponent {}

@@ -8,7 +8,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'dynamic-forms/introduction',
       loadComponent: () =>
-        import('./introduction-example.component').then(m => m.IntroductionExampleComponent)
+        import('./introduction-example.component').then((m) => m.IntroductionExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         label: 'Introduction',
         icon: 'hand-o-right',
         priority: 80,
-        parent: 'Dynamic forms'
-      })
-    )
-  ]
+        parent: 'Dynamic forms',
+      }),
+    ),
+  ],
 })
 export class IntroductionExampleModule {}

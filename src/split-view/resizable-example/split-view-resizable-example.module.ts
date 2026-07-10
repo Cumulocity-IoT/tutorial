@@ -9,9 +9,9 @@ import { hookRoute } from '@c8y/ngx-components';
       path: 'split-view-resizable',
       loadComponent: () =>
         import('./split-view-resizable-example.component').then(
-          m => m.SplitViewResizableExampleComponent
-        )
-    })
-  ]
+          (m) => m.SplitViewResizableExampleComponent,
+        ),
+    }),
+  ],
 })
 export class SplitViewResizableExampleModule {}

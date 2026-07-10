@@ -4,7 +4,7 @@ import {
   IOperationBulkProgress,
   OperationBulkGeneralStatus,
   OperationBulkStatus,
-  OperationStatus
+  OperationStatus,
 } from '@c8y/client';
 import { generateId } from '../common';
 
@@ -14,7 +14,7 @@ export function getFakeOperation(): IOperation {
     id: generateId(),
     deviceId: generateId(),
     status: getRandomOperationStatus(),
-    customFragment: 'customData'
+    customFragment: 'customData',
   };
 }
 
@@ -36,7 +36,7 @@ export function getFakeOperationBulk(): IOperationBulk {
     progress: getFakeOperationBulkProgress(),
     failedParentId: generateId(),
     note: `This is a note ${Math.floor(Math.random() * 1000000000).toString()}`,
-    self: 'http://example.com/self/...'
+    self: 'http://example.com/self/...',
   };
 }
 
@@ -62,6 +62,6 @@ function getFakeOperationBulkProgress(): IOperationBulkProgress {
     successful,
     failed,
     executing,
-    pending
+    pending,
   };
 }

@@ -6,7 +6,7 @@ import {
   GlobalContextState,
   DisplayMode,
   GLOBAL_CONTEXT_DISPLAY_MODE,
-  REFRESH_OPTION
+  REFRESH_OPTION,
 } from '@c8y/ngx-components/global-context';
 import { WidgetConfig, WIDGET_CONTROLS } from './widget-config.model';
 
@@ -141,7 +141,7 @@ import { WidgetConfig, WIDGET_CONTROLS } from './widget-config.model';
         }
       </div>
     </div>
-  `
+  `,
 })
 export class GlobalContextWidgetViewComponent implements OnInit {
   /** Reference to DashboardChildComponent, required for GlobalContextConnector */
@@ -215,7 +215,7 @@ export class GlobalContextWidgetViewComponent implements OnInit {
       aggregation,
       isAutoRefreshEnabled,
       refreshInterval,
-      refreshOption
+      refreshOption,
     } = this.config;
 
     this.displayMode.set(displayMode as DisplayMode);
@@ -224,7 +224,7 @@ export class GlobalContextWidgetViewComponent implements OnInit {
       aggregation,
       isAutoRefreshEnabled,
       refreshInterval,
-      refreshOption
+      refreshOption,
     });
 
     // In dashboard mode, GlobalContextConnector will emit the initial state
@@ -318,7 +318,7 @@ export class GlobalContextWidgetViewComponent implements OnInit {
       // const data = await this.api.getData({ dateFrom, dateTo });
 
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 500));
 
       this.lastFetchTime = new Date();
       this.fetchCount++;

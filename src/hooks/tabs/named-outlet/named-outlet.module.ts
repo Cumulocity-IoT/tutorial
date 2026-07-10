@@ -5,7 +5,7 @@ import {
   hookRoute,
   hookTab,
   NavigatorNode,
-  NavigatorNodeData
+  NavigatorNodeData,
 } from '@c8y/ngx-components';
 import { RouterModule } from '@angular/router';
 import { ContentAComponent } from './content-a.component';
@@ -21,15 +21,15 @@ const hooks = [
         {
           path: 'content-a',
           component: ContentAComponent,
-          outlet: 'namedOutlet'
+          outlet: 'namedOutlet',
         },
         {
           path: 'content-b',
           component: ContentBComponent,
-          outlet: 'namedOutlet'
-        }
-      ]
-    }
+          outlet: 'namedOutlet',
+        },
+      ],
+    },
   ]),
   hookTab([
     {
@@ -40,11 +40,11 @@ const hooks = [
       path: [
         {
           outlets: {
-            ['namedOutlet']: 'content-a'
-          }
-        }
+            ['namedOutlet']: 'content-a',
+          },
+        },
       ],
-      tabsOutlet: 'namedOutletTabs'
+      tabsOutlet: 'namedOutletTabs',
     },
     {
       label: 'Tab B',
@@ -54,12 +54,12 @@ const hooks = [
       path: [
         {
           outlets: {
-            ['namedOutlet']: 'content-b'
-          }
-        }
+            ['namedOutlet']: 'content-b',
+          },
+        },
       ],
-      tabsOutlet: 'namedOutletTabs'
-    }
+      tabsOutlet: 'namedOutletTabs',
+    },
   ]),
   hookNavigator(
     new NavigatorNode({
@@ -67,14 +67,14 @@ const hooks = [
       path: 'hooks/named-outlet',
       icon: 'name-tag',
       label: 'Named router outlet',
-      parent: 'Hooks'
-    } as NavigatorNodeData)
-  )
+      parent: 'Hooks',
+    } as NavigatorNodeData),
+  ),
 ];
 
 @NgModule({
   declarations: [BasicViewComponent],
   imports: [RouterModule, ContentAComponent, ContentBComponent, CoreModule],
-  providers: [...hooks]
+  providers: [...hooks],
 })
 export class NamedOutletModule {}

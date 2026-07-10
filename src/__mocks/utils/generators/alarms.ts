@@ -17,6 +17,6 @@ export function getFakeAlarm(): IAlarm {
     count: Math.floor(Math.random() * 100),
     name: `Name_${Math.floor(Math.random() * 1000)}`,
     self: 'https://example.com/self/...}',
-    creationTime: new Date().toISOString()
+    creationTime: new Date().toISOString(),
   };
 }

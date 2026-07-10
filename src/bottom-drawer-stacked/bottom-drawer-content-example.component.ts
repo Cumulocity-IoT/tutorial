@@ -9,8 +9,8 @@ import { BottomDrawerContentTopExampleComponent } from './bottom-drawer-content-
   templateUrl: './bottom-drawer-content-example.component.html',
   standalone: true,
   host: {
-    class: 'd-contents'
-  }
+    class: 'd-contents',
+  },
 })
 export class BottomDrawerContentExampleComponent implements OnInit, OnDestroy {
   bottomDrawerRef = inject(BottomDrawerRef);
@@ -33,7 +33,7 @@ export class BottomDrawerContentExampleComponent implements OnInit, OnDestroy {
       event.preventDefault();
       await this.bottomDrawerRef.close();
       console.log(
-        'Escape pressed- first bottom drawer closed, handled by BottomDrawerContentExampleComponent'
+        'Escape pressed- first bottom drawer closed, handled by BottomDrawerContentExampleComponent',
       );
     }
   }
@@ -48,9 +48,9 @@ export class BottomDrawerContentExampleComponent implements OnInit, OnDestroy {
     const drawer = this.bottomDrawerService.openDrawer(BottomDrawerContentTopExampleComponent, {
       initialState: {
         // place here any content you want to pass to the component
-        isDisabled: true
+        isDisabled: true,
       },
-      disableClickOutside: true
+      disableClickOutside: true,
       // closeOnEscape is true by default
     });
 

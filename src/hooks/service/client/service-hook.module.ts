@@ -6,7 +6,7 @@ import { NavigatorNode, hookComponent, hookNavigator, hookRoute } from '@c8y/ngx
     /* Hook the Service hook demo view */
     hookRoute({
       path: 'hooks/service',
-      loadComponent: () => import('./basic-view.component').then(m => m.BasicViewComponent)
+      loadComponent: () => import('./basic-view.component').then((m) => m.BasicViewComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -14,16 +14,16 @@ import { NavigatorNode, hookComponent, hookNavigator, hookRoute } from '@c8y/ngx
         path: 'hooks/service',
         icon: 'gears',
         label: 'Service',
-        parent: 'Hooks'
-      })
+        parent: 'Hooks',
+      }),
     ),
     /* Hook a client component for the service provided via `hookService` */
     hookComponent({
       id: 'counter.component',
       label: 'Counter component',
       description: 'This component can count',
-      loadComponent: () => import('./counter.component').then(m => m.CounterComponent)
-    })
-  ]
+      loadComponent: () => import('./counter.component').then((m) => m.CounterComponent),
+    }),
+  ],
 })
 export class ServiceHookModule {}

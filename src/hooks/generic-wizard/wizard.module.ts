@@ -12,12 +12,12 @@ import { ContainerComponent } from './wizard.component';
 const routes: Routes = [
   {
     path: 'wizard',
-    redirectTo: 'wizard/minimal-setup'
+    redirectTo: 'wizard/minimal-setup',
   },
   {
     path: 'wizard/minimal-setup',
-    component: ContainerComponent
-  }
+    component: ContainerComponent,
+  },
 ];
 
 @NgModule({
@@ -28,7 +28,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     MinimalSetupComponent,
     MultipleEntriesOne,
-    MultipleEntriesTwo
+    MultipleEntriesTwo,
   ],
   /**
    * Adding the hooks to the providers:
@@ -42,7 +42,7 @@ const routes: Routes = [
       path: 'wizard/minimal-setup',
       parent: 'Hooks',
       // TODO: clarify why preventDuplicates is needed
-      preventDuplicates: true
+      preventDuplicates: true,
     }),
     hookWizard({
       wizardId: 'singleEntry',
@@ -51,7 +51,7 @@ const routes: Routes = [
       // Menu entry name
       name: "Doesn't matter as it won't be shown anyway since it is a single entry.",
       // Menu entry icon
-      c8yIcon: 'upload'
+      c8yIcon: 'upload',
     }),
     hookWizard({
       // entry ID, observe that it shares the same ID as the entry below.
@@ -61,7 +61,7 @@ const routes: Routes = [
       // Menu entry name
       name: 'Entry 1',
       // Menu entry icon
-      c8yIcon: 'upload'
+      c8yIcon: 'upload',
     }),
     hookWizard({
       wizardId: 'multipleEntries',
@@ -70,7 +70,7 @@ const routes: Routes = [
       // Menu entry name
       name: 'Entry 2',
       // Menu entry icon
-      c8yIcon: 'upload'
+      c8yIcon: 'upload',
     }),
     hookWizard({
       wizardId: 'stepperExample',
@@ -79,8 +79,8 @@ const routes: Routes = [
       // Menu entry name
       name: "Doesn't matter as it won't be shown anyway since it is a single entry.",
       // Menu entry icon
-      c8yIcon: 'upload'
-    })
-  ]
+      c8yIcon: 'upload',
+    }),
+  ],
 })
 export class WizardModule {}

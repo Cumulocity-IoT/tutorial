@@ -7,8 +7,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'selector/datapoint-selection-example/no-templates-example',
       loadComponent: () =>
         import('./datapoint-selection-notemplates-example.component').then(
-          m => m.DatapointSelectionNotemplatesExampleComponent
-        )
+          (m) => m.DatapointSelectionNotemplatesExampleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/selector/datapoint-selection-example/no-templates-example',
         icon: 'th-list',
         priority: -1,
-        parent: 'Datapoint selection'
-      })
-    )
-  ]
+        parent: 'Datapoint selection',
+      }),
+    ),
+  ],
 })
 export class DatapointSelectionNotemplatesExampleModule {}

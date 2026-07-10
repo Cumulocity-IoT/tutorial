@@ -4,7 +4,7 @@ import { MapTileLayer } from '@c8y/options';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MapLayerService implements CumulocityServiceRegistry.MapTileLayerProvider {
   maps$ = new BehaviorSubject<MapTileLayer[]>([defaultLayer]);
@@ -25,9 +25,9 @@ export class MapLayerService implements CumulocityServiceRegistry.MapTileLayerPr
           label: 'Carto',
           priority: 1000,
           options: {
-            maxZoom: 12
-          }
-        }
+            maxZoom: 12,
+          },
+        },
       ]);
     } else if (name === 'OpenTopo') {
       this.maps$.next([
@@ -37,9 +37,9 @@ export class MapLayerService implements CumulocityServiceRegistry.MapTileLayerPr
           priority: 1000,
           options: {
             maxZoom: 17,
-            minZoom: 0
-          }
-        }
+            minZoom: 0,
+          },
+        },
       ]);
     }
   }

@@ -10,7 +10,7 @@ export class TypeaheadInterceptor implements HttpInterceptor {
     return handleRequest(req, next, 'inventory/managedObjects', {
       POST: this.mockPOST.bind(this),
       PUT: this.mockPUT.bind(this),
-      GET: this.mockGET.bind(this)
+      GET: this.mockGET.bind(this),
     });
   }
 
@@ -24,7 +24,7 @@ export class TypeaheadInterceptor implements HttpInterceptor {
 
   private async mockGET(_requestDescriptor: string) {
     // extra long timeout, to show the usage of c8yFor
-    await new Promise(r => setTimeout(r, 100));
+    await new Promise((r) => setTimeout(r, 100));
 
     const responseGenerators = this.getResponseGenerators();
 
@@ -45,14 +45,14 @@ export class TypeaheadInterceptor implements HttpInterceptor {
           return generateResponse(
             () => ({
               managedObjects: filteredData,
-              ...(!!currentPage && currentPage !== 5 && { next: `currentPage=${currentPage + 1}` })
+              ...(!!currentPage && currentPage !== 5 && { next: `currentPage=${currentPage + 1}` }),
             }),
             {
               totalPages: 30,
               ...(!!pageSize && { pageSize }),
               ...(!!currentPage && { currentPage }),
-              ...(!!currentPage && currentPage !== 5 && { next: `currentPage=${currentPage + 1}` })
-            }
+              ...(!!currentPage && currentPage !== 5 && { next: `currentPage=${currentPage + 1}` }),
+            },
           );
         }
       }
@@ -62,9 +62,9 @@ export class TypeaheadInterceptor implements HttpInterceptor {
 
   private getResponseGenerators() {
     return {
-      pageSize: pageSize => ({
-        managedObjects: [...[...Array(pageSize || 10)].map(() => generateDevice())]
-      })
+      pageSize: (pageSize) => ({
+        managedObjects: [...[...Array(pageSize || 10)].map(() => generateDevice())],
+      }),
     };
   }
 }

@@ -7,8 +7,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'selector/asset-selector-example/multi-select',
       loadComponent: () =>
         import('./asset-selector-multi-select.component').then(
-          m => m.AssetSelectorMultiSelectComponent
-        )
+          (m) => m.AssetSelectorMultiSelectComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/selector/asset-selector-example/multi-select',
         icon: 'th-list',
         priority: -1,
-        parent: 'Asset selector'
-      })
-    )
-  ]
+        parent: 'Asset selector',
+      }),
+    ),
+  ],
 })
 export class AssetSelectorMultiSelectModule {}

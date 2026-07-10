@@ -34,7 +34,7 @@ export function ipValidator(control: AbstractControl): ValidationErrors {
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormlyModule, HeaderModule]
+  imports: [CommonModule, ReactiveFormsModule, FormlyModule, HeaderModule],
 })
 export class ValidationExampleComponent {
   form = new FormGroup({});
@@ -49,8 +49,8 @@ export class ValidationExampleComponent {
         description: 'This field uses Formly built-in validators',
         required: true,
         min: 0,
-        max: 10
-      }
+        max: 10,
+      },
     },
     {
       key: 'ip',
@@ -58,11 +58,11 @@ export class ValidationExampleComponent {
       props: {
         label: 'IP address',
         placeholder: '192.168.0.1',
-        description: 'Uses custom validator declared in NgModule'
+        description: 'Uses custom validator declared in NgModule',
       },
       validators: {
-        validation: ['ip']
-      }
+        validation: ['ip'],
+      },
     },
     {
       key: 'subnet-mask',
@@ -70,19 +70,19 @@ export class ValidationExampleComponent {
       props: {
         label: 'Subnet mask',
         placeholder: '255.255.254.0',
-        description: 'Uses custom validation through <code>validators.expression</code> property'
+        description: 'Uses custom validation through <code>validators.expression</code> property',
       },
       validators: {
         snmask: {
           expression: (c: AbstractControl) =>
             !c.value ||
             /(((255\.){3}(255|254|252|248|240|224|192|128|0+))|((255\.){2}(255|254|252|248|240|224|192|128|0+)\.0)|((255\.)(255|254|252|248|240|224|192|128|0+)(\.0+){2})|((255|254|252|248|240|224|192|128|0+)(\.0+){3}))/.test(
-              c.value
+              c.value,
             ),
           message: (error: object, field: FormlyFieldConfig) =>
-            `"${field.formControl.value}" is not a valid subnet mask`
-        }
-      }
+            `"${field.formControl.value}" is not a valid subnet mask`,
+        },
+      },
     },
     {
       key: 'dns',
@@ -90,11 +90,11 @@ export class ValidationExampleComponent {
       templateOptions: {
         label: 'DNS',
         placeholder: '1.1.1.1',
-        description: 'Uses custom validation through <code>validators.validation</code> property'
+        description: 'Uses custom validation through <code>validators.validation</code> property',
       },
       validators: {
-        validation: [ipValidator]
-      }
+        validation: [ipValidator],
+      },
     },
     {
       key: 'username',
@@ -102,19 +102,19 @@ export class ValidationExampleComponent {
       props: {
         label: 'Username',
         placeholder: 'Spider-Man',
-        description: 'Username is checked for uniqueness asynchronously'
+        description: 'Username is checked for uniqueness asynchronously',
       },
       asyncValidators: {
         uniqueUsername: {
           expression: (control: AbstractControl) =>
             of(
-              ['Spider-Man', 'Wonder Woman', 'Batman', 'Iron Man'].indexOf(control.value) === -1
+              ['Spider-Man', 'Wonder Woman', 'Batman', 'Iron Man'].indexOf(control.value) === -1,
             ).pipe(delay(1000)),
           message: (error: any, field: FormlyFieldConfig) =>
-            `${field.formControl.value} is already taken.`
-        }
-      }
-    }
+            `${field.formControl.value} is already taken.`,
+        },
+      },
+    },
   ];
 
   onSubmit() {

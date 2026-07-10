@@ -8,8 +8,8 @@ import { hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'grids/empty-grid-example',
       loadComponent: () =>
-        import('./empty-grid-example.component').then(m => m.EmptyGridExampleComponent)
-    })
-  ]
+        import('./empty-grid-example.component').then((m) => m.EmptyGridExampleComponent),
+    }),
+  ],
 })
 export class EmptyGridExampleModule {}

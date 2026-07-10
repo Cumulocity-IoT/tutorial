@@ -8,16 +8,16 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'resizable-grid-example',
       loadComponent: () =>
-        import('./resizable-grid-example.component').then(m => m.ResizableGridExampleComponent)
+        import('./resizable-grid-example.component').then((m) => m.ResizableGridExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
         path: '/resizable-grid-example',
         label: 'Resizable grid',
         icon: 'columns',
-        priority: 86
-      })
-    )
-  ]
+        priority: 86,
+      }),
+    ),
+  ],
 })
 export class ResizableGridExampleModule {}

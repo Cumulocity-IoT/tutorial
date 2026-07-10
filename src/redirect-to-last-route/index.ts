@@ -8,9 +8,10 @@ export function provideRedirectToLastRoute() {
     hookRoute({
       path: 'pickLastRoute',
       canActivate: [
-        ((...args) => inject(RedirectToLastRouteGuardService).canActivate(...args)) as CanActivateFn
+        ((...args) =>
+          inject(RedirectToLastRouteGuardService).canActivate(...args)) as CanActivateFn,
       ],
-      component: EmptyComponent
-    })
+      component: EmptyComponent,
+    }),
   ];
 }

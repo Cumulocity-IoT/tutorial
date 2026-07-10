@@ -19,5 +19,5 @@ export function bootstrap(metadata: BootstrapMetaData) {
    * component to initialize the root application. Alternatively you can bootstrap
    * a component of your choice and include that tag into its template or only reuse the given components
    */
-  return bootstrapApplication(BootstrapComponent, appConfig).catch(err => console.log(err));
+  return bootstrapApplication(BootstrapComponent, appConfig).catch((err) => console.log(err));
 }

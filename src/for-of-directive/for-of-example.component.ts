@@ -8,7 +8,7 @@ import { map, tap } from 'rxjs/operators';
   selector: 'c8y-for-of-example',
   templateUrl: './for-of-example.component.html',
   standalone: true,
-  imports: [CoreModule, ForOfDirective]
+  imports: [CoreModule, ForOfDirective],
 })
 export class ForOfExampleComponent {
   devices: IResultList<IManagedObject>;
@@ -17,7 +17,7 @@ export class ForOfExampleComponent {
     loadMore: 'auto' as LoadMoreMode,
     filter: '',
     pageSize: 10,
-    maxIterations: 12
+    maxIterations: 12,
   };
 
   constructor(private inventoryService: InventoryService) {}
@@ -31,7 +31,7 @@ export class ForOfExampleComponent {
       pageSize: this.config.pageSize,
       withTotalPages: true,
       fragmentType: 'c8y_IsDevice',
-      currentPage: 1
+      currentPage: 1,
     });
   }
 
@@ -45,9 +45,9 @@ export class ForOfExampleComponent {
       map((data: []) => {
         return data.filter(
           (mo: IManagedObject) =>
-            mo.name && mo.name.toLowerCase().indexOf(filterStr.toLowerCase()) > -1
+            mo.name && mo.name.toLowerCase().indexOf(filterStr.toLowerCase()) > -1,
         );
-      })
+      }),
     );
   }
 }

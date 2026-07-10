@@ -9,7 +9,7 @@ import { CoreModule } from '@c8y/ngx-components';
   selector: 'tut-additional-config-component',
   template: 'Any additional configuration can be done here.',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class AdditionalConfigComponent {
   editComponent = false;

@@ -7,15 +7,15 @@ import { ComponentOne } from './component-one.component';
 const routes: Routes = [
   {
     path: 'one',
-    component: ComponentOne
+    component: ComponentOne,
   },
   {
     path: 'two',
-    component: ComponentTwo
-  }
+    component: ComponentTwo,
+  },
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes)]
+  imports: [CommonModule, RouterModule.forChild(routes)],
 })
 export class LazyLoadedModule {}

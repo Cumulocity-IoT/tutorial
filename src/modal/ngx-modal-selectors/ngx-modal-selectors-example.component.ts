@@ -5,7 +5,7 @@ import {
   CoreModule,
   FormsModule,
   HeaderModule,
-  ModalModule
+  ModalModule,
 } from '@c8y/ngx-components';
 import { SimpleModalExampleWithContentSelectorsComponent } from './simple-modal-example-with-content-selectors.component';
 
@@ -30,8 +30,8 @@ import { SimpleModalExampleWithContentSelectorsComponent } from './simple-modal-
     C8yTranslateModule,
     FormsModule,
     ModalModule,
-    CoreModule
-  ]
+    CoreModule,
+  ],
 })
 export class NgxModalSelectorsExampleComponent {
   constructor(private modalService: BsModalService) {}
@@ -41,7 +41,7 @@ export class NgxModalSelectorsExampleComponent {
       class: 'modal-sm',
       ariaDescribedby: 'modal-body',
       ariaLabelledBy: 'modal-title',
-      ignoreBackdropClick: true
+      ignoreBackdropClick: true,
     }).content as SimpleModalExampleWithContentSelectorsComponent;
   }
 }

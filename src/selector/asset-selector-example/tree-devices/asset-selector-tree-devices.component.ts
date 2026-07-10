@@ -30,7 +30,7 @@ import { IIdentified } from '@c8y/client';
             (onSelected)="selectionChanged($event)"
             [config]="{
               groupsSelectable: true,
-              groupsOnly: true
+              groupsOnly: true,
             }"
           ></c8y-asset-selector>
         </div>
@@ -47,7 +47,7 @@ import { IIdentified } from '@c8y/client';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, AssetSelectorModule, CoreModule]
+  imports: [CommonModule, AssetSelectorModule, CoreModule],
 })
 export class AssetSelectorTreeDevicesComponent {
   model: IIdentified;

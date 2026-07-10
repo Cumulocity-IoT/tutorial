@@ -7,8 +7,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'translations/text-translation/service-translation',
       loadComponent: () =>
         import('./text-translation-by-service.component').then(
-          m => m.TextTranslationByServiceComponent
-        )
+          (m) => m.TextTranslationByServiceComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: 'translations/text-translation/service-translation',
         icon: 'rocket',
         label: 'Text translation by service',
-        parent: 'Translations'
-      })
-    )
-  ]
+        parent: 'Translations',
+      }),
+    ),
+  ],
 })
 export class TextTranslationByServiceModule {}

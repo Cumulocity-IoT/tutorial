@@ -91,8 +91,8 @@ import { DateTimePickerModule } from '@c8y/ngx-components';
     C8yTranslateModule,
     CommonModule,
     DateTimePickerModule,
-    FormsModule
-  ]
+    FormsModule,
+  ],
 })
 export class DateTimeRangeExampleComponent {
   form: FormGroup;
@@ -101,7 +101,7 @@ export class DateTimeRangeExampleComponent {
     const dateFrom = new Date(dateTo.valueOf() - 24 * 60 * 60 * 1000);
     this.form = new FormGroup({
       dateFrom: new FormControl(dateFrom.toISOString()),
-      dateTo: new FormControl(dateTo.toISOString())
+      dateTo: new FormControl(dateTo.toISOString()),
     });
   }
 }

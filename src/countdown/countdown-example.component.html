@@ -1,5 +1,6 @@
-<div class="time-elapsed" 
-  [attr.aria-live]="'polite'" 
+<div
+  class="time-elapsed"
+  [attr.aria-live]="'polite'"
   [attr.aria-label]="'Time remaining until next refresh' | translate"
 >
   <!-- important -->
@@ -10,29 +11,9 @@
   <!-- /important -->
 </div>
 <div class="container-fluid p-24 text-center">
-  <button
-    class="btn btn-default"
-    (click)="startCountdown()"
-  >
-    Start
-  </button>
-  <button
-    class="btn btn-default"
-    (click)="stopCountdown()"
-  >
-    Stop
-  </button>
-  <button
-    class="btn btn-default"
-    (click)="stopCountdownAtZero()"
-  >
-    Stop at 0
-  </button>
-  <button
-    class="btn btn-default"
-    (click)="resetCountdown()"
-  >
-    Reset
-  </button>
+  <button class="btn btn-default" (click)="startCountdown()">Start</button>
+  <button class="btn btn-default" (click)="stopCountdown()">Stop</button>
+  <button class="btn btn-default" (click)="stopCountdownAtZero()">Stop at 0</button>
+  <button class="btn btn-default" (click)="resetCountdown()">Reset</button>
 </div>
 `

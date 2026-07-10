@@ -47,7 +47,7 @@ import { Subscription } from 'rxjs';
     </c8y-dashboard>
   `,
   standalone: true,
-  imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule]
+  imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule],
 })
 export class WidgetGuideDashboardComponent implements OnDestroy {
   isFrozen = false;
@@ -59,8 +59,8 @@ export class WidgetGuideDashboardComponent implements OnDestroy {
   subscription: Subscription;
 
   ngAfterViewInit() {
-    this.subscription = this.configForm.valueChanges.subscribe(value =>
-      console.log('Widget config:', value)
+    this.subscription = this.configForm.valueChanges.subscribe((value) =>
+      console.log('Widget config:', value),
     );
   }
 

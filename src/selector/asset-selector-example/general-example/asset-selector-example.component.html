@@ -27,7 +27,7 @@
             groupsSelectable: true,
             showChildDevices: true,
             showUnassignedDevices: true,
-            showFilter: true
+            showFilter: true,
           }"
         ></c8y-asset-selector-miller>
       </div>
@@ -42,7 +42,7 @@
           (onSelected)="selectionChanged($event)"
           [config]="{
             groupsSelectable: true,
-            showUnassignedDevices: true
+            showUnassignedDevices: true,
           }"
         ></c8y-asset-selector-miller>
       </div>
@@ -56,7 +56,7 @@
           [(ngModel)]="model"
           (onSelected)="selectionChanged($event)"
           [config]="{
-            groupsSelectable: false
+            groupsSelectable: false,
           }"
         ></c8y-asset-selector-miller>
       </div>
@@ -74,7 +74,7 @@
           [config]="{
             groupsSelectable: true,
             columnHeaders: true,
-            showFilter: true
+            showFilter: true,
           }"
         ></c8y-asset-selector-miller>
       </div>
@@ -98,7 +98,7 @@
             showUnassignedDevices: true,
             showChildDevices: true,
             search: true,
-            showSelected: false
+            showSelected: false,
           }"
           class="bg-component"
         ></c8y-asset-selector-miller>
@@ -118,7 +118,7 @@
             groupsSelectable: true,
             multi: true,
             columnHeaders: false,
-            showFilter: false
+            showFilter: false,
           }"
         ></c8y-asset-selector-miller>
       </div>
@@ -138,7 +138,7 @@
               [config]="{
                 groupsSelectable: true,
                 columnHeaders: true,
-                showFilter: true
+                showFilter: true,
               }"
             ></c8y-asset-selector-miller>
           </div>
@@ -160,7 +160,7 @@
                 multi: false,
                 columnHeaders: true,
                 singleColumn: true,
-                showFilter: true
+                showFilter: true,
               }"
               [asset]="rootNode$ | async"
               class="bg-component"
@@ -186,7 +186,7 @@
                 singleColumn: true,
                 columnHeaders: true,
                 showFilter: true,
-                search: true
+                search: true,
               }"
             ></c8y-asset-selector-miller>
           </div>
@@ -206,7 +206,7 @@
                 singleColumn: true,
                 columnHeaders: true,
                 showFilter: true,
-                multi: true
+                multi: true,
               }"
             ></c8y-asset-selector-miller>
           </div>
@@ -240,7 +240,7 @@
             [config]="{
               groupsSelectable: true,
               showUnassignedDevices: true,
-              showChildDevices: true
+              showChildDevices: true,
             }"
           ></c8y-asset-selector>
         </div>
@@ -255,7 +255,7 @@
             [(ngModel)]="model"
             [config]="{
               groupsSelectable: true,
-              multi: true
+              multi: true,
             }"
           ></c8y-asset-selector>
         </div>
@@ -283,7 +283,7 @@
           (onSelected)="selectionChanged($event)"
           [config]="{
             groupsSelectable: true,
-            groupsOnly: true
+            groupsOnly: true,
           }"
         ></c8y-asset-selector>
       </div>
@@ -301,7 +301,7 @@
             groupsSelectable: true,
             multi: true,
             search: true,
-            showSelected: true
+            showSelected: true,
           }"
         ></c8y-asset-selector>
       </div>

@@ -9,8 +9,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
       path: 'selector/asset-selector-example/node-selectable',
       loadComponent: () =>
         import('./asset-selector-node-selectable.component').then(
-          m => m.AssetSelectorNodeSelectableExampleComponent
-        )
+          (m) => m.AssetSelectorNodeSelectableExampleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -18,9 +18,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
         path: '/selector/asset-selector-example/node-selectable',
         icon: 'th-list',
         priority: -1,
-        parent: 'Asset selector'
-      })
-    )
-  ]
+        parent: 'Asset selector',
+      }),
+    ),
+  ],
 })
 export class AssetSelectorNodeSelectableExampleModule {}

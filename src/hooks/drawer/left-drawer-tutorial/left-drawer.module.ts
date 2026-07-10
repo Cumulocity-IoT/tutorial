@@ -4,7 +4,7 @@ import { LeftDrawerTutorialComponent } from './left-drawer-tutorial.component';
 
 @NgModule({
   providers: [
-    hookDrawer([{ component: LeftDrawerTutorialComponent, position: 'left', priority: 10 }])
-  ]
+    hookDrawer([{ component: LeftDrawerTutorialComponent, position: 'left', priority: 10 }]),
+  ],
 })
 export class LeftDrawerModule {}

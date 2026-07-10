@@ -8,16 +8,16 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'popconfirm',
       loadComponent: () =>
-        import('./pop-confirm-example.component').then(m => m.PopConfirmExampleComponent)
+        import('./pop-confirm-example.component').then((m) => m.PopConfirmExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
         path: '/popconfirm',
         label: 'Pop confirm',
         icon: 'hand-o-right',
-        priority: 80
-      })
-    )
-  ]
+        priority: 80,
+      }),
+    ),
+  ],
 })
 export class PopConfirmExampleModule {}

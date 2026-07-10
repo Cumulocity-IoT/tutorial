@@ -12,7 +12,8 @@ export const hooks = [
   hookAction(ExampleActionFactory),
   hookRoute({
     path: 'hooks/action',
-    loadComponent: () => import('./basic-view/basic-view.component').then(m => m.BasicViewComponent)
+    loadComponent: () =>
+      import('./basic-view/basic-view.component').then((m) => m.BasicViewComponent),
   }),
   hookNavigator(
     new NavigatorNode({
@@ -20,15 +21,15 @@ export const hooks = [
       path: 'hooks/action',
       icon: 'increase',
       label: 'Action',
-      parent: 'Hooks'
-    })
-  )
+      parent: 'Hooks',
+    }),
+  ),
 ];
 
 @NgModule({
   /**
    * Adding the hooks to the providers:
    */
-  providers: [...hooks]
+  providers: [...hooks],
 })
 export class ActionModule {}

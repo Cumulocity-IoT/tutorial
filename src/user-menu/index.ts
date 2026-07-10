@@ -14,11 +14,11 @@ export function provideUserMenuSample() {
             // method to be called when button in user menu is clicked
             click: () => {
               alert.info(gettext('Notification button clicked.'));
-            }
+            },
           });
         };
       })(inject(UserMenuService), inject(AlertService));
       return initializerFn();
-    })
+    }),
   ] satisfies (Provider | EnvironmentProviders)[];
 }

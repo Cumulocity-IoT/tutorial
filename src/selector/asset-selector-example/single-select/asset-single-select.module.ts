@@ -7,8 +7,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'selector/asset-selector-example/single-select',
       loadComponent: () =>
         import('./asset-selector-single-select.component').then(
-          m => m.AssetSelectorSingleSelectComponent
-        )
+          (m) => m.AssetSelectorSingleSelectComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/selector/asset-selector-example/single-select',
         icon: 'th-list',
         priority: -1,
-        parent: 'Asset selector'
-      })
-    )
-  ]
+        parent: 'Asset selector',
+      }),
+    ),
+  ],
 })
 export class AssetSingleSelectModule {}

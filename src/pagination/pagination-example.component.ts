@@ -30,7 +30,7 @@ interface Item {
     </div>
   `,
   standalone: true,
-  imports: [CoreModule, PaginationModule]
+  imports: [CoreModule, PaginationModule],
 })
 export class PaginationExampleComponent {
   currentPage = 1;
@@ -42,7 +42,7 @@ export class PaginationExampleComponent {
   // Mock dataset
   private allItems: Item[] = Array.from({ length: this.totalItems }, (_, i) => ({
     id: i + 1,
-    name: `Item ${i + 1}`
+    name: `Item ${i + 1}`,
   }));
 
   constructor() {

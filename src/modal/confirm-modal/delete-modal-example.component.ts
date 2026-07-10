@@ -6,7 +6,7 @@ import {
   ModalLabels,
   ModalModule,
   Status,
-  StatusType
+  StatusType,
 } from '@c8y/ngx-components';
 import { DeleteModalCheckboxes } from '@c8y/ngx-components/sub-assets';
 import { Subject } from 'rxjs';
@@ -35,7 +35,7 @@ import { Subject } from 'rxjs';
     </form>
   </c8y-confirm-modal>`,
   standalone: true,
-  imports: [ModalModule, FormsModule, CoreModule]
+  imports: [ModalModule, FormsModule, CoreModule],
 })
 export class DeleteModalExampleComponent implements AfterViewInit {
   @ViewChild('modalRef', { static: false }) modalRef: ConfirmModalComponent;
@@ -43,7 +43,7 @@ export class DeleteModalExampleComponent implements AfterViewInit {
   status: StatusType = Status.DANGER;
   closeSubject: Subject<DeleteModalCheckboxes> = new Subject();
   config: DeleteModalCheckboxes = {
-    cascade: false
+    cascade: false,
   };
 
   @Output() hideModal = new EventEmitter();

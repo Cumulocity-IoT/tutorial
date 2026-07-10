@@ -4,7 +4,7 @@ import {
   hookNavigator,
   hookRoute,
   hookTab,
-  NavigatorNode
+  NavigatorNode,
 } from '@c8y/ngx-components';
 import { TreeGridTabFactory } from './tree-grid-example-tab.factory';
 
@@ -14,12 +14,14 @@ import { TreeGridTabFactory } from './tree-grid-example-tab.factory';
     hookRoute({
       path: 'grids/tree-grid-example/server',
       loadComponent: () =>
-        import('./server-tree-grid-example.component').then(m => m.ServerTreeGridExampleComponent)
+        import('./server-tree-grid-example.component').then(
+          (m) => m.ServerTreeGridExampleComponent,
+        ),
     }),
     hookRoute({
       path: 'grids/tree-grid-example/client',
       loadComponent: () =>
-        import('./client-tree-grid-example.component').then(m => m.ClientGridExampleComponent)
+        import('./client-tree-grid-example.component').then((m) => m.ClientGridExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -27,10 +29,10 @@ import { TreeGridTabFactory } from './tree-grid-example-tab.factory';
         path: 'grids/tree-grid-example/server',
         icon: 'tree-structure',
         label: 'Tree grid',
-        parent: 'Data grid examples'
-      })
+        parent: 'Data grid examples',
+      }),
     ),
-    hookTab(TreeGridTabFactory)
-  ]
+    hookTab(TreeGridTabFactory),
+  ],
 })
 export class TreeGridExampleModule {}

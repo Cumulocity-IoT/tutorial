@@ -22,7 +22,7 @@ import { IIdentified } from '@c8y/client';
                 singleColumn: true,
                 columnHeaders: true,
                 showFilter: true,
-                search: true
+                search: true,
               }"
             ></c8y-asset-selector-miller>
           </div>
@@ -42,7 +42,7 @@ import { IIdentified } from '@c8y/client';
                 singleColumn: true,
                 columnHeaders: true,
                 showFilter: true,
-                multi: true
+                multi: true,
               }"
             ></c8y-asset-selector-miller>
           </div>
@@ -60,7 +60,7 @@ import { IIdentified } from '@c8y/client';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, AssetSelectorModule, CoreModule]
+  imports: [CommonModule, AssetSelectorModule, CoreModule],
 })
 export class AssetSelectorSingleSearchComponent {
   model: IIdentified;

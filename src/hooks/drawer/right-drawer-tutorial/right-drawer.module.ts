@@ -4,7 +4,7 @@ import { hookDrawer } from '@c8y/ngx-components';
 
 @NgModule({
   providers: [
-    hookDrawer([{ component: RightDrawerTutorialComponent, position: 'right', priority: 20 }])
-  ]
+    hookDrawer([{ component: RightDrawerTutorialComponent, position: 'right', priority: 20 }]),
+  ],
 })
 export class RightDrawerModule {}

@@ -7,8 +7,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'selector/datapoint-selection-example/validation-example',
       loadComponent: () =>
         import('./datapoint-selection-validation-example.component').then(
-          m => m.DatapointSelectionValidationExampleComponent
-        )
+          (m) => m.DatapointSelectionValidationExampleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/selector/datapoint-selection-example/validation-example',
         icon: 'th-list',
         priority: -1,
-        parent: 'Datapoint selection'
-      })
-    )
-  ]
+        parent: 'Datapoint selection',
+      }),
+    ),
+  ],
 })
 export class DatapointSelectionValidationExampleModule {}

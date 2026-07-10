@@ -19,7 +19,7 @@ import { BehaviorSubject } from 'rxjs';
           [config]="{
             groupsSelectable: true,
             multi: true,
-            search: true
+            search: true,
           }"
         ></c8y-asset-selector>
       </div>
@@ -48,7 +48,7 @@ import { BehaviorSubject } from 'rxjs';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, AssetSelectorModule, CoreModule]
+  imports: [CommonModule, AssetSelectorModule, CoreModule],
 })
 export class AssetSelectorTreeSearchComponent {
   model: IIdentified;

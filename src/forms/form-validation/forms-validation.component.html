@@ -5,7 +5,9 @@
   [formGroup]="formGroup"
 >
   <c8y-form-group>
-    <label for="firstName" class="control-label" translate>First name (default validation messages)</label>
+    <label for="firstName" class="control-label" translate
+      >First name (default validation messages)</label
+    >
     <input
       type="text"
       class="form-control"
@@ -16,7 +18,9 @@
   </c8y-form-group>
 
   <c8y-form-group>
-    <label for="lastName" class="control-label" translate>Last name (custom validation messages added)</label>
+    <label for="lastName" class="control-label" translate
+      >Last name (custom validation messages added)</label
+    >
     <input
       type="text"
       class="form-control"
@@ -25,9 +29,18 @@
       [placeholder]="'e.g. {{ example }}' | translate: { example: 'Mustermann' }"
     />
     <c8y-messages>
-      <c8y-message name="required" text="Last Name is an required field, please fill it."></c8y-message>
-      <c8y-message name="minlength" [text]="'Last Name is supposed to be longer then {{ requiredLength }} characters.'"></c8y-message>
-      <c8y-message name="maxlength" [text]="'Last Name is not supposed to be longer then {{ requiredLength }} characters.'"></c8y-message>
+      <c8y-message
+        name="required"
+        text="Last Name is an required field, please fill it."
+      ></c8y-message>
+      <c8y-message
+        name="minlength"
+        [text]="'Last Name is supposed to be longer then {{ requiredLength }} characters.'"
+      ></c8y-message>
+      <c8y-message
+        name="maxlength"
+        [text]="'Last Name is not supposed to be longer then {{ requiredLength }} characters.'"
+      ></c8y-message>
     </c8y-messages>
   </c8y-form-group>
 
@@ -41,7 +54,10 @@
       [placeholder]="'e.g. {{ example }}' | translate: { example: 'max.mustermann@example.com' }"
     />
     <c8y-messages>
-      <c8y-message name="email" text="This does not fulfill our standards for email addresses."></c8y-message>
+      <c8y-message
+        name="email"
+        text="This does not fulfill our standards for email addresses."
+      ></c8y-message>
     </c8y-messages>
   </c8y-form-group>
 
@@ -82,7 +98,12 @@
       [placeholder]="'e.g. {{ example }}' | translate: { example: 'Some description' }"
     />
     <c8y-messages>
-      <c8y-message name="pattern" [text]="'Must start with \'description\', optionally followed by further letters.' | translate"></c8y-message>
+      <c8y-message
+        name="pattern"
+        [text]="
+          'Must start with \'description\', optionally followed by further letters.' | translate
+        "
+      ></c8y-message>
     </c8y-messages>
   </c8y-form-group>
 
@@ -93,13 +114,18 @@
       class="form-control"
       id="notes"
       formControlName="notes"
-      [placeholder]="'e.g. {{ example }}' | translate: { example: 'Some notes' }" #test
+      [placeholder]="'e.g. {{ example }}' | translate: { example: 'Some notes' }"
+      #test
     />
     <c8y-messages>
-      <c8y-message *ngIf="test.value?.length > 0 && test.value?.length < 5 ">Take longer notes.</c8y-message>
+      <c8y-message *ngIf="test.value?.length > 0 && test.value?.length < 5"
+        >Take longer notes.</c8y-message
+      >
       <c8y-message *ngIf="test.value?.length > 50">Don't take too long notes.</c8y-message>
     </c8y-messages>
   </c8y-form-group>
 
-  <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid" translate>Submit</button>
+  <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid" translate>
+    Submit
+  </button>
 </form>

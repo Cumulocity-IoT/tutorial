@@ -6,7 +6,7 @@ import { BottomDrawerContentExampleComponent } from './bottom-drawer-content-exa
   selector: 'tut-bottom-drawer-stacked-example',
   templateUrl: './bottom-drawer-stacked-example.component.html',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class BottomDrawerStackedExampleComponent {
   bottomDrawerService = inject(BottomDrawerService);
@@ -18,10 +18,10 @@ export class BottomDrawerStackedExampleComponent {
     const drawer = this.bottomDrawerService.openDrawer(BottomDrawerContentExampleComponent, {
       initialState: {
         // place here any content you want to pass to the component
-        isDisabled: true
+        isDisabled: true,
       },
       disableClickOutside: true,
-      closeOnEscape: false // BottomDrawerContentExampleComponent will handle Escape key on its own
+      closeOnEscape: false, // BottomDrawerContentExampleComponent will handle Escape key on its own
     });
 
     try {

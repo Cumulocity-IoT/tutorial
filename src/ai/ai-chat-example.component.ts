@@ -8,7 +8,7 @@ import {
   AiChatComponent,
   AiChatMessageActionComponent,
   AiChatMessageComponent,
-  AiChatSuggestionComponent
+  AiChatSuggestionComponent,
 } from '@c8y/ngx-components/ai/ai-chat';
 import { gettext } from '@c8y/ngx-components/gettext';
 
@@ -25,8 +25,8 @@ import { gettext } from '@c8y/ngx-components/gettext';
     NgComponentOutlet,
     CoreModule,
     FormsModule,
-    JsonPipe
-  ]
+    JsonPipe,
+  ],
 })
 export class ChatExampleComponent {
   AiChatAssistantMessageComponent = AiChatAssistantMessageComponent;
@@ -54,15 +54,15 @@ export class ChatExampleComponent {
     disclaimerText: 'AI-generated responses can contain errors. Verify the details before use.',
     suggestionsLayout: 'horizontal',
     appearance: 'framed',
-    userInterfaceIcons: { send: 'arrow-circle-up', cancel: 'stop-circle' }
+    userInterfaceIcons: { send: 'arrow-circle-up', cancel: 'stop-circle' },
   };
   assistantMessageDisplayConfig: AssistantMessageDisplayConfig = {
     toolCallConfig: {
       'c8y-read-documentation': {
         executingLabel: gettext('Reading Cumulocity documentation'),
-        completedLabel: gettext('Read Cumulocity documentation')
-      }
-    }
+        completedLabel: gettext('Read Cumulocity documentation'),
+      },
+    },
   };
 
   messages: AIMessage[] = [];
@@ -81,25 +81,25 @@ export class ChatExampleComponent {
         content: [
           {
             type: 'text',
-            text: '**Great idea**, I can definitely help you with that!\n\nFirst let me use some tools to gather the information I need.'
+            text: '**Great idea**, I can definitely help you with that!\n\nFirst let me use some tools to gather the information I need.',
           },
           {
             type: 'reasoning',
-            text: "The user asked me a question but I need more information. I see, I have some tools available that can help! \n\nNow I'll initiate a call to help solve this problem."
+            text: "The user asked me a question but I need more information. I see, I have some tools available that can help! \n\nNow I'll initiate a call to help solve this problem.",
           },
           {
             type: 'tool-result',
             toolName: 'c8y-read-documentation',
             toolCallId: 'call1',
             input: { query: 'Example query' },
-            output: '<html>\n<h1>\n    C8Y doc sample\n</h1>\n</html>'
+            output: '<html>\n<h1>\n    C8Y doc sample\n</h1>\n</html>',
           },
           {
             toolName: 'c8y-tool-with-json-output',
             toolCallId: 'call3',
             type: 'tool-result',
             input: {},
-            output: { 'Key 1': 123, 'Key 2': 'Value 2' }
+            output: { 'Key 1': 123, 'Key 2': 'Value 2' },
           },
           {
             toolName: 'c8y-tool-with-error',
@@ -107,15 +107,15 @@ export class ChatExampleComponent {
             type: 'tool-result',
             input: { url: 'something invalid' },
             output: 'This is an error message\nSomething bad happened',
-            error: true
+            error: true,
           },
           {
             type: 'text',
-            text: 'Your **excellent idea** has now been implemented!\n\nWhat would you like me to help with next?'
-          }
+            text: 'Your **excellent idea** has now been implemented!\n\nWhat would you like me to help with next?',
+          },
         ],
         role: 'assistant',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
       this.updateDisplayMessages();
       this.isLoading = false;
@@ -123,7 +123,7 @@ export class ChatExampleComponent {
   }
 
   revertMessage(message: AIMessage) {
-    this.messages = this.messages.filter(m => m !== message);
+    this.messages = this.messages.filter((m) => m !== message);
     this.updateDisplayMessages();
   }
 

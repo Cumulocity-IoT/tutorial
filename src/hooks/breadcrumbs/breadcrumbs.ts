@@ -39,7 +39,7 @@ export class ExampleBreadcrumbFactory implements BreadcrumbFactory {
         breadcrumbItems.push({
           label: 'tabs',
           icon: 'plane',
-          path: '/tabs'
+          path: '/tabs',
         });
 
         // if the URL is: .../apps/tutorial-application/#/tabs/awesome
@@ -47,7 +47,7 @@ export class ExampleBreadcrumbFactory implements BreadcrumbFactory {
         if (this.router.url.match(/awesome/g)) {
           breadcrumbItems.push({
             label: 'awesome',
-            path: '/tabs/awesome'
+            path: '/tabs/awesome',
           });
         }
 
@@ -56,7 +56,7 @@ export class ExampleBreadcrumbFactory implements BreadcrumbFactory {
         if (this.router.url.match(/outstanding/g)) {
           breadcrumbItems.push({
             label: 'outstanding',
-            path: '/tabs/outstanding'
+            path: '/tabs/outstanding',
           });
         }
       }
@@ -72,7 +72,7 @@ export class ExampleBreadcrumbFactory implements BreadcrumbFactory {
         breadcrumbItems.push({
           label: 'hooks',
           icon: 'forward',
-          path: '/hooks/action'
+          path: '/hooks/action',
         });
 
         // if the URL is: .../apps/tutorial-application/#/hooks/breadcrumb
@@ -81,7 +81,7 @@ export class ExampleBreadcrumbFactory implements BreadcrumbFactory {
           breadcrumbItems.push({
             label: 'breadcrumbs',
             icon: 'forward',
-            path: '/hooks/breadcrumbs'
+            path: '/hooks/breadcrumbs',
           });
         }
       }

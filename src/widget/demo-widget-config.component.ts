@@ -6,7 +6,7 @@ import {
   Input,
   OnInit,
   TemplateRef,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -16,7 +16,7 @@ import {
   FormGroup,
   NgForm,
   ReactiveFormsModule,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { AlertService, DynamicComponent, FormGroupComponent } from '@c8y/ngx-components';
 import { WidgetConfigService } from '@c8y/ngx-components/context-dashboard';
@@ -40,7 +40,7 @@ import { WidgetConfig } from './widget-config.model';
   `,
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
   standalone: true,
-  imports: [FormGroupComponent, ReactiveFormsModule, WidgetDemo, AsyncPipe]
+  imports: [FormGroupComponent, ReactiveFormsModule, WidgetDemo, AsyncPipe],
 })
 export class WidgetConfigDemo implements DynamicComponent, OnInit {
   /** Configuration passed by the dashboard framework. */
@@ -66,7 +66,7 @@ export class WidgetConfigDemo implements DynamicComponent, OnInit {
   ngOnInit(): void {
     // Create form with initial values from config
     this.formGroup = this.formBuilder.group({
-      text: [this.config?.text || '', Validators.required]
+      text: [this.config?.text || '', Validators.required],
     });
 
     // Register form with parent NgForm for validation
@@ -76,12 +76,12 @@ export class WidgetConfigDemo implements DynamicComponent, OnInit {
     this.config$.next(this.config);
 
     // Update preview when form values change
-    this.formGroup.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(value => {
+    this.formGroup.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((value) => {
       this.config$.next({ ...this.config, ...value });
     });
 
     // Register save callback - validates and merges form values into config
-    this.widgetConfigService.addOnBeforeSave(config => {
+    this.widgetConfigService.addOnBeforeSave((config) => {
       if (this.formGroup.invalid) {
         this.alert.warning('Please enter a valid text.');
         return false;

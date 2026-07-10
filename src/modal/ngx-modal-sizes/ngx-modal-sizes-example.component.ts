@@ -5,7 +5,7 @@ import {
   CoreModule,
   FormsModule,
   HeaderModule,
-  ModalModule
+  ModalModule,
 } from '@c8y/ngx-components';
 import { SmallModalExampleComponent } from './small-modal-example.component';
 import { MediumModalExampleComponent } from './medium-modal-example.component';
@@ -32,7 +32,7 @@ import { LargeModalExampleComponent } from './large-modal-example.component';
     </div>
   </div>`,
   standalone: true,
-  imports: [HeaderModule, C8yTranslateModule, FormsModule, ModalModule, CoreModule]
+  imports: [HeaderModule, C8yTranslateModule, FormsModule, ModalModule, CoreModule],
 })
 export class NgxModalSizesExampleComponent {
   constructor(private modalService: BsModalService) {}
@@ -42,7 +42,7 @@ export class NgxModalSizesExampleComponent {
       class: 'modal-sm',
       ariaDescribedby: 'modal-body',
       ariaLabelledBy: 'modal-title',
-      ignoreBackdropClick: true
+      ignoreBackdropClick: true,
     }).content as SmallModalExampleComponent;
   }
 
@@ -51,7 +51,7 @@ export class NgxModalSizesExampleComponent {
       class: 'modal-md',
       ariaDescribedby: 'modal-body',
       ariaLabelledBy: 'modal-title',
-      ignoreBackdropClick: true
+      ignoreBackdropClick: true,
     }).content as MediumModalExampleComponent;
   }
 
@@ -60,7 +60,7 @@ export class NgxModalSizesExampleComponent {
       class: 'modal-lg',
       ariaDescribedby: 'modal-body',
       ariaLabelledBy: 'modal-title',
-      ignoreBackdropClick: true
+      ignoreBackdropClick: true,
     }).content as LargeModalExampleComponent;
   }
 }

@@ -5,7 +5,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
   providers: [
     hookRoute({
       path: 'translations/new-language',
-      loadComponent: () => import('./new-language.component').then(m => m.NewLanguageComponent)
+      loadComponent: () => import('./new-language.component').then((m) => m.NewLanguageComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -13,9 +13,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: 'translations/new-language',
         icon: 'rocket',
         label: 'New language',
-        parent: 'Translations'
-      })
-    )
-  ]
+        parent: 'Translations',
+      }),
+    ),
+  ],
 })
 export class NewLanguageModule {}

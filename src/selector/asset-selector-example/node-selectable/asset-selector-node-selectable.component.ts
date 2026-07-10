@@ -19,7 +19,7 @@ import { IIdentified } from '@c8y/client';
             [isNodeSelectable]="isNodeSelectable"
             [config]="{
               groupsSelectable: true,
-              multi: true
+              multi: true,
             }"
           ></c8y-asset-selector>
         </div>
@@ -36,12 +36,12 @@ import { IIdentified } from '@c8y/client';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, AssetSelectorModule, CoreModule]
+  imports: [CommonModule, AssetSelectorModule, CoreModule],
 })
 export class AssetSelectorNodeSelectableExampleComponent {
   model: IIdentified;
 
-  isNodeSelectable = node => {
+  isNodeSelectable = (node) => {
     // Only allow selecting assets of type building
     return node.mo.type === 'building';
   };

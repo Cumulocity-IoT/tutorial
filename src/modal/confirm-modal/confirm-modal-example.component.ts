@@ -24,12 +24,12 @@ import { DeleteModalExampleComponent } from './delete-modal-example.component';
     </div>
   </div>`,
   standalone: true,
-  imports: [ModalModule, FormsModule, CoreModule]
+  imports: [ModalModule, FormsModule, CoreModule],
 })
 export class ConfirmModalExampleComponent {
   constructor(
     private bsModalService: BsModalService,
-    private modalService: ModalService
+    private modalService: ModalService,
   ) {}
 
   deleteDevice() {
@@ -43,25 +43,25 @@ export class ConfirmModalExampleComponent {
         'You are about to delete the configuration snapshot from "Device A". Do you want to proceed?',
         Status.DANGER,
         {
-          ok: 'Delete'
+          ok: 'Delete',
         },
         {
           resetToLatestSnapshot: {
             checked: false,
             text: 'Reset configuration to latest snapshot',
-            disabledByKey: 'resetToFactoryDefaults'
+            disabledByKey: 'resetToFactoryDefaults',
           },
           resetToFactoryDefaults: {
             checked: false,
             text: 'Reset configuration to factory defaults',
-            disabledByKey: 'resetToLatestSnapshot'
+            disabledByKey: 'resetToLatestSnapshot',
           },
           restartDevice: {
             checked: false,
             text: 'Restart device',
-            showIf: () => true
-          }
-        }
+            showIf: () => true,
+          },
+        },
       );
       // eslint-disable-next-line no-console
       console.log('Delete clicked');
@@ -82,11 +82,11 @@ export class ConfirmModalExampleComponent {
         'You are about to delete the tenant. This action will immediately affect all users.<br><br>For security reasons, enter the following code to continue:',
         Status.DANGER,
         {
-          ok: 'Delete'
+          ok: 'Delete',
         },
         {},
         undefined,
-        true // requireCodeVerification
+        true, // requireCodeVerification
       );
       // eslint-disable-next-line no-console
       console.log('Delete confirmed with code verification');

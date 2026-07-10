@@ -9,7 +9,7 @@ export class BoilerplateInterceptor implements HttpInterceptor {
     return handleRequest(req, next, 'inventory/managedObjects', {
       POST: this.mockPOST.bind(this),
       PUT: this.mockPUT.bind(this),
-      GET: this.mockGET.bind(this)
+      GET: this.mockGET.bind(this),
     });
   }
 
@@ -43,12 +43,12 @@ export class BoilerplateInterceptor implements HttpInterceptor {
         statistics: {
           totalPages: 201,
           pageSize: 1,
-          currentPage: 1
-        }
+          currentPage: 1,
+        },
       }),
       'has(c8y_Position)': () => ({
-        managedObjects: [...[...Array(201)].map(() => generateDevice())]
-      })
+        managedObjects: [...[...Array(201)].map(() => generateDevice())],
+      }),
     };
   }
 }

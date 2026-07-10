@@ -18,7 +18,7 @@ export const customHooks = [
   hookRoute({
     path: 'hooks/preview-feature-custom',
     loadComponent: () =>
-      import('./basic-view-custom.component').then(m => m.CustomBasicViewComponent)
+      import('./basic-view-custom.component').then((m) => m.CustomBasicViewComponent),
   }),
   hookNavigator(ExampleCustomPreviewFeatureNavigationFactory),
   hookPreview({
@@ -31,15 +31,15 @@ export const customHooks = [
     label: 'Custom feature preview',
     description: () => Promise.resolve('This is a custom feature'),
     settings: {
-      reload: true
-    }
-  })
+      reload: true,
+    },
+  }),
 ];
 
 @NgModule({
   /**
    * Adding the hooks to the providers:
    */
-  providers: [...customHooks]
+  providers: [...customHooks],
 })
 export class PreviewFeatureCustomModule {}

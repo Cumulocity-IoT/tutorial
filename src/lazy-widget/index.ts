@@ -20,10 +20,8 @@ export function provideLazyWidget() {
       loadConfigComponent: loadConfigComponent,
       data: {
         schema: () =>
-          import(
-            'c8y-schema-loader?interfaceName=WidgetConfig&type=widget-config!./widget-config.model'
-          )
-      }
-    })
+          import('c8y-schema-loader?interfaceName=WidgetConfig&type=widget-config!./widget-config.model'),
+      },
+    }),
   ];
 }

@@ -5,7 +5,7 @@ import {
   DATA_GRID_CONFIGURATION_CONTEXT_PROVIDER,
   GridConfig,
   GridConfigContext,
-  GridConfigContextProvider
+  GridConfigContextProvider,
 } from '@c8y/ngx-components';
 import { Observable, of } from 'rxjs';
 
@@ -22,7 +22,7 @@ export class VoidConfigurationStrategy extends AbstractConfigurationStrategy {
     protected context: GridConfigContext,
     @Inject(DATA_GRID_CONFIGURATION_CONTEXT_PROVIDER)
     @Optional()
-    protected contextProvider: GridConfigContextProvider
+    protected contextProvider: GridConfigContextProvider,
   ) {
     super(context, contextProvider);
   }
@@ -31,7 +31,7 @@ export class VoidConfigurationStrategy extends AbstractConfigurationStrategy {
     return of(null);
   }
 
-  saveConfig$(): Observable<GridConfig> {
-    return of(null);
+  saveConfig$(): Observable<void> {
+    return of(undefined);
   }
 }

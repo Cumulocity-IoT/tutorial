@@ -4,7 +4,7 @@ export function provideProviderConfigurationIntroduction() {
   return [
     hookRoute({
       path: 'provider-configuration/introduction-example',
-      loadComponent: () => import('./introduction.component').then(m => m.IntroductionComponent)
+      loadComponent: () => import('./introduction.component').then((m) => m.IntroductionComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -12,8 +12,8 @@ export function provideProviderConfigurationIntroduction() {
         path: '/provider-configuration/introduction-example',
         icon: 'list-alt',
         priority: 3,
-        parent: 'Provider configuration'
-      })
-    )
+        parent: 'Provider configuration',
+      }),
+    ),
   ];
 }

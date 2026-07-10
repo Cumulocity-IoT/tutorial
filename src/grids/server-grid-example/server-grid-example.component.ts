@@ -16,7 +16,7 @@ import {
   LoadMoreMode,
   Pagination,
   Row,
-  ServerSideDataResult
+  ServerSideDataResult,
 } from '@c8y/ngx-components';
 import { DeviceGridModule } from '@c8y/ngx-components/device-grid';
 import { ServerGridExampleService } from './server-grid-example.service';
@@ -39,19 +39,19 @@ import { VoidConfigurationStrategy } from './void-configuration-strategy';
     RouterModule,
     TypeCellRendererComponent,
     TypeFilteringFormRendererComponent,
-    TypeHeaderCellRendererComponent
+    TypeHeaderCellRendererComponent,
   ],
   providers: [
     ServerGridExampleService,
     {
       provide: DATA_GRID_CONFIGURATION_STRATEGY,
-      useClass: VoidConfigurationStrategy
+      useClass: VoidConfigurationStrategy,
     },
     {
       provide: DATA_GRID_CONFIGURATION_CONTEXT_PROVIDER,
-      useExisting: ServerGridExampleComponent
-    }
-  ]
+      useExisting: ServerGridExampleComponent,
+    },
+  ],
 })
 export class ServerGridExampleComponent implements GridConfigContextProvider {
   title = 'Managed objects';
@@ -63,7 +63,7 @@ export class ServerGridExampleComponent implements GridConfigContextProvider {
     striped: true,
     filter: true,
     gridHeader: true,
-    hover: true
+    hover: true,
   };
 
   columns: Column[];
@@ -94,7 +94,7 @@ export class ServerGridExampleComponent implements GridConfigContextProvider {
        * You can provide data here that can be used for grid configration storage,
        * action control matchers, etc.
        */
-      key: 'server-grid-example'
+      key: 'server-grid-example',
     };
   }
 
@@ -109,15 +109,15 @@ export class ServerGridExampleComponent implements GridConfigContextProvider {
    * full response, list of items, paging object, the number of items in the filtered subset, the number of all items.
    */
   async onDataSourceModifier(
-    dataSourceModifier: DataSourceModifier
+    dataSourceModifier: DataSourceModifier,
   ): Promise<ServerSideDataResult> {
     const { res, data, paging } = await this.service.getData(
       dataSourceModifier.columns,
-      dataSourceModifier.pagination
+      dataSourceModifier.pagination,
     );
     const filteredSize: number = await this.service.getCount(
       dataSourceModifier.columns,
-      dataSourceModifier.pagination
+      dataSourceModifier.pagination,
     );
     const size: number = await this.service.getTotal();
 

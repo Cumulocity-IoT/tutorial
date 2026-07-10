@@ -2,14 +2,14 @@
 
 <c8y-action-bar-item itemClass="navbar-form" placement="right">
   <div class="d-flex a-i-center">
-    <label class="m-0 p-r-4" for="bufferSizeOptions" translate>Maximum buffer size of notifications</label>
+    <label class="m-0 p-r-4" for="bufferSizeOptions" translate
+      >Maximum buffer size of notifications</label
+    >
     <div class="c8y-select-wrapper">
-      <select
-        id="bufferSizeOptions"
-        class="form-control"
-        [(ngModel)]="bufferSize"
-      >
-        <option [ngValue]="option" *ngFor="let option of bufferSizeOptions">{{ option }} Items</option>
+      <select id="bufferSizeOptions" class="form-control" [(ngModel)]="bufferSize">
+        <option [ngValue]="option" *ngFor="let option of bufferSizeOptions">
+          {{ option }} Items
+        </option>
       </select>
     </div>
   </div>
@@ -23,23 +23,32 @@
       </div>
       <c8y-list-group>
         <c8y-li *ngFor="let service of services">
-          <c8y-realtime-btn [service]="service.instance" [title]="'Toggle ' + service.className" [label]="service.className"></c8y-realtime-btn>
+          <c8y-realtime-btn
+            [service]="service.instance"
+            [title]="'Toggle ' + service.className"
+            [label]="service.className"
+          ></c8y-realtime-btn>
         </c8y-li>
       </c8y-list-group>
     </div>
   </div>
   <div class="col-md-6">
-    <ng-container *ngIf="(allAPIsRealtime$ | async) as notificationBuffer; else waiting">
+    <ng-container *ngIf="allAPIsRealtime$ | async as notificationBuffer; else waiting">
       <ng-container *ngIf="notificationBuffer.length; else waiting">
         <div class="card">
           <div class="card-header separator">
-            <h4 class="card-title">Latest {{ bufferSize }} notifications received </h4>
+            <h4 class="card-title">Latest {{ bufferSize }} notifications received</h4>
           </div>
-          <div class="inner-scroll" style="height: 312px;">
+          <div class="inner-scroll" style="height: 312px">
             <div class="card-block">
-              <div [ngClass]="{'separator-top p-t-16': i > 0}" *ngFor="let realtimeItem of notificationBuffer; let i = index">
-                <p class="m-b-8"><strong>{{ i + 1 }}. RealtimeMessage in buffer</strong></p>
-                  <pre><code>{{ realtimeItem | json }}</code></pre>
+              <div
+                [ngClass]="{ 'separator-top p-t-16': i > 0 }"
+                *ngFor="let realtimeItem of notificationBuffer; let i = index"
+              >
+                <p class="m-b-8">
+                  <strong>{{ i + 1 }}. RealtimeMessage in buffer</strong>
+                </p>
+                <pre><code>{{ realtimeItem | json }}</code></pre>
               </div>
             </div>
           </div>
@@ -57,5 +66,3 @@
     </ng-template>
   </div>
 </div>
-
-

@@ -15,7 +15,7 @@ import {
   SplitViewFooterComponent,
   SplitViewHeaderActionsComponent,
   SplitViewListComponent,
-  SplitViewListItemDirective
+  SplitViewListItemDirective,
 } from '@c8y/ngx-components';
 
 type DeviceItem = {
@@ -56,8 +56,8 @@ type DeviceItem = {
     SplitViewFooterComponent,
     SplitViewExtraHeaderComponent,
     SplitViewDetailsActionsComponent,
-    SplitViewListItemDirective
-  ]
+    SplitViewListItemDirective,
+  ],
 })
 export class SplitViewResizableExampleComponent {
   @ViewChild(SplitViewDetailsComponent) detailsComponent?: SplitViewDetailsComponent;
@@ -80,8 +80,8 @@ export class SplitViewResizableExampleComponent {
         id: 'THM-001',
         c8y_Availability: { status: 'AVAILABLE' },
         c8y_Connection: { status: 'CONNECTED' },
-        c8y_RequiredAvailability: { responseInterval: 60 }
-      }
+        c8y_RequiredAvailability: { responseInterval: 60 },
+      },
     },
     {
       id: 2,
@@ -97,8 +97,8 @@ export class SplitViewResizableExampleComponent {
         id: 'CAM-002',
         c8y_Availability: { status: 'UNAVAILABLE' },
         c8y_Connection: { status: 'DISCONNECTED' },
-        c8y_RequiredAvailability: { responseInterval: 60 }
-      }
+        c8y_RequiredAvailability: { responseInterval: 60 },
+      },
     },
     {
       id: 3,
@@ -114,8 +114,8 @@ export class SplitViewResizableExampleComponent {
         id: 'AQM-003',
         c8y_Availability: { status: 'AVAILABLE' },
         c8y_Connection: { status: 'CONNECTED' },
-        c8y_RequiredAvailability: { responseInterval: 30 }
-      }
+        c8y_RequiredAvailability: { responseInterval: 30 },
+      },
     },
     {
       id: 4,
@@ -131,8 +131,8 @@ export class SplitViewResizableExampleComponent {
         id: 'LOCK-004',
         c8y_Availability: { status: 'MAINTENANCE' },
         c8y_Connection: { status: 'MAINTENANCE' },
-        c8y_RequiredAvailability: { responseInterval: 120 }
-      }
+        c8y_RequiredAvailability: { responseInterval: 120 },
+      },
     },
     {
       id: 5,
@@ -148,9 +148,9 @@ export class SplitViewResizableExampleComponent {
         id: 'EMT-005',
         c8y_Availability: { status: 'AVAILABLE' },
         c8y_Connection: { status: 'CONNECTED' },
-        c8y_RequiredAvailability: { responseInterval: 300 }
-      }
-    }
+        c8y_RequiredAvailability: { responseInterval: 300 },
+      },
+    },
   ];
 
   onSelectionChange(item: DeviceItem | null): void {

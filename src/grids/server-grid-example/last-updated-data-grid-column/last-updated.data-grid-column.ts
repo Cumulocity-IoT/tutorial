@@ -31,29 +31,29 @@ export class LastUpdatedDataGridColumn extends BaseColumn {
           type: 'object',
           key: 'lastUpdated',
           templateOptions: {
-            label: gettext('Show items last updated')
+            label: gettext('Show items last updated'),
           },
           fieldGroup: [
             {
               type: 'date-time',
               key: 'after',
               templateOptions: {
-                label: gettext('from')
+                label: gettext('from'),
               },
               expressionProperties: {
-                'templateOptions.maxDate': (model: any) => model?.before
-              }
+                'templateOptions.maxDate': (model: any) => model?.before,
+              },
             },
             {
               type: 'date-time',
               key: 'before',
               templateOptions: {
-                label: gettext('to')
+                label: gettext('to'),
               },
               expressionProperties: {
-                'templateOptions.minDate': (model: any) => model?.after
-              }
-            }
+                'templateOptions.minDate': (model: any) => model?.after,
+              },
+            },
           ],
           validators: {
             atLeastOneFilled: {
@@ -61,13 +61,13 @@ export class LastUpdatedDataGridColumn extends BaseColumn {
                 const after = formGroup.get('after').value;
                 const before = formGroup.get('before').value;
                 return after || before;
-              }
-            }
-          }
-        }
+              },
+            },
+          },
+        },
       ],
       formGroup: new FormGroup({}),
-      getFilter: model => {
+      getFilter: (model) => {
         const filter: any = {};
         const dates = model?.lastUpdated;
         if (dates?.after || dates?.before) {
@@ -75,23 +75,23 @@ export class LastUpdatedDataGridColumn extends BaseColumn {
           if (dates?.after) {
             const after = this.formatDate(dates.after);
             filter.__and.push({
-              'lastUpdated.date': { __gt: after }
+              'lastUpdated.date': { __gt: after },
             });
           }
           if (dates?.before) {
             const before = this.formatDate(dates.before);
             filter.__and.push({
-              'lastUpdated.date': { __lt: before }
+              'lastUpdated.date': { __lt: before },
             });
           }
         }
         return filter;
-      }
+      },
     };
 
     this.sortable = true;
     this.sortingConfig = {
-      pathSortingConfigs: [{ path: 'lastUpdated.date' }]
+      pathSortingConfigs: [{ path: 'lastUpdated.date' }],
     };
   }
 

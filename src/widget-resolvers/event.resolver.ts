@@ -4,7 +4,7 @@ import { IEvent } from '@c8y/client';
 import {
   DynamicComponentAlert,
   DynamicDetailsResolver,
-  DynamicResolverService
+  DynamicResolverService,
 } from '@c8y/ngx-components';
 import { uniq } from 'lodash';
 import { Observable } from 'rxjs';
@@ -25,23 +25,23 @@ export class DynamicEventResolver implements DynamicDetailsResolver<IEvent> {
 
   constructor(
     protected dynamicResolver: DynamicResolverService,
-    protected events: EventService
+    protected events: EventService,
   ) {
     this.bulkResolve = this.dynamicResolver.bulkResolvingTrigger$.pipe(
-      map(bulkRequestId => ({
+      map((bulkRequestId) => ({
         uniqIds: uniq(this.eventIds.get(bulkRequestId) || []),
-        bulkRequestId
+        bulkRequestId,
       })),
       tap(({ bulkRequestId }) => this.eventIds.delete(bulkRequestId)),
       mergeMap(({ uniqIds, bulkRequestId }) => this.loadEvents(uniqIds, bulkRequestId)),
-      share()
+      share(),
     );
   }
 
   resolve(
     config: any,
     attribute: string,
-    bulkRequestId: number
+    bulkRequestId: number,
   ): IEvent | Promise<IEvent> | Observable<IEvent | DynamicComponentAlert<IEvent>> {
     const storedEvent: IEvent = config[attribute];
     if (!storedEvent) {
@@ -55,13 +55,13 @@ export class DynamicEventResolver implements DynamicDetailsResolver<IEvent> {
       take(1),
       map(
         ({ result: updatedEvents }) =>
-          updatedEvents.find(updatedEvent => updatedEvent.id === storedEvent.id) ||
+          updatedEvents.find((updatedEvent) => updatedEvent.id === storedEvent.id) ||
           new DynamicComponentAlert({
             text: `Unable to retrieve Event "${storedEvent.text}" (${storedEvent.id})`,
             type: 'danger',
-            unresolvedData: storedEvent
-          })
-      )
+            unresolvedData: storedEvent,
+          }),
+      ),
     );
   }
 
@@ -83,9 +83,9 @@ export class DynamicEventResolver implements DynamicDetailsResolver<IEvent> {
   }
 
   protected async loadEvents(eventIds: string[], bulkRequestId: number) {
-    const promises = eventIds.map(eventId => this.loadSingleEvent(eventId));
+    const promises = eventIds.map((eventId) => this.loadSingleEvent(eventId));
     const result = await Promise.all(promises);
-    const filteredResult = result.filter(event => !!event);
+    const filteredResult = result.filter((event) => !!event);
     return { result: filteredResult, bulkRequestId };
   }
 

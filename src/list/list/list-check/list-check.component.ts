@@ -10,7 +10,7 @@ import { OnInit } from '@angular/core';
   selector: 'list-check',
   templateUrl: './list-check.component.html',
   standalone: true,
-  imports: [CoreModule, RouterModule, CommonModule]
+  imports: [CoreModule, RouterModule, CommonModule],
 })
 export class ListCheckComponent implements OnInit {
   devices: IResultList<IManagedObject>;
@@ -24,13 +24,13 @@ export class ListCheckComponent implements OnInit {
     // paging information will be a part of the response now
     withTotalPages: true,
     pageSize: 10,
-    currentPage: 1
+    currentPage: 1,
   };
 
   isIndeterminate$ = this.selected$.pipe(
-    map(selected => {
+    map((selected) => {
       return !(selected.length === 0 || selected.length === this.loadedDevices.length);
-    })
+    }),
   );
 
   constructor(public inventory: InventoryService) {}
@@ -50,7 +50,7 @@ export class ListCheckComponent implements OnInit {
   }
 
   isSelected(device: IManagedObject) {
-    return this.selected$.value.some(d => d.id === device.id);
+    return this.selected$.value.some((d) => d.id === device.id);
   }
 
   ngOnInit(): void {
@@ -73,7 +73,7 @@ export class ListCheckComponent implements OnInit {
   // triggered if a device is selected
   updateSelected(checked, device) {
     const selected = this.selected$.value;
-    const index = selected.findIndex(d => d.id === device.id);
+    const index = selected.findIndex((d) => d.id === device.id);
     if (checked && index === -1) {
       this.selected$.next([...selected, device]);
       return;

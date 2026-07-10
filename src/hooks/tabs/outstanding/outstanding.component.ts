@@ -13,12 +13,12 @@ import { CoreModule, OptionsService, TabsService } from '@c8y/ngx-components';
   selector: 'outstanding',
   templateUrl: './outstanding.component.html',
   standalone: true,
-  imports: [CoreModule, RouterModule]
+  imports: [CoreModule, RouterModule],
 })
 export class OutstandingComponent {
   constructor(
     private optionsService: OptionsService,
-    private tabsService: TabsService
+    private tabsService: TabsService,
   ) {}
 
   toggleOrientation() {

@@ -74,7 +74,7 @@ import { TypeFilteringModel } from '../server-grid-example.service';
   `,
   standalone: true,
   imports: [FormsModule],
-  selector: 'example-type-filtering-form-renderer'
+  selector: 'example-type-filtering-form-renderer',
 })
 export class TypeFilteringFormRendererComponent {
   model: TypeFilteringModel;
@@ -91,7 +91,7 @@ export class TypeFilteringFormRendererComponent {
    */
   applyFilter() {
     this.context.applyFilter({
-      externalFilterQuery: { ...this.model }
+      externalFilterQuery: { ...this.model },
     });
   }
 

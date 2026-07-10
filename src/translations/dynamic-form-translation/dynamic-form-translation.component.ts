@@ -19,7 +19,7 @@ import { CoreModule, DynamicFormsModule } from '@c8y/ngx-components';
     </form>
   `,
   standalone: true,
-  imports: [CoreModule, DynamicFormsModule]
+  imports: [CoreModule, DynamicFormsModule],
 })
 export class DynamicFormTranslationComponent {
   form = new FormGroup({});
@@ -33,14 +33,14 @@ export class DynamicFormTranslationComponent {
         options: [
           {
             value: '1',
-            label: gettext('Upload web application')
+            label: gettext('Upload web application'),
           },
           {
             value: '2',
-            label: gettext('Upload microservice')
-          }
-        ]
-      }
+            label: gettext('Upload microservice'),
+          },
+        ],
+      },
     },
     {
       key: 'text',
@@ -48,9 +48,9 @@ export class DynamicFormTranslationComponent {
       templateOptions: {
         label: gettext('Text input'),
         placeholder: gettext('You can provide some examples displayed as placeholder…'),
-        description: gettext('…and some short description.')
-      }
-    }
+        description: gettext('…and some short description.'),
+      },
+    },
   ];
 
   onSubmit() {

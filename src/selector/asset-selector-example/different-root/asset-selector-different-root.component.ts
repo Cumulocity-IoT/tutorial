@@ -22,7 +22,7 @@ import { BehaviorSubject } from 'rxjs';
               [config]="{
                 groupsSelectable: true,
                 columnHeaders: true,
-                showFilter: true
+                showFilter: true,
               }"
             ></c8y-asset-selector-miller>
           </div>
@@ -45,7 +45,7 @@ import { BehaviorSubject } from 'rxjs';
                 multi: false,
                 columnHeaders: true,
                 singleColumn: true,
-                showFilter: true
+                showFilter: true,
               }"
               [asset]="rootNode$ | async"
             ></c8y-asset-selector-miller>
@@ -64,7 +64,7 @@ import { BehaviorSubject } from 'rxjs';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, AssetSelectorModule, CoreModule]
+  imports: [CommonModule, AssetSelectorModule, CoreModule],
 })
 export class AssetSelectorDifferentRootComponent {
   model: IIdentified;

@@ -6,6 +6,6 @@ import { CustomVersionFactory } from './custom-version-factory.service';
 @NgModule({
   imports: [CommonModule],
   declarations: [],
-  providers: [hookVersion(CustomVersionFactory)]
+  providers: [hookVersion(CustomVersionFactory)],
 })
 export class TutorialVersionModule {}

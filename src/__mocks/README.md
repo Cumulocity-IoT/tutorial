@@ -1,4 +1,5 @@
 # Creating and Registering Interceptors
+
 ## Introduction
 
 Interceptors are a feature used in HTTP communication to intercept and possibly alter HTTP requests or responses. They are powerful tools in managing communication with backend services and can be used to manipulate requests or simulate server responses.
@@ -52,7 +53,7 @@ export class BoilerplateInterceptor implements HttpInterceptor {
     return handleRequest(req, next, 'inventory/managedObjects', {
       POST: this.mockPOST.bind(this),
       PUT: this.mockPUT.bind(this),
-      GET: this.mockGET.bind(this)
+      GET: this.mockGET.bind(this),
     });
   }
 

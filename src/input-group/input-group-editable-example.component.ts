@@ -5,7 +5,7 @@ import {
   FormControl,
   ValidationErrors,
   ValidatorFn,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { CoreModule, InputGroupEditableComponent } from '@c8y/ngx-components';
 import { Observable, map, timer } from 'rxjs';
@@ -199,10 +199,77 @@ import { Observable, map, timer } from 'rxjs';
           ></c8y-input-group-editable>
         </div>
       </div>
+
+      <hr />
+
+      <!-- MULTILINE -->
+      <h4 class="text-medium m-b-24">Multiline</h4>
+      <div class="row m-b-24">
+        <div class="col-sm-4">
+          <p class="text-label-small">Auto-grow (no max-height)</p>
+          <c8y-input-group-editable
+            [multiline]="true"
+            ariaLabel="Notes"
+            [(ngModel)]="multilineModel"
+          ></c8y-input-group-editable>
+          <p class="text-muted m-t-4">
+            <small>Use <kbd>Ctrl+Enter</kbd> to save, <kbd>Escape</kbd> to cancel.</small>
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <p class="text-label-small">With maxHeight="150px"</p>
+          <c8y-input-group-editable
+            [multiline]="true"
+            maxHeight="150px"
+            ariaLabel="Description with max height"
+            [(ngModel)]="multilineMaxHeightModel"
+          ></c8y-input-group-editable>
+          <p class="text-muted m-t-4">
+            <small>Scrolls once content exceeds 150 px.</small>
+          </p>
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- FORM-OWNED SAVE (noSaveButton) -->
+      <h4 class="text-medium m-b-24">Form-owned save</h4>
+      <div class="row m-b-24">
+        <div class="col-sm-4">
+          <p class="text-label-small">Single-line ([noSaveButton]="true")</p>
+          <c8y-input-group-editable
+            placeholder="e.g. My app"
+            [noSaveButton]="true"
+            formGroupClass="m-b-0"
+            ariaLabel="Application name"
+            [(ngModel)]="noSaveButtonSingle"
+          ></c8y-input-group-editable>
+          <small class="text-muted">Value: {{ noSaveButtonSingle }}</small>
+          <p class="text-muted m-t-4">
+            <small
+              >Buttons hidden. Value updates on every keystroke. <kbd>Escape</kbd> reverts.</small
+            >
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <p class="text-label-small">Multiline ([noSaveButton]="true")</p>
+          <c8y-input-group-editable
+            placeholder="e.g. Describe this item"
+            [multiline]="true"
+            [noSaveButton]="true"
+            formGroupClass="m-b-0"
+            ariaLabel="Description"
+            [(ngModel)]="noSaveButtonMulti"
+          ></c8y-input-group-editable>
+          <p class="text-muted m-t-4">
+            <small>Use <kbd>Escape</kbd> to revert.</small>
+          </p>
+        </div>
+      </div>
     </div>
   `,
   standalone: true,
-  imports: [CoreModule, InputGroupEditableComponent]
+  imports: [CoreModule, InputGroupEditableComponent],
 })
 export class InputGroupEditableExampleComponent {
   // Sizes
@@ -232,11 +299,20 @@ export class InputGroupEditableExampleComponent {
   // Sync validation — [formControl] with custom <c8y-message> children
   readonly validFormControl = new FormControl('min 3 chars required', {
     validators: [Validators.required, Validators.minLength(3)],
-    nonNullable: true
+    nonNullable: true,
   });
 
   // Disabled state
   disabledModel = 'Read-only value';
+
+  // Multiline
+  multilineModel = 'Edit this multiline value';
+  multilineMaxHeightModel =
+    'Edit this value\nAdd more lines to see scrolling kick in once the height cap is reached';
+
+  // Form-owned save (noSaveButton)
+  noSaveButtonSingle = 'My Application';
+  noSaveButtonMulti = 'Edit me — no Save button.\nEscape to revert.';
 
   // Async validation — simulates a server-side uniqueness check
   readonly asyncFormControl = new FormControl('available', { nonNullable: true });
@@ -244,11 +320,11 @@ export class InputGroupEditableExampleComponent {
   readonly noSpacesValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null =>
     /\s/.test(control.value) ? { noSpaces: true } : null;
   readonly uniquenessValidator: AsyncValidatorFn = (
-    control: AbstractControl
+    control: AbstractControl,
   ): Observable<ValidationErrors | null> => {
     const takenNames = ['taken', 'admin', 'root'];
     return timer(800).pipe(
-      map(() => (takenNames.includes(control.value?.toLowerCase()) ? { notUnique: true } : null))
+      map(() => (takenNames.includes(control.value?.toLowerCase()) ? { notUnique: true } : null)),
     );
   };
 

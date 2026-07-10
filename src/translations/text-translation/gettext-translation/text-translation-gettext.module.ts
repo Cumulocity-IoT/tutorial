@@ -6,7 +6,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'translations/text-translation/gettext-translation',
       loadComponent: () =>
-        import('./text-translation-gettext.component').then(m => m.TextTranslationGettextComponent)
+        import('./text-translation-gettext.component').then(
+          (m) => m.TextTranslationGettextComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -14,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: 'translations/text-translation/gettext-translation',
         icon: 'rocket',
         label: 'Text translation by gettext',
-        parent: 'Translations'
-      })
-    )
-  ]
+        parent: 'Translations',
+      }),
+    ),
+  ],
 })
 export class TextTranslationGettextModule {}

@@ -6,16 +6,16 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'realtime',
       loadComponent: () =>
-        import('./realtime-tutorial.component').then(m => m.RealtimeTutorialComponent)
+        import('./realtime-tutorial.component').then((m) => m.RealtimeTutorialComponent),
     }),
     hookNavigator(
       new NavigatorNode({
         label: 'Realtime',
         path: '/realtime',
         icon: 'realtime',
-        priority: 10
-      })
-    )
-  ]
+        priority: 10,
+      }),
+    ),
+  ],
 })
 export class RealtimeTutorialModule {}

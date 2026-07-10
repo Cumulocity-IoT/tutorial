@@ -1,47 +1,32 @@
 <c8y-title>Cluster map with root node</c8y-title>
 
 <div class="d-flex">
-  <div class="d-flex d-col" style="width: 280px;">
+  <div class="d-flex d-col" style="width: 280px">
     <c8y-asset-selector
       [(ngModel)]="rootNode"
       [config]="{
         groupsSelectable: true,
-        groupsOnly: false
+        groupsOnly: false,
       }"
       (change)="resetConfig()"
       class="bg-level-1 min-height-0"
-      style="height: 420px;"
+      style="height: 420px"
     ></c8y-asset-selector>
   </div>
   <!-- important -->
   <div class="flex-grow p-relative a-s-stretch">
-    <c8y-map-status
-      [clusterMap]="map"
-      [(config)]="followConfig"
-    ></c8y-map-status>
-    <c8y-cluster-map
-      #map
-      [rootNode]="rootNode"
-      [config]="followConfig"
-    >
+    <c8y-map-status [clusterMap]="map" [(config)]="followConfig"></c8y-map-status>
+    <c8y-cluster-map #map [rootNode]="rootNode" [config]="followConfig">
       <div *c8yMapPopup="let context">
         Hello World from:
         <br />
         {{ context.name }}
-        <button
-          class="btn btn-primary btn-small"
-          (click)="startFollow(context)"
-        >
-          Follow
-        </button>
+        <button class="btn btn-primary btn-small" (click)="startFollow(context)">Follow</button>
       </div>
     </c8y-cluster-map>
   </div>
   <!-- /important -->
-  <div
-    class="a-s-stretch p-16 d-col bg-info-light"
-    style="width: 320px; height: 420px;"
-  >
+  <div class="a-s-stretch p-16 d-col bg-info-light" style="width: 320px; height: 420px">
     <label>RootNode</label>
     <pre style="height: 120px">{{ rootNode | json }}  </pre>
     <label>Config</label>

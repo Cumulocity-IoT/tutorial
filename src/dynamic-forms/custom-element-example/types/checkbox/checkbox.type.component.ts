@@ -11,13 +11,13 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './checkbox.type.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, PopoverModule, FormlyModule, C8yTranslateModule, ReactiveFormsModule]
+  imports: [CommonModule, PopoverModule, FormlyModule, C8yTranslateModule, ReactiveFormsModule],
 })
 export class CustomFieldCheckbox extends FieldType {
   defaultOptions = {
     templateOptions: {
       indeterminate: true,
-      formCheck: 'custom'
-    }
+      formCheck: 'custom',
+    },
   };
 }

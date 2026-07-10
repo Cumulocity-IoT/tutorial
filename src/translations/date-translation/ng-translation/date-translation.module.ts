@@ -6,7 +6,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'translations/text-translation/ng-translation',
       loadComponent: () =>
-        import('./date-translation.component').then(m => m.DateTranslationComponent)
+        import('./date-translation.component').then((m) => m.DateTranslationComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -14,9 +14,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: 'translations/text-translation/ng-translation',
         icon: 'rocket',
         label: 'Date translation by Angular pipe',
-        parent: 'Translations'
-      })
-    )
-  ]
+        parent: 'Translations',
+      }),
+    ),
+  ],
 })
 export class DateTranslationModule {}

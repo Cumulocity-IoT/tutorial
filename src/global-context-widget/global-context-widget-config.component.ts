@@ -24,7 +24,7 @@ import { WidgetConfig } from './widget-config.model';
         <li>Aggregation options</li>
       </ul>
     </div>
-  `
+  `,
 })
 export class GlobalContextWidgetConfigComponent implements OnInit {
   @Input() config: WidgetConfig = {};

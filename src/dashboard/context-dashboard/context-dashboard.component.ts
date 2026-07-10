@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
       [canDelete]="false"
     ></c8y-context-dashboard> `,
   standalone: true,
-  imports: [ContextDashboardModule, CoreModule, CommonModule]
+  imports: [ContextDashboardModule, CoreModule, CommonModule],
 })
 export class ContextDashboardComponent {
   defaultWidgets: Widget[] = [
@@ -23,10 +23,10 @@ export class ContextDashboardComponent {
       _height: 6,
       componentId: 'angular.widget.demo',
       config: {
-        text: 'Welcome to a context dashboard'
+        text: 'Welcome to a context dashboard',
       },
       title: 'Hello',
-      id: 'some_unique_id'
-    }
+      id: 'some_unique_id',
+    },
   ];
 }

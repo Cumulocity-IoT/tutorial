@@ -5,7 +5,7 @@ import {
   NavigatorNode,
   hookNavigator,
   hookRoute,
-  hookService
+  hookService,
 } from '@c8y/ngx-components';
 import { MapLayerService } from './map-layer.service';
 
@@ -14,12 +14,14 @@ import { MapLayerService } from './map-layer.service';
   providers: [
     MapLayerService,
     hookService('mapTileLayerHook', MapLayerService, {
-      providerType: HookProviderTypes.ExistingProvider
+      providerType: HookProviderTypes.ExistingProvider,
     }),
     hookRoute({
       path: 'maps/simple-with-custom-config',
       loadComponent: () =>
-        import('./simple-map-custom-config.component').then(m => m.SimpleMapCustomConfigComponent)
+        import('./simple-map-custom-config.component').then(
+          (m) => m.SimpleMapCustomConfigComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -27,9 +29,9 @@ import { MapLayerService } from './map-layer.service';
         path: 'maps/simple-with-custom-config',
         icon: 'map-editing',
         label: 'Simple map with custom config',
-        parent: 'Map examples'
-      })
-    )
-  ]
+        parent: 'Map examples',
+      }),
+    ),
+  ],
 })
 export class SimpleMapCustomConfigModule {}

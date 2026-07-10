@@ -14,7 +14,7 @@ import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
     ></c8y-context-dashboard>
   `,
   standalone: true,
-  imports: [ContextDashboardModule, CoreModule, CommonModule]
+  imports: [ContextDashboardModule, CoreModule, CommonModule],
 })
 export class WidgetGuideContextDashboardComponent {
   /**
@@ -33,10 +33,10 @@ export class WidgetGuideContextDashboardComponent {
       _height: 6,
       componentId: 'angular.widget.demo',
       config: {
-        text: 'This text is configured via the widget settings. Click the edit button to change it!'
+        text: 'This text is configured via the widget settings. Click the edit button to change it!',
       },
       title: 'Demo Widget Example1',
-      id: 'demo_widget_example'
-    }
+      id: 'demo_widget_example',
+    },
   ];
 }

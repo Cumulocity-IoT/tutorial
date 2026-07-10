@@ -3,7 +3,7 @@ import {
   WizardComponent,
   WizardHeaderComponent,
   WizardBodyComponent,
-  WizardFooterComponent
+  WizardFooterComponent,
 } from '@c8y/ngx-components';
 
 @Component({
@@ -17,7 +17,7 @@ import {
     </c8y-wizard-footer>
   `,
   standalone: true,
-  imports: [WizardHeaderComponent, WizardBodyComponent, WizardFooterComponent]
+  imports: [WizardHeaderComponent, WizardBodyComponent, WizardFooterComponent],
 })
 export class MultipleEntriesTwo {
   constructor(private wizardComponent: WizardComponent) {}

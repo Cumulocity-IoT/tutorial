@@ -3,7 +3,7 @@ import { IManagedObject } from '@c8y/client';
 import {
   DynamicComponentAlert,
   DynamicDetailsResolver,
-  DynamicManagedObjectResolver
+  DynamicManagedObjectResolver,
 } from '@c8y/ngx-components';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -20,7 +20,7 @@ export class PropertiesLibraryResolver implements DynamicDetailsResolver<IManage
   resolve(
     config: any,
     attribute: string,
-    bulkRequestId: number
+    bulkRequestId: number,
   ):
     | IManagedObject
     | Promise<IManagedObject>
@@ -36,9 +36,9 @@ export class PropertiesLibraryResolver implements DynamicDetailsResolver<IManage
       .pipe(
         map(
           ({ result: updatedMos, errors }) =>
-            updatedMos.find(updatedMo => updatedMo.id === storedProperty.id) ||
-            this.moResolver.buildRetrievalAlert(storedProperty, errors)
-        )
+            updatedMos.find((updatedMo) => updatedMo.id === storedProperty.id) ||
+            this.moResolver.buildRetrievalAlert(storedProperty, errors),
+        ),
       );
   }
 

@@ -7,16 +7,16 @@ export const propertiesSelectorInlineExampleProviders = [
     path: 'selector/properties-selector-inline-example',
     loadComponent: () =>
       import('./properties-selector-inline.component').then(
-        m => m.PropertiesSelectorInlineExampleComponent
-      )
+        (m) => m.PropertiesSelectorInlineExampleComponent,
+      ),
   }),
   hookNavigator(
     new NavigatorNode({
       label: 'Properties selector inline example',
       path: '/selector/properties-selector-inline-example',
       icon: 'th-list',
-      priority: 4
-    })
+      priority: 4,
+    }),
   ),
-  hookComputedProperty([alarmCountLastWeek])
+  hookComputedProperty([alarmCountLastWeek]),
 ];

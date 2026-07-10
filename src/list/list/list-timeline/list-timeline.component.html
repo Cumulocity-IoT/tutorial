@@ -13,18 +13,8 @@
         {{ device.creationTime }}
       </c8y-li-footer>
 
-      <c8y-li-action
-        icon="times"
-        (click)="deleteDevice(device.id)"
-      >
-        Delete
-      </c8y-li-action>
-      <c8y-li-action
-        icon="rocket"
-        (click)="(false)"
-      >
-        Launch to space
-      </c8y-li-action>
+      <c8y-li-action icon="times" (click)="deleteDevice(device.id)"> Delete </c8y-li-action>
+      <c8y-li-action icon="rocket" (click)="(false)"> Launch to space </c8y-li-action>
     </c8y-li>
   </c8y-li-timeline>
 </c8y-list-group>

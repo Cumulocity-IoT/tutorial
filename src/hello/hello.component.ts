@@ -44,7 +44,7 @@ import { CoreModule } from '@c8y/ngx-components';
     </div>
   `,
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class HelloComponent {
   introductionText: string;

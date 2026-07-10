@@ -6,7 +6,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'dashboards/context',
       loadComponent: () =>
-        import('./context-dashboard.component').then(m => m.ContextDashboardComponent)
+        import('./context-dashboard.component').then((m) => m.ContextDashboardComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -14,9 +14,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/dashboards/context',
         icon: 'th-list',
         priority: 0,
-        parent: 'Dashboards'
-      })
-    )
-  ]
+        parent: 'Dashboards',
+      }),
+    ),
+  ],
 })
 export class ContextDashboardModule {}

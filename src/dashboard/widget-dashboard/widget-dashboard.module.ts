@@ -6,7 +6,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'dashboards/widget',
       loadComponent: () =>
-        import('./widget-dashboard.component').then(m => m.WidgetDashboardComponent)
+        import('./widget-dashboard.component').then((m) => m.WidgetDashboardComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -14,9 +14,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/dashboards/widget',
         icon: 'th-list',
         priority: 1,
-        parent: 'Dashboards'
-      })
-    )
-  ]
+        parent: 'Dashboards',
+      }),
+    ),
+  ],
 })
 export class WidgetDashboardModule {}

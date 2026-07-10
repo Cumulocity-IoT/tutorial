@@ -28,7 +28,7 @@ import { HeaderModule } from '@c8y/ngx-components';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, HeaderModule]
+  imports: [CommonModule, HeaderModule],
 })
 export class DatapointSelectionModalExampleComponent {
   // important
@@ -39,12 +39,12 @@ export class DatapointSelectionModalExampleComponent {
     this.datapointSelectorService
       .selectDataPoints({ selectedDatapoints: [...this.datapoints] })
       .then(
-        res => {
+        (res) => {
           this.datapoints = res;
         },
         () => {
           // nothing to do, modal was canceled
-        }
+        },
       );
   }
   // /important

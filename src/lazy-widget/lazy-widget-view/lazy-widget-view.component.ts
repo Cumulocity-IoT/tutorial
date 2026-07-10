@@ -6,7 +6,7 @@ import { WidgetConfig } from '../widget-config.model';
   selector: 'tutorial-lazy-widget-view',
   template: `<p>This widget's view component/module is only loaded when needed.</p>`,
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule],
 })
 export class LazyWidgetViewComponent {
   @Input() config: WidgetConfig;

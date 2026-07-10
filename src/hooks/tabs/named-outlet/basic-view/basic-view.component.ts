@@ -9,7 +9,7 @@ import { map } from 'rxjs';
 @Component({
   selector: 'tut-basic-view',
   templateUrl: './basic-view.component.html',
-  standalone: false
+  standalone: false,
 })
 export class BasicViewComponent {
   tabs: Tab[] = [];
@@ -17,9 +17,9 @@ export class BasicViewComponent {
   constructor(private tabsService: TabsService) {
     this.tabsService.items$
       .pipe(
-        map(tabs => tabs.filter(tab => tab.tabsOutlet === 'namedOutletTabs')),
-        takeUntilDestroyed()
+        map((tabs) => tabs.filter((tab) => tab.tabsOutlet === 'namedOutletTabs')),
+        takeUntilDestroyed(),
       )
-      .subscribe(tabs => (this.tabs = tabs));
+      .subscribe((tabs) => (this.tabs = tabs));
   }
 }

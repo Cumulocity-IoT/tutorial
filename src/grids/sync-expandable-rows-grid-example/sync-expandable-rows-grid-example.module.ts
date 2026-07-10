@@ -9,8 +9,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'grids/sync-expandable-rows-grid-example',
       loadComponent: () =>
         import('./sync-expandable-rows-grid-example.component').then(
-          m => m.SyncExpandableRowsGridComponent
-        )
+          (m) => m.SyncExpandableRowsGridComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -18,9 +18,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: 'grids/sync-expandable-rows-grid-example',
         icon: 'table',
         label: 'Synchronous expandable rows grid',
-        parent: 'Data grid examples'
-      })
-    )
-  ]
+        parent: 'Data grid examples',
+      }),
+    ),
+  ],
 })
 export class SyncExpandableRowsGridExampleModule {}

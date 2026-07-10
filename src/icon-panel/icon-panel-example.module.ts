@@ -5,12 +5,12 @@ import { IconPanelExampleComponent } from './icon-panel-example.component';
 const routes: Routes = [
   {
     path: '',
-    component: IconPanelExampleComponent
-  }
+    component: IconPanelExampleComponent,
+  },
 ];
 
 @NgModule({
   imports: [IconPanelExampleComponent, RouterModule.forChild(routes)],
-  exports: [IconPanelExampleComponent]
+  exports: [IconPanelExampleComponent],
 })
 export class IconPanelExampleModule {}

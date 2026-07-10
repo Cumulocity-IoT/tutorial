@@ -18,7 +18,7 @@ export function IpValidatorMessage(error: any, field: FormlyFieldConfig) {
     hookRoute({
       path: 'dynamic-forms/validation',
       loadComponent: () =>
-        import('./validation-example.component').then(m => m.ValidationExampleComponent)
+        import('./validation-example.component').then((m) => m.ValidationExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -26,17 +26,17 @@ export function IpValidatorMessage(error: any, field: FormlyFieldConfig) {
         label: 'Formly Validation',
         icon: 'hand-o-right',
         priority: 60,
-        parent: 'Dynamic forms'
-      })
+        parent: 'Dynamic forms',
+      }),
     ),
     {
       provide: FORMLY_CONFIG,
       multi: true,
       useValue: {
         validators: [{ name: 'ip', validation: IpValidator }],
-        validationMessages: [{ name: 'ip', message: IpValidatorMessage }]
-      }
-    }
-  ]
+        validationMessages: [{ name: 'ip', message: IpValidatorMessage }],
+      },
+    },
+  ],
 })
 export class ValidationExampleModule {}

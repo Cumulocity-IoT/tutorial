@@ -6,14 +6,14 @@ import { generateDashboard } from '../../__mocks/utils/generators/managedObjects
 
 export class ContextDashboardInterceptor implements HttpInterceptor {
   dashboard = generateDashboard({
-    device: { id: '12345', name: 'Demo Sensor Device' }
+    device: { id: '12345', name: 'Demo Sensor Device' },
   });
 
   intercept(req: ApiCall, next: HttpHandler): Observable<IFetchResponse> {
     return handleRequest(req, next, 'inventory/managedObjects', {
       POST: this.mockPOST.bind(this),
       PUT: this.mockPUT.bind(this),
-      GET: this.mockGET.bind(this)
+      GET: this.mockGET.bind(this),
     });
   }
 
@@ -42,8 +42,8 @@ export class ContextDashboardInterceptor implements HttpInterceptor {
   private getResponseGenerators() {
     return {
       'example-widget': () => ({
-        managedObjects: [this.dashboard]
-      })
+        managedObjects: [this.dashboard],
+      }),
     };
   }
 }

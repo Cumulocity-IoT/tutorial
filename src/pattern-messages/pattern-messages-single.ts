@@ -4,7 +4,7 @@ hookPatternMessages({
   '^Alarm: (.+) is active$': {
     gettext: 'Active alarm for {{alarmType}} detected',
     placeholders: {
-      alarmType: '$1'
-    }
-  }
+      alarmType: '$1',
+    },
+  },
 });

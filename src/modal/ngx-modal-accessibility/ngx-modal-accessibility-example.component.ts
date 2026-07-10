@@ -5,7 +5,7 @@ import {
   CoreModule,
   FormsModule,
   HeaderModule,
-  ModalModule
+  ModalModule,
 } from '@c8y/ngx-components';
 import { SimpleModalAccessibilityExampleComponent } from './simple-modal-accessibility-example.component';
 
@@ -30,8 +30,8 @@ import { SimpleModalAccessibilityExampleComponent } from './simple-modal-accessi
     C8yTranslateModule,
     FormsModule,
     ModalModule,
-    CoreModule
-  ]
+    CoreModule,
+  ],
 })
 export class NgxModalAccessibilityExampleComponent {
   constructor(private modalService: BsModalService) {}
@@ -41,7 +41,7 @@ export class NgxModalAccessibilityExampleComponent {
       class: 'modal-sm',
       ariaDescribedby: 'modal-body-custom',
       ariaLabelledBy: 'modal-title-custom',
-      ignoreBackdropClick: true
+      ignoreBackdropClick: true,
     }).content as SimpleModalAccessibilityExampleComponent;
   }
 }

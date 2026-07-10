@@ -7,8 +7,8 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'selector/asset-selector-example/only-devices',
       loadComponent: () =>
         import('./asset-selector-only-devices.component').then(
-          m => m.AssetSelectorOnlyDevicesComponent
-        )
+          (m) => m.AssetSelectorOnlyDevicesComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/selector/asset-selector-example/only-devices',
         icon: 'th-list',
         priority: -1,
-        parent: 'Asset selector'
-      })
-    )
-  ]
+        parent: 'Asset selector',
+      }),
+    ),
+  ],
 })
 export class AssetSelectorOnlyDevicesModule {}

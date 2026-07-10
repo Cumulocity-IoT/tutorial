@@ -8,7 +8,7 @@ import { ServerGridActionControlsModule } from './server-grid-action-controls.mo
     hookRoute({
       path: 'grids/server-grid-example',
       loadComponent: () =>
-        import('./server-grid-example.component').then(m => m.ServerGridExampleComponent)
+        import('./server-grid-example.component').then((m) => m.ServerGridExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { ServerGridActionControlsModule } from './server-grid-action-controls.mo
         path: 'grids/server-grid-example',
         icon: 'table',
         label: 'Server grid',
-        parent: 'Data grid examples'
-      })
-    )
-  ]
+        parent: 'Data grid examples',
+      }),
+    ),
+  ],
 })
 export class ServerGridExampleModule {}

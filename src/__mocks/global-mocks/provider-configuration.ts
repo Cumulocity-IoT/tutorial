@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export class ProviderConfigurationsApiInterceptor implements HttpInterceptor {
   configurations = [
     { id: 'provider1', config: { username: 'user1', password: 'pass1' } },
-    { id: 'provider2', config: { username: 'user2', password: 'pass2' } }
+    { id: 'provider2', config: { username: 'user2', password: 'pass2' } },
   ];
 
   intercept(req: ApiCall, next: HttpHandler): Observable<IFetchResponse> {
@@ -14,14 +14,14 @@ export class ProviderConfigurationsApiInterceptor implements HttpInterceptor {
       GET: this.mockGET.bind(this),
       POST: this.mockPOST.bind(this),
       PUT: this.mockPUT.bind(this),
-      DELETE: this.mockDELETE.bind(this)
+      DELETE: this.mockDELETE.bind(this),
     });
   }
 
   private async mockGET(_requestDescriptor: string) {
     return {
       status: 200,
-      json: async () => this.configurations
+      json: async () => this.configurations,
     };
   }
 
@@ -31,20 +31,20 @@ export class ProviderConfigurationsApiInterceptor implements HttpInterceptor {
     this.configurations.push(body);
     return {
       status: 201,
-      json: async () => body
+      json: async () => body,
     };
   }
 
   private async mockPUT(requestDescriptor: string) {
     const bodyStartIndex = requestDescriptor.indexOf('{');
     const body = bodyStartIndex !== -1 ? JSON.parse(requestDescriptor.slice(bodyStartIndex)) : {};
-    const idx = this.configurations.findIndex(c => c.id === body.id);
+    const idx = this.configurations.findIndex((c) => c.id === body.id);
     if (idx > -1) {
       this.configurations[idx] = body;
     }
     return {
       status: 200,
-      json: async () => body
+      json: async () => body,
     };
   }
 
@@ -52,11 +52,11 @@ export class ProviderConfigurationsApiInterceptor implements HttpInterceptor {
     const match = requestDescriptor.match(/\/configuration\/([^/]+)/);
     if (match) {
       const id = match[1];
-      this.configurations = this.configurations.filter(c => c.id !== id);
+      this.configurations = this.configurations.filter((c) => c.id !== id);
     }
     return {
       status: 204,
-      json: async () => ({})
+      json: async () => ({}),
     };
   }
 }

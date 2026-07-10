@@ -9,7 +9,7 @@ import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
   selector: 'tut-map-popup-examples',
   templateUrl: './map-popup-example.component.html',
   standalone: true,
-  imports: [CommonModule, MapModule, CoreModule, AssetSelectorModule]
+  imports: [CommonModule, MapModule, CoreModule, AssetSelectorModule],
 })
 export class MapPopupExampleComponent implements OnInit {
   exampleDevices: PositionManagedObject | PositionManagedObject[];

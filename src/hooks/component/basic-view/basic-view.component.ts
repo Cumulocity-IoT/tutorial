@@ -9,7 +9,7 @@ import { CoreModule } from '@c8y/ngx-components';
   selector: 'tut-basic-component-hook-view',
   templateUrl: './basic-view.component.html',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class BasicViewComponent {
   editComponent = false;

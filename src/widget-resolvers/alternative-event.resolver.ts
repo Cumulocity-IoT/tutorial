@@ -11,12 +11,12 @@ export class SimpleDynamicEventResolver extends DynamicBulkIIdentifiedResolver<
   IEvent & { id: string | number }
 > {
   protected errorMessage = gettext(
-    'Unable to retrieve the following event: "{{entityName}}" ({{entityId}}).'
+    'Unable to retrieve the following event: "{{entityName}}" ({{entityId}}).',
   );
 
   constructor(
     protected dynamicResolver: DynamicResolverService,
-    protected events: EventService
+    protected events: EventService,
   ) {
     super(dynamicResolver, events as any);
   }

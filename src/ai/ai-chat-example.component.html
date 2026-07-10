@@ -6,16 +6,9 @@
 
       <label>headline</label>
       <div class="input-group input-group-sm m-b-8">
-        <input
-          class="form-control"
-          type="text"
-          [(ngModel)]="config.headline"
-        />
+        <input class="form-control" type="text" [(ngModel)]="config.headline" />
         <div class="input-group-btn">
-          <button
-            class="btn btn-default"
-            (click)="reloadComponent()"
-          >
+          <button class="btn btn-default" (click)="reloadComponent()">
             {{ 'Apply' | translate }}
           </button>
         </div>
@@ -23,16 +16,9 @@
 
       <label>title</label>
       <div class="input-group input-group-sm m-b-8">
-        <input
-          class="form-control"
-          type="text"
-          [(ngModel)]="config.title"
-        />
+        <input class="form-control" type="text" [(ngModel)]="config.title" />
         <div class="input-group-btn">
-          <button
-            class="btn btn-default"
-            (click)="reloadComponent()"
-          >
+          <button class="btn btn-default" (click)="reloadComponent()">
             {{ 'Apply' | translate }}
           </button>
         </div>
@@ -40,16 +26,9 @@
 
       <label>welcomeText</label>
       <div class="input-group input-group-sm m-b-8">
-        <input
-          class="form-control"
-          type="text"
-          [(ngModel)]="config.welcomeText"
-        />
+        <input class="form-control" type="text" [(ngModel)]="config.welcomeText" />
         <div class="input-group-btn">
-          <button
-            class="btn btn-default"
-            (click)="reloadComponent()"
-          >
+          <button class="btn btn-default" (click)="reloadComponent()">
             {{ 'Apply' | translate }}
           </button>
         </div>
@@ -58,20 +37,14 @@
       <label>welcomePosition</label>
       <div class="input-group input-group-sm form-group-sm m-b-8">
         <div class="c8y-select-wrapper">
-          <select
-            class="form-control"
-            [(ngModel)]="config.welcomePosition"
-          >
+          <select class="form-control" [(ngModel)]="config.welcomePosition">
             <option value="top">Top</option>
             <option value="center">Center</option>
             <option value="bottom">Bottom</option>
           </select>
         </div>
         <div class="input-group-btn">
-          <button
-            class="btn btn-default"
-            (click)="reloadComponent()"
-          >
+          <button class="btn btn-default" (click)="reloadComponent()">
             {{ 'Apply' | translate }}
           </button>
         </div>
@@ -80,19 +53,13 @@
       <label>suggestionsLayout</label>
       <div class="input-group input-group-sm m-b-8">
         <div class="c8y-select-wrapper">
-          <select
-            class="form-control"
-            [(ngModel)]="config.suggestionsLayout"
-          >
+          <select class="form-control" [(ngModel)]="config.suggestionsLayout">
             <option value="vertical">Vertical</option>
             <option value="horizontal">Horizontal</option>
           </select>
         </div>
         <div class="input-group-btn">
-          <button
-            class="btn btn-default"
-            (click)="reloadComponent()"
-          >
+          <button class="btn btn-default" (click)="reloadComponent()">
             {{ 'Apply' | translate }}
           </button>
         </div>
@@ -100,10 +67,7 @@
 
       <label>scrollbarOnlyOnHover</label>
       <div class="m-b-8">
-        <label
-          class="c8y-switch"
-          title="scrollbarOnlyOnHover"
-        >
+        <label class="c8y-switch" title="scrollbarOnlyOnHover">
           <input
             type="checkbox"
             [(ngModel)]="config.scrollbarOnlyOnHover"
@@ -117,19 +81,13 @@
       <label>appearance</label>
       <div class="input-group input-group-sm m-b-8">
         <div class="c8y-select-wrapper">
-          <select
-            class="form-control"
-            [(ngModel)]="config.appearance"
-          >
+          <select class="form-control" [(ngModel)]="config.appearance">
             <option value="framed">framed</option>
             <option value="flat">flat</option>
           </select>
         </div>
         <div class="input-group-btn">
-          <button
-            class="btn btn-default"
-            (click)="reloadComponent()"
-          >
+          <button class="btn btn-default" (click)="reloadComponent()">
             {{ 'Apply' | translate }}
           </button>
         </div>
@@ -137,16 +95,9 @@
 
       <label>placeholder</label>
       <div class="input-group input-group-sm m-b-8">
-        <input
-          class="form-control"
-          type="text"
-          [(ngModel)]="config.placeholder"
-        />
+        <input class="form-control" type="text" [(ngModel)]="config.placeholder" />
         <div class="input-group-btn">
-          <button
-            class="btn btn-default"
-            (click)="reloadComponent()"
-          >
+          <button class="btn btn-default" (click)="reloadComponent()">
             {{ 'Apply' | translate }}
           </button>
         </div>
@@ -154,16 +105,9 @@
 
       <label>disclaimerText</label>
       <div class="input-group input-group-sm m-b-8">
-        <input
-          class="form-control"
-          type="text"
-          [(ngModel)]="config.disclaimerText"
-        />
+        <input class="form-control" type="text" [(ngModel)]="config.disclaimerText" />
         <div class="input-group-btn">
-          <button
-            class="btn btn-default"
-            (click)="reloadComponent()"
-          >
+          <button class="btn btn-default" (click)="reloadComponent()">
             {{ 'Apply' | translate }}
           </button>
         </div>
@@ -171,16 +115,9 @@
 
       <label>sendButtonText (displayed as a tooltip)</label>
       <div class="input-group input-group-sm m-b-8">
-        <input
-          class="form-control"
-          type="text"
-          [(ngModel)]="config.sendButtonText"
-        />
+        <input class="form-control" type="text" [(ngModel)]="config.sendButtonText" />
         <div class="input-group-btn">
-          <button
-            class="btn btn-default"
-            (click)="reloadComponent()"
-          >
+          <button class="btn btn-default" (click)="reloadComponent()">
             {{ 'Apply' | translate }}
           </button>
         </div>
@@ -188,16 +125,9 @@
 
       <label>cancelButtonText (displayed as a tooltip)</label>
       <div class="input-group input-group-sm m-b-8">
-        <input
-          class="form-control"
-          type="text"
-          [(ngModel)]="config.cancelButtonText"
-        />
+        <input class="form-control" type="text" [(ngModel)]="config.cancelButtonText" />
         <div class="input-group-btn">
-          <button
-            class="btn btn-default"
-            (click)="reloadComponent()"
-          >
+          <button class="btn btn-default" (click)="reloadComponent()">
             {{ 'Apply' | translate }}
           </button>
         </div>
@@ -208,10 +138,7 @@
   </div>
   <div class="col-md-8 col-xs-12">
     @if (showComponent) {
-      <label
-        class="c8y-switch m-t-8"
-        title="showInitialMessage"
-      >
+      <label class="c8y-switch m-t-8" title="showInitialMessage">
         <input
           class="form-control"
           type="checkbox"
@@ -221,10 +148,7 @@
         <span></span>
         <span>Show example message with content projection</span>
       </label>
-      <div
-        class="card m-t-16"
-        style="height: 730px"
-      >
+      <div class="card m-t-16" style="height: 730px">
         <c8y-ai-chat
           [config]="config"
           (onMessage)="sendMessage($event)"
@@ -256,8 +180,8 @@
                       message: message,
                       config: assistantMessageDisplayConfig,
                       isMessageLoading: isLoading && i === messages.length - 1,
-                      messageDisplayIndex: messages.length - 1 - i
-                    }
+                      messageDisplayIndex: messages.length - 1 - i,
+                    },
                   }"
                 ></ng-container>
               }
@@ -354,10 +278,7 @@
         The option controls the AIMessage objects passed to the component, it's not part of the
         configuration.
       </p>
-      <label
-        class="c8y-checkbox m-t-8"
-        title="showTimestamps"
-      >
+      <label class="c8y-checkbox m-t-8" title="showTimestamps">
         <input
           class="form-control"
           type="checkbox"

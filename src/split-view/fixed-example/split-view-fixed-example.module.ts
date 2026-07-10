@@ -8,8 +8,10 @@ import { hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'split-view-fixed',
       loadComponent: () =>
-        import('./split-view-fixed-example.component').then(m => m.SplitViewFixedExampleComponent)
-    })
-  ]
+        import('./split-view-fixed-example.component').then(
+          (m) => m.SplitViewFixedExampleComponent,
+        ),
+    }),
+  ],
 })
 export class SplitViewFixedExampleModule {}

@@ -9,7 +9,7 @@ import { WidgetConfig } from './widget-config.model';
   selector: 'app-widget-resolvers',
   templateUrl: './widget-resolvers.component.html',
   standalone: true,
-  imports: [FormsModule, JsonPipe]
+  imports: [FormsModule, JsonPipe],
 })
 export class WidgetResolversComponent implements OnInit, DynamicComponent {
   @Input() config: WidgetConfig;

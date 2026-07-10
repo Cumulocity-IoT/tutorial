@@ -9,17 +9,17 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'input-group-editable',
       loadComponent: () =>
         import('./input-group-editable-example.component').then(
-          m => m.InputGroupEditableExampleComponent
-        )
+          (m) => m.InputGroupEditableExampleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
         path: '/input-group-editable',
         label: 'Inline editable input',
         icon: 'hand-o-right',
-        priority: 5
-      })
-    )
-  ]
+        priority: 5,
+      }),
+    ),
+  ],
 })
 export class InputGroupEditableExampleModule {}

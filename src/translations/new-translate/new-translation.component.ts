@@ -4,6 +4,6 @@ import { CoreModule } from '@c8y/ngx-components';
   selector: 'new-translate',
   templateUrl: './new-translation.component.html',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class NewTranslationComponent {}

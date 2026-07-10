@@ -12,7 +12,7 @@ export class DeviceDataGridInterceptor implements HttpInterceptor {
     return handleRequest(req, next, 'inventory/managedObjects', {
       POST: this.mockPOST.bind(this),
       PUT: this.mockPUT.bind(this),
-      GET: this.mockGET.bind(this)
+      GET: this.mockGET.bind(this),
     });
   }
 
@@ -47,9 +47,9 @@ export class DeviceDataGridInterceptor implements HttpInterceptor {
     return generateResponse(
       () => ({
         managedObjects: [],
-        ...(statistics?.next && { next: statistics.next.toString() })
+        ...(statistics?.next && { next: statistics.next.toString() }),
       }),
-      statistics
+      statistics,
     );
   }
 
@@ -62,21 +62,21 @@ export class DeviceDataGridInterceptor implements HttpInterceptor {
 
     const filteredDevicesByTextSearch = filterObjectBySearchText(
       filteredDevices,
-      _requestDescriptor
+      _requestDescriptor,
     );
     return generateResponse(
       () => ({
         managedObjects: [...filteredDevicesByTextSearch],
-        ...(statistics?.next && { next: statistics.next.toString() })
+        ...(statistics?.next && { next: statistics.next.toString() }),
       }),
-      statistics
+      statistics,
     );
   }
 
   private getMockedQueryStringParameters() {
     return {
       // Mock only requests that include a `pageSize` parameter.
-      pageSize: true
+      pageSize: true,
     };
   }
 }

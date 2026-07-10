@@ -6,16 +6,18 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'selector/alarm-event-selector-example',
       loadComponent: () =>
-        import('./alarm-event-selector.component').then(m => m.AlarmEventSelectorExampleComponent)
+        import('./alarm-event-selector.component').then(
+          (m) => m.AlarmEventSelectorExampleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
         label: 'Alarm event selector example',
         path: '/selector/alarm-event-selector-example',
         icon: 'th-list',
-        priority: 15
-      })
-    )
-  ]
+        priority: 15,
+      }),
+    ),
+  ],
 })
 export class AlarmEventSlectorExampleModule {}

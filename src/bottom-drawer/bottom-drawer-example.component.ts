@@ -6,7 +6,7 @@ import { BottomDrawerContentExampleComponent } from './bottom-drawer-content-exa
   selector: 'tut-bottom-drawer-example',
   templateUrl: './bottom-drawer-example.component.html',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class BottomDrawerExampleComponent {
   bottomDrawerService = inject(BottomDrawerService);
@@ -18,9 +18,9 @@ export class BottomDrawerExampleComponent {
     const drawer = this.bottomDrawerService.openDrawer(BottomDrawerContentExampleComponent, {
       initialState: {
         // place here any content you want to pass to the component
-        isDisabled: true
+        isDisabled: true,
       },
-      disableClickOutside: true
+      disableClickOutside: true,
     });
 
     try {

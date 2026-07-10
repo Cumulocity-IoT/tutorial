@@ -6,8 +6,8 @@ export function provideGridSampleNode() {
       new NavigatorNode({
         label: 'Data grid examples',
         icon: 'table',
-        priority: 30
-      })
-    )
+        priority: 30,
+      }),
+    ),
   ];
 }

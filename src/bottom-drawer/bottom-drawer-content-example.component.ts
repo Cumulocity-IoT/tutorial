@@ -8,8 +8,8 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: './bottom-drawer-content-example.component.html',
   standalone: true,
   host: {
-    class: 'd-contents'
-  }
+    class: 'd-contents',
+  },
 })
 export class BottomDrawerContentExampleComponent implements OnInit, OnDestroy {
   bottomDrawerRef = inject(BottomDrawerRef);

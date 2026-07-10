@@ -10,8 +10,8 @@ export class DocsExampleService implements ExtensionFactory<DocLink> {
         icon: 'c8y-icon c8y-icon-mobile-add',
         type: 'doc',
         url: 'https://cumulocity.com',
-        label: 'Doc link from service'
-      }
+        label: 'Doc link from service',
+      },
     ]);
   }
 }

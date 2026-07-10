@@ -12,7 +12,7 @@ import { CoreModule } from '@c8y/ngx-components';
   selector: 'awesome',
   templateUrl: './awesome.component.html',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class AwesomeComponent {
   /**

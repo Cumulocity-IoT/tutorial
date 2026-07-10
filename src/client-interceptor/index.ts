@@ -11,6 +11,6 @@ export function provideClientInterceptorSample() {
         };
       })(inject(ApiService), inject(ClientInterceptorService));
       return initializerFn();
-    })
+    }),
   ] satisfies (Provider | EnvironmentProviders)[];
 }

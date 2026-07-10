@@ -19,7 +19,7 @@ import { IIdentified } from '@c8y/client';
             [config]="{
               groupsSelectable: true,
               showUnassignedDevices: true,
-              showChildDevices: true
+              showChildDevices: true,
             }"
           ></c8y-asset-selector>
         </div>
@@ -34,7 +34,7 @@ import { IIdentified } from '@c8y/client';
             [(ngModel)]="model"
             [config]="{
               groupsSelectable: true,
-              multi: true
+              multi: true,
             }"
           ></c8y-asset-selector>
         </div>
@@ -51,7 +51,7 @@ import { IIdentified } from '@c8y/client';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, AssetSelectorModule, CoreModule]
+  imports: [CommonModule, AssetSelectorModule, CoreModule],
 })
 export class AssetSelectorTreeSingleComponent {
   model: IIdentified;

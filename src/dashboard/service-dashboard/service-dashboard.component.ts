@@ -15,7 +15,7 @@ import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
       [canDelete]="false"
     ></c8y-context-dashboard>`,
   standalone: true,
-  imports: [CommonModule, CoreModule, ContextDashboardModule]
+  imports: [CommonModule, CoreModule, ContextDashboardModule],
 })
 export class ServiceDashboardComponent {
   context: (Data & ContextData) | null = null;
@@ -24,7 +24,7 @@ export class ServiceDashboardComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private contextRouteService: ContextRouteService
+    private contextRouteService: ContextRouteService,
   ) {
     this.context = this.contextRouteService.getContextData(this.route);
     if (this.context && this.context.contextData) {
@@ -40,13 +40,13 @@ export class ServiceDashboardComponent {
           config: {
             device: {
               id: device.id,
-              name: device.name
+              name: device.name,
             },
-            text: 'Welcome to a context dashboard'
+            text: 'Welcome to a context dashboard',
           },
           title: 'Hello',
-          id: 'some_unique_id'
-        }
+          id: 'some_unique_id',
+        },
       ];
     }
   }

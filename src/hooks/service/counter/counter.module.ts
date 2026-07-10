@@ -8,6 +8,6 @@ import { CounterService } from './counter.service';
    * By extending the `ExtensionKeys` interface in the `CumulocityServiceRegistry` namespace, you declare the key for your service.
    * `hookService` then enforces type safety, ensuring only services that implement the corresponding interface can be provided for that key.
    */
-  providers: [hookService('counter', CounterService)]
+  providers: [hookService('counter', CounterService)],
 })
 export class CounterHookModule {}

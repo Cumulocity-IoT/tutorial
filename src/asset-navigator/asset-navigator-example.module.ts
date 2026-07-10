@@ -10,12 +10,12 @@ import { AssetsNavigatorModule, AssetNavigatorConfig } from '@c8y/ngx-components
       rootNodePriority: 3000,
       disableDragAndDrop: false,
       rootNavigatorNode: {
-        label: 'Custom Root Node'
+        label: 'Custom Root Node',
         // You can provide other NavigatorNode properties as needed
-      }
-    } as AssetNavigatorConfig)
+      },
+    } as AssetNavigatorConfig),
   ],
   declarations: [],
-  bootstrap: []
+  bootstrap: [],
 })
 export class AppModule {}

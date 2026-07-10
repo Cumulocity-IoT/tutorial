@@ -14,11 +14,11 @@ export class ClientInterceptorService implements HttpInterceptor {
     this.adjustAllNewManagedObjects(req);
     return next
       .handle(req)
-      .pipe(switchMap(response => this.modifyResponseBodyForManagedObjects(response)));
+      .pipe(switchMap((response) => this.modifyResponseBodyForManagedObjects(response)));
   }
 
   private async modifyResponseBodyForManagedObjects(
-    response: IFetchResponse
+    response: IFetchResponse,
   ): Promise<IFetchResponse> {
     if (
       !response ||
@@ -31,7 +31,7 @@ export class ClientInterceptorService implements HttpInterceptor {
     const body = await response.json();
     if (body?.managedObjects && Array.isArray(body.managedObjects)) {
       const managedObjects: IManagedObject[] = body.managedObjects;
-      managedObjects.forEach(managedObject => {
+      managedObjects.forEach((managedObject) => {
         managedObject['c8y_ReadByTutorialAppInterceptor'] = {};
       });
     }

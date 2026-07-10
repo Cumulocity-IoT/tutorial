@@ -6,16 +6,16 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'date-time-range',
       loadComponent: () =>
-        import('./date-time-range-example.component').then(m => m.DateTimeRangeExampleComponent)
+        import('./date-time-range-example.component').then((m) => m.DateTimeRangeExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
         label: 'Date time range',
         path: '/date-time-range',
         icon: 'realtime',
-        priority: 10
-      })
-    )
-  ]
+        priority: 10,
+      }),
+    ),
+  ],
 })
 export class DateTimeRangeExampleModule {}

@@ -6,7 +6,7 @@ import { C8yStepper, CoreModule, WizardComponent } from '@c8y/ngx-components';
   selector: 'container-component',
   templateUrl: 'stepper-example.component.html',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class StepperExampleComponent implements OnInit {
   formGroupStepOne: FormGroup;
@@ -14,12 +14,12 @@ export class StepperExampleComponent implements OnInit {
   stepper: C8yStepper;
   constructor(
     private wizardComponent: WizardComponent,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) {}
 
   ngOnInit() {
     this.formGroupStepOne = this.fb.group({
-      name: ['', Validators.required]
+      name: ['', Validators.required],
     });
   }
 

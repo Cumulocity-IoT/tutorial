@@ -6,7 +6,7 @@ import { CoreModule } from '@c8y/ngx-components';
   selector: 'device-tab-context',
   templateUrl: './device-tab-context.component.html',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class DeviceTabContextComponent {
   constructor(public route: ActivatedRoute) {}

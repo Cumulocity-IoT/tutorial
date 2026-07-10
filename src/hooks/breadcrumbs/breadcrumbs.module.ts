@@ -12,7 +12,8 @@ export const hooks = [
   hookBreadcrumb(ExampleBreadcrumbFactory),
   hookRoute({
     path: 'hooks/breadcrumbs',
-    loadComponent: () => import('./basic-view/basic-view.component').then(m => m.BasicViewComponent)
+    loadComponent: () =>
+      import('./basic-view/basic-view.component').then((m) => m.BasicViewComponent),
   }),
   hookNavigator(
     new NavigatorNode({
@@ -20,15 +21,15 @@ export const hooks = [
       path: 'hooks/breadcrumbs',
       icon: 'forward',
       label: 'Breadcrumbs',
-      parent: 'Hooks'
-    })
-  )
+      parent: 'Hooks',
+    }),
+  ),
 ];
 
 @NgModule({
   /**
    * Adding the hooks to the providers:
    */
-  providers: [...hooks]
+  providers: [...hooks],
 })
 export class BreadcrumbsModule {}

@@ -8,7 +8,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'maps/simple',
       loadComponent: () =>
-        import('./simple-map-example.component').then(m => m.SimpleMapExampleComponent)
+        import('./simple-map-example.component').then((m) => m.SimpleMapExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: 'maps/simple',
         icon: 'marker',
         label: 'Simple map',
-        parent: 'Map examples'
-      })
-    )
-  ]
+        parent: 'Map examples',
+      }),
+    ),
+  ],
 })
 export class SimpleMapExampleModule {}

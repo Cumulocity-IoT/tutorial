@@ -9,10 +9,7 @@
       [ngModel]="selectedExample"
       (ngModelChange)="selectExample($event)"
     >
-      <option
-        *ngFor="let example of examples"
-        [ngValue]="example"
-      >
+      <option *ngFor="let example of examples" [ngValue]="example">
         {{ example.label }}
       </option>
     </select>

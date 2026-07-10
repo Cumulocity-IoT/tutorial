@@ -13,14 +13,12 @@ export function provideDemoWidget() {
       errorStrategy: DynamicComponentErrorStrategy.OVERLAY_ERROR,
       data: {
         schema: () =>
-          import(
-            'c8y-schema-loader?interfaceName=WidgetConfig&type=widget-config!./widget-config.model'
-          ),
+          import('c8y-schema-loader?interfaceName=WidgetConfig&type=widget-config!./widget-config.model'),
         // The settings object can be used to configure the configComponent
         settings: {
-          noNewWidgets: false
-        }
-      }
-    })
+          noNewWidgets: false,
+        },
+      },
+    }),
   ];
 }

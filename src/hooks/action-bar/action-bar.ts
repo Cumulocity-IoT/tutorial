@@ -19,7 +19,7 @@ export class ExampleActionBarFactory implements ActionBarFactory {
         priority: 500,
         // If the element is enclosed withing "c8y-action-bar-item" then placement refers to this element.
         placement: 'right',
-        component: RefreshActionComponent
+        component: RefreshActionComponent,
       });
     }
 

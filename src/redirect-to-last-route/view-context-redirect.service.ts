@@ -7,7 +7,7 @@ import { SERVICE_FRAGMENT } from '@c8y/ngx-components/services/shared';
 export class ViewContextRedirectService {
   constructor(
     private router: Router,
-    private alert: AlertService
+    private alert: AlertService,
   ) {}
 
   async redirectToFirstItemOf(viewContext: ViewContext, subPath = ''): Promise<boolean> {

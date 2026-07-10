@@ -11,32 +11,32 @@ const exampleSchema: object = {
   properties: {
     fixedValue: {
       type: 'string',
-      const: 'This is a constant value presented as hidden input'
+      const: 'This is a constant value presented as hidden input',
     },
     text: {
       type: 'string',
       title: 'Simple text input',
       description: '…and some short description.',
-      examples: ['You can provide some examples displayed as placeholder…']
+      examples: ['You can provide some examples displayed as placeholder…'],
     },
     'required-field': {
       type: 'string',
       title: 'Required text input',
       description:
         'A longer description can also be provided. It will be displayed in a tooltip next to the label.',
-      examples: ['Enter some very important, required text']
+      examples: ['Enter some very important, required text'],
     },
     'radio-group': {
       type: 'string',
       enum: ['Radio One', 'Radio Two', 'Radio Three'],
       title: 'Radio button group',
-      description: 'Let the user select one option of a given range of options.'
+      description: 'Let the user select one option of a given range of options.',
     },
     checkbox: {
       type: 'boolean',
       title: 'Checkbox',
       description: 'Checkboxes can have a description too.',
-      default: 'true'
+      default: 'true',
     },
     list: {
       title: 'List of items',
@@ -46,14 +46,14 @@ const exampleSchema: object = {
       items: {
         type: 'string',
         title: 'URL',
-        pattern: '(http|https)://(\\S+)'
-      }
+        pattern: '(http|https)://(\\S+)',
+      },
     },
     password: {
       type: 'string',
       title: 'Password',
       examples: ['Some very secure password'],
-      writeOnly: true
+      writeOnly: true,
     },
     image: {
       type: 'string',
@@ -61,18 +61,18 @@ const exampleSchema: object = {
       description:
         'You can use file upload component to let users send files. This input would accept only a single PNG image file.',
       contentEncoding: 'base64',
-      contentMediaType: 'image/png'
-    }
+      contentMediaType: 'image/png',
+    },
   },
   required: ['provider', 'required-field', 'list', 'radio-group'],
-  additionalProperties: false
+  additionalProperties: false,
 };
 
 @Component({
   selector: 'c8y-json-schema-example',
   templateUrl: './json-schema-example.component.html',
   standalone: true,
-  imports: [CommonModule, HeaderModule, DynamicFormsModule]
+  imports: [CommonModule, HeaderModule, DynamicFormsModule],
 })
 export class JSONSchemaExampleComponent {
   form = new FormGroup({});
@@ -81,14 +81,14 @@ export class JSONSchemaExampleComponent {
 
   constructor(
     public jsonschema: C8yJSONSchema,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly changeDetectorRef: ChangeDetectorRef,
   ) {
     this.fields = [
       this.jsonschema.toFieldConfig(exampleSchema, {
         map(mappedField: FormlyFieldConfig, _mapSource: JSONSchema7) {
           return mappedField;
-        }
-      })
+        },
+      }),
     ];
   }
 

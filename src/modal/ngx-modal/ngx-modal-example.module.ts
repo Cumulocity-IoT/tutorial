@@ -6,7 +6,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'modal/ngx-modal',
       loadComponent: () =>
-        import('./ngx-modal-example.component').then(m => m.NgxModalExampleComponent)
+        import('./ngx-modal-example.component').then((m) => m.NgxModalExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -14,9 +14,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: '/modal/ngx-modal',
         icon: 'list-alt',
         priority: 30,
-        parent: 'Modal'
-      })
-    )
-  ]
+        parent: 'Modal',
+      }),
+    ),
+  ],
 })
 export class NgxModalExampleModule {}

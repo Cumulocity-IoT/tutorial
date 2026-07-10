@@ -17,9 +17,9 @@ export const alarmCountLastWeek: ComputedPropertyDefinition<
       properties: {
         alarmCountLastWeek: {
           label: 'Alarm count last week',
-          type: 'number'
-        }
-      }
+          type: 'number',
+        },
+      },
     },
     name: 'alarmCountLastWeek',
     label: 'Alarm count last week',
@@ -27,16 +27,18 @@ export const alarmCountLastWeek: ComputedPropertyDefinition<
     config: { type: '' } as AlarmCountLastWeekConfig,
     computed: true,
     isEditable: false,
-    isStandardProperty: true
+    isStandardProperty: true,
   },
   loadConfigComponent: () =>
-    import('./alarm-count-config.component').then(m => m.ComputedPropertyAlarmCountConfigComponent),
-  value: ({ config, context }) => alarmCountValue(config, context)
+    import('./alarm-count-config.component').then(
+      (m) => m.ComputedPropertyAlarmCountConfigComponent,
+    ),
+  value: ({ config, context }) => alarmCountValue(config, context),
 };
 
 async function alarmCountValue(
   config: AlarmCountLastWeekConfig,
-  asset: IManagedObject
+  asset: IManagedObject,
 ): Promise<number> {
   const injector = inject(Injector);
   const alarmService = injector.get(AlarmService);
@@ -48,7 +50,7 @@ async function alarmCountValue(
     dateFrom: sevenDaysAgo.toISOString(),
     type: config.type,
     pageSize: 1,
-    withTotalElements: true
+    withTotalElements: true,
   };
 
   const resp = await alarmService.list(filters);

@@ -5,7 +5,7 @@ import { ICounterService } from '../counter/counter.model';
 @Component({
   selector: 'tut-counter-component',
   templateUrl: './counter.component.html',
-  standalone: true
+  standalone: true,
 })
 export class CounterComponent {
   counter: ICounterService;

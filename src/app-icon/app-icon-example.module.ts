@@ -8,15 +8,15 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'app-icon',
       loadComponent: () =>
-        import('./app-icon-example.component').then(m => m.AppIconExampleComponents)
+        import('./app-icon-example.component').then((m) => m.AppIconExampleComponents),
     }),
     hookNavigator(
       new NavigatorNode({
         path: 'app-icon',
         icon: 'notification',
-        label: 'App icon'
-      })
-    )
-  ]
+        label: 'App icon',
+      }),
+    ),
+  ],
 })
 export class AppIconExampleModule {}

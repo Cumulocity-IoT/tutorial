@@ -52,9 +52,9 @@ export function handleRequest(
   urlPath: string,
   handlers: {
     [method in HttpMethods]?: (
-      requestDescriptor: string
+      requestDescriptor: string,
     ) => Promise<IFetchResponse> | IFetchResponse;
-  } = {}
+  } = {},
 ): ReturnType<HttpHandler['handle']> {
   let requestDescriptor = req?.url;
 
@@ -84,7 +84,7 @@ export function generateId() {
 export function getFakeSource(): ISource {
   return {
     id: generateId(),
-    self: 'https://example.com/inventory/managedObjects/...'
+    self: 'https://example.com/inventory/managedObjects/...',
   };
 }
 
@@ -102,12 +102,12 @@ export function getFakeSource(): ISource {
  */
 export function generateResponse<T>(bodyGenerator: () => T, statistics = DEFAULT_STATISTICS) {
   const newResponse = new Response(null, {
-    status: 200
+    status: 200,
   });
   newResponse.json = () =>
     Promise.resolve({
       ...bodyGenerator(),
-      statistics
+      statistics,
     });
   return newResponse as ResponseWithType<T & { statistics: typeof DEFAULT_STATISTICS }>;
 }
@@ -127,6 +127,6 @@ function generateStatistics(params: Record<string, any>): typeof DEFAULT_STATIST
     ...(params?.totalPages && { totalPages: params.totalPages }),
     ...(params?.pageSize && { pageSize: params.pageSize }),
     ...(params?.currentPage && { currentPage: params.currentPage }),
-    ...(params?.currentPage && { next: params.currentPage + 1 })
+    ...(params?.currentPage && { next: params.currentPage + 1 }),
   } as typeof DEFAULT_STATISTICS;
 }

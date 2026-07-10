@@ -6,7 +6,7 @@ import { hookNavigator, hookRoute, NavigatorNode } from '@c8y/ngx-components';
     hookRoute({
       path: 'forms/form-validation',
       loadComponent: () =>
-        import('./forms-validation.component').then(m => m.FormsValidationTutorialComponent)
+        import('./forms-validation.component').then((m) => m.FormsValidationTutorialComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -14,9 +14,9 @@ import { hookNavigator, hookRoute, NavigatorNode } from '@c8y/ngx-components';
         label: 'Validation',
         icon: 'form',
         priority: 80,
-        parent: 'Dynamic forms'
-      })
-    )
-  ]
+        parent: 'Dynamic forms',
+      }),
+    ),
+  ],
 })
 export class FormsTutorialModule {}

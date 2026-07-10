@@ -8,16 +8,16 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'quick-link',
       loadComponent: () =>
-        import('./quick-link-example.component').then(m => m.QuickLinkExampleComponent)
+        import('./quick-link-example.component').then((m) => m.QuickLinkExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
         path: '/quick-link',
         label: 'Quick link',
         icon: 'c8y-css',
-        priority: 85
-      })
-    )
-  ]
+        priority: 85,
+      }),
+    ),
+  ],
 })
 export class QuickLinkExampleModule {}

@@ -17,7 +17,7 @@ import { IIdentified } from '@c8y/client';
               [config]="{
                 groupsSelectable: true,
                 columnHeaders: true,
-                showFilter: true
+                showFilter: true,
               }"
             ></c8y-asset-selector-miller>
           </div>
@@ -35,7 +35,7 @@ import { IIdentified } from '@c8y/client';
       </div>
     </div> `,
   standalone: true,
-  imports: [CommonModule, AssetSelectorModule, CoreModule]
+  imports: [CommonModule, AssetSelectorModule, CoreModule],
 })
 export class AssetSelectorColumnHeaderComponent {
   model: IIdentified;

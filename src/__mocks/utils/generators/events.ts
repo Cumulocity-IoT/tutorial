@@ -9,6 +9,6 @@ export function getFakeEvent(): IEvent {
     text: `Text_${Math.floor(Math.random() * 1000)}`,
     id: generateId(),
     self: 'https://example.com/self/...',
-    creationTime: new Date().toISOString()
+    creationTime: new Date().toISOString(),
   };
 }

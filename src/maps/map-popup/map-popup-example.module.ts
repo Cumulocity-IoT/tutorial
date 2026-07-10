@@ -8,7 +8,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'maps/popup',
       loadComponent: () =>
-        import('./map-popup-example.component').then(m => m.MapPopupExampleComponent)
+        import('./map-popup-example.component').then((m) => m.MapPopupExampleComponent),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +16,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: 'maps/popup',
         icon: 'map-marker',
         label: 'Map with popup',
-        parent: 'Map examples'
-      })
-    )
-  ]
+        parent: 'Map examples',
+      }),
+    ),
+  ],
 })
 export class MapPopupExampleModule {}

@@ -8,7 +8,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
     hookRoute({
       path: 'grids/expandable-rows-grid-example',
       loadComponent: () =>
-        import('./expandable-rows-grid-example.component').then(m => m.ExpandableRowsGridComponent)
+        import('./expandable-rows-grid-example.component').then(
+          (m) => m.ExpandableRowsGridComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
@@ -16,9 +18,9 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
         path: 'grids/expandable-rows-grid-example',
         icon: 'table',
         label: 'Expandable rows grid',
-        parent: 'Data grid examples'
-      })
-    )
-  ]
+        parent: 'Data grid examples',
+      }),
+    ),
+  ],
 })
 export class ExpandableRowsGridExampleModule {}

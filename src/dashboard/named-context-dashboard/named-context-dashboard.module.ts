@@ -11,7 +11,9 @@ import { ViewContextRedirectService } from '../../redirect-to-last-route/view-co
         path: 'named-context',
         context: ViewContext.Device,
         loadComponent: () =>
-          import('./named-context-dashboard.component').then(m => m.NamedContextDashboardComponent)
+          import('./named-context-dashboard.component').then(
+            (m) => m.NamedContextDashboardComponent,
+          ),
       },
       {
         path: 'dashboards/named-context',
@@ -19,19 +21,19 @@ import { ViewContextRedirectService } from '../../redirect-to-last-route/view-co
           () =>
             inject(ViewContextRedirectService).redirectToFirstItemOf(
               ViewContext.Device,
-              'named-context'
-            )
+              'named-context',
+            ),
         ],
-        component: EmptyComponent
-      }
+        component: EmptyComponent,
+      },
     ]),
     hookNavigator({
       label: 'Named-context dashboard',
       icon: 'list',
       priority: 1,
       path: `/dashboards/named-context`,
-      parent: 'Dashboards'
-    })
-  ]
+      parent: 'Dashboards',
+    }),
+  ],
 })
 export class NamedContextDashboardModule {}

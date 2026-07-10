@@ -10,14 +10,14 @@ import { hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'standalone-demo',
       loadComponent: () =>
         import('./standalone-component/standalone-component.component').then(
-          m => m.StandaloneComponentComponent
-        )
+          (m) => m.StandaloneComponentComponent,
+        ),
     }),
     hookNavigator({
       path: 'standalone-demo',
       icon: 'single-page-mode',
-      label: 'NG Standalone Component'
-    })
-  ]
+      label: 'NG Standalone Component',
+    }),
+  ],
 })
 export class StandaloneDemoModule {}

@@ -10,6 +10,6 @@ import { HeaderModule } from '@c8y/ngx-components';
     </div>`,
   styleUrls: ['./syntactically-awesome-style-sheets-example.component.scss'],
   standalone: true,
-  imports: [HeaderModule]
+  imports: [HeaderModule],
 })
 export class SyntacticallyAwesomeStyleSheetsExampleComponent {}

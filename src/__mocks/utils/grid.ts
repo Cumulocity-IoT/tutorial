@@ -16,7 +16,7 @@ function parseQuery(query: string): QueryFilters {
     name: extractFromQuery(query, /name eq '\*([^*]+)\*'/),
     id: extractFromQuery(query, /id eq '\*([^*]+)\*'/),
     hasEntries: extractMultipleFromQuery(query, /has\(([^)]+)\)/g),
-    typesEntries: extractMultipleFromQuery(query, /type eq '([^']+)'/g)
+    typesEntries: extractMultipleFromQuery(query, /type eq '([^']+)'/g),
   };
 }
 
@@ -50,11 +50,11 @@ export function filterObjects(objects: IManagedObject[], query: string): IManage
   }
   const filters = parseQuery(query);
   return objects.filter(
-    object =>
+    (object) =>
       filterByName(object, filters.name) &&
       filterById(object, filters.id) &&
       filterByProperties(object, filters.hasEntries) &&
-      filterByType(object, filters.typesEntries)
+      filterByType(object, filters.typesEntries),
   );
 }
 
@@ -67,7 +67,7 @@ export function filterObjectBySearchText(objects: IManagedObject[], query: strin
 
   if (match) {
     const textValue = match[1];
-    return objects.filter(object => filterByName(object, textValue));
+    return objects.filter((object) => filterByName(object, textValue));
   }
   return objects;
 }
@@ -90,12 +90,14 @@ function filterById(object: IManagedObject, id?: string): boolean {
  * Filters object by existence of certain properties
  */
 function filterByProperties(object: IManagedObject, properties: string[]): boolean {
-  return properties.length > 0 ? properties.some(prop => object.hasOwnProperty(prop)) : true;
+  return properties.length > 0 ? properties.some((prop) => object.hasOwnProperty(prop)) : true;
 }
 
 /**
  * Filters object by type
  */
 function filterByType(object: IManagedObject, types: string[]): boolean {
-  return types.length > 0 ? types.some(type => object.type.includes(type.replace('*', ''))) : true;
+  return types.length > 0
+    ? types.some((type) => object.type.includes(type.replace('*', '')))
+    : true;
 }

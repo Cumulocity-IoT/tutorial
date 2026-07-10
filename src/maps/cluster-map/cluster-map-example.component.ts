@@ -8,7 +8,7 @@ import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
   selector: 'tut-cluster-map-example',
   templateUrl: './cluster-map-example.component.html',
   standalone: true,
-  imports: [CommonModule, MapModule, CoreModule, AssetSelectorModule]
+  imports: [CommonModule, MapModule, CoreModule, AssetSelectorModule],
 })
 export class ClusterMapExampleComponent {
   config: ClusterMapConfig = { center: defaultMapConfig.center, zoomLevel: 4 };
@@ -38,7 +38,7 @@ export class ClusterMapExampleComponent {
   toggleAutorefresh() {
     this.config = {
       ...this.config,
-      refreshInterval: this.config.refreshInterval ? undefined : 5000
+      refreshInterval: this.config.refreshInterval ? undefined : 5000,
     };
   }
 }

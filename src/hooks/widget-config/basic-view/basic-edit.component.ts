@@ -3,7 +3,7 @@ import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { CoreModule } from '@c8y/ngx-components';
 import {
   WidgetConfigSectionComponent,
-  WidgetConfigService
+  WidgetConfigService,
 } from '@c8y/ngx-components/context-dashboard';
 import { referenceWidgetDefinition } from '../widget-config.providers';
 
@@ -26,13 +26,12 @@ import { referenceWidgetDefinition } from '../widget-config.providers';
       <code>
         <pre>
     {{ widgetConfigService.currentConfig$ | async | json }}
-  </pre
-        >
+  </pre>
       </code>
     </div>
   </div>`,
   standalone: true,
-  imports: [CoreModule, CommonModule, WidgetConfigSectionComponent, AsyncPipe, JsonPipe]
+  imports: [CoreModule, CommonModule, WidgetConfigSectionComponent, AsyncPipe, JsonPipe],
 })
 export class BasicEditComponent implements OnInit, OnDestroy {
   widgetConfigService = inject(WidgetConfigService);

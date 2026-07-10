@@ -10,7 +10,7 @@ import {
   generateSubGroup,
   generateAsset,
   generateGroup,
-  generateAssetType
+  generateAssetType,
 } from '../../__mocks/utils/generators/managedObjects';
 
 export class InventoryInterceptor implements HttpInterceptor {
@@ -18,7 +18,7 @@ export class InventoryInterceptor implements HttpInterceptor {
     return handleRequest(req, next, 'inventory/managedObjects', {
       POST: this.mockPOST.bind(this),
       PUT: this.mockPUT.bind(this),
-      GET: this.mockGET.bind(this)
+      GET: this.mockGET.bind(this),
     });
   }
 
@@ -37,7 +37,7 @@ export class InventoryInterceptor implements HttpInterceptor {
     /**
      * Workaround. Leaflet is lazy loaded. Adding mocked assets too fast leads to not loaded markers.
      */
-    await new Promise(r => setTimeout(r, 300));
+    await new Promise((r) => setTimeout(r, 300));
 
     const responseGenerators = this.getResponseGenerators(_requestDescriptor);
     for (const urlPart in responseGenerators) {
@@ -61,92 +61,92 @@ export class InventoryInterceptor implements HttpInterceptor {
   private getResponseGenerators(_requestDescriptor: string) {
     return {
       c8y_DeviceGroup: () => ({
-        managedObjects: [...[...Array(10)].map(() => generateSubGroup())]
+        managedObjects: [...[...Array(10)].map(() => generateSubGroup())],
       }),
       c8y_DeviceSubgroup: () => ({
-        managedObjects: [generateSubGroup()]
+        managedObjects: [generateSubGroup()],
       }),
       'has(c8y_IsDeviceGroup)': () => ({
-        managedObjects: [...[...Array(5)].map(() => generateGroup())]
+        managedObjects: [...[...Array(5)].map(() => generateGroup())],
       }),
       // generate 3 realtime devices for the map example
       'has(c8y_Position)': () => ({
         managedObjects: [
           generateRealtimeDeviceMO(),
           generateRealtimeDeviceMO(),
-          generateRealtimeDeviceMO()
-        ]
+          generateRealtimeDeviceMO(),
+        ],
       }),
       'has(c8y_IsDevice)': () => ({
-        managedObjects: [...[...Array(5)].map(() => generateDevice())]
+        managedObjects: [...[...Array(5)].map(() => generateDevice())],
       }),
       childAssets: () => ({
         references: [
           ...[...Array(3)].map(() => ({
-            managedObject: generateRandomMo()
-          }))
-        ]
+            managedObject: generateRandomMo(),
+          })),
+        ],
       }),
       childDevices: () => ({
-        references: []
+        references: [],
       }),
       childAdditions: () => ({
-        references: []
+        references: [],
       }),
       c8y_Dashboard: () => ({
-        managedObjects: []
+        managedObjects: [],
       }),
       c8y_IsAssetType: () => ({
-        managedObjects: [generateAssetType()]
+        managedObjects: [generateAssetType()],
       }),
       c8yAssetTypesCacheInvalidator: () => ({
-        managedObjects: [generateRandomMo()]
+        managedObjects: [generateRandomMo()],
       }),
       c8y_IsDeviceGroup: () => ({
         managedObjects: [
-          ...[...Array(5)].map(() => (Math.random() < 0.5 ? generateSubGroup() : generateAsset()))
-        ]
+          ...[...Array(5)].map(() => (Math.random() < 0.5 ? generateSubGroup() : generateAsset())),
+        ],
       }),
       c8y_IsDevice: () =>
         _requestDescriptor.includes('"onlyRoots":true') &&
         !_requestDescriptor.includes('c8y_IsDeviceGroup')
           ? {
-              managedObjects: [...[...Array(2)].map(() => generateDevice())]
+              managedObjects: [...[...Array(2)].map(() => generateDevice())],
             }
           : null,
       supportedMeasurements: () => ({
-        c8y_SupportedMeasurements: ['c8y_Battery']
+        c8y_SupportedMeasurements: ['c8y_Battery'],
       }),
       supportedSeries: () => ({
-        c8y_SupportedSeries: ['c8y_Battery.Battery']
+        c8y_SupportedSeries: ['c8y_Battery.Battery'],
       }),
       c8y_Kpi: () => ({
-        managedObjects: []
+        managedObjects: [],
       }),
       kpis: () => ({
-        managedObjects: []
+        managedObjects: [],
       }),
       c8y_Battery: () => ({
         id: '100000',
         type: 'c8y_Battery',
         source: {
-          id: '200000'
+          id: '200000',
         },
         c8y_Battery: {
           Battery: {
             unit: '%',
-            value: 67
-          }
-        }
+            value: 67,
+          },
+        },
       }),
       c8y_Service: () => ({
-        managedObjects: [generateDevice()]
+        managedObjects: [generateDevice()],
       }),
       gainsightBotEnabled: () => ({
-        managedObjects: []
+        managedObjects: [],
       }),
       language: () => ({
-        managedObjects: [generateUserPreferences()]
+        managedObjects: [generateUserPreferences()],
       }),
       c8y_JsonSchema: () => ({
         managedObjects: [
@@ -167,19 +167,19 @@ export class InventoryInterceptor implements HttpInterceptor {
                   minimum: -50,
                   maximum: 150,
                   default: 25,
-                  required: true
+                  required: true,
                 },
                 unit: {
                   type: 'string',
                   title: 'Temperature Unit',
                   enum: ['Celsius', 'Fahrenheit'],
-                  default: 'Celsius'
-                }
-              }
+                  default: 'Celsius',
+                },
+              },
             },
             appliesTo: {
-              MANAGED_OBJECTS: true
-            }
+              MANAGED_OBJECTS: true,
+            },
           },
           {
             id: '100002',
@@ -197,23 +197,23 @@ export class InventoryInterceptor implements HttpInterceptor {
                   title: 'Device Name',
                   minLength: 3,
                   maxLength: 50,
-                  required: true
+                  required: true,
                 },
                 isActive: {
                   type: 'boolean',
                   title: 'Device Active',
-                  default: true
+                  default: true,
                 },
                 lastMaintenance: {
                   type: 'string',
                   format: 'datetime',
-                  title: 'Last Maintenance Date'
-                }
-              }
+                  title: 'Last Maintenance Date',
+                },
+              },
             },
             appliesTo: {
-              MANAGED_OBJECTS: true
-            }
+              MANAGED_OBJECTS: true,
+            },
           },
           {
             id: '100003',
@@ -231,27 +231,27 @@ export class InventoryInterceptor implements HttpInterceptor {
                   title: 'Alert Priority',
                   minimum: 1,
                   maximum: 5,
-                  default: 3
+                  default: 3,
                 },
                 enableNotifications: {
                   type: 'boolean',
                   title: 'Enable Email Notifications',
-                  default: false
-                }
-              }
+                  default: false,
+                },
+              },
             },
             appliesTo: {
-              MANAGED_OBJECTS: true
-            }
-          }
+              MANAGED_OBJECTS: true,
+            },
+          },
         ],
         statistics: {
           totalPages: 1,
           pageSize: 20,
           currentPage: 1,
-          totalElements: 3
-        }
-      })
+          totalElements: 3,
+        },
+      }),
     };
   }
 }

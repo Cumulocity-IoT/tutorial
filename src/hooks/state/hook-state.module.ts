@@ -13,13 +13,15 @@ import { hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'hooks/service-hook',
       parent: 'Hooks',
       // TODO: clarify why preventDuplicates is needed
-      preventDuplicates: true
+      preventDuplicates: true,
     }),
     hookRoute({
       path: 'hooks/service-hook',
       loadComponent: () =>
-        import('./hook-with-service-example.component').then(m => m.HookWithServiceExampleComponent)
-    })
-  ]
+        import('./hook-with-service-example.component').then(
+          (m) => m.HookWithServiceExampleComponent,
+        ),
+    }),
+  ],
 })
 export class HookStateModule {}

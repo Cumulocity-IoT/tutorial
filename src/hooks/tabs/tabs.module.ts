@@ -7,18 +7,18 @@ export const hooks = [
   hookRoute([
     {
       path: 'hooks/tabs',
-      redirectTo: 'hooks/tabs/outstanding'
+      redirectTo: 'hooks/tabs/outstanding',
     },
     {
       path: 'hooks/tabs/outstanding',
       loadComponent: () =>
-        import('./outstanding/outstanding.component').then(m => m.OutstandingComponent),
-      loadChildren: () => import('./inline/inline.module').then(m => m.InlineModule)
+        import('./outstanding/outstanding.component').then((m) => m.OutstandingComponent),
+      loadChildren: () => import('./inline/inline.module').then((m) => m.InlineModule),
     },
     {
       path: 'hooks/tabs/awesome',
-      loadComponent: () => import('./awesome/awesome.component').then(m => m.AwesomeComponent)
-    }
+      loadComponent: () => import('./awesome/awesome.component').then((m) => m.AwesomeComponent),
+    },
   ]),
   hookNavigator(
     new NavigatorNode({
@@ -26,15 +26,15 @@ export const hooks = [
       path: 'hooks/tabs',
       icon: 'plane',
       label: 'Tabs',
-      parent: 'Hooks'
-    })
-  )
+      parent: 'Hooks',
+    }),
+  ),
 ];
 @NgModule({
   declarations: [],
   /**
    * Adding the hooks to the providers:
    */
-  providers: [...hooks]
+  providers: [...hooks],
 })
 export class TabsModule {}

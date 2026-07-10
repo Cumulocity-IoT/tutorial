@@ -5,7 +5,7 @@ import { CoreModule } from '@c8y/ngx-components';
   selector: 'c8y-async-expandable-row-example',
   template: `<div id="{{ context.id }}">Context ID: {{ context.id }}</div>`,
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class AsyncExpandableRowsComponent implements OnInit {
   @Input() context: any;

@@ -13,7 +13,7 @@ import { DemoProviderGuard } from './demo-provider.guard';
           icon: 'bell-o',
           parent: 'Provider configuration',
           priority: 2,
-          canActivate: [DemoProviderGuard]
+          canActivate: [DemoProviderGuard],
         },
         layout: {
           pageTitle: 'Demo provider',
@@ -29,20 +29,20 @@ import { DemoProviderGuard } from './demo-provider.guard';
           deleteConfigurationModalTitle: 'Delete credentials',
           deleteConfigurationModalBody: `You are about to delete provider credentials. Do you want to proceed?`,
           deleteConfigurationModalOkBtnLabel: 'Delete',
-          configurationDeletedSuccessMsg: 'Credentials deleted.'
+          configurationDeletedSuccessMsg: 'Credentials deleted.',
         },
         endpoint: {
           definitionsEndpoint: {
             baseUrl: 'service/demo/providers', // replace with your provider definitions base URL part
-            listUrl: 'definitions' // replace with your provider definitions list URL part
+            listUrl: 'definitions', // replace with your provider definitions list URL part
           },
           configurationEndpoint: {
             baseUrl: 'service/demo/providers', // replace with your provider configuration base URL part
-            listUrl: 'configuration' // replace with your provider configuration list URL part
-          }
-        }
-      }
-    ])
-  ]
+            listUrl: 'configuration', // replace with your provider configuration list URL part
+          },
+        },
+      },
+    ]),
+  ],
 })
 export class ProviderConfigurationTutorialModule {}

@@ -6,32 +6,32 @@ function createSeriesObject(
   maxValue: number,
   unit: string,
   name: string,
-  type: string
+  type: string,
 ): ISeries {
   return {
     values: {
       [timestamp]: [
         {
           min: minValue,
-          max: maxValue
-        }
-      ]
+          max: maxValue,
+        },
+      ],
     },
     series: [
       {
         unit: unit,
         name: name,
-        type: type
-      }
+        type: type,
+      },
     ],
-    truncated: false
+    truncated: false,
   };
 }
 
 export function generateFakeSeriesValues(
   unit = '\u00baC',
   name = 'T',
-  type = 'c8y_Temperature'
+  type = 'c8y_Temperature',
 ): ISeries {
   const fakeTimestamp = new Date().toISOString();
   const fakeMinValue = parseFloat((Math.random() * 10).toFixed(10));

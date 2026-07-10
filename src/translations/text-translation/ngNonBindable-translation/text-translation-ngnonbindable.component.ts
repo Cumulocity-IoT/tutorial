@@ -28,15 +28,15 @@ import { CoreModule } from '@c8y/ngx-components';
     </div>
   `,
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class TextTranslationNgnonbindableComponent {
   ngNonBindableTranslate = {
     filteredItemsCount: 1,
-    allItemsCount: 8
+    allItemsCount: 8,
   };
 
   ngNonBindableWithLinkTranslate = {
-    docsUrl: '/docs/concepts/concepts-introduction'
+    docsUrl: '/docs/concepts/concepts-introduction',
   };
 }

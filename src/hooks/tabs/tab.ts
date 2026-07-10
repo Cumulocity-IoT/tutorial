@@ -26,14 +26,14 @@ export class ExampleTabFactory implements TabFactory {
         path: 'hooks/tabs/awesome',
         priority: 1000,
         label: 'Awesome',
-        icon: 'star'
+        icon: 'star',
       } as Tab);
 
       tabs.push({
         path: 'hooks/tabs/outstanding',
         priority: 1001,
         label: 'Outstanding',
-        icon: 'diamond'
+        icon: 'diamond',
       } as Tab);
     }
 
@@ -44,7 +44,7 @@ export class ExampleTabFactory implements TabFactory {
       priority: 1000,
       label: 'Inline 1',
       icon: 'diamond',
-      tabsOutlet: 'inline-example'
+      tabsOutlet: 'inline-example',
     } as Tab);
 
     tabs.push({
@@ -52,7 +52,7 @@ export class ExampleTabFactory implements TabFactory {
       priority: 1000,
       label: 'Inline 2',
       icon: 'diamond',
-      tabsOutlet: 'inline-example'
+      tabsOutlet: 'inline-example',
     } as Tab);
 
     return tabs;

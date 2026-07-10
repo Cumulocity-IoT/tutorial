@@ -7,17 +7,17 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
       path: 'device-connection-status',
       loadComponent: () =>
         import('./device-connection-status-example.component').then(
-          m => m.DeviceConnectionStatusExampleComponent
-        )
+          (m) => m.DeviceConnectionStatusExampleComponent,
+        ),
     }),
     hookNavigator(
       new NavigatorNode({
         path: '/device-connection-status',
         label: 'Device connection status',
         icon: 'realtime',
-        priority: 15
-      })
-    )
-  ]
+        priority: 15,
+      }),
+    ),
+  ],
 })
 export class DeviceConnectionStatusExampleModule {}

@@ -34,18 +34,10 @@
       (click)="$event.stopPropagation()"
     ></c8y-li-checkbox>
     <c8y-li-icon [icon]="'file'"></c8y-li-icon>
-    <button
-      class="btn-clean"
-      (click)="li.collapsed = !li.collapsed"
-    >
+    <button class="btn-clean" (click)="li.collapsed = !li.collapsed">
       {{ device.name || '-' }}
     </button>
-    <c8y-li-action
-      icon="times"
-      (click)="deleteDevice(device.id)"
-    >
-      Delete
-    </c8y-li-action>
+    <c8y-li-action icon="times" (click)="deleteDevice(device.id)"> Delete </c8y-li-action>
     <c8y-li-collapse>
       id:
       <a [routerLink]="['/device', device.id]">{{ device.id }}</a>
@@ -55,14 +47,8 @@
 
 <hr />
 
-<label
-  class="c8y-checkbox"
-  title="Enable basic c8yFor with same number of elements as above:"
->
-  <input
-    type="checkbox"
-    [(ngModel)]="enableBasicList"
-  />
+<label class="c8y-checkbox" title="Enable basic c8yFor with same number of elements as above:">
+  <input type="checkbox" [(ngModel)]="enableBasicList" />
   <span></span>
   <span>
     Enable basic (non virtual scroll) c8yFor with same number of elements as above (this might crash
@@ -75,28 +61,17 @@
     <c8y-li-checkbox (onSelect)="checkAll = $event"></c8y-li-checkbox>
     <label>All devices</label>
   </c8y-li>
-  <c8y-li
-    *c8yFor="let device of devicesContainerStrategy"
-    #li
-  >
+  <c8y-li *c8yFor="let device of devicesContainerStrategy" #li>
     <c8y-li-checkbox
       [selected]="checkAll"
       (onSelect)="updateSelected($event, device)"
       (click)="$event.stopPropagation()"
     ></c8y-li-checkbox>
     <c8y-li-icon [icon]="'file'"></c8y-li-icon>
-    <button
-      class="btn-clean"
-      (click)="li.collapsed = !li.collapsed"
-    >
+    <button class="btn-clean" (click)="li.collapsed = !li.collapsed">
       {{ device.name || '-' }}
     </button>
-    <c8y-li-action
-      icon="times"
-      (click)="deleteDevice(device.id)"
-    >
-      Delete
-    </c8y-li-action>
+    <c8y-li-action icon="times" (click)="deleteDevice(device.id)"> Delete </c8y-li-action>
     <c8y-li-collapse>
       id:
       <a [routerLink]="['/device', device.id]">{{ device.id }}</a>

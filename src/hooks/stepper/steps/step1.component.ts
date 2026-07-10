@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
   FormsModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
 } from '@angular/forms';
 import {
   C8yStepper,
@@ -13,7 +13,7 @@ import {
   RequiredInputPlaceholderDirective,
   MessagesComponent,
   MessageDirective,
-  C8yStepperButtons
+  C8yStepperButtons,
 } from '@c8y/ngx-components';
 
 @Component({
@@ -50,8 +50,8 @@ import {
     RequiredInputPlaceholderDirective,
     MessagesComponent,
     MessageDirective,
-    C8yStepperButtons
-  ]
+    C8yStepperButtons,
+  ],
 })
 export class Step1Component implements OnInit {
   formGroupStepOne: FormGroup;
@@ -60,7 +60,7 @@ export class Step1Component implements OnInit {
 
   ngOnInit(): void {
     this.formGroupStepOne = this.fb.group({
-      name: ['', Validators.required]
+      name: ['', Validators.required],
     });
   }
 

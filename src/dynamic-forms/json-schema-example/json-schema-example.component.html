@@ -8,15 +8,8 @@
         <!-- /important -->
       </div>
       <div class="card-footer">
-        <button type="reset" class="btn btn-default" title="Reset">
-          Reset
-        </button>
-        <button
-          type="submit"
-          class="btn btn-primary"
-          title="Submit"
-          [disabled]="form.invalid"
-        >
+        <button type="reset" class="btn btn-default" title="Reset">Reset</button>
+        <button type="submit" class="btn btn-primary" title="Submit" [disabled]="form.invalid">
           Submit
         </button>
       </div>
@@ -26,7 +19,7 @@
     <div class="card">
       <div class="card-block">
         <div class="legend form-block">Model</div>
-        <pre style="min-height: 98px;"><code>{{ model | json }}</code></pre>
+        <pre style="min-height: 98px"><code>{{ model | json }}</code></pre>
       </div>
     </div>
   </div>

@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './list-virtual-scroll-timeline.component.html',
   standalone: true,
   imports: [CoreModule, RouterModule],
-  providers: [StepperService]
+  providers: [StepperService],
 })
 export class ListVirtualScrollTimelineComponent implements OnInit {
   devices: IResultList<IManagedObject>;
@@ -26,7 +26,7 @@ export class ListVirtualScrollTimelineComponent implements OnInit {
     // paging information will be a part of the response now
     withTotalPages: true,
     pageSize: 10,
-    currentPage: 1
+    currentPage: 1,
   };
 
   constructor(public inventory: InventoryService) {}

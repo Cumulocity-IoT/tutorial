@@ -5,15 +5,15 @@ import { CoreModule } from '@c8y/ngx-components';
   selector: 'new-language',
   templateUrl: './new-language.component.html',
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class NewLanguageComponent {
   lang = {
     languages: {
       it: {
         name: 'Italian',
-        nativeName: 'Italian'
-      }
-    }
+        nativeName: 'Italian',
+      },
+    },
   };
 }

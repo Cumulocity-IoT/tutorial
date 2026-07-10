@@ -7,15 +7,15 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
   providers: [
     hookRoute({
       path: 'lists/list-timeline',
-      loadComponent: () => import('./list-timeline.component').then(m => m.ListTimelineComponent)
+      loadComponent: () => import('./list-timeline.component').then((m) => m.ListTimelineComponent),
     }),
     hookNavigator(
       new NavigatorNode({
         label: 'Basic list with timeline',
         path: 'lists/list-timeline',
-        parent: 'Lists'
-      })
-    )
-  ]
+        parent: 'Lists',
+      }),
+    ),
+  ],
 })
 export class ListTimelineModule {}

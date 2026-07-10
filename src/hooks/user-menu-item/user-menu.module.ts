@@ -13,8 +13,8 @@ import { CustomUserMenuFactory } from './custom-user-menu-factory.service';
       icon: 'user',
       label: 'Example 2',
       click: () => console.log('I am the second example'),
-      priority: 100
-    })
-  ]
+      priority: 100,
+    }),
+  ],
 })
 export class TutorialUserMenuModule {}

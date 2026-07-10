@@ -3,7 +3,7 @@ import { generateId, getFakeSource } from '../common';
 
 const MEASUREMENT_UNITS: Record<string, string> = {
   c8y_Temperature: 'ºC',
-  c8y_Battery: '%'
+  c8y_Battery: '%',
 };
 
 export function getFakeMeasurement(fragment = 'T', type = 'c8y_Temperature'): IMeasurement {
@@ -14,14 +14,14 @@ export function getFakeMeasurement(fragment = 'T', type = 'c8y_Temperature'): IM
     self: 'https://example.com/measurement/measurements/...',
     source: getFakeSource(),
     [type]: {
-      [fragment]: getFakeMeasurementValue(type)
-    }
+      [fragment]: getFakeMeasurementValue(type),
+    },
   };
 }
 
 function getFakeMeasurementValue(type: string): IMeasurementValue {
   return {
     value: Math.random() * 100,
-    unit: MEASUREMENT_UNITS[type] || ''
+    unit: MEASUREMENT_UNITS[type] || '',
   };
 }

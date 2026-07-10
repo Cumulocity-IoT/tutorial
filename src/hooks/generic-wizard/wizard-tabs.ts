@@ -14,7 +14,7 @@ export class WizardTabs {
         icon: 'rocket',
         priority: 1000,
         label: 'Minimal setup',
-        path: 'wizard/minimal-setup'
+        path: 'wizard/minimal-setup',
       } as Tab);
     }
     return tabs;

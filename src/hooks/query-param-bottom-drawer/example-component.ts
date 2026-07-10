@@ -3,12 +3,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-example-component',
-  template: `<p>This component was rendered via <code>hookQueryParamBottomDrawer</code></p>
+  template: `
+    <div class="p-24">
+      <h4 class="m-b-16">Query Param Bottom Drawer</h4>
+      <p>This drawer was opened via <code>hookQueryParamBottomDrawer</code>.</p>
+      <p class="text-muted">
+        The URL contains <code>?showExampleComponent=true</code>. Closing this drawer will remove
+        the query parameter.
+      </p>
+    </div>
     <div class="text-center card-footer p-24 separator">
-      <button class="btn btn-default" title="{{ 'Close' }}" type="button" (click)="close()">
-        {{ 'Close' }}
-      </button>
-    </div>`
+      <button class="btn btn-default" type="button" (click)="close()">Close</button>
+    </div>
+  `,
 })
 export class ExampleComponent {
   shouldClose: Promise<boolean>;
@@ -18,7 +25,7 @@ export class ExampleComponent {
   private readonly route = inject(ActivatedRoute);
 
   constructor() {
-    this.shouldClose = new Promise<boolean>(resolve => {
+    this.shouldClose = new Promise<boolean>((resolve) => {
       this.resolveClose = resolve;
     });
   }
@@ -29,7 +36,7 @@ export class ExampleComponent {
       relativeTo: this.route,
       queryParams: { showExampleComponent: null },
       queryParamsHandling: 'merge',
-      replaceUrl: true
+      replaceUrl: true,
     });
   }
 }

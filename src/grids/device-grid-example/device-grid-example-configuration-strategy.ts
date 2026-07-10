@@ -5,7 +5,7 @@ import {
   DATA_GRID_CONFIGURATION_CONTEXT_PROVIDER,
   GridConfig,
   GridConfigContext,
-  GridConfigContextProvider
+  GridConfigContextProvider,
 } from '@c8y/ngx-components';
 import { Observable, of } from 'rxjs';
 
@@ -22,7 +22,7 @@ export class DeviceGridExampleConfigurationStrategy extends AbstractConfiguratio
     protected context: GridConfigContext,
     @Inject(DATA_GRID_CONFIGURATION_CONTEXT_PROVIDER)
     @Optional()
-    protected contextProvider: GridConfigContextProvider
+    protected contextProvider: GridConfigContextProvider,
   ) {
     super(context, contextProvider);
   }
@@ -34,11 +34,11 @@ export class DeviceGridExampleConfigurationStrategy extends AbstractConfiguratio
       : null;
   }
 
-  saveConfig$(config: GridConfig, ctx?: GridConfigContext): Observable<GridConfig> {
+  saveConfig$(config: GridConfig, ctx?: GridConfigContext): Observable<void> {
     const context = this.retrieveContext(ctx);
     if (context?.key) {
       localStorage.setItem(context.key, JSON.stringify(config));
     }
-    return of(config);
+    return of(undefined);
   }
 }

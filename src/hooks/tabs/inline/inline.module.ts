@@ -8,19 +8,19 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'inline1',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'inline1',
-    component: InlineOne
+    component: InlineOne,
   },
   {
     path: 'inline2',
-    component: InlineTwo
-  }
+    component: InlineTwo,
+  },
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes)]
+  imports: [CommonModule, RouterModule.forChild(routes)],
 })
 export class InlineModule {}

@@ -1,10 +1,7 @@
 <c8y-title>Cluster map example</c8y-title>
 <div class="d-flex">
-  <div class="d-flex d-col j-c-center p-r-16" style="width: 280px;">
-    <button
-      class="btn btn-default btn-block"
-      (click)="setRandomZoomLevel()"
-    >
+  <div class="d-flex d-col j-c-center p-r-16" style="width: 280px">
+    <button class="btn btn-default btn-block" (click)="setRandomZoomLevel()">
       Set random zoom level
     </button>
     <button
@@ -21,61 +18,28 @@
     >
       Change center to Düsseldorf
     </button>
-    <button
-      class="btn btn-default btn-block"
-      (click)="map.center()"
-    >
+    <button class="btn btn-default btn-block" (click)="map.center()">
       Go back to defined center
     </button>
-    <button
-      class="btn btn-default btn-block"
-      (click)="changeIcon()"
-    >
-      Change icon
-    </button>
-    <button
-      class="btn btn-default btn-block"
-      (click)="changeColor()"
-    >
-      Change color
-    </button>
-    <button
-      class="btn btn-default btn-block"
-      (click)="toggleAutorefresh()"
-    >
+    <button class="btn btn-default btn-block" (click)="changeIcon()">Change icon</button>
+    <button class="btn btn-default btn-block" (click)="changeColor()">Change color</button>
+    <button class="btn btn-default btn-block" (click)="toggleAutorefresh()">
       Toggle auto refresh every 5s
     </button>
-    <button
-      class="btn btn-default btn-block"
-      (click)="showClusterColor = !showClusterColor"
-    >
+    <button class="btn btn-default btn-block" (click)="showClusterColor = !showClusterColor">
       Show cluster color
     </button>
-    <button
-      class="btn btn-default btn-block"
-      (click)="showMapStatus = !showMapStatus"
-    >
+    <button class="btn btn-default btn-block" (click)="showMapStatus = !showMapStatus">
       Show map status
     </button>
   </div>
   <!-- important -->
   <div class="flex-grow p-relative a-s-stretch">
-    <c8y-map-status
-      [clusterMap]="map"
-      [(config)]="config"
-      *ngIf="showMapStatus"
-    ></c8y-map-status>
-    <c8y-cluster-map
-      #map
-      [config]="config"
-      [showClusterColor]="showClusterColor"
-    ></c8y-cluster-map>
+    <c8y-map-status [clusterMap]="map" [(config)]="config" *ngIf="showMapStatus"></c8y-map-status>
+    <c8y-cluster-map #map [config]="config" [showClusterColor]="showClusterColor"></c8y-cluster-map>
   </div>
   <!-- /important -->
-  <div
-    class="a-s-stretch p-16 d-col bg-info-light"
-    style="width: 320px; height: 420px;"
-  >
+  <div class="a-s-stretch p-16 d-col bg-info-light" style="width: 320px; height: 420px">
     <pre class="flex-grow">{{ config | json }}  </pre>
   </div>
 </div>

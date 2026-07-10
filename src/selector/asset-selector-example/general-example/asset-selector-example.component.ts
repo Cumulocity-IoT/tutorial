@@ -10,7 +10,7 @@ import { DatapointSelectorModule } from '@c8y/ngx-components/datapoint-selector'
   selector: 'c8y-asset-selector-example',
   templateUrl: './asset-selector-example.component.html',
   standalone: true,
-  imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule]
+  imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule],
 })
 export class AssetSelectorExampleComponent {
   model: IIdentified;

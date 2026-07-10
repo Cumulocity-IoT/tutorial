@@ -8,7 +8,7 @@ import { CoreModule, SimplifiedAuthService } from '@c8y/ngx-components';
     <i class="icon-2x" c8yIcon="sign-out"></i>
   </button> `,
   standalone: true,
-  imports: [CoreModule]
+  imports: [CoreModule],
 })
 export class LogoutActionComponent {
   constructor(private _authService: SimplifiedAuthService) {}
