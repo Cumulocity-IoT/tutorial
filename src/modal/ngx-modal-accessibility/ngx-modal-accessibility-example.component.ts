@@ -6,6 +6,8 @@ import {
   FormsModule,
   HeaderModule,
   ModalModule,
+  ModalService,
+  Status,
 } from '@c8y/ngx-components';
 import { SimpleModalAccessibilityExampleComponent } from './simple-modal-accessibility-example.component';
 
@@ -21,6 +23,12 @@ import { SimpleModalAccessibilityExampleComponent } from './simple-modal-accessi
       >
         Create component modal with with ModalComponent and custom ids
       </button>
+      <button class="btn btn-default m-8" type="button" (click)="closeDashboardDetails()">
+        Confirm modal with default ids and initial focus
+      </button>
+      @if (lastConfirmChoice) {
+        <p class="text-muted" role="status">You chose: {{ lastConfirmChoice }}</p>
+      }
     </div>
   </div>`,
   standalone: true,
@@ -34,7 +42,13 @@ import { SimpleModalAccessibilityExampleComponent } from './simple-modal-accessi
   ],
 })
 export class NgxModalAccessibilityExampleComponent {
-  constructor(private modalService: BsModalService) {}
+  /** The label of the button the user picked in the confirm dialog, shown instead of logging it. */
+  lastConfirmChoice = '';
+
+  constructor(
+    private modalService: BsModalService,
+    private modal: ModalService,
+  ) {}
 
   openComponentModalWithContentSelectors() {
     this.modalService.show(SimpleModalAccessibilityExampleComponent, {
@@ -42,6 +56,25 @@ export class NgxModalAccessibilityExampleComponent {
       ariaDescribedby: 'modal-body-custom',
       ariaLabelledBy: 'modal-title-custom',
       ignoreBackdropClick: true,
-    }).content as SimpleModalAccessibilityExampleComponent;
+    });
+  }
+
+  /**
+   * `ModalService.confirm` already points `aria-labelledby` and `aria-describedby` at the
+   * default `modal-title` and `modal-body` ids, so the title and the warning are announced
+   * when the dialog opens, and focus starts on "Cancel".
+   */
+  async closeDashboardDetails() {
+    try {
+      await this.modal.confirm(
+        'Close dashboard details',
+        'Are you sure you want to close dashboard details? All unsaved changes will be lost.',
+        Status.WARNING,
+        { ok: 'Close', cancel: 'Cancel' },
+      );
+      this.lastConfirmChoice = 'Close';
+    } catch {
+      this.lastConfirmChoice = 'Cancel';
+    }
   }
 }
