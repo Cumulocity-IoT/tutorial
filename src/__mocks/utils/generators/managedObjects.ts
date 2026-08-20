@@ -1,5 +1,6 @@
 import { IManagedObject, IManagedObjectReferences } from '@c8y/client';
 import { generateId } from '../common';
+import { moveClusterMapSampleDevice } from './clusterDevices';
 
 const cords = [
   {
@@ -44,11 +45,27 @@ const cords = [
   },
 ];
 
-export function generateRealtimeDeviceMO(): IManagedObject {
-  return generateDevice<{ id: string; customFragment: string }>({
-    id: '1',
+/**
+ * Returns the managed object a realtime update is sent for.
+ * @param id Id of the device the update is for. Realtime updates of the sample devices of the
+ * cluster map examples move that device, any other id gets a generated device.
+ * @returns The managed object of the update.
+ */
+export function generateRealtimeDeviceMO(id?: string): IManagedObject {
+  const movedSampleDevice = id ? moveClusterMapSampleDevice(id) : undefined;
+  if (movedSampleDevice) {
+    return movedSampleDevice;
+  }
+
+  const device = generateDevice<{ id: string; customFragment: string }>({
+    id: id ?? '1',
     customFragment: 'customFragment',
   });
+  // Give the device an active alarm so the map does not render it as muted. A muted pin ignores
+  // the color set through the map config, which the simple map "Change color" example relies on;
+  // keeping it here means the device stays colorable across realtime updates too.
+  device.c8y_ActiveAlarmsStatus = { critical: 0, major: 0, minor: 0, warning: 1 };
+  return device;
 }
 
 export function generateDevice<T>(customAttributes?: T): IManagedObject {
@@ -135,7 +152,7 @@ export function generateRandomMo() {
   return generators[randomPosition]();
 }
 
-function getMOCommonProps() {
+export function getMOCommonProps() {
   return {
     creationTime: new Date().toISOString(),
     lastUpdated: new Date().toISOString(),

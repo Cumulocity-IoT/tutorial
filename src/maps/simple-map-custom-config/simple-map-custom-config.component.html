@@ -2,17 +2,46 @@
 
 <div class="d-flex">
   <div class="d-flex d-col j-c-center p-r-16" style="width: 280px; height: 420px">
-    <button class="btn btn-default btn-block" (click)="mapLayerService?.changeLayer('Carto')">
+    <button
+      class="btn btn-default btn-block"
+      [class.active]="selectedLayer() === 'Carto'"
+      [attr.aria-pressed]="selectedLayer() === 'Carto'"
+      (click)="showLayer('Carto')"
+    >
       Change to Carto layer
     </button>
-    <button class="btn btn-default btn-block" (click)="mapLayerService?.changeLayer('OpenTopo')">
+    <button
+      class="btn btn-default btn-block"
+      [class.active]="selectedLayer() === 'OpenTopo'"
+      [attr.aria-pressed]="selectedLayer() === 'OpenTopo'"
+      (click)="showLayer('OpenTopo')"
+    >
       Change to OpenTopo layer
     </button>
-    <button class="btn btn-default btn-block" (click)="mapLayerService?.revert()">
+    <button
+      class="btn btn-default btn-block"
+      [class.active]="selectedLayer() === 'default'"
+      [attr.aria-pressed]="selectedLayer() === 'default'"
+      (click)="showLayer('default')"
+    >
       Change to default
     </button>
   </div>
   <div class="flex-grow p-relative a-s-stretch">
-    <c8y-map></c8y-map>
+    <!--
+      The map picks up the layers of `MapLayerService` while it initializes. Rendering one map per
+      layer re-creates it whenever another layer is selected, so the new layer is applied.
+    -->
+    @switch (selectedLayer()) {
+      @case ('Carto') {
+        <c8y-map></c8y-map>
+      }
+      @case ('OpenTopo') {
+        <c8y-map></c8y-map>
+      }
+      @default {
+        <c8y-map></c8y-map>
+      }
+    }
   </div>
 </div>

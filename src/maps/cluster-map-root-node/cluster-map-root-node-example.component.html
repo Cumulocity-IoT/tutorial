@@ -3,14 +3,14 @@
 <div class="d-flex">
   <div class="d-flex d-col" style="width: 280px">
     <c8y-asset-selector
+      class="bg-level-1 min-height-0"
+      style="height: 420px"
       [(ngModel)]="rootNode"
       [config]="{
         groupsSelectable: true,
         groupsOnly: false,
       }"
-      (change)="resetConfig()"
-      class="bg-level-1 min-height-0"
-      style="height: 420px"
+      (onSelected)="onGroupSelected($event)"
     ></c8y-asset-selector>
   </div>
   <!-- important -->

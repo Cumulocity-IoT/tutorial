@@ -3,6 +3,11 @@ import { defaultLayer } from '@c8y/ngx-components/map';
 import { MapTileLayer } from '@c8y/options';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+/**
+ * The tile layers this example can switch to, next to the default layer.
+ */
+export type CustomMapTileLayerName = 'Carto' | 'OpenTopo';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -17,7 +22,7 @@ export class MapLayerService implements CumulocityServiceRegistry.MapTileLayerPr
     return true;
   }
 
-  changeLayer(name: 'Carto' | 'OpenTopo') {
+  changeLayer(name: CustomMapTileLayerName) {
     if (name === 'Carto') {
       this.maps$.next([
         {

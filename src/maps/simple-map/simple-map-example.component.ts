@@ -44,7 +44,11 @@ export class SimpleMapExampleComponent implements OnInit {
   }
 
   setCenter() {
-    this.config = { ...this.config, center: defaultMapConfig.center };
+    this.config = {
+      ...this.config,
+      center: [defaultMapConfig.center[0], defaultMapConfig.center[1]],
+      zoomLevel: 12,
+    };
   }
 
   changeIcon() {

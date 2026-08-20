@@ -9,9 +9,8 @@ import { getFakeOperation, getFakeOperationBulk } from './generators/operations'
 /**
  * Map of generators for various channels. Each generator function generates a mock data of specific type.
  */
-const generators = {
+const generators: Record<string, (id?: string) => IAnyData> = {
   [Channels.ManagedObjects]: generateRealtimeDeviceMO,
-  [Channels.MangedObjectsMap]: generateRealtimeDeviceMO,
   [Channels.Operations]: getFakeOperation,
   [Channels.BulkOperations]: getFakeOperationBulk,
   [Channels.Measurements]: getFakeMeasurement,
@@ -27,7 +26,7 @@ const generators = {
  * @throws - Throws an error if there's no generator available for the given channel.
  */
 export function getFakeData<T>(channel: string): RealtimeMessage<T> {
-  const generator = generators[channel];
+  const { generator, subscribedId } = resolveGenerator(channel);
   if (!generator) {
     throw new Error(
       `No fake data generator for channel ${channel}, either stay with the supported mocked channels (${Object.keys(
@@ -35,7 +34,11 @@ export function getFakeData<T>(channel: string): RealtimeMessage<T> {
       )}), provide a generator for your channel or remove the "noLogin" query parameter and login.`,
     );
   }
-  const data: IAnyData = generator();
+  const data: IAnyData = generator(subscribedId);
+  if (subscribedId) {
+    // A channel of a single entity only delivers data of that entity.
+    data.id = subscribedId;
+  }
   const message: RealtimeMessage<T> = {
     id: (data?.id).toString(),
     channel: data?.id ? channel.replace('*', (data?.id).toString()) : channel,
@@ -43,6 +46,26 @@ export function getFakeData<T>(channel: string): RealtimeMessage<T> {
     data: data as unknown as T,
   };
   return message;
+}
+
+/**
+ * Resolves the generator of a channel. A channel of a single entity, for example
+ * `/managedobjects/1`, is served by the generator of its wildcard channel, `/managedobjects/*`.
+ *
+ * @param channel - The channel to resolve the generator for.
+ * @returns The generator and, for a channel of a single entity, the id of that entity.
+ */
+function resolveGenerator(channel: string): {
+  generator?: (id?: string) => IAnyData;
+  subscribedId?: string;
+} {
+  if (generators[channel]) {
+    return { generator: generators[channel] };
+  }
+
+  const [, wildcardChannel, subscribedId] = /^(.*\/)([^/*]+)$/.exec(channel) ?? [];
+
+  return { generator: generators[`${wildcardChannel}*`], subscribedId };
 }
 
 /**

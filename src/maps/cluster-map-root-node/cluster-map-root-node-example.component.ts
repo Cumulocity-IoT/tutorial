@@ -2,7 +2,16 @@ import { Component } from '@angular/core';
 import { ClusterMapConfig, defaultMapConfig, MapModule } from '@c8y/ngx-components/map';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '@c8y/ngx-components';
-import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
+import {
+  AssetSelectionChangeEvent,
+  AssetSelectorModule,
+} from '@c8y/ngx-components/assets-navigator';
+
+/**
+ * Zoom level the map uses when it centers on a selected group, chosen so that the devices of one
+ * place fill the map.
+ */
+const GROUP_ZOOM_LEVEL = 11;
 
 @Component({
   selector: 'tut-cluster-map-root-node-example',
@@ -16,6 +25,25 @@ export class ClusterMapRootNodeExampleComponent {
 
   rootNode: unknown;
   oldRootNode: unknown;
+
+  /**
+   * Centers the map on the selected group. The asset selector passes the full managed object as
+   * `change.item` (its model value is simplified to id and name), so the group position is read
+   * from there.
+   * @param event The selection change emitted by the asset selector.
+   */
+  onGroupSelected(event: AssetSelectionChangeEvent) {
+    this.resetConfig();
+
+    const position = event?.change?.isSelected ? event.change.item?.c8y_Position : undefined;
+    if (position) {
+      this.followConfig = {
+        ...this.followConfig,
+        center: [position.lat, position.lng],
+        zoomLevel: GROUP_ZOOM_LEVEL,
+      };
+    }
+  }
 
   toggleAutorefresh() {
     this.config = {

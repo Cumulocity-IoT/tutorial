@@ -12,6 +12,7 @@ import { InventoryInterceptor } from './global-mocks/inventory.interceptor';
 import { MeasurementsInterceptor } from './global-mocks/measurements.interceptor';
 import { API_MOCK_CONFIG, ApiMockConfig } from './mock.model';
 import { RealtimeSubjectServiceWithMocking } from './mock.realtime';
+import { ClusterMapInterceptor } from './scoped-mocks/cluster-map';
 import { ContextDashboardInterceptor } from './scoped-mocks/context-dashboard';
 import { DeviceDataGridInterceptor } from './scoped-mocks/device-data-grid';
 import { ListsInterceptor } from './scoped-mocks/lists';
@@ -29,17 +30,16 @@ import { ProviderConfigurationsApiInterceptor } from './global-mocks/provider-co
 
 export function provideAPIMock() {
   return [
-    // TODO: ask Jan about mocking clusters maps/cluster
-    // {
-    //   provide: API_MOCK_CONFIG,
-    //   useValue: {
-    //     id: 'a-cluster-map-interceptor',
-    //     path: 'maps/cluster',
-    //     mockService: BoilerplateInterceptor,
-    //     debug: true
-    //   } as ApiMockConfig,
-    //   multi: true
-    // },
+    {
+      provide: API_MOCK_CONFIG,
+      useValue: {
+        // Scoped to both cluster map examples, `maps/cluster` and `maps/cluster-root-node`.
+        id: 'a-cluster-map-interceptor',
+        path: 'maps/cluster',
+        mockService: ClusterMapInterceptor,
+      } as ApiMockConfig,
+      multi: true,
+    },
     {
       provide: API_MOCK_CONFIG,
       useValue: {

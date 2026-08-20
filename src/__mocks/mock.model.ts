@@ -35,7 +35,6 @@ export enum Channels {
   Measurements = '/measurements/*',
   Alarms = '/alarms/*',
   Events = '/events/*',
-  MangedObjectsMap = '/managedobjects/1',
 }
 /**
  * path and mockService
