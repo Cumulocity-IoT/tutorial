@@ -244,6 +244,26 @@
             <div>This is content that is projected by default and always shown.</div>
           }
 
+          <!-- Action bar below the input box. Project any control and place it left, right or in the
+           overflow (more) dropdown. -->
+          <c8y-ai-chat-action placement="left">
+            <button class="btn btn-link btn-sm" type="button" (click)="clearMessages()">
+              <i c8yIcon="delete-bin"></i> {{ 'Clear chat' | translate }}
+            </button>
+          </c8y-ai-chat-action>
+
+          <c8y-ai-chat-action placement="right">
+            <button class="btn btn-link btn-sm" type="button" (click)="reloadComponent()">
+              {{ 'Reset example' | translate }}
+            </button>
+          </c8y-ai-chat-action>
+
+          <c8y-ai-chat-action placement="more">
+            <button class="dropdown-item" type="button" (click)="clearMessages()">
+              <i c8yIcon="delete-bin"></i> {{ 'Clear chat' | translate }}
+            </button>
+          </c8y-ai-chat-action>
+
           <c8y-ai-chat-suggestion
             [label]="'Create device '"
             [prompt]="'AHOI, create a new device'"

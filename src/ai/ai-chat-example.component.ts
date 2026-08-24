@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CoreModule, LoadingComponent } from '@c8y/ngx-components';
 import { AIMessage, AssistantMessageDisplayConfig, ChatConfig } from '@c8y/ngx-components/ai';
 import {
+  AiChatActionComponent,
   AiChatAssistantMessageComponent,
   AiChatComponent,
   AiChatMessageActionComponent,
@@ -21,6 +22,7 @@ import { gettext } from '@c8y/ngx-components/gettext';
     AiChatMessageComponent,
     AiChatMessageActionComponent,
     AiChatSuggestionComponent,
+    AiChatActionComponent,
     LoadingComponent,
     NgComponentOutlet,
     CoreModule,
@@ -124,6 +126,11 @@ export class ChatExampleComponent {
 
   revertMessage(message: AIMessage) {
     this.messages = this.messages.filter((m) => m !== message);
+    this.updateDisplayMessages();
+  }
+
+  clearMessages() {
+    this.messages = [];
     this.updateDisplayMessages();
   }
 
