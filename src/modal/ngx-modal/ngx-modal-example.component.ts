@@ -30,8 +30,12 @@ import { SimpleModalExampleComponent } from './simple-modal-example.component';
         (onClose)="onTemplateRefClose($event)"
         (onDismiss)="onTemplateRefDismiss($event)"
         [labels]="labels"
+        [headerClasses]="'dialog-header'"
         [disabled]="true"
       >
+        <ng-container c8y-modal-title>
+          <span [c8yIcon]="'export'"></span>
+        </ng-container>
         <c8y-list-group>
           <c8y-li *ngFor="let a of listArray; let index = index">
             <c8y-li-checkbox></c8y-li-checkbox>
@@ -81,6 +85,6 @@ export class NgxModalExampleComponent {
       ariaDescribedby: 'modal-body',
       ariaLabelledBy: 'modal-title',
       ignoreBackdropClick: true,
-    }).content as SimpleModalExampleComponent;
+    });
   }
 }

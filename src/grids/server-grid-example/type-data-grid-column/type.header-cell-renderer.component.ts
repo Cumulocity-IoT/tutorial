@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CellRendererContext } from '@c8y/ngx-components';
+import { CellRendererContext, IconDirective } from '@c8y/ngx-components';
 
 /**
  * The example component for custom header renderer.
@@ -15,6 +15,7 @@ import { CellRendererContext } from '@c8y/ngx-components';
   `,
   selector: 'example-type-header-cell-renderer',
   standalone: true,
+  imports: [IconDirective],
 })
 export class TypeHeaderCellRendererComponent {
   constructor(public context: CellRendererContext) {}

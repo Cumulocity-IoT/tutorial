@@ -3,6 +3,7 @@ import { gettext } from '@c8y/ngx-components/gettext';
 import {
   CommonModule,
   HeaderModule,
+  IconDirective,
   ModalModule,
   PopoverConfirmButtons,
   PopoverConfirmComponent,
@@ -29,7 +30,7 @@ import {
       ></c8y-popover-confirm>
     </div>`,
   standalone: true,
-  imports: [ModalModule, CommonModule, HeaderModule],
+  imports: [ModalModule, CommonModule, HeaderModule, IconDirective],
 })
 export class PopConfirmExampleComponent {
   // you can provide custom buttons
@@ -59,7 +60,7 @@ export class PopConfirmExampleComponent {
       }
       // eslint-disable-next-line no-console
       console.log('You successfully deleted the item!');
-    } catch (e) {
+    } catch {
       // do nothing or display "deletion failed" message
     }
   }

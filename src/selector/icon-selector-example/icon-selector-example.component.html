@@ -1,0 +1,32 @@
+<c8y-title>Icon selector examples</c8y-title>
+<div class="">
+  <p class="m-b-8 text-bold">{{ 'Browsing and selecting' | translate }}</p>
+  <!-- important -->
+  <div class="bg-component border-all" style="height: 480px; overflow-y: auto">
+    <c8y-icon-selector (onSelect)="onSelect($event)"></c8y-icon-selector>
+  </div>
+  <!-- /important -->
+  @if (selectedIcon(); as icon) {
+    <p class="m-t-8 d-flex a-i-center gap-8">
+      <span>{{ 'Selected' | translate }}:</span>
+      <i [c8yIcon]="icon" aria-hidden="true"></i>
+      <code>{{ icon }}</code>
+    </p>
+  }
+
+  <p class="m-t-24 m-b-8 text-bold">{{ 'Form integration' | translate }}</p>
+  <form [formGroup]="form">
+    <div class="d-inline-block">
+      <!-- important -->
+      <c8y-icon-selector-wrapper
+        [canRemoveIcon]="true"
+        [iconSize]="32"
+        formControlName="icon"
+      ></c8y-icon-selector-wrapper>
+      <!-- /important -->
+    </div>
+  </form>
+  <p class="m-t-8">
+    <code>{{ form.value | json }}</code>
+  </p>
+</div>

@@ -1,5 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { CommonModule, FormsModule, HeaderModule, ModalModule } from '@c8y/ngx-components';
+import {
+  CommonModule,
+  FormsModule,
+  HeaderModule,
+  IconDirective,
+  ModalModule,
+} from '@c8y/ngx-components';
 
 @Component({
   selector: 'tut-simple-modal-with-selectors',
@@ -46,7 +52,7 @@ import { CommonModule, FormsModule, HeaderModule, ModalModule } from '@c8y/ngx-c
     </c8y-modal>
   `,
   standalone: true,
-  imports: [ModalModule, HeaderModule, CommonModule, FormsModule],
+  imports: [ModalModule, HeaderModule, CommonModule, FormsModule, IconDirective],
 })
 export class SimpleModalExampleWithContentSelectorsComponent {
   smartGroup = {

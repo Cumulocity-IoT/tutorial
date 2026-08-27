@@ -3,6 +3,7 @@ import {
   CommonModule,
   FormsModule,
   HeaderModule,
+  IconDirective,
   ListGroupModule,
   ModalLabels,
   ModalModule,
@@ -32,7 +33,7 @@ import {
     </c8y-modal>
   `,
   standalone: true,
-  imports: [ModalModule, HeaderModule, CommonModule, FormsModule, ListGroupModule],
+  imports: [ModalModule, HeaderModule, CommonModule, FormsModule, ListGroupModule, IconDirective],
 })
 export class SimpleModalAccessibilityExampleComponent {
   labels: ModalLabels = { ok: 'Export', cancel: 'Cancel' };

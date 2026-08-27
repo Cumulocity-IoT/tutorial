@@ -59,6 +59,13 @@ export default {
         scope: 'self',
       },
       {
+        name: 'Introduction to icon selector',
+        module: 'NgxIconSelectorExampleModule',
+        path: './src/selector/icon-selector-example/icon-selector-example.module.ts',
+        description: 'An introduction to the icon selector component.',
+        scope: 'self',
+      },
+      {
         name: 'Introduction Example Module',
         module: 'IntroductionExampleModule',
         path: './src/dynamic-forms/introduction-example/introduction-example.module.ts',
