@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CoreModule, OptionsService, TabsService } from '@c8y/ngx-components';
 
@@ -14,6 +14,7 @@ import { CoreModule, OptionsService, TabsService } from '@c8y/ngx-components';
   templateUrl: './outstanding.component.html',
   standalone: true,
   imports: [CoreModule, RouterModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class OutstandingComponent {
   constructor(

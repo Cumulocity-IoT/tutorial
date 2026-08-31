@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { gettext } from '@c8y/ngx-components/gettext';
@@ -20,6 +20,7 @@ import { CoreModule, DynamicFormsModule } from '@c8y/ngx-components';
   `,
   standalone: true,
   imports: [CoreModule, DynamicFormsModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DynamicFormTranslationComponent {
   form = new FormGroup({});

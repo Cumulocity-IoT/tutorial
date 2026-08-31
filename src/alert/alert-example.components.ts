@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlertService, CoreModule } from '@c8y/ngx-components';
 import { FormsModule } from '@angular/forms';
@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './alert-example.components.html',
   standalone: true,
   imports: [CommonModule, FormsModule, CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AlertExampleComponents {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import {
   CommonModule,
   CountdownIntervalComponent,
@@ -10,6 +10,7 @@ import {
   templateUrl: './countdown-example.component.html',
   standalone: true,
   imports: [CommonModule, CountdownIntervalModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class CountdownExampleComponent implements AfterViewInit {
   @ViewChild(CountdownIntervalComponent)

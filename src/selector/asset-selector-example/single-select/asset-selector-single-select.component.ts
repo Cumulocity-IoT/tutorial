@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '@c8y/ngx-components';
 import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
@@ -37,6 +37,7 @@ import { IIdentified } from '@c8y/client';
     </div> `,
   standalone: true,
   imports: [CommonModule, AssetSelectorModule, CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AssetSelectorSingleSelectComponent {
   model: IIdentified;

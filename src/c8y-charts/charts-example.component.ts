@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -49,6 +49,7 @@ import { aggregationType } from '@c8y/client';
     ChartHelpersService,
     WidgetTimeContextDateRangeService,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ChartsExampleComponent implements OnInit {
   // Chart configuration object

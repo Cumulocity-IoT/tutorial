@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { HeaderModule } from '@c8y/ngx-components';
 
 @Component({
@@ -7,5 +7,6 @@ import { HeaderModule } from '@c8y/ngx-components';
   standalone: true,
   // imports done here instead of a separate ng module.
   imports: [HeaderModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class StandaloneComponentComponent {}

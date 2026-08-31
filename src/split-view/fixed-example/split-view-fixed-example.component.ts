@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
   CoreModule,
@@ -35,6 +35,7 @@ import {
     IconPanelComponent,
     SplitViewListItemDirective,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class SplitViewFixedExampleComponent {
   items = [

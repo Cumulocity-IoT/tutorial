@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { HeaderModule, WizardConfig, WizardModalService } from '@c8y/ngx-components';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -8,6 +8,7 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: 'wizard.component.html',
   standalone: true,
   imports: [HeaderModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ContainerComponent {
   destroy$: Subject<boolean> = new Subject<boolean>();

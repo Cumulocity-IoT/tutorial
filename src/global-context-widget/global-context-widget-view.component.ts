@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, inject, signal, computed } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  inject,
+  signal,
+  computed,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { DashboardChildComponent, DatePipe } from '@c8y/ngx-components';
 import {
   LocalControlsComponent,
@@ -142,6 +150,7 @@ import { WidgetConfig, WIDGET_CONTROLS } from './widget-config.model';
       </div>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class GlobalContextWidgetViewComponent implements OnInit {
   /** Reference to DashboardChildComponent, required for GlobalContextConnector */

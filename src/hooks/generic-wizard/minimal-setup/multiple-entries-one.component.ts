@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   WizardComponent,
   WizardHeaderComponent,
@@ -18,6 +18,7 @@ import {
   `,
   standalone: true,
   imports: [WizardHeaderComponent, WizardBodyComponent, WizardFooterComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MultipleEntriesOne {
   constructor(private wizardComponent: WizardComponent) {}

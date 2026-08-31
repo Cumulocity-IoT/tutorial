@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { C8yJSONSchema, DynamicFormsModule, HeaderModule } from '@c8y/ngx-components';
 import { FormlyFieldConfig } from '@ngx-formly/core';
@@ -73,6 +73,7 @@ const exampleSchema: object = {
   templateUrl: './json-schema-example.component.html',
   standalone: true,
   imports: [CommonModule, HeaderModule, DynamicFormsModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class JSONSchemaExampleComponent {
   form = new FormGroup({});

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import {
   CommonModule,
   FormsModule,
@@ -53,6 +53,7 @@ import {
   `,
   standalone: true,
   imports: [ModalModule, HeaderModule, CommonModule, FormsModule, IconDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class SimpleModalExampleWithContentSelectorsComponent {
   smartGroup = {

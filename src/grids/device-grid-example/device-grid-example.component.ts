@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { gettext } from '@c8y/ngx-components/gettext';
@@ -45,6 +45,7 @@ import { DeviceGridExampleConfigurationStrategy } from './device-grid-example-co
       useExisting: DeviceGridExampleComponent,
     },
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DeviceGridExampleComponent implements GridConfigContextProvider {
   readonly withPersistedConfigExampleLabel =

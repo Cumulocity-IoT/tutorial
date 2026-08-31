@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -18,6 +18,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
       <button class="btn btn-default" type="button" (click)="cancel()">Close</button>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ExampleComponent {
   private readonly bsModalRef = inject(BsModalRef);

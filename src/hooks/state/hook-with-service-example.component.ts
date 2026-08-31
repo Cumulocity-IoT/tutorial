@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { Action, ActionService, CoreModule } from '@c8y/ngx-components';
 
 /**
@@ -9,6 +9,7 @@ import { Action, ActionService, CoreModule } from '@c8y/ngx-components';
   templateUrl: `./hook-with-service-example.component.html`,
   standalone: true,
   imports: [CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class HookWithServiceExampleComponent implements OnDestroy {
   private action: Action = {

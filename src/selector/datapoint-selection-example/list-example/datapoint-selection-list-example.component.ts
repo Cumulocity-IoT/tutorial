@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DatapointSelectorModule, KPIDetails } from '@c8y/ngx-components/datapoint-selector';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '@c8y/ngx-components';
@@ -36,6 +36,7 @@ import { CoreModule } from '@c8y/ngx-components';
     </div> `,
   standalone: true,
   imports: [CommonModule, DatapointSelectorModule, CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DatapointSelectionListExampleComponent {
   datapoints: KPIDetails[] = [];

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AGGREGATION_VALUES, CoreModule } from '@c8y/ngx-components';
 import { DatapointSelectorModule, KPIDetails } from '@c8y/ngx-components/datapoint-selector';
@@ -66,6 +66,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     DatapointsExportSelectorComponent,
     DatapointSelectorModule,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DatapointsExportSelectorExampleComponent {
   config: ExportConfig | null = null;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ActionControl, BuiltInActionType, Column, CoreModule } from '@c8y/ngx-components';
 import { DeviceGridModule } from '@c8y/ngx-components/device-grid';
@@ -8,6 +8,7 @@ import { DeviceGridModule } from '@c8y/ngx-components/device-grid';
   templateUrl: './empty-grid-example.component.html',
   standalone: true,
   imports: [CoreModule, DeviceGridModule, RouterModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class EmptyGridExampleComponent {
   /** This will be used as a title for the data grid. */

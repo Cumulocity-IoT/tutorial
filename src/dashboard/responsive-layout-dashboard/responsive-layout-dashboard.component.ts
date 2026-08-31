@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CoreModule } from '@c8y/ngx-components';
 import { CommonModule } from '@angular/common';
 
@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './responsive-layout-dashboard.component.html',
   standalone: true,
   imports: [CommonModule, CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ResponsiveLayoutDashboardComponent {
   isFrozen = true;

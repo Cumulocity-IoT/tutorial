@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
   SetupStep,
   StepperService,
@@ -31,6 +31,7 @@ import { NgIf } from '@angular/common';
   `,
   standalone: true,
   imports: [TitleComponent, NgIf, StepperOutletComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class BasicViewComponent implements OnInit {
   readonly stepperId = Steppers.SETUP;

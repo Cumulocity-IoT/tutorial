@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  ViewChild,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { CoreModule, DashboardChildDimension } from '@c8y/ngx-components';
 import { CommonModule } from '@angular/common';
 import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
@@ -11,6 +17,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './custom-dashboard.component.html',
   standalone: true,
   imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class CustomDashboardComponent implements AfterViewInit, OnDestroy {
   widgets = [

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
 import { ContextData, ContextRouteService, CoreModule, Widget } from '@c8y/ngx-components';
 import { CommonModule } from '@angular/common';
@@ -15,6 +15,7 @@ import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
     ></c8y-context-dashboard> `,
   standalone: true,
   imports: [CommonModule, CoreModule, ContextDashboardModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NamedContextDashboardComponent {
   context: (Data & ContextData) | null = null;

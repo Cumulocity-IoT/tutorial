@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ControlContainer, NgForm, FormsModule } from '@angular/forms';
 import { EventService, IEvent, IManagedObject, InventoryService } from '@c8y/client';
 import {
@@ -15,6 +15,7 @@ import { NgFor } from '@angular/common';
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
   standalone: true,
   imports: [FormGroupComponent, FormsModule, NgFor],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class WidgetResolversConfigComponent implements OnInit, DynamicComponent {
   events: IEvent[];

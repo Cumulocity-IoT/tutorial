@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { C8yTranslateModule, CommonModule, FormsModule, HeaderModule } from '@c8y/ngx-components';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -93,6 +93,7 @@ import { DateTimePickerModule } from '@c8y/ngx-components';
     DateTimePickerModule,
     FormsModule,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DateTimeRangeExampleComponent {
   form: FormGroup;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IManagedObject, InventoryService } from '@c8y/client';
 import {
   DatapointSelectorModule,
@@ -14,6 +14,7 @@ import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
   templateUrl: './datapoint-selection-example.component.html',
   standalone: true,
   imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DatapointSelectionExampleComponent implements OnInit {
   datapoints1: KPIDetails[] = [];

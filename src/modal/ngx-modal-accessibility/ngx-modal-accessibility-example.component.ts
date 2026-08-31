@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import {
   C8yTranslateModule,
@@ -40,6 +40,7 @@ import { SimpleModalAccessibilityExampleComponent } from './simple-modal-accessi
     ModalModule,
     CoreModule,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NgxModalAccessibilityExampleComponent {
   /** The label of the button the user picked in the confirm dialog, shown instead of logging it. */

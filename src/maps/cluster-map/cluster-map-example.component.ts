@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ClusterMapConfig, defaultMapConfig, MapModule } from '@c8y/ngx-components/map';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '@c8y/ngx-components';
@@ -9,6 +9,7 @@ import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
   templateUrl: './cluster-map-example.component.html',
   standalone: true,
   imports: [CommonModule, MapModule, CoreModule, AssetSelectorModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ClusterMapExampleComponent {
   config: ClusterMapConfig = { center: defaultMapConfig.center, zoomLevel: 4 };

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconPanelComponent, IconPanelSection, TitleComponent } from '@c8y/ngx-components';
 
@@ -7,6 +7,7 @@ import { IconPanelComponent, IconPanelSection, TitleComponent } from '@c8y/ngx-c
   templateUrl: './icon-panel-example.component.html',
   standalone: true,
   imports: [CommonModule, IconPanelComponent, TitleComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class IconPanelExampleComponent {
   deviceSections: IconPanelSection[] = [

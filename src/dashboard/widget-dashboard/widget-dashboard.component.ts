@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Widget, DashboardSettings, DashboardChange, CoreModule } from '@c8y/ngx-components';
 import { CommonModule } from '@angular/common';
 
@@ -25,6 +25,7 @@ import { CommonModule } from '@angular/common';
     </c8y-widgets-dashboard> `,
   standalone: true,
   imports: [CommonModule, CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class WidgetDashboardComponent {
   widgets = [

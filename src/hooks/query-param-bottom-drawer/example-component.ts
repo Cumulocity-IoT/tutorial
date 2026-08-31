@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -16,6 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
       <button class="btn btn-default" type="button" (click)="close()">Close</button>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ExampleComponent {
   shouldClose: Promise<boolean>;

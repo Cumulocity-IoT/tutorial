@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { CellRendererContext, CoreModule } from '@c8y/ngx-components';
 import { ServerGridExampleService } from '../server-grid-example.service';
 
@@ -18,6 +18,7 @@ import { ServerGridExampleService } from '../server-grid-example.service';
   selector: 'example-type-cell-renderer',
   standalone: true,
   imports: [CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TypeCellRendererComponent {
   /** Returns the icon and label for the current item. */

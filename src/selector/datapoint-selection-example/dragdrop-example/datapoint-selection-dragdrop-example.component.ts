@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DatapointSelectorModule, KPIDetails } from '@c8y/ngx-components/datapoint-selector';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '@c8y/ngx-components';
@@ -37,6 +37,7 @@ import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
     </div> `,
   standalone: true,
   imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DatapointSelectionDragdropExampleComponent {
   datapoints: KPIDetails[] = [];

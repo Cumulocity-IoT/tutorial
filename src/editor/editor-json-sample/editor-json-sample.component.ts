@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { EditorComponent, MonacoEditorMarkerValidatorDirective } from '@c8y/ngx-components/editor';
 import { FormGroupComponent, MessagesComponent } from '@c8y/ngx-components';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +18,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
     class: 'd-col fit-w',
     style: 'height: 400px',
   },
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class EditorJsonSampleComponent {
   form: FormGroup;

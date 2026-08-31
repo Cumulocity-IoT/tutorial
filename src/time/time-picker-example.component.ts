@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { HeaderModule, TimePickerModule } from '@c8y/ngx-components';
 
@@ -8,6 +8,7 @@ import { HeaderModule, TimePickerModule } from '@c8y/ngx-components';
     <c8y-time-picker [formControl]="form.get('time')"></c8y-time-picker>`,
   standalone: true,
   imports: [TimePickerModule, ReactiveFormsModule, HeaderModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TimePickerExampleComponent {
   form: FormGroup;

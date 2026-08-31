@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { WidgetConfig } from './widget-config.model';
 
 /**
@@ -25,6 +25,7 @@ import { WidgetConfig } from './widget-config.model';
       </ul>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class GlobalContextWidgetConfigComponent implements OnInit {
   @Input() config: WidgetConfig = {};

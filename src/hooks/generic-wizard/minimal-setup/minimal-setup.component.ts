@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { WizardHeaderComponent, WizardBodyComponent } from '@c8y/ngx-components';
 
 @Component({
@@ -9,6 +9,7 @@ import { WizardHeaderComponent, WizardBodyComponent } from '@c8y/ngx-components'
   `,
   standalone: true,
   imports: [WizardHeaderComponent, WizardBodyComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MinimalSetupComponent {
   // In this case cancel method is not required, because it is the default button when the <c8y-wizard-footer> tag is missing.

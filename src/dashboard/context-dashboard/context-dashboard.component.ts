@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CoreModule, Widget } from '@c8y/ngx-components';
 import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
 import { CommonModule } from '@angular/common';
@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
     ></c8y-context-dashboard> `,
   standalone: true,
   imports: [ContextDashboardModule, CoreModule, CommonModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ContextDashboardComponent {
   defaultWidgets: Widget[] = [

@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { IManagedObject, InventoryService, IResultList } from '@c8y/client';
 import { CoreModule } from '@c8y/ngx-components';
 import { RouterModule } from '@angular/router';
-import { OnInit } from '@angular/core';
+import { OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'list-timeline',
   templateUrl: './list-timeline.component.html',
   standalone: true,
   imports: [CoreModule, RouterModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ListTimelineComponent implements OnInit {
   devices: IResultList<IManagedObject>;

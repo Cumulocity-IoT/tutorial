@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CoreModule } from '@c8y/ngx-components';
 
 @Component({
@@ -6,6 +6,7 @@ import { CoreModule } from '@c8y/ngx-components';
   template: `<div id="{{ context.id }}">Context ID: {{ context.id }}</div>`,
   standalone: true,
   imports: [CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AsyncExpandableRowsComponent implements OnInit {
   @Input() context: any;

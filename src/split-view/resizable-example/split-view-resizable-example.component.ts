@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import {
   CoreModule,
   DeviceStatusComponent,
@@ -58,6 +58,7 @@ type DeviceItem = {
     SplitViewDetailsActionsComponent,
     SplitViewListItemDirective,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class SplitViewResizableExampleComponent {
   @ViewChild(SplitViewDetailsComponent) detailsComponent?: SplitViewDetailsComponent;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { HeaderModule } from '@c8y/ngx-components';
 import { DeviceStepperComponent } from './device-stepper.component';
 
@@ -17,5 +17,6 @@ import { DeviceStepperComponent } from './device-stepper.component';
   </div> `,
   standalone: true,
   imports: [HeaderModule, DeviceStepperComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class StepperComponent {}

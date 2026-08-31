@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 // eslint-disable-next-line
 import { CoreModule, SimplifiedAuthService } from '@c8y/ngx-components';
 
@@ -9,6 +9,7 @@ import { CoreModule, SimplifiedAuthService } from '@c8y/ngx-components';
   </button> `,
   standalone: true,
   imports: [CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class LogoutActionComponent {
   constructor(private _authService: SimplifiedAuthService) {}

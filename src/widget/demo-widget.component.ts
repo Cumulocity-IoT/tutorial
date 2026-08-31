@@ -1,4 +1,4 @@
-import { Component, computed, input, OnInit } from '@angular/core';
+import { Component, computed, input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
   DismissAlertStrategy,
   DynamicComponentAlert,
@@ -29,6 +29,7 @@ import { WidgetConfig } from './widget-config.model';
     `,
   ],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class WidgetDemo implements OnInit {
   readonly config = input<WidgetConfig>();

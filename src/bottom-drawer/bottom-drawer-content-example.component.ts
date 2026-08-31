@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { BottomDrawerRef } from '@c8y/ngx-components';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -10,6 +10,7 @@ import { takeUntil } from 'rxjs/operators';
   host: {
     class: 'd-contents',
   },
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class BottomDrawerContentExampleComponent implements OnInit, OnDestroy {
   bottomDrawerRef = inject(BottomDrawerRef);

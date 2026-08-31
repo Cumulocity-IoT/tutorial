@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TitleComponent } from '@c8y/ngx-components';
 
 @Component({
@@ -13,5 +13,6 @@ import { TitleComponent } from '@c8y/ngx-components';
       </div>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class HookDocsExampleComponent {}

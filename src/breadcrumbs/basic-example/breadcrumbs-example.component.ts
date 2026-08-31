@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BreadcrumbService, CoreModule } from '@c8y/ngx-components';
 
@@ -7,6 +7,7 @@ import { BreadcrumbService, CoreModule } from '@c8y/ngx-components';
   templateUrl: './breadcrumbs-example.component.html',
   standalone: true,
   imports: [CommonModule, CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class BreadcrumbsExampleComponents {
   constructor(public breadcrumbService: BreadcrumbService) {}

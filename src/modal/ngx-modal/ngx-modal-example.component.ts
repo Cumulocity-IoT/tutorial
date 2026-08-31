@@ -1,4 +1,4 @@
-import { Component, TemplateRef } from '@angular/core';
+import { Component, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import {
   C8yTranslateModule,
@@ -55,6 +55,7 @@ import { SimpleModalExampleComponent } from './simple-modal-example.component';
     ModalModule,
     CoreModule,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NgxModalExampleComponent {
   modalRef?: BsModalRef;

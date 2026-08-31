@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CoreModule } from '@c8y/ngx-components';
 import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
 import {
@@ -15,6 +15,7 @@ import {
   templateUrl: './simple-map-example.component.html',
   standalone: true,
   imports: [CommonModule, MapModule, CoreModule, AssetSelectorModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class SimpleMapExampleComponent implements OnInit {
   exampleDevices: PositionManagedObject | PositionManagedObject[];

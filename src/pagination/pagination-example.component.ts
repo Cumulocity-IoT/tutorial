@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CoreModule } from '@c8y/ngx-components';
 import { PageChangedEvent, PaginationModule } from 'ngx-bootstrap/pagination';
 
@@ -31,6 +31,7 @@ interface Item {
   `,
   standalone: true,
   imports: [CoreModule, PaginationModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class PaginationExampleComponent {
   currentPage = 1;

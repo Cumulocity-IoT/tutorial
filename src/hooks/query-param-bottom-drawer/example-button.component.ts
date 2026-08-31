@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CoreModule } from '@c8y/ngx-components';
 
@@ -15,6 +15,7 @@ import { CoreModule } from '@c8y/ngx-components';
       </div>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ExampleButtonComponent {
   constructor(

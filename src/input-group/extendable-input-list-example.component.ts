@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CoreModule, FormsModule } from '@c8y/ngx-components';
 
 @Component({
@@ -36,6 +36,7 @@ import { CoreModule, FormsModule } from '@c8y/ngx-components';
     </div>`,
   standalone: true,
   imports: [CoreModule, FormsModule, CommonModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ExtendableInputListExampleComponent {
   items: string[] = [];

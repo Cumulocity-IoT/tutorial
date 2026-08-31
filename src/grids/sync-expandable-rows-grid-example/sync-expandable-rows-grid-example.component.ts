@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ActionControl, DisplayOptions, Column, CoreModule, Pagination } from '@c8y/ngx-components';
 import { DeviceGridModule } from '@c8y/ngx-components/device-grid';
@@ -10,6 +10,7 @@ import { SyncExpandableRowsComponent } from './sync-expandable-rows-example.comp
   templateUrl: './sync-expandable-rows-grid-example.component.html',
   standalone: true,
   imports: [CoreModule, DeviceGridModule, RouterModule, SyncExpandableRowsComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class SyncExpandableRowsGridComponent implements OnInit {
   /** This will be used as a title for the data grid. */

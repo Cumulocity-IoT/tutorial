@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WidgetConfig } from '../widget-config.model';
 
@@ -7,6 +7,7 @@ import { WidgetConfig } from '../widget-config.model';
   template: `<p>This widget's view component/module is only loaded when needed.</p>`,
   standalone: true,
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class LazyWidgetViewComponent {
   @Input() config: WidgetConfig;

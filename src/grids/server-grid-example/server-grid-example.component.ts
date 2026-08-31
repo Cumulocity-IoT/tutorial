@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import {
@@ -52,6 +52,7 @@ import { VoidConfigurationStrategy } from './void-configuration-strategy';
       useExisting: ServerGridExampleComponent,
     },
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ServerGridExampleComponent implements GridConfigContextProvider {
   title = 'Managed objects';

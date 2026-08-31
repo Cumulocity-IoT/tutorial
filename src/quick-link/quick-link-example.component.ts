@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { gettext } from '@c8y/ngx-components/gettext';
 import { CoreModule, DocLink, DocsService, QuickLinkModule } from '@c8y/ngx-components';
 
@@ -14,6 +14,7 @@ import { CoreModule, DocLink, DocsService, QuickLinkModule } from '@c8y/ngx-comp
     </button>`,
   standalone: true,
   imports: [QuickLinkModule, CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class QuickLinkExampleComponent {
   quickLinks = [];

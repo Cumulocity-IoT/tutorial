@@ -1,4 +1,11 @@
-import { Component, inject, OnInit, OnDestroy, HostListener } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  OnDestroy,
+  HostListener,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { BottomDrawerRef, BottomDrawerService } from '@c8y/ngx-components';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -11,6 +18,7 @@ import { BottomDrawerContentTopExampleComponent } from './bottom-drawer-content-
   host: {
     class: 'd-contents',
   },
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class BottomDrawerContentExampleComponent implements OnInit, OnDestroy {
   bottomDrawerRef = inject(BottomDrawerRef);

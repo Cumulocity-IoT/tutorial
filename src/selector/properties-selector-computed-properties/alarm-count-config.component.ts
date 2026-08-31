@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
   ControlContainer,
   FormBuilder,
@@ -40,6 +40,7 @@ import { AlarmCountLastWeekConfig } from './alarm-count-last-week-computed-prope
     ReactiveFormsModule,
   ],
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ComputedPropertyAlarmCountConfigComponent implements OnInit {
   @Input() config?: AlarmCountLastWeekConfig;

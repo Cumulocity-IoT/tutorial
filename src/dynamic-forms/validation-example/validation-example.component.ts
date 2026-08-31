@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { AbstractControl, FormGroup, ReactiveFormsModule, ValidationErrors } from '@angular/forms';
 import { HeaderModule } from '@c8y/ngx-components';
 import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
@@ -35,6 +35,7 @@ export function ipValidator(control: AbstractControl): ValidationErrors {
     </div> `,
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, FormlyModule, HeaderModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ValidationExampleComponent {
   form = new FormGroup({});

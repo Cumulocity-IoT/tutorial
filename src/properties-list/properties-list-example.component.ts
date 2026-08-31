@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IManifest } from '@c8y/client';
 import { CoreModule, PropertiesListItem } from '@c8y/ngx-components';
 
@@ -7,6 +7,7 @@ import { CoreModule, PropertiesListItem } from '@c8y/ngx-components';
   templateUrl: './properties-list-example.component.html',
   standalone: true,
   imports: [CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class PropertiesListExampleComponent {
   readonly customData: any = {

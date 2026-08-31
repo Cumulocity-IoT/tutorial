@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CoreModule, DeviceStatusModule } from '@c8y/ngx-components';
 
 @Component({
@@ -6,6 +6,7 @@ import { CoreModule, DeviceStatusModule } from '@c8y/ngx-components';
   templateUrl: `./device-connection-status-example.component.html`,
   standalone: true,
   imports: [CoreModule, DeviceStatusModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DeviceConnectionStatusExampleComponent {
   private readonly CONNECTED_AND_AVAILABLE_DEVICE_EXAMPLE = {

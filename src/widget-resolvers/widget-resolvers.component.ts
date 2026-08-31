@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IEvent, IManagedObject } from '@c8y/client';
 import { DynamicComponentAlertAggregator, DynamicComponent } from '@c8y/ngx-components';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +10,7 @@ import { WidgetConfig } from './widget-config.model';
   templateUrl: './widget-resolvers.component.html',
   standalone: true,
   imports: [FormsModule, JsonPipe],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class WidgetResolversComponent implements OnInit, DynamicComponent {
   @Input() config: WidgetConfig;

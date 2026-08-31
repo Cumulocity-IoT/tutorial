@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DatapointSelectorService, KPIDetails } from '@c8y/ngx-components/datapoint-selector';
 import { CommonModule } from '@angular/common';
 import { HeaderModule } from '@c8y/ngx-components';
@@ -31,6 +31,7 @@ import { HeaderModule } from '@c8y/ngx-components';
     </div> `,
   standalone: true,
   imports: [CommonModule, HeaderModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DatapointSelectionSingleSelectExampleComponent {
   // important

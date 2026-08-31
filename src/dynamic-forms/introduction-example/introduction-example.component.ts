@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DynamicFormsModule, HeaderModule } from '@c8y/ngx-components';
 import { FormlyFieldConfig } from '@ngx-formly/core';
@@ -30,6 +30,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
     </div> `,
   standalone: true,
   imports: [CommonModule, DynamicFormsModule, HeaderModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class IntroductionExampleComponent {
   form = new FormGroup({});

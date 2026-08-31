@@ -1,5 +1,5 @@
 import { JsonPipe, NgComponentOutlet } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CoreModule, LoadingComponent } from '@c8y/ngx-components';
 import { AIMessage, AssistantMessageDisplayConfig, ChatConfig } from '@c8y/ngx-components/ai';
@@ -29,6 +29,7 @@ import { gettext } from '@c8y/ngx-components/gettext';
     FormsModule,
     JsonPipe,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ChatExampleComponent {
   AiChatAssistantMessageComponent = AiChatAssistantMessageComponent;

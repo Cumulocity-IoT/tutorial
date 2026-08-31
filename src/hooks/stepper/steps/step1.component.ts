@@ -1,5 +1,5 @@
 import { CdkStep } from '@angular/cdk/stepper';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -52,6 +52,7 @@ import {
     MessageDirective,
     C8yStepperButtons,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class Step1Component implements OnInit {
   formGroupStepOne: FormGroup;

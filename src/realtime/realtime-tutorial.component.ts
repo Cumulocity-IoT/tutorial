@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import {
   AlarmRealtimeService,
   CoreModule,
@@ -26,6 +26,7 @@ import { map, scan } from 'rxjs/operators';
   ],
   standalone: true,
   imports: [CommonModule, CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class RealtimeTutorialComponent {
   allAPIsRealtime$: ReturnType<RealtimeTutorialComponent['setupAllAPIsRealtime$']>;

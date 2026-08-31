@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { C8yStepper, CoreModule, WizardComponent } from '@c8y/ngx-components';
 
@@ -7,6 +7,7 @@ import { C8yStepper, CoreModule, WizardComponent } from '@c8y/ngx-components';
   templateUrl: 'stepper-example.component.html',
   standalone: true,
   imports: [CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class StepperExampleComponent implements OnInit {
   formGroupStepOne: FormGroup;

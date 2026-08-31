@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Tab, TabsService } from '@c8y/ngx-components';
 import { map } from 'rxjs';
@@ -10,6 +10,7 @@ import { map } from 'rxjs';
   selector: 'tut-basic-view',
   templateUrl: './basic-view.component.html',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class BasicViewComponent {
   tabs: Tab[] = [];

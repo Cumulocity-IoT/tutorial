@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CoreModule } from '@c8y/ngx-components';
 
 @Component({
@@ -29,6 +29,7 @@ import { CoreModule } from '@c8y/ngx-components';
   `,
   standalone: true,
   imports: [CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TextTranslationNgnonbindableComponent {
   ngNonBindableTranslate = {

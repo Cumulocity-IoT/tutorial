@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CellRendererContext, IconDirective } from '@c8y/ngx-components';
 
 /**
@@ -16,6 +16,7 @@ import { CellRendererContext, IconDirective } from '@c8y/ngx-components';
   selector: 'example-type-header-cell-renderer',
   standalone: true,
   imports: [IconDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TypeHeaderCellRendererComponent {
   constructor(public context: CellRendererContext) {}

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CommonModule, CoreModule } from '@c8y/ngx-components';
 import {
@@ -38,6 +38,7 @@ import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
   `,
   standalone: true,
   imports: [CommonModule, AssetSelectorModule, CoreModule, AlarmEventSelectorModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AlarmEventSelectorExampleComponent {
   selectedAlarmEvent: AlarmOrEvent;

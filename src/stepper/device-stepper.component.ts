@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormGroup,
   Validators,
@@ -22,6 +22,7 @@ enum step {
   templateUrl: './device-stepper.component.html',
   standalone: true,
   imports: [CoreModule, FormsModule, ReactiveFormsModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DeviceStepperComponent implements OnInit {
   @ViewChild(C8yStepper, { static: true })

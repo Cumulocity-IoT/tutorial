@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {
   ActionControl,
@@ -23,6 +23,7 @@ import { data } from './client-tree-grid.data';
   templateUrl: './client-tree-grid-example.component.html',
   standalone: true,
   imports: [CoreModule, DeviceGridModule, RouterModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ClientGridExampleComponent implements OnInit {
   /** This will be used as a title for the data grid. */

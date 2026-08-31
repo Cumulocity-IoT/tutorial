@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import {
@@ -28,6 +28,7 @@ import { ServerTreeGridExampleService } from './server-tree-grid-example.service
   standalone: true,
   imports: [CoreModule, DeviceGridModule, RouterModule],
   providers: [ServerTreeGridExampleService],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ServerTreeGridExampleComponent implements GridConfigContextProvider {
   title = 'Managed objects';

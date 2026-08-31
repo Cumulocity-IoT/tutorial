@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IIdentified, IManagedObject, InventoryService } from '@c8y/client';
 import { C8yTranslatePipe, TitleComponent } from '@c8y/ngx-components';
@@ -221,6 +221,7 @@ import { PopoverDirective } from 'ngx-bootstrap/popover';
     PopoverDirective,
     AssetPropertySelectorComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class PropertiesSelectorInlineExampleComponent {
   selectedProperties: AssetPropertyType[] = [

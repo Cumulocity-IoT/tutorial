@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FilteringFormRendererContext, FormsModule } from '@c8y/ngx-components';
 import { TypeFilteringModel } from '../server-grid-example.service';
 
@@ -75,6 +75,7 @@ import { TypeFilteringModel } from '../server-grid-example.service';
   standalone: true,
   imports: [FormsModule],
   selector: 'example-type-filtering-form-renderer',
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TypeFilteringFormRendererComponent {
   model: TypeFilteringModel;

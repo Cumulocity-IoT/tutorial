@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Output,
+  ViewChild,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import {
   ConfirmModalComponent,
   CoreModule,
@@ -36,6 +43,7 @@ import { Subject } from 'rxjs';
   </c8y-confirm-modal>`,
   standalone: true,
   imports: [ModalModule, FormsModule, CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DeleteModalExampleComponent implements AfterViewInit {
   @ViewChild('modalRef', { static: false }) modalRef: ConfirmModalComponent;

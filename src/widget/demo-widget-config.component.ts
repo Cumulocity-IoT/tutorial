@@ -7,6 +7,7 @@ import {
   OnInit,
   TemplateRef,
   ViewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -41,6 +42,7 @@ import { WidgetConfig } from './widget-config.model';
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
   standalone: true,
   imports: [FormGroupComponent, ReactiveFormsModule, WidgetDemo, AsyncPipe],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class WidgetConfigDemo implements DynamicComponent, OnInit {
   /** Configuration passed by the dashboard framework. */

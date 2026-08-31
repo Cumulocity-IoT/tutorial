@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { InventoryService } from '@c8y/client';
 import { CommonModule } from '@angular/common';
 import { HeaderModule } from '@c8y/ngx-components';
@@ -15,6 +15,7 @@ import { HeaderModule } from '@c8y/ngx-components';
   `,
   standalone: true,
   imports: [CommonModule, HeaderModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ComponentOne {
   mos: any[];

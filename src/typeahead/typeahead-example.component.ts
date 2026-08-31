@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CoreModule, ForOfFilterPipe } from '@c8y/ngx-components';
 import { IManagedObject, InventoryService, IResultList } from '@c8y/client';
 import { pipe } from 'rxjs';
@@ -9,6 +9,7 @@ import { map, tap } from 'rxjs/operators';
   templateUrl: './typeahead-example.component.html',
   standalone: true,
   imports: [CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TypeaheadExampleComponent {
   devices: IResultList<IManagedObject>;

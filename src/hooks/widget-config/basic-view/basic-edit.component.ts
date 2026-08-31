@@ -1,5 +1,5 @@
 import { AsyncPipe, CommonModule, JsonPipe } from '@angular/common';
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { CoreModule } from '@c8y/ngx-components';
 import {
   WidgetConfigSectionComponent,
@@ -32,6 +32,7 @@ import { referenceWidgetDefinition } from '../widget-config.providers';
   </div>`,
   standalone: true,
   imports: [CoreModule, CommonModule, WidgetConfigSectionComponent, AsyncPipe, JsonPipe],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class BasicEditComponent implements OnInit, OnDestroy {
   widgetConfigService = inject(WidgetConfigService);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CoreModule } from '@c8y/ngx-components';
 
@@ -7,6 +7,7 @@ import { CoreModule } from '@c8y/ngx-components';
   templateUrl: './device-info.component.html',
   standalone: true,
   imports: [CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DeviceInfoComponent {
   constructor(public route: ActivatedRoute) {}

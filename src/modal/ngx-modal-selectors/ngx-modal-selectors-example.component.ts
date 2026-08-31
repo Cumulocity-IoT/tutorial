@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import {
   C8yTranslateModule,
@@ -32,6 +32,7 @@ import { SimpleModalExampleWithContentSelectorsComponent } from './simple-modal-
     ModalModule,
     CoreModule,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NgxModalSelectorsExampleComponent {
   constructor(private modalService: BsModalService) {}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   AbstractControl,
   AsyncValidatorFn,
@@ -270,6 +270,7 @@ import { Observable, map, timer } from 'rxjs';
   `,
   standalone: true,
   imports: [CoreModule, InputGroupEditableComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class InputGroupEditableExampleComponent {
   // Sizes

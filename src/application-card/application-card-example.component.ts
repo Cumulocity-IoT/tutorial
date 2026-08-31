@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IApplication } from '@c8y/client';
 import { AppStateService, CoreModule, PackageType } from '@c8y/ngx-components';
@@ -17,6 +17,7 @@ import { Observable, of } from 'rxjs';
       useValue: { currentTenant: { value: { name: '' } } },
     },
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ApplicationCardExampleComponent {
   listClass: string;

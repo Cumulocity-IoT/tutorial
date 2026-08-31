@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CoreModule } from '@c8y/ngx-components';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 
@@ -48,6 +48,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     </div>`,
   standalone: true,
   imports: [PopoverModule, CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class IntroductionComponent {
   sampleConfig = `ProviderConfigurationModule.config([

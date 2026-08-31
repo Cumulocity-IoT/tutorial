@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import {
   C8yTranslateModule,
@@ -33,6 +33,7 @@ import { LargeModalExampleComponent } from './large-modal-example.component';
   </div>`,
   standalone: true,
   imports: [HeaderModule, C8yTranslateModule, FormsModule, ModalModule, CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NgxModalSizesExampleComponent {
   constructor(private modalService: BsModalService) {}

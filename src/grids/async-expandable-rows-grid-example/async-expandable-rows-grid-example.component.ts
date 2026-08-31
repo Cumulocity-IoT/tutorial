@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ActionControl, DisplayOptions, Column, CoreModule, Pagination } from '@c8y/ngx-components';
 import { DeviceGridModule } from '@c8y/ngx-components/device-grid';
@@ -17,6 +17,7 @@ import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
     AsyncExpandableRowsComponent,
     ContextDashboardModule,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AsyncExpandableRowsGridComponent implements OnInit {
   /** This will be used as a title for the data grid. */

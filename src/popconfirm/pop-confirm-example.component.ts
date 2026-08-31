@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { gettext } from '@c8y/ngx-components/gettext';
 import {
   CommonModule,
@@ -31,6 +31,7 @@ import {
     </div>`,
   standalone: true,
   imports: [ModalModule, CommonModule, HeaderModule, IconDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class PopConfirmExampleComponent {
   // you can provide custom buttons

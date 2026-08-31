@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ResizableGridComponent, CoreModule } from '@c8y/ngx-components';
 
 @Component({
@@ -40,6 +40,7 @@ import { ResizableGridComponent, CoreModule } from '@c8y/ngx-components';
     </div>`,
   standalone: true,
   imports: [ResizableGridComponent, CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ResizableGridExampleComponent {}
 // This component demonstrates the usage of the ResizableGridComponent

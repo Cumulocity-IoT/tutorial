@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -15,6 +15,7 @@ import { CoreModule } from '@c8y/ngx-components';
   templateUrl: './forms-validation.component.html',
   standalone: true,
   imports: [CommonModule, CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FormsValidationTutorialComponent {
   formGroup: FormGroup;

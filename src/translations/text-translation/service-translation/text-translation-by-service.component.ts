@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { gettext } from '@c8y/ngx-components/gettext';
 import { CoreModule } from '@c8y/ngx-components';
 import { TranslateService } from '@ngx-translate/core';
@@ -18,6 +18,7 @@ import { TranslateService } from '@ngx-translate/core';
   `,
   standalone: true,
   imports: [CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TextTranslationByServiceComponent {
   translateInstant = '';

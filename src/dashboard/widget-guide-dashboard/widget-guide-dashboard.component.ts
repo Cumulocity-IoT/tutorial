@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnDestroy, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CoreModule } from '@c8y/ngx-components';
 import { CommonModule } from '@angular/common';
 import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
@@ -48,6 +48,7 @@ import { Subscription } from 'rxjs';
   `,
   standalone: true,
   imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class WidgetGuideDashboardComponent implements OnDestroy {
   isFrozen = false;

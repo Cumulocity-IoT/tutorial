@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { InventoryService, IIdentified, IManagedObject } from '@c8y/client';
 import { CommonModule } from '@angular/common';
@@ -11,6 +11,7 @@ import { DatapointSelectorModule } from '@c8y/ngx-components/datapoint-selector'
   templateUrl: './asset-selector-example.component.html',
   standalone: true,
   imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AssetSelectorExampleComponent {
   model: IIdentified;

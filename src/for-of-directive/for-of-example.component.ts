@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CoreModule, ForOfDirective, ForOfFilterPipe, LoadMoreMode } from '@c8y/ngx-components';
 import { IManagedObject, InventoryService, IResultList } from '@c8y/client';
 import { pipe } from 'rxjs';
@@ -9,6 +9,7 @@ import { map, tap } from 'rxjs/operators';
   templateUrl: './for-of-example.component.html',
   standalone: true,
   imports: [CoreModule, ForOfDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ForOfExampleComponent {
   devices: IResultList<IManagedObject>;

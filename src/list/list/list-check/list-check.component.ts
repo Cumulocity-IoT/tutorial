@@ -4,13 +4,14 @@ import { CoreModule } from '@c8y/ngx-components';
 import { RouterModule } from '@angular/router';
 import { BehaviorSubject, map } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { OnInit } from '@angular/core';
+import { OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'list-check',
   templateUrl: './list-check.component.html',
   standalone: true,
   imports: [CoreModule, RouterModule, CommonModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ListCheckComponent implements OnInit {
   devices: IResultList<IManagedObject>;

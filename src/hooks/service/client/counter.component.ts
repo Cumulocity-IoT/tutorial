@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ServiceRegistry } from '@c8y/ngx-components';
 import { ICounterService } from '../counter/counter.model';
 
@@ -6,6 +6,7 @@ import { ICounterService } from '../counter/counter.model';
   selector: 'tut-counter-component',
   templateUrl: './counter.component.html',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class CounterComponent {
   counter: ICounterService;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CoreModule, FormsModule, ModalModule, ModalService, Status } from '@c8y/ngx-components';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { DeleteModalExampleComponent } from './delete-modal-example.component';
@@ -25,6 +25,7 @@ import { DeleteModalExampleComponent } from './delete-modal-example.component';
   </div>`,
   standalone: true,
   imports: [ModalModule, FormsModule, CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ConfirmModalExampleComponent {
   constructor(

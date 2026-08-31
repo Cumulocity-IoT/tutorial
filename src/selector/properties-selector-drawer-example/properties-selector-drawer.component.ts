@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IIdentified, IManagedObject, InventoryService } from '@c8y/client';
 import { BottomDrawerService, TitleComponent } from '@c8y/ngx-components';
@@ -73,6 +73,7 @@ import { JsonPipe } from '@angular/common';
     TooltipModule,
     JsonPipe,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class PropertiesSelectorDrawerExampleComponent {
   inventoryService = inject(InventoryService);

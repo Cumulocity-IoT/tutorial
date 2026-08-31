@@ -1,5 +1,5 @@
 import { CoreModule, StepperService } from '@c8y/ngx-components';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IManagedObject, InventoryService, IResultList } from '@c8y/client';
 import { RouterModule } from '@angular/router';
 
@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CoreModule, RouterModule],
   providers: [StepperService],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ListVirtualScrollTimelineComponent implements OnInit {
   devices: IResultList<IManagedObject>;

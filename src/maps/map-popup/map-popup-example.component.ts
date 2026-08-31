@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { MapComponent, MapModule, MapService } from '@c8y/ngx-components/map';
 import { MapConfig, PositionManagedObject } from '@c8y/ngx-components/map';
 import { CommonModule } from '@angular/common';
@@ -10,6 +10,7 @@ import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
   templateUrl: './map-popup-example.component.html',
   standalone: true,
   imports: [CommonModule, MapModule, CoreModule, AssetSelectorModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MapPopupExampleComponent implements OnInit {
   exampleDevices: PositionManagedObject | PositionManagedObject[];

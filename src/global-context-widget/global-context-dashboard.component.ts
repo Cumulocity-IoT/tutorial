@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreModule, Widget } from '@c8y/ngx-components';
 import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
@@ -29,6 +29,7 @@ import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
       [canDelete]="false"
     ></c8y-context-dashboard>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class GlobalContextDashboardComponent {
   defaultWidgets: Widget[] = [

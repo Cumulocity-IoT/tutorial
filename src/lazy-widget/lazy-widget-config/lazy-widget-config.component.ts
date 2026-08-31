@@ -1,4 +1,4 @@
-import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Input, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WidgetConfigService } from '@c8y/ngx-components/context-dashboard';
 import { WidgetConfig } from '../widget-config.model';
@@ -12,6 +12,7 @@ import { LazyWidgetViewComponent } from '../lazy-widget-view';
     </ng-template>`,
   standalone: true,
   imports: [CommonModule, LazyWidgetViewComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class LazyWidgetConfigComponent {
   @Input() config: WidgetConfig;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   CommonModule,
   FormsModule,
@@ -34,6 +34,7 @@ import {
   `,
   standalone: true,
   imports: [ModalModule, HeaderModule, CommonModule, FormsModule, ListGroupModule, IconDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class SimpleModalAccessibilityExampleComponent {
   labels: ModalLabels = { ok: 'Export', cancel: 'Cancel' };

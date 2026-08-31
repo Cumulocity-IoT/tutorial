@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { C8yStepperButtons } from '@c8y/ngx-components';
 
 @Component({
@@ -14,6 +14,7 @@ import { C8yStepperButtons } from '@c8y/ngx-components';
   `,
   standalone: true,
   imports: [C8yStepperButtons],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class Step2Component {
   close() {

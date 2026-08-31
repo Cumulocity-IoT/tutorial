@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AlertService, BottomDrawerService, CoreModule } from '@c8y/ngx-components';
 import { BottomDrawerContentExampleComponent } from './bottom-drawer-content-example.component';
 
@@ -7,6 +7,7 @@ import { BottomDrawerContentExampleComponent } from './bottom-drawer-content-exa
   templateUrl: './bottom-drawer-example.component.html',
   standalone: true,
   imports: [CoreModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class BottomDrawerExampleComponent {
   bottomDrawerService = inject(BottomDrawerService);
