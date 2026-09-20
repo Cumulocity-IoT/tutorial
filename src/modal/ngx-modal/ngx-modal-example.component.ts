@@ -32,6 +32,7 @@ import { SimpleModalExampleComponent } from './simple-modal-example.component';
         [labels]="labels"
         [headerClasses]="'dialog-header'"
         [disabled]="true"
+        [flushBody]="true"
       >
         <ng-container c8y-modal-title>
           <span [c8yIcon]="'export'"></span>
