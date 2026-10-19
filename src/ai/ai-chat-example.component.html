@@ -164,7 +164,7 @@
               </div>
               <c8y-ai-chat-message-action
                 icon="rocket"
-                tooltip="Get device details"
+                tooltipText="Get device details"
               ></c8y-ai-chat-message-action>
             </c8y-ai-chat-message>
           }
@@ -189,21 +189,21 @@
               @if (message.role === 'assistant') {
                 <c8y-ai-chat-message-action
                   icon="thumbs-up"
-                  tooltip="This is useful"
+                  tooltipText="This is useful"
                 ></c8y-ai-chat-message-action>
               }
 
               @if (message.role === 'assistant') {
                 <c8y-ai-chat-message-action
                   icon="thumbs-down"
-                  tooltip="This is not useful"
+                  tooltipText="This is not useful"
                 ></c8y-ai-chat-message-action>
               }
 
               @if (message.role === 'assistant') {
                 <c8y-ai-chat-message-action
                   icon="undo"
-                  tooltip="Revert"
+                  tooltipText="Revert"
                   (actionClicked)="revertMessage(message)"
                 ></c8y-ai-chat-message-action>
               }
@@ -211,14 +211,14 @@
               @if (message.role === 'user') {
                 <c8y-ai-chat-message-action
                   icon="edit1"
-                  tooltip="Edit"
+                  tooltipText="Edit"
                 ></c8y-ai-chat-message-action>
               }
 
               @if (message.role === 'user') {
                 <c8y-ai-chat-message-action
                   icon="clone"
-                  tooltip="Copy"
+                  tooltipText="Copy"
                 ></c8y-ai-chat-message-action>
               }
             </c8y-ai-chat-message>
