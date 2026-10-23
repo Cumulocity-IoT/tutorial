@@ -24,7 +24,7 @@
         }
       </c8y-list-group>
       <c8y-sv-footer>
-        <div class="d-flex justify-content-between">
+        <div class="d-flex j-c-between">
           <small class="text-muted">{{ items.length }} tools available</small>
         </div>
       </c8y-sv-footer>
@@ -35,6 +35,15 @@
       emptyStateSubtitle="Select a tool from the list to view details"
       [title]="'Tool details' | translate"
     >
+      @if (selectedItem) {
+        <!-- projected into the card header, above the details body -->
+        <c8y-sv-extra-header>
+          <div class="d-flex a-i-center gap-4">
+            <label class="m-b-0 text-muted small">{{ 'Tool ID' | translate }}</label>
+            <p class="m-b-0">{{ selectedItem.id }}</p>
+          </div>
+        </c8y-sv-extra-header>
+      }
       @if (selectedItem) {
         <ng-container>
           <div class="d-flex a-i-center m-b-16">
@@ -49,13 +58,22 @@
           <c8y-icon-panel [sections]="itemInfoSections"></c8y-icon-panel>
         </ng-container>
       }
+      @if (selectedItem) {
+        <!-- actions that belong to the selected item, as opposed to the pane-level footer below -->
+        <c8y-sv-details-actions class="m-t-16">
+          <button class="btn btn-default btn-sm" type="button" (click)="editItem()">
+            <i c8yIcon="pencil" aria-hidden="true"></i>
+            {{ 'Edit tool' | translate }}
+          </button>
+        </c8y-sv-details-actions>
+      }
       <c8y-sv-footer>
         <button class="btn btn-default btn-sm" (click)="editItem()">
-          <i class="fa fa-edit"></i>
+          <i c8yIcon="pencil" aria-hidden="true"></i>
           Edit
         </button>
         <button class="btn btn-danger btn-sm" (click)="deleteItem()">
-          <i class="fa fa-trash"></i>
+          <i c8yIcon="delete" aria-hidden="true"></i>
           Delete
         </button>
       </c8y-sv-footer>

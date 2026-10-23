@@ -1,0 +1,189 @@
+<c8y-title>{{ 'Authentication' | translate }}</c8y-title>
+
+<c8y-breadcrumb>
+  <c8y-breadcrumb-item [icon]="'cog'" [label]="'Settings' | translate"></c8y-breadcrumb-item>
+  <c8y-breadcrumb-item [icon]="'lock'" [label]="'Authentication' | translate"></c8y-breadcrumb-item>
+</c8y-breadcrumb>
+
+<c8y-action-bar-item [placement]="'right'">
+  <button class="btn btn-link" title="{{ 'Reload' | translate }}" type="button" (click)="reload()">
+    <i c8yIcon="refresh"></i>
+    {{ 'Reload' | translate }}
+  </button>
+</c8y-action-bar-item>
+
+<!-- important -->
+<form class="card card--fullpage" [formGroup]="form" (ngSubmit)="save()">
+  <div class="card-header separator">
+    <div class="card-title">{{ 'Authentication' | translate }}</div>
+  </div>
+
+  <div class="inner-scroll">
+    <!-- Each section: a heading column on the left, the fields on the right -->
+    <div class="card-block separator-top">
+      <div class="col-sm-2">
+        <div class="h4 text-normal text-right text-left-xs">
+          {{ 'Login settings' | translate }}
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="row m-b-8">
+          <c8y-form-group class="col-sm-6">
+            <label for="preferredLoginMode">{{ 'Preferred login mode' | translate }}</label>
+            <div class="c8y-select-wrapper">
+              <select
+                class="form-control"
+                id="preferredLoginMode"
+                formControlName="preferredLoginMode"
+              >
+                <option value="BASIC">{{ 'Basic Auth' | translate }}</option>
+                <option value="OAUTH2_INTERNAL">{{ 'OAI-Secure' | translate }}</option>
+                <option value="OAUTH2" disabled>
+                  {{ 'Single sign-on redirect' | translate }}
+                </option>
+              </select>
+            </div>
+          </c8y-form-group>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <c8y-form-group>
+              <label for="passwordValidityLimit">{{ 'Password validity limit' | translate }}</label>
+              <input
+                class="form-control"
+                id="passwordValidityLimit"
+                type="number"
+                min="0"
+                formControlName="passwordValidityLimit"
+              />
+              <p class="help-block">{{ 'Default: 0 (unlimited validity)' | translate }}</p>
+            </c8y-form-group>
+          </div>
+          <div class="col-sm-6">
+            <c8y-form-group>
+              <label [title]="'Password strength' | translate">
+                {{ 'Password strength' | translate }}
+              </label>
+              <div>
+                <label
+                  class="c8y-switch"
+                  [title]="'Enforce that all passwords are strong' | translate"
+                >
+                  <input type="checkbox" formControlName="passwordEnforceStrength" />
+                  <span></span>
+                  <span>{{ 'Enforce strong passwords (green)' | translate }}</span>
+                </label>
+              </div>
+            </c8y-form-group>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <c8y-form-group>
+              <label class="c8y-switch" [title]="'Ignore case when logging in' | translate">
+                <input type="checkbox" formControlName="ignoreCase" />
+                <span></span>
+                <span>{{ 'Ignore case when logging in' | translate }}</span>
+              </label>
+            </c8y-form-group>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-block separator-top">
+      <div class="col-sm-2">
+        <div class="h4 text-normal text-right text-left-xs">
+          {{ 'Basic Auth restrictions' | translate }}
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="row">
+          <div class="col-sm-6">
+            <c8y-form-group>
+              <label class="c8y-switch" [title]="'Forbidden for web browsers' | translate">
+                <input type="checkbox" formControlName="forbiddenForWebBrowsers" />
+                <span></span>
+                <span>{{ 'Forbidden for web browsers' | translate }}</span>
+              </label>
+            </c8y-form-group>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <c8y-form-group>
+              <label for="forbiddenUserAgents">{{ 'Forbidden user agents' | translate }}</label>
+              <input
+                class="form-control"
+                id="forbiddenUserAgents"
+                type="text"
+                formControlName="forbiddenUserAgents"
+              />
+            </c8y-form-group>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-block separator-top">
+      <div class="col-sm-2">
+        <div class="h4 text-normal text-right text-left-xs">
+          {{ 'OAI-Secure session configuration' | translate }}
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="row">
+          <div class="col-sm-6">
+            <c8y-form-group>
+              <label class="c8y-switch" [title]="'Use session configuration' | translate">
+                <input type="checkbox" formControlName="useSessionConfiguration" />
+                <span></span>
+                <span>{{ 'Use session configuration' | translate }}</span>
+              </label>
+            </c8y-form-group>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <c8y-form-group>
+              <label class="c8y-switch" [title]="'User agent validation required' | translate">
+                <input type="checkbox" formControlName="userAgentValidationRequired" />
+                <span></span>
+                <span>{{ 'User agent validation required' | translate }}</span>
+              </label>
+            </c8y-form-group>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-block separator-top">
+      <div class="col-sm-2">
+        <div class="h4 text-normal text-right text-left-xs">
+          {{ 'Two-factor authentication' | translate }}
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <c8y-form-group>
+          <label class="c8y-switch" [title]="'Enable two-factor authentication' | translate">
+            <input type="checkbox" formControlName="tfaEnabled" />
+            <span></span>
+            <span>{{ 'Enable' | translate }}</span>
+          </label>
+        </c8y-form-group>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer separator">
+    <button
+      class="btn btn-primary"
+      title="{{ 'Save' | translate }}"
+      type="submit"
+      [disabled]="form.invalid || form.pristine"
+    >
+      {{ 'Save' | translate }}
+    </button>
+  </div>
+</form>
+<!-- /important -->

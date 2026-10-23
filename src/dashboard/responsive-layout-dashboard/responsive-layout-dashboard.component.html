@@ -18,7 +18,7 @@
   [rows]="4" — the grid has 4 rows; each row is 25% of the viewport height.
   [columns]="12" — 12-column grid; a widget with width=6 spans 50% of the width.
 
-  Enable edit mode above to see the size-preset picker on each widget.
+  Enable edit mode above to drag and resize the widgets via the header handle.
 -->
 <c8y-dashboard
   class="fit-h"
@@ -28,39 +28,18 @@
   [alignViewHeight]="true"
 >
   <!-- Row 1 — full-width banner -->
-  <c8y-dashboard-child
-    [class]="{ 'panel-title-hidden': true }"
-    [isFrozen]="isFrozen"
-    [x]="0"
-    [y]="0"
-    [width]="12"
-    [height]="1"
-  >
+  <c8y-dashboard-child [isFrozen]="isFrozen" [x]="0" [y]="0" [width]="12" [height]="1">
     <div class="card-block d-flex a-i-center j-c-between">
       <span>Overview — 100% width &times; 25% viewport height</span>
     </div>
   </c8y-dashboard-child>
 
   <!-- Row 2 — two equal columns -->
-  <c8y-dashboard-child
-    [class]="{ 'panel-title-hidden': true }"
-    [isFrozen]="isFrozen"
-    [x]="0"
-    [y]="1"
-    [width]="6"
-    [height]="1"
-  >
+  <c8y-dashboard-child [isFrozen]="isFrozen" [x]="0" [y]="1" [width]="6" [height]="1">
     <div class="card-block d-flex a-i-center j-c-center">50% width &times; 25% height</div>
   </c8y-dashboard-child>
 
-  <c8y-dashboard-child
-    [class]="{ 'panel-title-hidden': true }"
-    [isFrozen]="isFrozen"
-    [x]="6"
-    [y]="1"
-    [width]="6"
-    [height]="1"
-  >
+  <c8y-dashboard-child [isFrozen]="isFrozen" [x]="6" [y]="1" [width]="6" [height]="1">
     <div class="card-block d-flex a-i-center j-c-center">50% width &times; 25% height</div>
   </c8y-dashboard-child>
 

@@ -1,0 +1,224 @@
+<c8y-title>{{ 'Trusted certificates' | translate }}</c8y-title>
+<!-- important -->
+
+<c8y-breadcrumb>
+  <c8y-breadcrumb-item
+    [icon]="'c8y-management'"
+    [label]="'Management' | translate"
+  ></c8y-breadcrumb-item>
+  <c8y-breadcrumb-item
+    [icon]="'certificate'"
+    [label]="'Trusted certificates' | translate"
+  ></c8y-breadcrumb-item>
+</c8y-breadcrumb>
+
+<c8y-action-bar-item [placement]="'right'">
+  <button
+    class="btn btn-link"
+    title="{{ 'Add trusted certificate' | translate }}"
+    type="button"
+    (click)="addCertificate()"
+  >
+    <i c8yIcon="plus-circle"></i>
+    {{ 'Add trusted certificate' | translate }}
+  </button>
+</c8y-action-bar-item>
+
+<c8y-action-bar-item [placement]="'right'">
+  <button class="btn btn-link" title="{{ 'Reload' | translate }}" type="button" (click)="reload()">
+    <i [class.icon-spin]="reloading()" c8yIcon="refresh"></i>
+    {{ 'Reload' | translate }}
+  </button>
+</c8y-action-bar-item>
+
+<c8y-help
+  src="/docs/device-certificate-authentication/managing-trusted-certificates/#managing-trusted-certificates"
+></c8y-help>
+
+@if (certificates().length) {
+  <c8y-list-group>
+    <!-- Column header row: pinned while scrolling, hidden on mobile where rows stack -->
+    <div class="page-sticky-header hidden-xs c8y-list__item c8y-list__item--empty-actions">
+      <div class="c8y-list__item__block">
+        <div class="c8y-list__item__icon">
+          <i class="invisible" c8yIcon="certificate"></i>
+        </div>
+        <div class="c8y-list__item__body">
+          <div class="content-flex-60">
+            <div class="col-2">{{ 'Certificate' | translate }}</div>
+            <div class="col-2">{{ 'Status' | translate }}</div>
+            <div class="col-2">{{ 'Algorithm' | translate }}</div>
+            <div class="col-2">{{ 'Expiration date' | translate }}</div>
+            <div class="col-2">{{ 'Auto registration' | translate }}</div>
+            <div class="col-2">{{ 'Proof of possession' | translate }}</div>
+          </div>
+        </div>
+        <div class="c8y-list__item__actions"></div>
+      </div>
+    </div>
+
+    @for (certificate of certificates(); track certificate.fingerprint) {
+      <c8y-li>
+        <c8y-li-icon>
+          <i
+            c8yIcon="certificate"
+            [title]="
+              (certificate.tenantCertificateAuthority ? 'CA certificate' : 'Certificate')
+                | translate
+            "
+          ></i>
+        </c8y-li-icon>
+
+        <c8y-li-body class="content-flex-60">
+          <div class="col-2">
+            <span class="text-truncate" [title]="certificate.name">
+              {{ certificate.name }}
+            </span>
+          </div>
+          <div class="col-2">
+            <div class="c8y-select-wrapper">
+              <select
+                class="form-control"
+                [attr.aria-label]="'Status' | translate"
+                [(ngModel)]="certificate.status"
+              >
+                <option value="ENABLED">
+                  {{ 'Enabled`trusted certificate status`' | translate }}
+                </option>
+                <option value="DISABLED">
+                  {{ 'Disabled`trusted certificate status`' | translate }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-2">
+            <span [title]="('Algorithm' | translate) + ': ' + certificate.algorithmName">
+              {{ certificate.algorithmName }}
+            </span>
+          </div>
+          <div class="col-2">
+            {{ certificate.notAfter | c8yDate: 'mediumDate' }}
+          </div>
+          <div class="col-2">
+            <span
+              class="label"
+              [class.label-success]="certificate.autoRegistrationEnabled"
+              [class.label-default]="!certificate.autoRegistrationEnabled"
+            >
+              {{
+                (certificate.autoRegistrationEnabled
+                  ? 'Enabled`auto registration`'
+                  : 'Disabled`auto registration`'
+                ) | translate
+              }}
+            </span>
+          </div>
+          <div class="col-2 d-flex a-i-center j-c-between gap-8">
+            <span
+              class="label"
+              [class.label-success]="certificate.proofOfPossessionValid"
+              [class.label-warning]="!certificate.proofOfPossessionValid"
+            >
+              {{
+                (certificate.proofOfPossessionValid
+                  ? 'Complete`proof of possession`'
+                  : 'Incomplete`proof of possession`'
+                ) | translate
+              }}
+            </span>
+            <button
+              class="btn btn-clean text-danger"
+              [title]="'Delete' | translate"
+              [attr.aria-label]="'Delete' | translate"
+              type="button"
+              (click)="deleteCertificate(certificate)"
+            >
+              <i c8yIcon="delete"></i>
+            </button>
+          </div>
+        </c8y-li-body>
+
+        <c8y-li-collapse>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="control-label" [for]="'name-' + certificate.fingerprint">
+                  {{ 'Certificate name' | translate }}
+                </label>
+                <input
+                  class="form-control"
+                  type="text"
+                  [id]="'name-' + certificate.fingerprint"
+                  [(ngModel)]="certificate.name"
+                />
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-7">
+              <ul class="list-unstyled small">
+                <li class="d-flex a-i-baseline gap-8">
+                  <label class="small m-b-0 m-r-8 a-s-start flex-grow">
+                    {{ 'Algorithm' | translate }}
+                  </label>
+                  <span>{{ certificate.algorithmName }}</span>
+                </li>
+                <li class="d-flex a-i-baseline gap-8">
+                  <label class="small m-b-0 m-r-8 a-s-start flex-grow">
+                    {{ 'Version' | translate }}
+                  </label>
+                  <span>{{ certificate.version }}</span>
+                </li>
+                <li class="d-flex a-i-baseline gap-8">
+                  <label class="small m-b-0 m-r-8 a-s-start flex-grow">
+                    {{ 'Valid from' | translate }}
+                  </label>
+                  <span>{{ certificate.notBefore | c8yDate: 'medium' }}</span>
+                </li>
+                <li class="d-flex a-i-baseline gap-8">
+                  <label class="small m-b-0 m-r-8 a-s-start flex-grow">
+                    {{ 'Issuer' | translate }}
+                  </label>
+                  <span class="text-break-word">{{ certificate.issuer }}</span>
+                </li>
+                <li class="d-flex a-i-baseline gap-8">
+                  <label class="small m-b-0 m-r-8 a-s-start flex-grow">
+                    {{ 'Expiration date' | translate }}
+                  </label>
+                  <span>{{ certificate.notAfter | c8yDate: 'medium' }}</span>
+                </li>
+                <li class="d-flex a-i-baseline gap-8">
+                  <label class="small m-b-0 m-r-8 a-s-start flex-grow">
+                    {{ 'Serial number' | translate }}
+                  </label>
+                  <span class="text-monospace">{{ certificate.serialNumber }}</span>
+                </li>
+                <li class="d-flex a-i-baseline gap-8">
+                  <label class="small m-b-0 m-r-8 a-s-start flex-grow">
+                    {{ 'Fingerprint' | translate }}
+                  </label>
+                  <span class="text-monospace text-break-word">{{ certificate.fingerprint }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </c8y-li-collapse>
+      </c8y-li>
+    }
+  </c8y-list-group>
+} @else {
+  <c8y-ui-empty-state
+    [icon]="'certificate'"
+    [title]="'No trusted certificates to display.' | translate"
+    [subtitle]="'Add your first certificate by clicking below.' | translate"
+  >
+    <button
+      class="btn btn-primary"
+      title="{{ 'Add trusted certificate' | translate }}"
+      type="button"
+      (click)="addCertificate()"
+    >
+      {{ 'Add trusted certificate' | translate }}
+    </button>
+  </c8y-ui-empty-state>
+}
+<!-- /important -->

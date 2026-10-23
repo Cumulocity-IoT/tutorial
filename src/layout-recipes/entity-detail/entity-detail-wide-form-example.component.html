@@ -1,0 +1,189 @@
+<!-- important -->
+<c8y-title>{{ 'Admin User' }}</c8y-title>
+
+<c8y-breadcrumb>
+  <c8y-breadcrumb-item
+    [icon]="'c8y-accounts'"
+    [label]="'Accounts' | translate"
+  ></c8y-breadcrumb-item>
+  <c8y-breadcrumb-item [label]="'Roles' | translate"></c8y-breadcrumb-item>
+  <c8y-breadcrumb-item [label]="'Global roles' | translate"></c8y-breadcrumb-item>
+</c8y-breadcrumb>
+
+<!-- card--grid is the shorthand for d-grid on a card; the left form spans 8 columns, the sidebar 4 -->
+<div class="card content-fullpage card--grid grid__col--8-4--sm">
+  <form class="d-contents" [formGroup]="form" (ngSubmit)="save()">
+    <div class="d-flex d-col inner-scroll bg-level-0">
+      <div class="card-header separator">
+        <div class="card-title">{{ 'Global role' | translate }}</div>
+      </div>
+      <div class="card-block p-b-0 flex-no-shrink">
+        <c8y-form-group>
+          <label for="roleName">{{ 'Name' | translate }}</label>
+          <input
+            class="form-control"
+            id="roleName"
+            aria-required="true"
+            type="text"
+            formControlName="name"
+            [placeholder]="'e.g. My global role' | translate"
+          />
+        </c8y-form-group>
+        <c8y-form-group>
+          <label for="roleDescription">{{ 'Description' | translate }}</label>
+          <textarea
+            class="form-control"
+            id="roleDescription"
+            rows="3"
+            formControlName="description"
+          ></textarea>
+        </c8y-form-group>
+      </div>
+
+      <!-- The permissions matrix scrolls on its own below the role fields -->
+      <div class="inner-scroll">
+        <div class="card-header separator-top-bottom sticky-top">
+          <div class="card-title">{{ 'Permissions' | translate }}</div>
+        </div>
+        <div class="card-block bg-inherit overflow-visible p-b-0">
+          <table class="table table-striped bg-inherit">
+            <thead class="bg-inherit">
+              <tr class="bg-inherit">
+                <th class="sticky-top">{{ 'Type' | translate }}</th>
+                @for (column of columns; track column.key) {
+                  <th class="sticky-top text-center">
+                    <span>{{ column.label | translate }}</span>
+                    <br />
+                    <label class="c8y-checkbox d-inline-block">
+                      <input
+                        type="checkbox"
+                        [checked]="allChecked(column.key)"
+                        (change)="toggleAll(column.key)"
+                      />
+                      <span></span>
+                      <span class="sr-only">{{ column.label | translate }}</span>
+                    </label>
+                  </th>
+                }
+              </tr>
+            </thead>
+            <tbody>
+              @for (row of permissions(); track row.id) {
+                <tr>
+                  <td>{{ row.label | translate }}</td>
+                  @for (column of columns; track column.key) {
+                    <td class="text-center">
+                      @if (row[column.key] !== undefined) {
+                        <label class="c8y-checkbox d-inline-block">
+                          <input
+                            type="checkbox"
+                            [checked]="row[column.key]"
+                            (change)="togglePermission(row.id, column.key)"
+                          />
+                          <span></span>
+                          <span class="sr-only">{{ column.label | translate }}</span>
+                        </label>
+                      }
+                    </td>
+                  }
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="inner-scroll bg-level-1">
+    <div class="card-header separator sticky-top">
+      <div class="card-title">{{ 'Application access' | translate }}</div>
+    </div>
+    <div class="card-block p-t-0">
+      <div class="legend form-block">{{ 'Subscribed applications' | translate }}</div>
+      <ul class="c8y-list__group">
+        @for (app of subscribedApplications; track app.id) {
+          <li class="c8y-list__item bg-inherit">
+            <div class="c8y-list__item__block">
+              <div class="c8y-list__item__body p-l-0 d-flex">
+                <label class="c8y-checkbox a-i-center">
+                  <input
+                    type="checkbox"
+                    [checked]="enabledApps().has(app.id)"
+                    (change)="toggleApp(app.id)"
+                  />
+                  <span></span>
+                  <span class="icon-36 l-h-1 p-l-8">
+                    <i
+                      class="c8y-icon-duocolor icon-36"
+                      [c8yIcon]="app.icon"
+                      aria-hidden="true"
+                    ></i>
+                  </span>
+                  <span class="m-l-8 text-normal l-h-1">
+                    {{ app.name }}
+                    <br />
+                    <small class="text-muted">{{ app.contextPath }}</small>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </li>
+        }
+      </ul>
+
+      <div class="legend form-block p-t-16">{{ 'Custom applications' | translate }}</div>
+      <ul class="c8y-list__group">
+        @for (app of customApplications; track app.id) {
+          <li class="c8y-list__item bg-inherit">
+            <div class="c8y-list__item__block">
+              <div class="c8y-list__item__body p-l-0 d-flex">
+                <label class="c8y-checkbox a-i-center">
+                  <input
+                    type="checkbox"
+                    [checked]="enabledApps().has(app.id)"
+                    (change)="toggleApp(app.id)"
+                  />
+                  <span></span>
+                  <span class="icon-36 l-h-1 p-l-8">
+                    <i
+                      class="c8y-icon-duocolor icon-36"
+                      [c8yIcon]="app.icon"
+                      aria-hidden="true"
+                    ></i>
+                  </span>
+                  <span class="m-l-8 text-normal l-h-1">
+                    {{ app.name }}
+                    <br />
+                    <small class="text-muted">{{ app.contextPath }}</small>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="card-footer separator-top grid__col--fullspan">
+    <button
+      class="btn btn-default"
+      title="{{ 'Cancel' | translate }}"
+      type="button"
+      (click)="cancel()"
+    >
+      {{ 'Cancel' | translate }}
+    </button>
+    <button
+      class="btn btn-primary"
+      title="{{ 'Save' | translate }}"
+      type="button"
+      [disabled]="form.invalid || form.pristine"
+      (click)="save()"
+    >
+      {{ 'Save' | translate }}
+    </button>
+  </div>
+</div>
+<!-- /important -->

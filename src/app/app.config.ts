@@ -18,6 +18,7 @@ import { provideLazyWidget } from '../lazy-widget';
 import { provideGlobalContextWidget } from '../global-context-widget';
 import { provideBreadcrumbsNavigator } from '../breadcrumbs';
 import { provideSplitViewSamples } from '../split-view';
+import { provideLayoutRecipesSamples } from '../layout-recipes';
 import { provideIconPanelExample } from '../icon-panel';
 import { provideClientInterceptorSample } from '../client-interceptor';
 import { provideUserMenuSample } from '../user-menu';
@@ -60,6 +61,7 @@ export const appConfig: ApplicationConfig = {
     ...provideAPIMock(),
     ...provideBreadcrumbsNavigator(),
     ...provideSplitViewSamples(),
+    ...provideLayoutRecipesSamples(),
     ...provideIconPanelExample(),
     importProvidersFrom(AlarmsModule.config({ hybrid: false })),
     importProvidersFrom(GlobalContextModule),

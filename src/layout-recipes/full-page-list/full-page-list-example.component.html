@@ -1,0 +1,52 @@
+<c8y-title>{{ 'Full page data grid' | translate }}</c8y-title>
+
+<!-- important -->
+<c8y-breadcrumb>
+  <c8y-breadcrumb-item
+    [icon]="'c8y-device-management'"
+    [label]="'Device management' | translate"
+  ></c8y-breadcrumb-item>
+  <c8y-breadcrumb-item [icon]="'devices'" [label]="'Devices' | translate"></c8y-breadcrumb-item>
+</c8y-breadcrumb>
+
+<c8y-action-bar-item [placement]="'right'">
+  <button
+    class="btn btn-link"
+    [title]="'Register device' | translate"
+    type="button"
+    (click)="addDevice()"
+  >
+    <i c8yIcon="plus-circle"></i>
+    {{ 'Register device' | translate }}
+  </button>
+</c8y-action-bar-item>
+
+<c8y-help src="/docs/device-management-application/registering-devices/"></c8y-help>
+
+<div class="content-fullpage border-top border-bottom">
+  <c8y-data-grid
+    [title]="'Devices' | translate"
+    [columns]="columns"
+    [rows]="rows()"
+    [pagination]="pagination"
+    [selectable]="true"
+    [showSearch]="true"
+    [actionControls]="actionControls"
+    [bulkActionControls]="bulkActionControls"
+  >
+    <c8y-ui-empty-state
+      [icon]="stats?.size > 0 ? 'search' : 'c8y-device-management'"
+      [title]="stats?.size > 0 ? (noResultsMessage | translate) : (noDataMessage | translate)"
+      [subtitle]="stats?.size > 0 ? (noResultsSubtitle | translate) : (noDataSubtitle | translate)"
+      *emptyStateContext="let stats"
+      [horizontal]="stats?.size > 0"
+    >
+      @if (!stats || stats.size === 0) {
+        <button class="btn btn-primary" type="button" (click)="addDevice()">
+          {{ 'Register device' | translate }}
+        </button>
+      }
+    </c8y-ui-empty-state>
+  </c8y-data-grid>
+</div>
+<!-- /important -->

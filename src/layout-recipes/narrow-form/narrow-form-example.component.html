@@ -1,0 +1,59 @@
+<c8y-title>{{ 'SMS provider' | translate }}</c8y-title>
+
+<c8y-breadcrumb>
+  <c8y-breadcrumb-item [icon]="'cog'" [label]="'Settings' | translate"></c8y-breadcrumb-item>
+  <c8y-breadcrumb-item
+    [icon]="'envelope-o'"
+    [label]="'SMS provider' | translate"
+  ></c8y-breadcrumb-item>
+</c8y-breadcrumb>
+
+<!-- important -->
+<div class="row">
+  <div class="col-md-8 col-xs-12">
+    <form class="card card--fullpage" [formGroup]="form" (ngSubmit)="save()">
+      <div class="card-header separator">
+        <div class="card-title">{{ 'Credentials' | translate }}</div>
+      </div>
+
+      <div class="inner-scroll">
+        <div class="card-block">
+          <p class="m-b-16">
+            {{ 'Enter your credentials from your SMS provider.' | translate }}
+          </p>
+          <c8y-form-group>
+            <label for="provider">{{ 'SMS provider' | translate }}</label>
+            <input
+              class="form-control"
+              id="provider"
+              type="text"
+              formControlName="provider"
+              [placeholder]="'Select or type to filter providers' | translate"
+            />
+          </c8y-form-group>
+          <!-- The real page renders the selected provider's credential fields below this input. -->
+        </div>
+      </div>
+
+      <div class="card-footer separator">
+        <button
+          class="btn btn-default"
+          title="{{ 'Delete' | translate }}"
+          type="button"
+          (click)="deleteCredentials()"
+        >
+          {{ 'Delete' | translate }}
+        </button>
+        <button
+          class="btn btn-primary"
+          title="{{ 'Save' | translate }}"
+          type="submit"
+          [disabled]="form.invalid || form.pristine"
+        >
+          {{ 'Save' | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- /important -->

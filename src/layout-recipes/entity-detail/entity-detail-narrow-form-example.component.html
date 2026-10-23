@@ -1,0 +1,170 @@
+<!-- important -->
+<c8y-title>{{ 'Asset Manager' }}</c8y-title>
+
+<c8y-breadcrumb>
+  <c8y-breadcrumb-item
+    [icon]="'c8y-accounts'"
+    [label]="'Accounts' | translate"
+  ></c8y-breadcrumb-item>
+  <c8y-breadcrumb-item [label]="'Roles' | translate"></c8y-breadcrumb-item>
+  <c8y-breadcrumb-item [label]="'Inventory roles' | translate"></c8y-breadcrumb-item>
+</c8y-breadcrumb>
+
+<!-- The whole card is one form: 4 columns of role fields, 8 columns of permissions -->
+<form
+  class="card content-fullpage d-grid grid__col--4-8--md"
+  [formGroup]="form"
+  (ngSubmit)="save()"
+>
+  <div class="inner-scroll">
+    <div class="card-header separator sticky-top">
+      <div class="card-title">{{ 'Inventory role' | translate }}</div>
+    </div>
+    <div class="card-block flex-no-shrink">
+      <c8y-form-group>
+        <label for="roleName">{{ 'Name' | translate }}</label>
+        <input
+          class="form-control"
+          id="roleName"
+          aria-required="true"
+          type="text"
+          formControlName="name"
+          [placeholder]="'e.g. My inventory role' | translate"
+        />
+      </c8y-form-group>
+      <c8y-form-group>
+        <label for="roleDescription">{{ 'Description' | translate }}</label>
+        <textarea
+          class="form-control"
+          id="roleDescription"
+          rows="6"
+          formControlName="description"
+        ></textarea>
+      </c8y-form-group>
+    </div>
+  </div>
+
+  <div class="inner-scroll bg-level-1">
+    <div class="card-header bg-level-1 separator sticky-top">
+      <div class="card-title">{{ 'Permissions' | translate }}</div>
+    </div>
+    <div class="card-block">
+      @for (scope of scopes(); track scope.id) {
+        <fieldset class="c8y-fieldset m-b-32">
+          <legend class="text-14">{{ scope.label | translate }}</legend>
+          <ul class="c8y-list__group no-border-last">
+            @if (!scope.permissions.length) {
+              <li class="c8y-list__item bg-level-1">
+                <div class="d-flex">
+                  <div class="c8y-list__item__block flex-grow">
+                    <div class="c8y-list__item__body text-truncate-wrap p-l-0">
+                      <span class="text-muted">
+                        <em>{{ 'No permissions for this scope.' | translate }}</em>
+                      </span>
+                      <button
+                        class="btn-clean p-8"
+                        [attr.aria-label]="'Add permission' | translate"
+                        type="button"
+                        (click)="addPermission(scope.id)"
+                      >
+                        <i
+                          class="text-primary m-r-4 m-l-4 text-16"
+                          c8yIcon="plus-circle"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            }
+            @for (entry of scope.permissions; track entry.id) {
+              <li class="c8y-list__item c8y-list__item--double-actions bg-level-1">
+                <div class="c8y-list__item__block d-flex a-i-center">
+                  <div class="c8y-list__item__body text-truncate-wrap p-l-0">
+                    <div class="row">
+                      <div class="col-sm-8">
+                        <div class="d-flex-md a-i-center p-b-xs-8">
+                          <label class="m-b-0 m-r-4" [for]="'type-' + entry.id">
+                            {{ 'Type' | translate }}
+                          </label>
+                          <input
+                            class="form-control"
+                            type="text"
+                            required
+                            [id]="'type-' + entry.id"
+                            [(ngModel)]="entry.type"
+                            [ngModelOptions]="{ standalone: true }"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="d-flex-md a-i-center">
+                          <label class="m-b-0 m-r-4" [for]="'permission-' + entry.id">
+                            {{ 'Permission' | translate }}
+                          </label>
+                          <div class="c8y-select-wrapper flex-grow">
+                            <select
+                              class="form-control text-normal"
+                              [id]="'permission-' + entry.id"
+                              [(ngModel)]="entry.permission"
+                              [ngModelOptions]="{ standalone: true }"
+                            >
+                              @for (option of permissionOptions; track option.value) {
+                                <option [value]="option.value">
+                                  {{ option.label | translate }}
+                                </option>
+                              }
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="c8y-list__item__actions d-flex a-i-center">
+                    <button
+                      class="btn-dot m-l-auto"
+                      [attr.aria-label]="'Remove permission' | translate"
+                      type="button"
+                      (click)="removePermission(scope.id, entry.id)"
+                    >
+                      <i class="text-danger" c8yIcon="minus-circle" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      class="btn-dot"
+                      [attr.aria-label]="'Add permission' | translate"
+                      type="button"
+                      (click)="addPermission(scope.id)"
+                    >
+                      <i class="text-primary" c8yIcon="plus-circle" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </li>
+            }
+          </ul>
+        </fieldset>
+      }
+    </div>
+  </div>
+
+  <div class="card-footer separator sticky-bottom grid__col--fullspan">
+    <button
+      class="btn btn-default"
+      title="{{ 'Cancel' | translate }}"
+      type="button"
+      (click)="cancel()"
+    >
+      {{ 'Cancel' | translate }}
+    </button>
+    <button
+      class="btn btn-primary"
+      title="{{ 'Save' | translate }}"
+      type="submit"
+      [disabled]="form.invalid || form.pristine"
+    >
+      {{ 'Save' | translate }}
+    </button>
+  </div>
+</form>
+<!-- /important -->

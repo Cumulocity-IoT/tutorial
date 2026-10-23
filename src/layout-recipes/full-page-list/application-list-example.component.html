@@ -1,0 +1,120 @@
+<c8y-title>{{ 'Card grid-list' | translate }}</c8y-title>
+<!-- important -->
+
+<c8y-breadcrumb>
+  <c8y-breadcrumb-item [icon]="'c8y-atom'" [label]="'Ecosystem' | translate"></c8y-breadcrumb-item>
+  <c8y-breadcrumb-item
+    [icon]="'c8y-modules'"
+    [label]="'Applications' | translate"
+  ></c8y-breadcrumb-item>
+</c8y-breadcrumb>
+
+<c8y-action-bar-item [placement]="'right'">
+  <button
+    class="btn btn-link"
+    title="{{ 'Add application' | translate }}"
+    (click)="addApplication()"
+  >
+    <i c8yIcon="plus-circle"></i>
+    {{ 'Add application' | translate }}
+  </button>
+</c8y-action-bar-item>
+
+<c8y-action-bar-item [placement]="'right'">
+  <button class="btn btn-link" title="{{ 'Reload' | translate }}" (click)="reload()">
+    <i [class.icon-spin]="reloading()" c8yIcon="refresh"></i>
+    {{ 'Reload' | translate }}
+  </button>
+</c8y-action-bar-item>
+
+<c8y-action-bar-item [placement]="'left'" itemClass="navbar-form hidden-xs">
+  <c8y-list-display-switch
+    (onListClassChange)="onListClassChange($event)"
+    [listLength]="apps.length"
+  ></c8y-list-display-switch>
+</c8y-action-bar-item>
+
+<c8y-help src="/docs/standard-tenant/ecosystem/#managing-applications"></c8y-help>
+
+<div [class]="'card-group' + (listClass ? ' ' + listClass : '')">
+  @if (apps.length) {
+    <div class="page-sticky-header hidden-xs d-flex">
+      <div class="card-block card-column-40">
+        <div class="card-appicon p-l-32 p-r-16 m-r-0 m-l-4"></div>
+        {{ 'Application' | translate }}
+      </div>
+      <div class="card-block p-0 card-column-80">
+        <div class="card-block card-column-80">{{ 'Description' | translate }}</div>
+        <div class="card-block card-column-20">{{ 'Type' | translate }}</div>
+        <div class="card-block card-column-20"></div>
+      </div>
+    </div>
+  }
+
+  @for (app of apps; track app.id) {
+    <div class="col-xs-12 col-sm-4 col-md-3">
+      <div class="card pointer card--d-col">
+        <div class="card-block text-center card-column-40">
+          <div class="card-appicon">
+            <i class="c8y-icon-duocolor" c8yIcon="{{ app.icon }}" aria-hidden="true"></i>
+          </div>
+          <div>
+            <p class="text-medium text-break-word">{{ app.name }}</p>
+          </div>
+        </div>
+
+        <div class="card-block p-0 no-min-height card--d-col card-column-80 flex-grow">
+          <div class="card-block no-min-height p-t-0 p-b-0 card-column-80">
+            <div class="text-center-grid">
+              <div class="p-b-8 card-hidden-grid"></div>
+              <p class="small l-h-tight p-b-8 p-l-0 p-r-0 text-break-word">
+                {{ app.description }}
+              </p>
+            </div>
+          </div>
+          <div class="card-block no-min-height p-t-0 p-b-0 d-flex card-column-20 text-center-grid">
+            <span [class]="'label ' + stateOf(app).class">
+              {{ stateOf(app).label | translate }}
+            </span>
+          </div>
+          <div class="card-footer no-min-height p-t-0 p-b-0 card-column-20 text-center-grid">
+            <div class="p-b-32 card-hidden-list"></div>
+          </div>
+        </div>
+
+        <div class="card-actions m-t-0">
+          <div
+            class="dropdown"
+            #appDropdown="bs-dropdown"
+            dropdown
+            [cdkTrapFocus]="appDropdown.isOpen"
+          >
+            <button
+              class="dropdown-toggle c8y-dropdown"
+              title="{{ 'Settings' | translate }}"
+              type="button"
+              dropdownToggle
+            >
+              <i c8yIcon="ellipsis-v"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+              <li>
+                <button title="{{ 'Edit' | translate }}" type="button">
+                  <i class="m-r-4" c8yIcon="pencil"></i>
+                  {{ 'Edit' | translate }}
+                </button>
+              </li>
+              <li>
+                <button title="{{ 'Delete' | translate }}" type="button">
+                  <i class="m-r-4" c8yIcon="delete"></i>
+                  {{ 'Delete' | translate }}
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+<!-- /important -->

@@ -1,0 +1,124 @@
+<!-- important -->
+<c8y-title>{{ 'john.doe' }}</c8y-title>
+
+<c8y-breadcrumb>
+  <c8y-breadcrumb-item
+    [icon]="'c8y-accounts'"
+    [label]="'Accounts' | translate"
+  ></c8y-breadcrumb-item>
+  <c8y-breadcrumb-item [icon]="'c8y-accounts'" [label]="'Users' | translate"></c8y-breadcrumb-item>
+  <c8y-breadcrumb-item [label]="'john.doe'"></c8y-breadcrumb-item>
+</c8y-breadcrumb>
+
+<!-- The card is a div; each column that edits data is its own form, made transparent to the grid with d-contents -->
+<div class="card content-fullpage d-grid grid__col--6-6--md grid__row--auto-min-content">
+  <form class="d-contents" [formGroup]="form" (ngSubmit)="save()">
+    <div class="inner-scroll bg-level-0">
+      <div class="card-header separator sticky-top">
+        <div class="card-title h4">{{ 'Identification' | translate }}</div>
+      </div>
+      <div class="card-block">
+        <c8y-form-group>
+          <label for="username">{{ 'Username' | translate }}</label>
+          <input class="form-control" id="username" type="text" formControlName="username" />
+        </c8y-form-group>
+        <c8y-form-group>
+          <label for="email">{{ 'Email' | translate }}</label>
+          <input
+            class="form-control"
+            id="email"
+            aria-required="true"
+            type="email"
+            formControlName="email"
+            [placeholder]="'e.g. joe.doe@example.com' | translate"
+          />
+        </c8y-form-group>
+        <div class="row">
+          <c8y-form-group class="col-sm-6">
+            <label for="firstName">{{ 'First name' | translate }}</label>
+            <input
+              class="form-control"
+              id="firstName"
+              type="text"
+              formControlName="firstName"
+              [placeholder]="'e.g. Joe' | translate"
+            />
+          </c8y-form-group>
+          <c8y-form-group class="col-sm-6">
+            <label for="lastName">{{ 'Last name' | translate }}</label>
+            <input
+              class="form-control"
+              id="lastName"
+              type="text"
+              formControlName="lastName"
+              [placeholder]="'e.g. Doe' | translate"
+            />
+          </c8y-form-group>
+        </div>
+        <c8y-form-group>
+          <label for="phone">{{ 'Telephone' | translate }}</label>
+          <input
+            class="form-control"
+            id="phone"
+            type="tel"
+            formControlName="phone"
+            [placeholder]="'e.g. +49 9 876 543 210' | translate"
+          />
+        </c8y-form-group>
+      </div>
+    </div>
+  </form>
+
+  <div class="d-contents">
+    <div class="bg-level-1 inner-scroll">
+      <div class="card-header sticky-top separator">
+        <div class="h4 card-title">{{ 'Global roles' | translate }}</div>
+      </div>
+      <ul class="c8y-list__group p-l-16 p-r-16 no-border-last">
+        @for (role of roles; track role.id) {
+          <li class="c8y-list__item bg-inherit">
+            <div class="c8y-list__item__block">
+              <div class="c8y-list__item__body p-l-0">
+                <label class="c8y-checkbox a-i-start">
+                  <input
+                    type="checkbox"
+                    [checked]="assignedRoles().has(role.id)"
+                    (change)="toggleRole(role.id)"
+                  />
+                  <span></span>
+                  <span class="text-normal d-flex">
+                    <span class="d-block">
+                      {{ role.name }}
+                      <span class="small text-muted d-block">{{ role.description }}</span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="card-footer separator grid__col--fullspan">
+    <button
+      class="btn btn-default"
+      title="{{ 'Cancel' | translate }}"
+      type="button"
+      (click)="cancel()"
+    >
+      {{ 'Cancel' | translate }}
+    </button>
+    <button
+      class="btn btn-primary"
+      title="{{ 'Save' | translate }}"
+      type="button"
+      [disabled]="form.invalid || form.pristine"
+      (click)="save()"
+    >
+      {{ 'Save' | translate }}
+    </button>
+  </div>
+</div>
+<!-- /important -->

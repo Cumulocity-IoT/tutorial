@@ -1,0 +1,137 @@
+<c8y-title>{{ 'Applications' | translate }}</c8y-title>
+
+<c8y-breadcrumb>
+  <c8y-breadcrumb-item [icon]="'c8y-atom'" [label]="'Ecosystem' | translate"></c8y-breadcrumb-item>
+  <c8y-breadcrumb-item
+    [icon]="'c8y-modules'"
+    [label]="'Applications' | translate"
+  ></c8y-breadcrumb-item>
+</c8y-breadcrumb>
+
+<c8y-action-bar-item [placement]="'right'">
+  <button class="btn btn-link" title="{{ 'Add application' | translate }}" type="button">
+    <i c8yIcon="plus-circle"></i>
+    {{ 'Add application' | translate }}
+  </button>
+</c8y-action-bar-item>
+
+<c8y-action-bar-item [placement]="'right'">
+  <button
+    class="btn btn-link"
+    title="{{ 'Reload' | translate }}"
+    type="button"
+    (click)="setState('loading')"
+  >
+    <i [class.icon-spin]="viewState() === 'loading'" c8yIcon="refresh"></i>
+    {{ 'Reload' | translate }}
+  </button>
+</c8y-action-bar-item>
+
+<!-- Demo only: the real page derives the state from the request and the active filters -->
+<div class="d-flex gap-8 p-16 bg-level-1 border-bottom">
+  <span class="text-muted small a-s-center">{{ 'Simulate:' | translate }}</span>
+  <div class="btn-group">
+    <button
+      class="btn btn-sm"
+      [class.btn-primary]="viewState() === 'loading'"
+      [class.btn-default]="viewState() !== 'loading'"
+      type="button"
+      (click)="setState('loading')"
+    >
+      {{ 'Loading' | translate }}
+    </button>
+    <button
+      class="btn btn-sm"
+      [class.btn-primary]="viewState() === 'empty'"
+      [class.btn-default]="viewState() !== 'empty'"
+      type="button"
+      (click)="setState('empty')"
+    >
+      {{ 'No applications' | translate }}
+    </button>
+    <button
+      class="btn btn-sm"
+      [class.btn-primary]="viewState() === 'filtered-empty'"
+      [class.btn-default]="viewState() !== 'filtered-empty'"
+      type="button"
+      (click)="setState('filtered-empty')"
+    >
+      {{ 'No matches' | translate }}
+    </button>
+    <button
+      class="btn btn-sm"
+      [class.btn-primary]="viewState() === 'data'"
+      [class.btn-default]="viewState() !== 'data'"
+      type="button"
+      (click)="setState('data')"
+    >
+      {{ 'With data' | translate }}
+    </button>
+  </div>
+</div>
+
+<!-- important -->
+<div [attr.aria-busy]="viewState() === 'loading'">
+  @if (viewState() === 'loading') {
+    <c8y-loading></c8y-loading>
+  } @else if (viewState() === 'empty') {
+    <!-- Nothing exists yet: full-page lists use the vertical layout and a primary action -->
+    <c8y-ui-empty-state
+      [icon]="'c8y-modules'"
+      [title]="'No applications to display.' | translate"
+      [subtitle]="'Add your first application by clicking below.' | translate"
+    >
+      <button class="btn btn-primary" title="{{ 'Add application' | translate }}" type="button">
+        {{ 'Add application' | translate }}
+      </button>
+    </c8y-ui-empty-state>
+  } @else if (viewState() === 'filtered-empty') {
+    <!-- Items exist but the search or filters matched none -->
+    <c8y-ui-empty-state
+      [icon]="'search'"
+      [title]="'No matching applications.' | translate"
+      [subtitle]="'Refine your search terms and/or the filters' | translate"
+    >
+      <button
+        class="btn btn-primary"
+        title="{{ 'Reset filters' | translate }}"
+        type="button"
+        (click)="setState('data')"
+      >
+        {{ 'Reset filters' | translate }}
+      </button>
+    </c8y-ui-empty-state>
+  } @else {
+    <div class="card-group">
+      @for (app of applications(); track app.id) {
+        <div class="col-xs-12 col-sm-4 col-md-3">
+          <div class="card pointer card--d-col">
+            <div class="card-block text-center card-column-40">
+              <div class="card-appicon">
+                <i class="c8y-icon-duocolor" c8yIcon="{{ app.icon }}" aria-hidden="true"></i>
+              </div>
+              <div>
+                <p class="text-medium text-break-word">{{ app.name }}</p>
+              </div>
+            </div>
+            <div class="card-block p-0 no-min-height card--d-col card-column-80 flex-grow">
+              <div class="card-block no-min-height p-t-0 p-b-0 card-column-80">
+                <div class="text-center-grid">
+                  <p class="small l-h-tight p-b-8 p-l-0 p-r-0 text-break-word">
+                    {{ app.description }}
+                  </p>
+                </div>
+              </div>
+              <div
+                class="card-block no-min-height p-t-0 p-b-0 d-flex card-column-20 text-center-grid"
+              >
+                <span class="label label-primary">{{ stateLabel | translate }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
+<!-- /important -->

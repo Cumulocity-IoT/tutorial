@@ -1,0 +1,113 @@
+<c8y-title>{{ 'Full page timeline list group' | translate }}</c8y-title>
+
+<!-- important -->
+<c8y-breadcrumb>
+  <c8y-breadcrumb-item
+    [icon]="'devices'"
+    [label]="'Device management' | translate"
+  ></c8y-breadcrumb-item>
+  <c8y-breadcrumb-item
+    [icon]="'outgoing-data'"
+    [label]="'Operations' | translate"
+  ></c8y-breadcrumb-item>
+</c8y-breadcrumb>
+
+<c8y-action-bar-item [placement]="'left'" itemClass="navbar-form">
+  <div class="c8y-select-wrapper">
+    <select
+      class="form-control"
+      [ngModel]="statusFilter()"
+      (ngModelChange)="statusFilter.set($event)"
+    >
+      <option value="">{{ 'All statuses' | translate }}</option>
+      <option value="PENDING">{{ 'PENDING' | translate }}</option>
+      <option value="EXECUTING">{{ 'EXECUTING' | translate }}</option>
+      <option value="SUCCESSFUL">{{ 'SUCCESSFUL' | translate }}</option>
+      <option value="FAILED">{{ 'FAILED' | translate }}</option>
+    </select>
+    <span></span>
+  </div>
+</c8y-action-bar-item>
+
+<c8y-action-bar-item [placement]="'right'">
+  <button class="btn btn-link" [title]="'Reload' | translate" type="button" (click)="reload()">
+    <i [class.icon-spin]="loading()" c8yIcon="refresh"></i>
+    {{ 'Reload' | translate }}
+  </button>
+</c8y-action-bar-item>
+
+<c8y-help
+  src="/docs/device-management-application/monitoring-and-controlling-devices/#to-view-operations"
+></c8y-help>
+
+@if (loading()) {
+  <div class="d-flex j-c-center p-t-24">
+    <c8y-loading></c8y-loading>
+  </div>
+} @else if (operations().length === 0) {
+  <c8y-ui-empty-state
+    [icon]="'outgoing-data'"
+    [title]="'No operations to display.' | translate"
+    [subtitle]="'Operations sent to devices will appear here.' | translate"
+  ></c8y-ui-empty-state>
+} @else {
+  <div class="inner-scroll">
+    <c8y-list-group class="c8y-list--timeline m-t-16">
+      @for (op of operations(); track op.id) {
+        <c8y-li-timeline>
+          {{ op.creationTime | c8yDate: 'd MMM yyyy' }}
+          {{ op.creationTime | c8yDate: 'HH:mm' }}
+          <c8y-li>
+            <c8y-li-icon>
+              <i
+                [class]="statusClass[op.status]"
+                c8yIcon="{{ statusIcon[op.status] }}"
+                aria-hidden="true"
+              ></i>
+            </c8y-li-icon>
+            <c8y-li-body>
+              <div class="row">
+                <div class="col-md-5 d-flex a-i-baseline gap-8">
+                  <span class="text-truncate" [title]="op.description">
+                    {{ op.description }}
+                  </span>
+                  <small class="text-muted flex-no-shrink">{{ op.device }}</small>
+                </div>
+                <div class="col-md-4">
+                  <span
+                    class="tag"
+                    [class.tag--default]="op.status === 'PENDING'"
+                    [class.tag--info]="op.status === 'EXECUTING'"
+                    [class.tag--success]="op.status === 'SUCCESSFUL'"
+                    [class.tag--danger]="op.status === 'FAILED'"
+                  >
+                    {{ op.status | translate }}
+                  </span>
+                </div>
+              </div>
+            </c8y-li-body>
+            <c8y-li-collapse>
+              <div class="p-16 separator-top">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="text-label-small">{{ 'Device' | translate }}</label>
+                    <p>{{ op.device }}</p>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="text-label-small">{{ 'Created' | translate }}</label>
+                    <p>{{ op.creationTime | c8yDate: 'd MMM yyyy HH:mm' }}</p>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="text-label-small">{{ 'Status' | translate }}</label>
+                    <p>{{ op.status | translate }}</p>
+                  </div>
+                </div>
+              </div>
+            </c8y-li-collapse>
+          </c8y-li>
+        </c8y-li-timeline>
+      }
+    </c8y-list-group>
+  </div>
+}
+<!-- /important -->
