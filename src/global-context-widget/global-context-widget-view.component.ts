@@ -101,11 +101,11 @@ import { WidgetConfig, WIDGET_CONTROLS } from './widget-config.model';
         <div class="row m-b-16">
           <div class="col-xs-6">
             <p class="text-muted small m-b-4">From</p>
-            <p class="text-medium m-b-0">{{ dtc.dateFrom | date: 'medium' }}</p>
+            <p class="text-medium m-b-0">{{ dtc.dateFrom | c8yDate: 'medium' }}</p>
           </div>
           <div class="col-xs-6">
             <p class="text-muted small m-b-4">To</p>
-            <p class="text-medium m-b-0">{{ dtc.dateTo | date: 'medium' }}</p>
+            <p class="text-medium m-b-0">{{ dtc.dateTo | c8yDate: 'medium' }}</p>
           </div>
         </div>
 
@@ -143,7 +143,7 @@ import { WidgetConfig, WIDGET_CONTROLS } from './widget-config.model';
           <span>Loading...</span>
         } @else {
           <span class="text-muted small m-r-16"
-            >Last fetch: {{ lastFetchTime | date: 'mediumTime' }}</span
+            >Last fetch: {{ lastFetchTime | c8yDate: 'mediumTime' }}</span
           >
           <span class="text-muted small">Fetches: {{ fetchCount }}</span>
         }

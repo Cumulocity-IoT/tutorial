@@ -25,6 +25,7 @@ import { provideUserMenuSample } from '../user-menu';
 import { AlarmsModule } from '@c8y/ngx-components/alarms';
 import { BulkOperationSchedulerModule } from '@c8y/ngx-components/operations/bulk-operation-scheduler';
 import { GlobalContextModule } from '@c8y/ngx-components/global-context';
+import { provideWidgetDashboardGlobalContext } from '../dashboard/widget-dashboard-global-context';
 import { provideRedirectToLastRoute } from '../redirect-to-last-route';
 import { provideAPIMock } from '../__mocks';
 import { configureWidgetProviders } from '@c8y/ngx-components/widgets/widget-providers';
@@ -65,5 +66,6 @@ export const appConfig: ApplicationConfig = {
     ...provideIconPanelExample(),
     importProvidersFrom(AlarmsModule.config({ hybrid: false })),
     importProvidersFrom(GlobalContextModule),
+    ...provideWidgetDashboardGlobalContext(),
   ],
 };

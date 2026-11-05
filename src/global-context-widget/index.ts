@@ -3,7 +3,6 @@ import {
   GlobalContextSectionComponent,
   hookWidgetConfig,
 } from '@c8y/ngx-components/context-dashboard';
-import { GLOBAL_CONTEXT_DASHBOARD_PATHS } from '@c8y/ngx-components/global-context';
 import { gettext } from '@c8y/ngx-components/gettext';
 import { WIDGET_CONTROLS } from './widget-config.model';
 
@@ -23,14 +22,6 @@ const DASHBOARD_PATH = 'dashboard/global-context';
  */
 export function provideGlobalContextWidget() {
   return [
-    // Register the dashboard path for Global Context support
-    // This enables the global context toolbar on this named dashboard route
-    {
-      provide: GLOBAL_CONTEXT_DASHBOARD_PATHS,
-      useValue: [DASHBOARD_PATH],
-      multi: true,
-    },
-
     // Register the widget
     hookWidget({
       id: WIDGET_ID,

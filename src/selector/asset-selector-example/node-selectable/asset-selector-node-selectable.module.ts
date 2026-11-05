@@ -3,7 +3,7 @@ import { NavigatorNode, hookNavigator, hookRoute } from '@c8y/ngx-components';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
-  imports: [BsDropdownModule.forRoot()],
+  imports: [BsDropdownModule],
   providers: [
     hookRoute({
       path: 'selector/asset-selector-example/node-selectable',
