@@ -1,87 +1,91 @@
-import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+// No platform screen uses a split view without details: this is an example scenario, an audit
+// log whose entries are complete in the list and have nothing to open.
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AuditRecordType, IAuditRecord } from '@c8y/client';
 import {
-  CoreModule,
+  C8yTranslatePipe,
+  DatePipe,
+  IconDirective,
+  ListGroupComponent,
+  ListItemBodyComponent,
+  ListItemComponent,
+  ListItemIconComponent,
+  ListItemTimelineComponent,
   SplitViewComponent,
-  SplitViewFooterComponent,
-  SplitViewHeaderActionsComponent,
   SplitViewListComponent,
+  TitleComponent,
 } from '@c8y/ngx-components';
+
+const minutesAgo = (minutes: number) => new Date(Date.now() - minutes * 60_000).toISOString();
+
+const record = (
+  id: string,
+  type: AuditRecordType,
+  activity: string,
+  text: string,
+  user: string,
+  minutes: number,
+): IAuditRecord => ({
+  id,
+  type,
+  activity,
+  text,
+  user,
+  time: minutesAgo(minutes),
+  source: { id: '3001' },
+});
 
 @Component({
   selector: 'c8y-split-view-full-width-example',
   templateUrl: './split-view-full-width-example.component.html',
-  standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
-    CoreModule,
+    C8yTranslatePipe,
+    DatePipe,
+    IconDirective,
+    TitleComponent,
+    ListGroupComponent,
+    ListItemTimelineComponent,
+    ListItemComponent,
+    ListItemIconComponent,
+    ListItemBodyComponent,
     SplitViewComponent,
     SplitViewListComponent,
-    SplitViewHeaderActionsComponent,
-    SplitViewFooterComponent,
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SplitViewFullWidthExampleComponent {
-  items = [
-    {
-      id: 1,
-      name: 'Project Alpha',
-      description: 'Web application development project',
-      status: 'In Progress',
-      progress: 75,
-    },
-    {
-      id: 2,
-      name: 'Project Beta',
-      description: 'Mobile app development project',
-      status: 'Planning',
-      progress: 25,
-    },
-    {
-      id: 3,
-      name: 'Project Gamma',
-      description: 'API integration project',
-      status: 'Completed',
-      progress: 100,
-    },
-    {
-      id: 4,
-      name: 'Project Delta',
-      description: 'Database migration project',
-      status: 'In Progress',
-      progress: 55,
-    },
-    {
-      id: 5,
-      name: 'Project Epsilon',
-      description: 'Security audit project',
-      status: 'On Hold',
-      progress: 0,
-    },
+  protected readonly records: IAuditRecord[] = [
+    record(
+      '5001',
+      AuditRecordType.ALARM,
+      'Alarm updated',
+      'Alarm acknowledged: Battery level low: 15%',
+      'operator',
+      12,
+    ),
+    record(
+      '5002',
+      AuditRecordType.OPERATION,
+      'Operation created',
+      'Restart device',
+      'operator',
+      40,
+    ),
+    record(
+      '5003',
+      AuditRecordType.INVENTORY,
+      'Managed object updated',
+      'Name changed to "Delivery Truck #1"',
+      'admin',
+      95,
+    ),
+    record(
+      '5004',
+      AuditRecordType.USER,
+      'User updated',
+      'Role "Device manager" assigned',
+      'admin',
+      300,
+    ),
   ];
-
-  getStatusClass(status: string): string {
-    switch (status) {
-      case 'Completed':
-        return 'badge-success';
-      case 'In Progress':
-        return 'badge-info';
-      case 'Planning':
-        return 'badge-system';
-      case 'On Hold':
-        return 'badge-danger';
-      default:
-        return 'badge-system';
-    }
-  }
-
-  getProgressClass(progress: number): string {
-    if (progress === 100) return 'progress-bar-success';
-    if (progress >= 75) return 'progress-bar-info';
-    if (progress >= 50) return 'progress-bar-warning';
-    return 'progress-bar-danger';
-  }
 }

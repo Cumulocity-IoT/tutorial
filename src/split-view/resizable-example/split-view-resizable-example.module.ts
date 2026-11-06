@@ -11,6 +11,15 @@ import { hookRoute } from '@c8y/ngx-components';
         import('./split-view-resizable-example.component').then(
           (m) => m.SplitViewResizableExampleComponent,
         ),
+      children: [
+        {
+          path: ':id',
+          loadComponent: () =>
+            import('./split-view-alarm-details-example.component').then(
+              (m) => m.SplitViewAlarmDetailsExampleComponent,
+            ),
+        },
+      ],
     }),
   ],
 })

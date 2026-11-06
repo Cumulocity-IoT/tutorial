@@ -1,49 +1,57 @@
+<c8y-title>{{ 'Alarms' | translate }}</c8y-title>
+
 <!-- important -->
-<c8y-title>{{ 'Split view basic example' | translate }}</c8y-title>
-
-<c8y-breadcrumb>
-  <c8y-breadcrumb-item
-    [icon]="'c8y-device-management'"
-    [label]="'Device management' | translate"
-  ></c8y-breadcrumb-item>
-  <c8y-breadcrumb-item [icon]="'online1'" [label]="'Events' | translate"></c8y-breadcrumb-item>
-</c8y-breadcrumb>
-
-<!-- Real implementation uses router navigation. (selectionChange) + c8ySvListItem replace
-     routerLink + routerLinkActive used in the real events page for this example. -->
-<c8y-sv
-  [resizableConfig]="{ trackId: 'events-split-view', collapsible: false }"
-  (selectionChange)="onSelectionChange($event)"
->
+<c8y-sv [resizableConfig]="{ trackId: 'codex-alarms-split-view', collapsible: false }">
   <c8y-sv-list
-    [emptyStateIcon]="'online1'"
-    [title]="'Events list' | translate"
-    [emptyStateTitle]="'No events to display.' | translate"
-    [showEmptyState]="events().length === 0"
+    [emptyStateIcon]="'c8y-alert-idle'"
+    [title]="'Alarms list' | translate"
+    [emptyStateTitle]="'No alarms to display.' | translate"
+    [loading]="loading()"
+    [showEmptyState]="alarms().length === 0"
+    [docsUrl]="'/docs/device-management-application/monitoring-and-controlling-devices/#working-with-alarms'"
   >
+    <c8y-sv-header-actions>
+      <button
+        class="btn btn-default btn-sm"
+        [attr.aria-label]="'Refresh' | translate"
+        type="button"
+        [disabled]="loading()"
+        (click)="refresh()"
+      >
+        <i [class.icon-spin]="loading()" c8yIcon="refresh"></i>
+      </button>
+    </c8y-sv-header-actions>
+    <!-- /important -->
+
     <c8y-list-group class="c8y-list--timeline d-block p-r-16 p-t-16">
-      <!-- Real implementation uses *c8yFor with loadMore for server-side pagination. -->
-      @for (event of events(); track event.id) {
-        <!-- Real implementation uses [routerLink] + routerLinkActive="active" instead. -->
+      @for (alarm of alarms(); track alarm.id) {
+        <!-- important -->
         <c8y-li-timeline
           class="pointer c8y-list--timeline__item"
-          [class.active]="selectedEvent()?.id === event.id"
+          role="button"
+          [routerLink]="[alarm.id]"
+          routerLinkActive="active"
         >
-          <span
-            >{{ event.time | c8yDate: 'mediumDate' }} {{ event.time | c8yDate: 'mediumTime' }}</span
-          >
-          <c8y-li [c8ySvListItem]="event">
+          <!-- /important -->
+          <span>
+            {{ alarm.time | c8yDate: 'mediumDate' }}
+            {{ alarm.time | c8yDate: 'mediumTime' }}
+          </span>
+          <c8y-li>
             <c8y-li-icon class="a-s-start">
-              <i c8yIcon="online1" aria-hidden="true"></i>
+              <div class="alarm-icons">
+                <c8y-alarms-icon [alarm]="alarm" [typeFilters]="[]"></c8y-alarms-icon>
+              </div>
+              @if (alarm.count > 1) {
+                <span class="badge badge-info">{{ alarm.count }}</span>
+              }
             </c8y-li-icon>
             <c8y-li-body class="a-s-stretch">
-              <div class="min-width-0 flex-grow">
-                <p class="text-truncate-wrap p-b-4">{{ event.text }}</p>
-                <p class="small text-muted text-truncate" [title]="event.source.name">
-                  <i c8yIcon="exchange" aria-hidden="true"></i>
-                  {{ event.source.name }}
-                </p>
-              </div>
+              <p class="text-truncate-wrap p-b-4">{{ alarm.text }}</p>
+              <p class="small text-muted text-truncate" [title]="alarm.source.name">
+                <i c8yIcon="exchange"></i>
+                {{ alarm.source.name }}
+              </p>
             </c8y-li-body>
           </c8y-li>
         </c8y-li-timeline>
@@ -51,114 +59,14 @@
     </c8y-list-group>
   </c8y-sv-list>
 
+  <!-- important -->
   <c8y-sv-details
-    emptyStateIcon="online1"
-    [emptyStateTitle]="'No event selected' | translate"
-    [emptyStateSubtitle]="'Select an event from the list to view its details.' | translate"
+    emptyStateIcon="alarm"
+    [emptyStateTitle]="'No alarm selected' | translate"
+    [emptyStateSubtitle]="'Select an alarm from the list to view its details.' | translate"
+    (backClick)="closeDetails()"
   >
-    <!-- Real implementation renders the detail via <router-outlet> — no @if needed. -->
-    @if (selectedEvent(); as event) {
-      <ng-container>
-        <div class="card-header p-24 m-b-16 bg-component separator-bottom sticky-top">
-          <h4 class="m-0">{{ event.text }}</h4>
-        </div>
-
-        <c8y-icon-panel [sections]="[]">
-          <!-- Source -->
-          <div class="col-xs-12 col-md-6 d-flex p-b-8">
-            <div class="border-all fit-w d-flex">
-              <div class="p-8">
-                <i
-                  class="icon-24 m-t-4 stroked-icon status"
-                  c8yIcon="contactless-payment"
-                  aria-hidden="true"
-                ></i>
-              </div>
-              <div class="p-t-8 p-b-8 p-r-8 min-width-0">
-                <p class="text-label-small m-b-0 m-r-8">{{ 'Source' | translate }}</p>
-                <!-- Real implementation links to the device via [routerLink]="source | assetLink". -->
-                <p class="small m-b-0">
-                  <i c8yIcon="exchange" aria-hidden="true"></i>
-                  {{ event.source.name }}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Type -->
-          <div class="col-xs-12 col-md-6 d-flex p-b-8">
-            <div class="border-all fit-w d-flex">
-              <div class="p-8">
-                <!-- Real implementation uses ColorService.generateColor(event.type) for the background. -->
-                <span class="circle-icon-wrapper">
-                  <i class="stroked-icon" [c8yIcon]="EVENT_ICON" aria-hidden="true"></i>
-                </span>
-              </div>
-              <div class="p-t-8 p-b-8 p-r-8 min-width-0">
-                <p class="text-label-small m-b-0 m-r-8">{{ 'Type' | translate }}</p>
-                <p class="small text-truncate m-b-0" [title]="event.type">
-                  <code>{{ event.type }}</code>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Timestamps -->
-          <div class="col-xs-12 col-md-12 p-b-16">
-            <div class="border-all fit-w d-flex">
-              <div class="p-8">
-                <i class="icon-24 text-gray-dark m-t-4" c8yIcon="calendar" aria-hidden="true"></i>
-              </div>
-              <div class="p-t-8 p-b-0 p-r-8 flex-grow">
-                <div class="content-flex-50">
-                  <div class="col-4 p-b-8">
-                    <p class="text-label-small m-b-0 m-r-8">{{ 'Time' | translate }}</p>
-                    <p class="small m-b-0">{{ event.time | c8yDate: 'medium' }}</p>
-                  </div>
-                  <div class="col-4 p-b-8">
-                    <p class="text-label-small m-b-0 m-r-8">
-                      {{ 'Server creation time' | translate }}
-                    </p>
-                    <p class="small m-b-0">{{ event.creationTime | c8yDate: 'medium' }}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Custom data -->
-          @if (event.customData) {
-            <div class="col-xs-12 col-md-12 p-b-16">
-              <div class="border-all fit-w d-flex">
-                <div class="p-8">
-                  <i
-                    class="icon-24 text-gray-dark m-t-4"
-                    c8yIcon="outgoing-data"
-                    aria-hidden="true"
-                  ></i>
-                </div>
-                <div class="p-t-8 p-b-0 p-r-8 flex-grow">
-                  <ul class="list-unstyled small m-b-0">
-                    @for (item of event.customData | keyvalue; track item.key) {
-                      <li class="p-t-4 p-b-4 separator-bottom">
-                        <label class="small m-b-4 text-label-small d-block">{{
-                          item.key | humanize
-                        }}</label>
-                        @if (isComplexValue(item.value)) {
-                          <pre class="m-b-0"><code>{{ item.value | json }}</code></pre>
-                        } @else {
-                          <span>{{ item.value }}</span>
-                        }
-                      </li>
-                    }
-                  </ul>
-                </div>
-              </div>
-            </div>
-          }
-        </c8y-icon-panel>
-      </ng-container>
-    }
+    <router-outlet></router-outlet>
   </c8y-sv-details>
 </c8y-sv>
 <!-- /important -->

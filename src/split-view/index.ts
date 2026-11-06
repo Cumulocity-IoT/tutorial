@@ -31,6 +31,46 @@ root.add(
   }),
 );
 
+root.add(
+  new NavigatorNode({
+    path: '/split-view/narrow-container',
+    label: 'Narrow container example',
+    icon: 'compress',
+  }),
+);
+
+root.add(
+  new NavigatorNode({
+    path: '/split-view/selection',
+    label: 'Selection example',
+    icon: 'check-square',
+  }),
+);
+
+root.add(
+  new NavigatorNode({
+    path: '/split-view/details-layout',
+    label: 'Details layout example',
+    icon: 'window-maximize',
+  }),
+);
+
+root.add(
+  new NavigatorNode({
+    path: '/split-view/empty-state',
+    label: 'Empty states example',
+    icon: 'inbox',
+  }),
+);
+
+root.add(
+  new NavigatorNode({
+    path: '/split-view/standalone-list',
+    label: 'Standalone list example',
+    icon: 'list-alt',
+  }),
+);
+
 export function provideSplitViewSamples(): (Provider | EnvironmentProviders)[] {
   return [
     hookRoute({

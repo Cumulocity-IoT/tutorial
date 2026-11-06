@@ -1,0 +1,39 @@
+<c8y-title>{{ 'Devices' | translate }}</c8y-title>
+
+<!-- important -->
+<c8y-sv
+  [initialSelection]="devices()[0]"
+  [resizableConfig]="{ trackId: 'codex-split-view-selection' }"
+  (selectionChange)="selected.set($event)"
+>
+  <!-- /important -->
+  <c8y-sv-list [title]="'Devices' | translate" [showEmptyState]="devices().length === 0">
+    <!-- Same stacked-item markup as the simulator instruction list (modules/simulators/detail/instructionList.html) -->
+    <ul class="c8y-nav-stacked">
+      @for (device of devices(); track device.id) {
+        <li>
+          <!-- important -->
+          <button class="c8y-stacked-item gap-8 text-left" type="button" [c8ySvListItem]="device">
+            <!-- /important -->
+            <c8y-device-status [mo]="device" [size]="20"></c8y-device-status>
+            <span class="min-width-0">
+              <span class="d-block text-truncate">{{ device.name }}</span>
+              <span class="d-block small text-muted text-truncate">
+                {{ device.c8y_Hardware.model }}
+              </span>
+            </span>
+          </button>
+        </li>
+      }
+    </ul>
+  </c8y-sv-list>
+
+  <c8y-sv-details
+    emptyStateIcon="c8y-device"
+    [emptyStateTitle]="'No device selected' | translate"
+    [emptyStateSubtitle]="'Select a device from the list to view its details.' | translate"
+    [title]="selected()?.name"
+  >
+    <c8y-icon-panel [sections]="sections()"></c8y-icon-panel>
+  </c8y-sv-details>
+</c8y-sv>

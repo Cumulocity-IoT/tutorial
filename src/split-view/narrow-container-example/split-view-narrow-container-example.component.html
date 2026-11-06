@@ -1,0 +1,88 @@
+<c8y-title>{{ 'Alarms' | translate }}</c8y-title>
+
+<div class="d-flex j-c-end m-b-16">
+  <button
+    class="btn btn-default btn-sm"
+    [attr.aria-pressed]="panelOpen()"
+    type="button"
+    (click)="panelOpen.set(!panelOpen())"
+  >
+    <i c8yIcon="window-maximize"></i>
+    {{ (panelOpen() ? closePanelLabel : openPanelLabel) | translate }}
+  </button>
+</div>
+
+<div class="d-flex gap-16 fit-h">
+  <div class="flex-grow min-width-0">
+    <!-- important -->
+    <c8y-sv [resizableConfig]="{ trackId: 'codex-alarms-split-view-narrow', collapsible: false }">
+      <!-- /important -->
+      <c8y-sv-list
+        [emptyStateIcon]="'c8y-alert-idle'"
+        [title]="'Alarms list' | translate"
+        [emptyStateTitle]="'No alarms to display.' | translate"
+        [showEmptyState]="alarms().length === 0"
+      >
+        <c8y-list-group class="c8y-list--timeline d-block p-r-16 p-t-16">
+          @for (alarm of alarms(); track alarm.id) {
+            <c8y-li-timeline
+              class="pointer c8y-list--timeline__item"
+              role="button"
+              [routerLink]="[alarm.id]"
+              routerLinkActive="active"
+            >
+              <span>
+                {{ alarm.time | c8yDate: 'mediumDate' }}
+                {{ alarm.time | c8yDate: 'mediumTime' }}
+              </span>
+              <c8y-li>
+                <c8y-li-icon class="a-s-start">
+                  <div class="alarm-icons">
+                    <c8y-alarms-icon [alarm]="alarm" [typeFilters]="[]"></c8y-alarms-icon>
+                  </div>
+                </c8y-li-icon>
+                <c8y-li-body class="a-s-stretch">
+                  <p class="text-truncate-wrap p-b-4">{{ alarm.text }}</p>
+                  <p class="small text-muted text-truncate">
+                    <i c8yIcon="exchange"></i>
+                    {{ alarm.source.name }}
+                  </p>
+                </c8y-li-body>
+              </c8y-li>
+            </c8y-li-timeline>
+          }
+        </c8y-list-group>
+      </c8y-sv-list>
+
+      <!-- important -->
+      <c8y-sv-details
+        emptyStateIcon="alarm"
+        [emptyStateTitle]="'No alarm selected' | translate"
+        [emptyStateSubtitle]="'Select an alarm from the list to view its details.' | translate"
+        (backClick)="closeDetails()"
+      >
+        <router-outlet></router-outlet>
+      </c8y-sv-details>
+    </c8y-sv>
+    <!-- /important -->
+  </div>
+
+  @if (panelOpen()) {
+    <aside
+      class="card split-view-narrow-example__panel"
+      [attr.aria-label]="'Side panel' | translate"
+    >
+      <div class="card-header separator">
+        <h4 class="card-title">{{ 'Side panel' | translate }}</h4>
+      </div>
+      <div class="card-block">
+        <p class="text-muted">
+          {{
+            'A side panel such as the AI assistant takes this space from the split view, which then stacks.'
+              | translate
+          }}
+        </p>
+      </div>
+    </aside>
+  }
+</div>

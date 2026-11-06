@@ -1,0 +1,52 @@
+<c8y-title>{{ 'Home' | translate }}</c8y-title>
+
+<c8y-dashboard>
+  <!-- The dashboard widget provides the title, so the list hides its own. -->
+  <c8y-dashboard-child [isFrozen]="true" [x]="0" [y]="0" [width]="6" [height]="5">
+    <c8y-dashboard-child-title>
+      <span>{{ 'Alarms' | translate }}</span>
+    </c8y-dashboard-child-title>
+    <!-- important -->
+    <c8y-sv-list
+      [emptyStateIcon]="'c8y-alert-idle'"
+      [title]="'Alarms list' | translate"
+      [emptyStateTitle]="'No alarms to display.' | translate"
+      [showEmptyState]="alarms().length === 0"
+    >
+      <!-- /important -->
+      <c8y-list-group class="c8y-list--timeline d-block p-r-16 p-t-16">
+        @for (alarm of alarms(); track alarm.id) {
+          <!-- important -->
+          <c8y-li-timeline
+            class="pointer c8y-list--timeline__item"
+            role="button"
+            [routerLink]="['/split-view/resizable', alarm.id]"
+          >
+            <!-- /important -->
+            <span>
+              {{ alarm.time | c8yDate: 'mediumDate' }}
+              {{ alarm.time | c8yDate: 'mediumTime' }}
+            </span>
+            <c8y-li>
+              <c8y-li-icon class="a-s-start">
+                <div class="alarm-icons">
+                  <c8y-alarms-icon [alarm]="alarm" [typeFilters]="[]"></c8y-alarms-icon>
+                </div>
+                @if (alarm.count > 1) {
+                  <span class="badge badge-info">{{ alarm.count }}</span>
+                }
+              </c8y-li-icon>
+              <c8y-li-body class="a-s-stretch">
+                <p class="text-truncate-wrap p-b-4">{{ alarm.text }}</p>
+                <p class="small text-muted text-truncate" [title]="alarm.source.name">
+                  <i c8yIcon="exchange"></i>
+                  {{ alarm.source.name }}
+                </p>
+              </c8y-li-body>
+            </c8y-li>
+          </c8y-li-timeline>
+        }
+      </c8y-list-group>
+    </c8y-sv-list>
+  </c8y-dashboard-child>
+</c8y-dashboard>

@@ -1,0 +1,11 @@
+@if (alarm(); as alarm) {
+  <div class="card-header p-24 m-b-16 bg-component separator-bottom sticky-top">
+    <h4 class="m-0">{{ alarm.text }}</h4>
+  </div>
+
+  <c8y-icon-panel [sections]="sections()"></c8y-icon-panel>
+
+  <!-- important -->
+  <c8y-sv-details-actions [actions]="actions()"></c8y-sv-details-actions>
+  <!-- /important -->
+}

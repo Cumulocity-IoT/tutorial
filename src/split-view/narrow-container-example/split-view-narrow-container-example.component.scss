@@ -1,0 +1,5 @@
+// Stands in for the AI assistant drawer: a column that takes space from the split view. It grows
+// with the example so the split view drops below the 992 px breakpoint on wide screens too.
+.split-view-narrow-example__panel {
+  flex: 0 0 max(480px, calc(100% - 960px));
+}

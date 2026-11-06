@@ -1,0 +1,72 @@
+<c8y-title>{{ 'Devices' | translate }}</c8y-title>
+
+<c8y-sv
+  [initialSelection]="devices()[0]"
+  [resizableConfig]="{ trackId: 'codex-split-view-details-layout' }"
+  (selectionChange)="selected.set($event)"
+>
+  <c8y-sv-list [title]="'Devices' | translate" [showEmptyState]="devices().length === 0">
+    <c8y-list-group>
+      @for (device of devices(); track device.id) {
+        <c8y-li [c8ySvListItem]="device">
+          <c8y-li-icon>
+            <c8y-device-status [mo]="device" [size]="20"></c8y-device-status>
+          </c8y-li-icon>
+          <c8y-li-body>
+            <p class="text-truncate-wrap">{{ device.name }}</p>
+            <p class="small text-muted text-truncate">
+              <i c8yIcon="c8y-device"></i>
+              {{ device.c8y_Hardware.model }}
+            </p>
+          </c8y-li-body>
+        </c8y-li>
+      }
+    </c8y-list-group>
+  </c8y-sv-list>
+
+  <c8y-sv-details
+    emptyStateIcon="c8y-device"
+    [emptyStateTitle]="'No device selected' | translate"
+    [emptyStateSubtitle]="'Select a device from the list to view its details.' | translate"
+    [title]="selected()?.name"
+  >
+    <!-- important -->
+    @if (selected(); as device) {
+      <c8y-sv-extra-header>
+        <p class="small text-muted">
+          {{ 'ID' | translate }} {{ device.id }} · {{ 'Type' | translate }} {{ device.type }}
+        </p>
+      </c8y-sv-extra-header>
+    }
+    <!-- /important -->
+
+    <div class="form-group">
+      <label for="split-view-device-name">{{ 'Name' | translate }}</label>
+      <input
+        class="form-control"
+        id="split-view-device-name"
+        type="text"
+        required
+        [formControl]="name"
+      />
+    </div>
+
+    <!-- important -->
+    <c8y-sv-details-actions [actions]="actions()"></c8y-sv-details-actions>
+
+    <c8y-sv-footer>
+      <button class="btn btn-default" type="button" [disabled]="name.pristine" (click)="cancel()">
+        {{ 'Cancel' | translate }}
+      </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+        [disabled]="name.pristine || name.invalid"
+        (click)="save()"
+      >
+        {{ 'Save' | translate }}
+      </button>
+    </c8y-sv-footer>
+    <!-- /important -->
+  </c8y-sv-details>
+</c8y-sv>
