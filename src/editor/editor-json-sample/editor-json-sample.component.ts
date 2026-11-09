@@ -54,7 +54,7 @@ export class EditorJsonSampleComponent {
       },
       required: ['name', 'age'],
     } as const;
-    this.editorComponent.monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+    this.editorComponent.monaco.json.jsonDefaults.setDiagnosticsOptions({
       validate: true,
       schemas: [{ schema, fileMatch: ['*'], uri: 'editor-json-sample' }],
       enableSchemaRequest: false,
