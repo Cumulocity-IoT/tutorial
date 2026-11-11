@@ -15,6 +15,7 @@ import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
     ></c8y-context-dashboard> `,
   standalone: true,
   imports: [CommonModule, CoreModule, ContextDashboardModule],
+  // Eager: widgets render through c8y-dynamic-component, which relies on zone.js.
   changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NamedContextDashboardComponent {
@@ -42,10 +43,10 @@ export class NamedContextDashboardComponent {
               id: device.id,
               name: device.name,
             },
-            text: 'Welcome to a context dashboard',
+            text: 'Device dashboard bound to ' + device.name,
           },
-          title: 'Hello',
-          id: 'some_unique_id',
+          title: 'Device overview',
+          id: 'device_overview_widget',
         },
       ];
     }

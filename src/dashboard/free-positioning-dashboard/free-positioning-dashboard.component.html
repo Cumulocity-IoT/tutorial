@@ -1,0 +1,46 @@
+<c8y-title>Free positioning dashboard</c8y-title>
+
+<c8y-action-bar-item [placement]="'right'">
+  <button
+    class="btn btn-link"
+    title="{{ editMode ? 'Disable edit mode' : 'Enable edit mode' }}"
+    type="button"
+    (click)="toggleEdit()"
+  >
+    <i [c8yIcon]="editMode ? 'lock' : 'unlock'"></i>
+    {{ editMode ? 'Disable edit mode' : 'Enable edit mode' }}
+  </button>
+</c8y-action-bar-item>
+
+<!--
+  layout="custom" + [float]="true" — widgets stay exactly where they are placed.
+  The grid does NOT collapse upward, so the empty row between the two widgets below
+  is preserved. Enable edit mode and drag a widget away; the gap it leaves behind is kept.
+
+  class="fit-h" + [alignViewHeight]="true" + [rows]="3" — the grid fills the available
+  height and divides it into 3 rows, so each row (and the preserved gap) is clearly visible.
+-->
+<c8y-dashboard
+  class="fit-h"
+  layout="custom"
+  [float]="true"
+  [alignViewHeight]="true"
+  [columns]="12"
+  [rows]="3"
+>
+  <c8y-dashboard-child [editMode]="editMode" [x]="0" [y]="0" [width]="4" [height]="1">
+    <c8y-dashboard-child-title>
+      <span>Placed at row 0</span>
+    </c8y-dashboard-child-title>
+    <div class="card-block">This widget sits on the first row.</div>
+  </c8y-dashboard-child>
+
+  <c8y-dashboard-child [editMode]="editMode" [x]="0" [y]="2" [width]="4" [height]="1">
+    <c8y-dashboard-child-title>
+      <span>Placed at row 2</span>
+    </c8y-dashboard-child-title>
+    <div class="card-block">
+      Placed on the third row — the empty row above is preserved because float is on.
+    </div>
+  </c8y-dashboard-child>
+</c8y-dashboard>

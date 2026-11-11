@@ -73,10 +73,10 @@ export default {
         scope: 'self',
       },
       {
-        name: 'Introduction Example Module',
+        name: 'Named context dashboard module',
         module: 'NamedContextDashboardModule',
         path: './src/dashboard/named-context-dashboard/named-context-dashboard.module.ts',
-        description: 'An introduction to named context dashboards forms.',
+        description: 'A named context dashboard assigned to a device for inventory-role access.',
         scope: 'self',
       },
       {
@@ -101,21 +101,21 @@ export default {
         scope: 'self',
       },
       {
-        name: 'Introduction to service dashboard module',
+        name: 'Service dashboard module',
         module: 'ServiceDashboardModule',
         path: './src/dashboard/service-dashboard/service-dashboard.module.ts',
-        description: 'An introduction to dynamic forms.',
+        description: 'A service dashboard hooked into a service route via ViewContext.Service.',
         scope: 'self',
       },
       {
-        name: 'Introduction cotext dashboard module',
+        name: 'Context dashboard module',
         module: 'ContextDashboardModule',
         path: './src/dashboard/context-dashboard/context-dashboard.module.ts',
-        description: 'An introduction to dynamic forms.',
+        description: 'A backend-persisted context dashboard bound to a platform context.',
         scope: 'self',
       },
       {
-        name: 'Introduction custom dashboard module',
+        name: 'Custom dashboard module',
         module: 'CustomDashboardModule',
         path: './src/dashboard/custom-dashboard/custom-dashboard.module.ts',
         description: 'An introduction to custom dashboards.',
@@ -126,6 +126,29 @@ export default {
         module: 'ResponsiveLayoutDashboardModule',
         path: './src/dashboard/responsive-layout-dashboard/responsive-layout-dashboard.module.ts',
         description: 'Demonstrates the viewport-filling responsive layout mode of c8y-dashboard.',
+        scope: 'self',
+      },
+      {
+        name: 'Free positioning dashboard module',
+        module: 'FreePositioningDashboardModule',
+        path: './src/dashboard/free-positioning-dashboard/free-positioning-dashboard.module.ts',
+        description:
+          'Demonstrates free positioning (float) in the custom layout mode of c8y-dashboard.',
+        scope: 'self',
+      },
+      {
+        name: 'Minimum widget size dashboard module',
+        module: 'MinSizeDashboardModule',
+        path: './src/dashboard/min-size-dashboard/min-size-dashboard.module.ts',
+        description: 'Demonstrates per-widget minimum size (minW/minH) on c8y-dashboard-child.',
+        scope: 'self',
+      },
+      {
+        name: 'Styled widgets dashboard module',
+        module: 'StyledWidgetsDashboardModule',
+        path: './src/dashboard/styled-widgets-dashboard/styled-widgets-dashboard.module.ts',
+        description:
+          'Demonstrates widget styling via panel CSS classes and per-widget header actions.',
         scope: 'self',
       },
       {
@@ -150,10 +173,10 @@ export default {
         scope: 'self',
       },
       {
-        name: 'Introduction widget dashboard module',
+        name: 'Widget dashboard module',
         module: 'WidgetDashboardModule',
         path: './src/dashboard/widget-dashboard/widget-dashboard.module.ts',
-        description: 'An introduction to dynamic forms.',
+        description: 'A user-editable widget dashboard with add and edit widget actions.',
         scope: 'self',
       },
       {

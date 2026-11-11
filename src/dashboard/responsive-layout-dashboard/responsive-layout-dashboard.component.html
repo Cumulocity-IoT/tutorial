@@ -3,12 +3,12 @@
 <c8y-action-bar-item [placement]="'right'">
   <button
     class="btn btn-link"
-    title="{{ isFrozen ? 'Enable edit mode' : 'Disable edit mode' }}"
+    title="{{ editMode ? 'Disable edit mode' : 'Enable edit mode' }}"
     type="button"
     (click)="toggleEdit()"
   >
-    <i [c8yIcon]="isFrozen ? 'unlock' : 'lock'"></i>
-    {{ isFrozen ? 'Enable edit mode' : 'Disable edit mode' }}
+    <i [c8yIcon]="editMode ? 'lock' : 'unlock'"></i>
+    {{ editMode ? 'Disable edit mode' : 'Enable edit mode' }}
   </button>
 </c8y-action-bar-item>
 
@@ -28,25 +28,25 @@
   [alignViewHeight]="true"
 >
   <!-- Row 1 — full-width banner -->
-  <c8y-dashboard-child [isFrozen]="isFrozen" [x]="0" [y]="0" [width]="12" [height]="1">
+  <c8y-dashboard-child [editMode]="editMode" [x]="0" [y]="0" [width]="12" [height]="1">
     <div class="card-block d-flex a-i-center j-c-between">
       <span>Overview — 100% width &times; 25% viewport height</span>
     </div>
   </c8y-dashboard-child>
 
   <!-- Row 2 — two equal columns -->
-  <c8y-dashboard-child [isFrozen]="isFrozen" [x]="0" [y]="1" [width]="6" [height]="1">
+  <c8y-dashboard-child [editMode]="editMode" [x]="0" [y]="1" [width]="6" [height]="1">
     <div class="card-block d-flex a-i-center j-c-center">50% width &times; 25% height</div>
   </c8y-dashboard-child>
 
-  <c8y-dashboard-child [isFrozen]="isFrozen" [x]="6" [y]="1" [width]="6" [height]="1">
+  <c8y-dashboard-child [editMode]="editMode" [x]="6" [y]="1" [width]="6" [height]="1">
     <div class="card-block d-flex a-i-center j-c-center">50% width &times; 25% height</div>
   </c8y-dashboard-child>
 
   <!-- Rows 3–4 — a wide chart alongside a narrow sidebar -->
   <c8y-dashboard-child
     [class]="{ 'panel-title-border': true }"
-    [isFrozen]="isFrozen"
+    [editMode]="editMode"
     [x]="0"
     [y]="2"
     [width]="8"
@@ -62,7 +62,7 @@
 
   <c8y-dashboard-child
     [class]="{ 'panel-title-border': true }"
-    [isFrozen]="isFrozen"
+    [editMode]="editMode"
     [x]="8"
     [y]="2"
     [width]="4"

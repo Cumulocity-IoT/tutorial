@@ -1,24 +1,27 @@
 import { Component, OnDestroy, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CoreModule } from '@c8y/ngx-components';
 import { CommonModule } from '@angular/common';
-import { AssetSelectorModule } from '@c8y/ngx-components/assets-navigator';
-import { DatapointSelectorModule } from '@c8y/ngx-components/datapoint-selector';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'tut-widget-guide-dashboard',
   template: `
-    <c8y-title>Custom dashboard</c8y-title>
+    <c8y-title>Widget guide dashboard</c8y-title>
     <c8y-action-bar-item [placement]="'right'">
-      <button class="btn btn-link" title="{{ 'Toggle freeze' }}" (click)="isFrozen = !isFrozen">
-        <i [c8yIcon]="isFrozen ? 'lock' : 'unlock'"></i>
-        {{ 'Toggle freeze' }}
+      <button
+        class="btn btn-link"
+        title="{{ editMode ? 'Disable edit mode' : 'Enable edit mode' }}"
+        type="button"
+        (click)="editMode = !editMode; editComponent = false"
+      >
+        <i [c8yIcon]="editMode ? 'lock' : 'unlock'"></i>
+        {{ editMode ? 'Disable edit mode' : 'Enable edit mode' }}
       </button>
     </c8y-action-bar-item>
     <c8y-dashboard>
       <!-- Dashboard child with a dynamic component -->
-      <c8y-dashboard-child [width]="10" [height]="4">
+      <c8y-dashboard-child [editMode]="editMode" [width]="10" [height]="4">
         <c8y-dashboard-child-title>
           <span>Dynamic component child title</span>
         </c8y-dashboard-child-title>
@@ -47,11 +50,12 @@ import { Subscription } from 'rxjs';
     </c8y-dashboard>
   `,
   standalone: true,
-  imports: [CommonModule, CoreModule, AssetSelectorModule, DatapointSelectorModule],
+  imports: [CommonModule, CoreModule],
+  // Eager: the widget renders through c8y-dynamic-component, which relies on zone.js.
   changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class WidgetGuideDashboardComponent implements OnDestroy {
-  isFrozen = false;
+  editMode = false;
   editComponent = false;
 
   @ViewChild('configForm', { static: false })

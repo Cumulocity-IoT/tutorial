@@ -7,7 +7,6 @@ import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
 @Component({
   selector: 'tut-service-dashboard',
   template: `<c8y-title>Service dashboard</c8y-title>
-    <!--    TODO: check what to do with this example -->
     <c8y-context-dashboard
       [name]="name"
       [defaultWidgets]="defaultWidgets"
@@ -16,11 +15,12 @@ import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
     ></c8y-context-dashboard>`,
   standalone: true,
   imports: [CommonModule, CoreModule, ContextDashboardModule],
+  // Eager: widgets render through c8y-dynamic-component, which relies on zone.js.
   changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ServiceDashboardComponent {
   context: (Data & ContextData) | null = null;
-  name = 'myCustomDeviceDashboardName';
+  name = 'service-dashboard';
   defaultWidgets: Widget[] = [];
 
   constructor(
@@ -29,8 +29,8 @@ export class ServiceDashboardComponent {
   ) {
     this.context = this.contextRouteService.getContextData(this.route);
     if (this.context && this.context.contextData) {
-      const device = this.context.contextData;
-      this.name = this.name + '-' + device.id;
+      const service = this.context.contextData;
+      this.name = this.name + '-' + service.id;
       this.defaultWidgets = [
         {
           _x: 3,
@@ -39,14 +39,10 @@ export class ServiceDashboardComponent {
           _height: 6,
           componentId: 'angular.widget.demo',
           config: {
-            device: {
-              id: device.id,
-              name: device.name,
-            },
-            text: 'Welcome to a context dashboard',
+            text: 'Service status, metrics and related alarms',
           },
-          title: 'Hello',
-          id: 'some_unique_id',
+          title: 'Service status',
+          id: 'service_status_widget',
         },
       ];
     }

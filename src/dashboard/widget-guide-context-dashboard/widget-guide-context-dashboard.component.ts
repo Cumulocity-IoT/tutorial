@@ -4,9 +4,9 @@ import { CommonModule } from '@angular/common';
 import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
 
 @Component({
-  selector: 'tut-widget-guide-dashboard',
+  selector: 'tut-widget-guide-context-dashboard',
   template: `
-    <c8y-title>Context dashboard</c8y-title>
+    <c8y-title>Widget guide context dashboard</c8y-title>
     <c8y-context-dashboard
       name="example-widget"
       [defaultWidgets]="defaultWidgets"
@@ -15,6 +15,7 @@ import { ContextDashboardModule } from '@c8y/ngx-components/context-dashboard';
   `,
   standalone: true,
   imports: [ContextDashboardModule, CoreModule, CommonModule],
+  // Eager: widgets render through c8y-dynamic-component, which relies on zone.js.
   changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class WidgetGuideContextDashboardComponent {

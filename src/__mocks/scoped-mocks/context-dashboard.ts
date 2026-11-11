@@ -10,6 +10,10 @@ export class ContextDashboardInterceptor implements HttpInterceptor {
   });
 
   intercept(req: ApiCall, next: HttpHandler): Observable<IFetchResponse> {
+    const method = req?.options?.method;
+    if (req?.url?.includes('inventory/managedObjects') && (method === 'PUT' || method === 'POST')) {
+      this.applyBody(req.options.body);
+    }
     return handleRequest(req, next, 'inventory/managedObjects', {
       POST: this.mockPOST.bind(this),
       PUT: this.mockPUT.bind(this),
@@ -23,6 +27,22 @@ export class ContextDashboardInterceptor implements HttpInterceptor {
 
   private mockPUT(_requestDescriptor: string) {
     return generateResponse(() => this.dashboard);
+  }
+
+  /**
+   * Merges the request body into the held dashboard so the save response carries the saved
+   * settings and widget changes. They reset on the next navigation (each one registers a new
+   * interceptor instance) and on page reload.
+   */
+  private applyBody(rawBody: unknown) {
+    try {
+      const body = typeof rawBody === 'string' ? JSON.parse(rawBody) : rawBody;
+      if (body && typeof body === 'object') {
+        this.dashboard = { ...this.dashboard, ...body, id: this.dashboard.id };
+      }
+    } catch {
+      // Non-JSON body — keep the canned dashboard.
+    }
   }
 
   private mockGET(_requestDescriptor: string) {
