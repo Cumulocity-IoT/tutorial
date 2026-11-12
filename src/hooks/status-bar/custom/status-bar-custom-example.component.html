@@ -1,0 +1,24 @@
+@let current = service.status$ | async;
+<c8y-title>Status bar custom content</c8y-title>
+<div class="card">
+  <div class="card-block">
+    <p class="m-b-16">
+      The status bar above is built without the options guardrail: the bar sets only a theme, and a
+      custom component renders the icon, state and connection. The secondary actions sit in the
+      "More…" menu. Switch the asset state to see the bar react.
+    </p>
+    <div class="btn-group" aria-label="Asset state" role="group">
+      @for (status of statuses; track status) {
+        <button
+          class="btn btn-default btn-sm"
+          [class.active]="current === status"
+          [attr.aria-pressed]="current === status"
+          type="button"
+          (click)="service.setStatus(status)"
+        >
+          {{ labels[status] }}
+        </button>
+      }
+    </div>
+  </div>
+</div>

@@ -257,6 +257,28 @@ export default {
         scope: 'self',
       },
       {
+        name: 'Status bar rollout',
+        module: 'StatusBarDeploymentExampleModule',
+        path: './src/hooks/status-bar/deployment/status-bar-deployment-example.module.ts',
+        description: 'A sample for the status bar hook with a rollout, progress and a stop action.',
+        scope: 'self',
+      },
+      {
+        name: 'Status bar run state',
+        module: 'StatusBarRunStateExampleModule',
+        path: './src/hooks/status-bar/run-state/status-bar-run-state-example.module.ts',
+        description: 'A sample for the status bar hook with an asset run state and actions.',
+        scope: 'self',
+      },
+      {
+        name: 'Status bar custom',
+        module: 'StatusBarCustomExampleModule',
+        path: './src/hooks/status-bar/custom/status-bar-custom-example.module.ts',
+        description:
+          'A sample for the status bar hook built with custom components, without options.',
+        scope: 'self',
+      },
+      {
         name: 'Default Preview feature',
         module: 'PreviewFeatureDefaultModule',
         path: './src/hooks/preview-feature/basic-view-default/preview-feature-default.module.ts',
