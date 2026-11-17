@@ -54,7 +54,8 @@ export class ChatExampleComponent {
     placeholder: 'Type your message here...',
     sendButtonText: 'Send',
     cancelButtonText: 'Cancel',
-    disclaimerText: 'AI-generated responses can contain errors. Verify the details before use.',
+    disclaimerText:
+      'AI-generated responses can contain errors. Verify the details before use. Do not enter personal data.',
     suggestionsLayout: 'horizontal',
     appearance: 'framed',
     userInterfaceIcons: { send: 'arrow-circle-up', cancel: 'stop-circle' },
