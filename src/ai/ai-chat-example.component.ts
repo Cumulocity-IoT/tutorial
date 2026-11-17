@@ -61,6 +61,7 @@ export class ChatExampleComponent {
     userInterfaceIcons: { send: 'arrow-circle-up', cancel: 'stop-circle' },
   };
   assistantMessageDisplayConfig: AssistantMessageDisplayConfig = {
+    showDefaultToolDetails: 'all',
     toolCallConfig: {
       'c8y-read-documentation': {
         executingLabel: gettext('Reading Cumulocity documentation'),
@@ -97,6 +98,23 @@ export class ChatExampleComponent {
             toolCallId: 'call1',
             input: { query: 'Example query' },
             output: '<html>\n<h1>\n    C8Y doc sample\n</h1>\n</html>',
+          },
+          // Consecutive calls of the same tool are shown as one group
+          { type: 'step-start' },
+          {
+            type: 'tool-result',
+            toolName: 'c8y-read-documentation',
+            toolCallId: 'call2',
+            input: { query: 'Second query' },
+            output: '<html>\n<h1>\n    C8Y doc sample 2\n</h1>\n</html>',
+          },
+          { type: 'step-start' },
+          {
+            type: 'tool-result',
+            toolName: 'c8y-read-documentation',
+            toolCallId: 'call2b',
+            input: { query: 'Third query' },
+            output: '<html>\n<h1>\n    C8Y doc sample 3\n</h1>\n</html>',
           },
           {
             toolName: 'c8y-tool-with-json-output',
