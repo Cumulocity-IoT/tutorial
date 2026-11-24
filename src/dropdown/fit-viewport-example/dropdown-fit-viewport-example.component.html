@@ -1,0 +1,70 @@
+<c8y-title>Events</c8y-title>
+
+<!-- The custom range filter of the events screen: on a phone the open action bar floats it -->
+<c8y-action-bar-item [placement]="'left'" itemClass="navbar-form">
+  <form class="d-flex gap-16 p-l-xs-16 p-r-xs-16 m-t-xs-8 m-b-xs-8" [formGroup]="form">
+    <div
+      class="dropdown flex-grow"
+      #rangeDropdown="bs-dropdown"
+      dropdown
+      c8yDropdownFitViewport
+      [insideClick]="true"
+    >
+      <button
+        class="dropdown-toggle form-control l-h-tight d-flex a-i-center"
+        aria-label="Custom range"
+        type="button"
+        dropdownToggle
+      >
+        <i class="m-r-4" c8yIcon="schedule1"></i>
+        <div class="d-col text-left fit-w">
+          <span class="text-12">Custom</span>
+          <span class="text-10 text-muted text-truncate">
+            {{ form.value.dateFrom | c8yDate: 'short' }} —
+            {{ form.value.dateTo | c8yDate: 'short' }}
+          </span>
+        </div>
+        <span class="caret m-r-16 m-l-4"></span>
+      </button>
+
+      <ul class="dropdown-menu dropdown-menu--date-range" *dropdownMenu>
+        <c8y-interval-picker class="d-contents" formControlName="interval"></c8y-interval-picker>
+        <li class="p-l-16 p-r-16">
+          <c8y-form-group class="m-b-8">
+            <label for="fitViewportDateFrom">From</label>
+            <c8y-date-time-picker
+              id="fitViewportDateFrom"
+              [maxDate]="form.value.dateTo"
+              formControlName="dateFrom"
+            ></c8y-date-time-picker>
+          </c8y-form-group>
+          <c8y-form-group class="m-b-8">
+            <label for="fitViewportDateTo">To</label>
+            <c8y-date-time-picker
+              id="fitViewportDateTo"
+              [minDate]="form.value.dateFrom"
+              formControlName="dateTo"
+            ></c8y-date-time-picker>
+          </c8y-form-group>
+        </li>
+        <li class="p-16 d-flex gap-8 separator-top">
+          <button
+            class="btn btn-primary btn-sm flex-grow"
+            type="button"
+            (click)="rangeDropdown.hide()"
+          >
+            Apply
+          </button>
+        </li>
+      </ul>
+    </div>
+  </form>
+</c8y-action-bar-item>
+
+<div class="p-24">
+  <c8y-ui-empty-state
+    [icon]="'online1'"
+    [title]="'No events to display.'"
+    [subtitle]="'Open the custom range on a short screen: the menu scrolls, so Apply stays in view.'"
+  ></c8y-ui-empty-state>
+</div>

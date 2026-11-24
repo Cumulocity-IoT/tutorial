@@ -833,6 +833,13 @@ export default {
         scope: 'self',
       },
       {
+        name: 'Dropdown fitted to the screen',
+        module: 'dropdownFitViewportExampleProviders',
+        path: './src/dropdown/fit-viewport-example/dropdown-fit-viewport-example.providers.ts',
+        description: 'A dropdown menu capped to the space below its toggle.',
+        scope: 'self',
+      },
+      {
         name: 'Example of range input',
         module: 'RangeInputExampleModule',
         path: './src/input/range-input-example.module.ts',
